@@ -1,0 +1,27 @@
+.popular-game-holder {
+    display: flex;
+    flex-direction: column;
+    background-color: green;
+    width: 28%;
+    height: 38%;
+    margin: 1%;
+    justify-content: center;
+}
+
+.game-name-holder {
+    display: flex;
+    background-color: blue;
+    justify-content: center;
+}
+
+.game-name {
+    display: flex;
+    font-size: 1em;
+}
+
+.popular-game-image-container {
+    display: flex;
+    position: relative;
+    flex: 1;
+    background-color: red;
+}

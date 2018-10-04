@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding-top: 12%;
+
+}
+
+.popular-games-container {
+    display: flex;
+    overflow-y: auto;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.filler-div {
+    display: flex;
+    height: 35%;
+    width: 100%;
+}
+
