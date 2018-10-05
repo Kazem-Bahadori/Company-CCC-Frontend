@@ -37,10 +37,12 @@ class HomePage extends Component {
                           gameName={this.state.popularGameArray[i].name}
                           key={this.state.popularGameArray[i].id}
                           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}/>)
-                        
-        
       }
+      if (!listOfGames) {
+        return <p> Loading... </p>
+      } else {
       return listOfGames;
+      }
     }
 
   render() {
@@ -49,16 +51,12 @@ class HomePage extends Component {
         <div className="popular-games-container">    
             {this.renderPopularGames()}
             <div className="filler-div"></div>
-            
-           
+          
         </div>
       
       </div>
     );
   }
-
-
-
 }
 
 export default HomePage;
