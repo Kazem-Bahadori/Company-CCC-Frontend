@@ -7,7 +7,7 @@ class PopularGame extends Component {
   render() {
     return (
     
-      <div className="popular-game-holder">
+      <div onClick={this.props.onClick} className="popular-game-holder">
         <div className="game-name-holder">
             <h1 className="game-name"> {this.props.gameName}</h1>
         </div>

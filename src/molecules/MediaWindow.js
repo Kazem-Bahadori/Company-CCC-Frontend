@@ -12,18 +12,19 @@ class MediaWindow extends Component {
         <ReactPlayer
             url={'https://www.twitch.tv/' + StreamName} 
             playing
-            fullscreen
+            width="100%"
+            height="100%"
            />
     </div>
-            <div>
+            <div className="media-window-chat">
               <iframe
                 title="twitch-chat"
                 frameborder="0"
                 scrolling="no"
                 id="chat_embed"
                 src={"https://www.twitch.tv/embed/" + StreamName + "/chat"}
-                height="650"
-                width="350">
+                height="100%"
+                width="100%">
               </iframe>
             </div>
          

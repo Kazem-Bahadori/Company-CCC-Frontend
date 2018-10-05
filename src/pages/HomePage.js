@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PopularGame from '../molecules/PopularGame.js';
+import GamePage from '../pages/GamePage.js';
 import '../css/HomePage.css';
 
 const getPopularGames = 'https://api.twitch.tv/helix/games/top'
@@ -7,6 +8,7 @@ class HomePage extends Component {
 
   state = {
     popularGameArray: [],
+    showGamePage: false,
     
   }
     componentDidMount() {
@@ -19,12 +21,9 @@ class HomePage extends Component {
         .then(response => response.json())
         //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
         .then(response => {
-          console.log(response)
           response.data.map((index) =>
           this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
-         
-        )
-          console.log(this.state.popularGameArray)
+        )  
         })
     }
   
@@ -33,10 +32,12 @@ class HomePage extends Component {
       var listOfGames = [];
       for (var i=0; i < this.state.popularGameArray.length; i++) {
         
-        listOfGames.push(<PopularGame 
-                          gameName={this.state.popularGameArray[i].name}
-                          key={this.state.popularGameArray[i].id}
-                          image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}/>)
+        listOfGames.push(
+        <PopularGame 
+          gameName={this.state.popularGameArray[i].name}
+          key={this.state.popularGameArray[i].id}
+          image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
+          onClick={this.popularGameOnClick}/>)
       }
       if (!listOfGames) {
         return <p> Loading... </p>
@@ -45,15 +46,31 @@ class HomePage extends Component {
       }
     }
 
-  render() {
-    return (
-      <div className="container">
+    renderContainer = () => {
+      if (!this.state.showGamePage) {
+      return(
         <div className="popular-games-container">    
             {this.renderPopularGames()}
             <div className="filler-div"></div>
-          
         </div>
-      
+
+      )
+    } else {
+      return(
+        <GamePage />
+      )
+    }
+
+    }
+
+    popularGameOnClick = () => {
+      this.setState({showGamePage: true})
+    }
+
+  render() {
+    return (
+      <div className="container">
+        {this.renderContainer()}
       </div>
     );
   }
