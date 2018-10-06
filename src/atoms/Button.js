@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import icons from 'glyphicons'
+import '../css/Button.css';
 
 class Button extends Component {
     
     render() {
       return (
         <div className="button" onClick={this.props.onClick}>
-        {this.props.name} {icons.home}
+        {this.props.name}
         </div>
         )
     }
