@@ -1,11 +1,12 @@
 .container {
-    /* display: flex; */
+    display: flex;
+    flex-flow: row wrap;
     background-color: lightgrey;
     width: 100%;
     height: 100%;
-    /* position: fixed; */
+    position: fixed;
     flex: 1;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
 }
 
