@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PopularGame from '../molecules/PopularGame.js';
 import GamePage from '../pages/GamePage.js';
+import Sidebar from '../organisms/Sidebar';
 import '../css/HomePage.css';
 
 const getPopularGames = 'https://api.twitch.tv/helix/games/top'
@@ -70,6 +71,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="container">
+        <Sidebar></Sidebar>
         {this.renderContainer()}
       </div>
     );
