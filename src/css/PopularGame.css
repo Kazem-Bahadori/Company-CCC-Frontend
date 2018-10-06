@@ -1,7 +1,7 @@
 .popular-game-holder {
     display: flex;
     flex-direction: column;
-    background-color: green;
+    background-color: lightgray;
     width: 20%;
     height: 50%;
     margin: 1%;
@@ -10,7 +10,7 @@
 
 .game-name-holder {
     display: flex;
-    background-color: blue;
+    background-color: lightgrey;
     justify-content: center;
 }
 

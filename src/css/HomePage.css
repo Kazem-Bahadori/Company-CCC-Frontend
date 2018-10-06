@@ -1,14 +1,12 @@
 .container {
-    display: flex;
-    background-color: black;
+    /* display: flex; */
+    background-color: lightgrey;
     width: 100%;
     height: 100%;
-    position: fixed;
+    /* position: fixed; */
     flex: 1;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    padding-top: 12%;
-
 }
 
 .popular-games-container {
@@ -18,9 +16,15 @@
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: center;
-    
+    justify-content: center;    
+}
 
+.home-button{
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 10rem;
 }
 
 .filler-div {
