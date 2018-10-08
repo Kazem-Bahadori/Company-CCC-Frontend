@@ -22,7 +22,6 @@
 
 .popular-game-image-container {
     display: flex;
-    position: relative;
     flex: 1;
     background-color: white;
 }
