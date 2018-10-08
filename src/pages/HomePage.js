@@ -3,8 +3,9 @@ import PopularGame from '../molecules/PopularGame.js';
 import GamePage from '../pages/GamePage.js';
 import '../css/HomePage.css';
 
-const getPopularGames = 'https://api.twitch.tv/helix/games/top'
-const backendUrl = 'http://localhost:8080/api/twitch/filters'
+//const getPopularGames = 'https://api.twitch.tv/helix/games/top'
+//const backendUrl = 'http://localhost:8080/api/twitch/filters'
+const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=games&assetType=top" 
 class HomePage extends Component {
 
   state = {
@@ -17,7 +18,7 @@ class HomePage extends Component {
         //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
 
         // Fetch top 20 most popular games on twitch through twitch API. /Johandg
-        fetch(backendUrl, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+        fetch(fetchTopGames, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
         //Convert response into json. /Johandg
         .then(response => response.json())
         //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
