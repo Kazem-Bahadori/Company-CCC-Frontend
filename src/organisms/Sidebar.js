@@ -7,8 +7,20 @@ state={
 }
 
 handleClick = () => {
-    this.state.collapsed ? this.setState({collapsed:false}): this.setState({collapsed:true});
+    if(this.state.collapsed){
+        document.addEventListener('click', this.handleClickOutside,false);
+    } else {
+        document.removeEventListener('click', this.handleClickOutside, false);
     }
+    this.setState(prevState => ({collapsed: !prevState.collapsed})); 
+    }
+
+handleClickOutside = (e) => {
+    if (this.panel.contains(e.target)) {
+        return;
+      }
+    this.handleClick(e);
+}
 
 handleSearch = (e) => {
     e.preventDefault();
@@ -32,7 +44,7 @@ handleSteamGames = (e) => {
 render(){
     if(!this.state.collapsed){
         return(
-            <div className="side-bar-container" onClick={this.handleClick}>
+            <div className="side-bar-container"  ref={panel =>{this.panel = panel}}  onClick={this.handleClick}>
                 <h2>FlatFish TV</h2>
                 <div className="side-bar-button" onClick={(e) => this.handleSearch(e)}>Click to search</div>
                 <div>Home button</div>
