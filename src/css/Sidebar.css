@@ -1,0 +1,25 @@
+.side-bar-container {
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 14rem;
+    background-color: lightgray;
+    
+}
+
+.side-bar-container-collapsed {
+    right:0;
+    height: 100%;
+    width: 4rem;
+    background-color: lightgray;
+    
+}
+
+.side-bar-button {
+    padding: 0.8rem;
+}
+
+.side-bar-button:hover {
+    background-color: darkgray;
+    color: white; 
+}
