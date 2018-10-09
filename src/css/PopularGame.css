@@ -10,13 +10,14 @@
 
 .game-name-holder {
     display: flex;
-    background-color: lightgrey;
+    background-color: black;
     justify-content: center;
 }
 
 .game-name {
     display: flex;
     font-size: 1em;
+    color: white;
 }
 
 .popular-game-image-container {

@@ -45,10 +45,10 @@ render(){
     if(!this.state.collapsed){
         return(
             <div className="side-bar-container"  ref={panel =>{this.panel = panel}}  onClick={this.handleClick}>
-                <h2>FlatFish TV</h2>
+                <h2> FlatFish TV</h2>
                 <div className="side-bar-button" onClick={(e) => this.handleSearch(e)}>Click to search</div>
                 <div>Home button</div>
-                <h3>Categories</h3>
+                <h3> Categories</h3>
                 <div className="side-bar-button" onClick={(e) => this.handleOnSaleGames(e)}>On sale</div>
                 <div className="side-bar-button" onClick={(e) => this.handleSteamGames(e)}>Steam Games</div>
             </div>
