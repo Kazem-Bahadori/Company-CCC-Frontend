@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/Sidebar.css';
 
 class Sidebar extends React.Component{
-state={
+state = {
     collapsed: true 
 }
 

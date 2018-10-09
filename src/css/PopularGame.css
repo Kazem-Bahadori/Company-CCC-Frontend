@@ -10,7 +10,7 @@
 
 .game-name-holder {
     display: flex;
-    background-color: blue;
+    background-color: lightgrey;
     justify-content: center;
 }
 

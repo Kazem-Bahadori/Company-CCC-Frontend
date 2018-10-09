@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PopularGame from '../molecules/PopularGame.js';
 import GamePage from '../pages/GamePage.js';
-import Sidebar from '../organisms/Sidebar';
+import Header from '../molecules/Header'
+import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
 //const getPopularGames = 'https://api.twitch.tv/helix/games/top'
@@ -49,12 +50,12 @@ class HomePage extends Component {
       }
     }
 
-    renderContainer = () => {
+     renderContainer = () => {
       if (!this.state.showGamePage) {
       return(
-        <div className="popular-games-container">    
-            {this.renderPopularGames()}
-            <div className="filler-div"></div>
+        <div className="popular-games-container">
+          {this.renderPopularGames()}
+          <div className="filler-div"></div>
         </div>
 
       )
@@ -70,11 +71,17 @@ class HomePage extends Component {
       this.setState({showGamePage: true})
     }
 
+    homeButtonOnClick = () => {
+      this.setState({showGamePage: false})
+    }
+
   render() {
     return (
       <div className="container">
-        <Sidebar></Sidebar>
+        <Header onClick={this.homeButtonOnClick}/>
         {this.renderContainer()}
+        <SideBar> </SideBar>
+        
         
       </div>
     );

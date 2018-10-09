@@ -5,12 +5,14 @@
     width: 14rem;
     background-color: lightgray;
     
+    
 }
 
 .side-bar-container-collapsed {
-    right:0;
-    height: 100%;
-    width: 4rem;
+    position: fixed;
+    left: 0;
+    height: 30rem;
+    width: 5rem;
     background-color: lightgray;
     
 }
