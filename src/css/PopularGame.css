@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     background-color: green;
-    width: 350px;
-    height: 450px;
+    width: 22rem;
+    height: auto;
     margin: 1%;
     justify-content: center;    
 }

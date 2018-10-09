@@ -73,6 +73,7 @@ class HomePage extends Component {
       <div className="container">
         <Sidebar></Sidebar>
         {this.renderContainer()}
+        
       </div>
     );
   }
