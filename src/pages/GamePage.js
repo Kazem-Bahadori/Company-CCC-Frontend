@@ -7,7 +7,7 @@ class GamePage extends Component {
     render() {
         return(
             <div className="game-page-container">
-            <MediaWindow />
+            <MediaWindow gameId={this.props.gameId} />
             </div>
 
         )
