@@ -13,7 +13,7 @@ class HomePage extends Component {
   state = {
     popularGameArray: [],
     showGamePage: false,
-    
+    gamesPage: null,
   }
     componentDidMount() {
         // To show the data in terminal:
@@ -41,7 +41,7 @@ class HomePage extends Component {
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
-          onClick={this.popularGameOnClick}/>)
+          onClick={this.popularGameOnClick.bind(this, i)}/>)
       }
       if (!listOfGames) {
         return <p> Loading... </p>
@@ -53,7 +53,7 @@ class HomePage extends Component {
      renderContainer = () => {
       if (!this.state.showGamePage) {
       return(
-        <div className="popular-games-container">
+        <div className="content-container">
           {this.renderPopularGames()}
           <div className="filler-div"></div>
         </div>
@@ -61,14 +61,19 @@ class HomePage extends Component {
       )
     } else {
       return(
-        <GamePage />
+        <div className="content-container">
+        {this.state.gamePage}
+        </div>
+    
       )
     }
 
     }
 
-    popularGameOnClick = () => {
+    popularGameOnClick(input)  {
+      
       this.setState({showGamePage: true})
+      this.setState({gamePage: <GamePage gameId={this.state.popularGameArray[input].id} />})
     }
 
     homeButtonOnClick = () => {
@@ -80,7 +85,7 @@ class HomePage extends Component {
       <div className="container">
         <Header onClick={this.homeButtonOnClick}/>
         {this.renderContainer()}
-        <SideBar> </SideBar>
+        <SideBar />
         
         
       </div>
