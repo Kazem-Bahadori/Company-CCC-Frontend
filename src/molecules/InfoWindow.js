@@ -11,7 +11,8 @@ class InfoWindow extends Component {
       
       <div className="Info-window-holder">
         <div className="Name-holder">
-            <h1 className="Name-text"> {StreamName} </h1>
+            <h1 className="Name-text-info"> {StreamName} </h1>
+            <p>Info text</p> 
         </div>
       </div>
 

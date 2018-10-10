@@ -10,8 +10,7 @@ class GamePage extends Component {
             <div className="game-page-container">
                 <MediaWindow />
                 <InfoWindow />
-                {/*
-                <ThumbnailWindow />*/}
+                <ThumbnailWindow />
             </div>
 
         )

@@ -1,4 +1,5 @@
 .game-page-container {
+    margin-top: 10rem;
     display: flex;
     overflow-y: auto;
     background-color: white;
