@@ -40,6 +40,7 @@ componentDidMount() {
 }
 
   render() {
+    
     return (
 <div className="media-window-holder">
     <div className="media-window-media">
@@ -58,11 +59,16 @@ componentDidMount() {
                 id="chat_embed"
                 src={"https://www.twitch.tv/embed/" + this.state.streaName + "/chat"}
                 height="100%"
-                width="100%">
-              </iframe>
-            </div>
-         
-    </div>
+                //???width="100%">
+                />
+        </div>
+        
+      </div>
+    
+
+     
+      
+
     );
   }
 }

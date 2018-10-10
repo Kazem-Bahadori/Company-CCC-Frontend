@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import '../css/GamePage.css';
 import MediaWindow from '../molecules/MediaWindow.js';
-
+import InfoWindow from '../molecules/InfoWindow.js';
+import ThumbnailWindow from '../molecules/ThumbnailWindow.js';
 class GamePage extends Component {
     
     render() {
         return(
             <div className="game-page-container">
-            <MediaWindow gameId={this.props.gameId} />
+                <MediaWindow gameId={this.props.gameId} />
+                <InfoWindow />
+                <ThumbnailWindow />
             </div>
 
         )
