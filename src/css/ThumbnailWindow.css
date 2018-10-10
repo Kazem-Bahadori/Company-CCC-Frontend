@@ -6,7 +6,7 @@
     align-items: center;*/
     flex-direction: row;
     position: relative;
-    background-color: black;
+    background-color: lightgray;
     border-style: solid;
     border-color: rgb(0, 228, 133);
     vertical-align: top;
@@ -17,13 +17,5 @@
     border-style: solid;
     height: 10%;
     border-color: rgb(0, 228, 133);
-    background-color: blue;
-   
-}
-.thumbnail-headline {
-   color: white; 
-   margin-top: 0;
-   width: 10%
-
-   
+    background-color: lightgray;
 }

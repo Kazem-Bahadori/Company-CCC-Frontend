@@ -6,23 +6,19 @@
     /*justify-content: center;
     align-items: center;*/
     /*flex-direction: row;*/
-   position: relative;
+    position: relative;
     background-color: lightgray;;
     border-style: solid;
     border-color: rgb(0, 228, 133);
     
-}
-
-
-.Name-holder {
-    border-style: solid;
-    height: 10%;
     
-   
+}
+.Name-holder {
+    height: 10%;
+    margin-left: 3%;
 }
 
 .Name-text-info {
     font-size: 1em;
     color: black; 
-   
 }

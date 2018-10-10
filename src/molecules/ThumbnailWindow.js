@@ -14,7 +14,7 @@ class InfoWindow extends Component {
     return (
       
       <div className="Thumbnail-window-holder">
-        <h4 className="thumbnail-headline"> Other stream for this game: </h4>
+        
         
         <Thumbnail 
         image={'https://www-cdn.jtvnw.net/images/twitch_logo3.jpg'}/>
