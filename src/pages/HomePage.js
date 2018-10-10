@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import PopularGame from '../molecules/PopularGame.js';
 import GamePage from '../pages/GamePage.js';
+import Header from '../molecules/Header'
+import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
-const getPopularGames = 'https://api.twitch.tv/helix/games/top'
+//const getPopularGames = 'https://api.twitch.tv/helix/games/top'
+//const backendUrl = 'http://localhost:8080/api/twitch/filters'
+const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=games&assetType=top" 
 class HomePage extends Component {
 
   state = {
@@ -16,7 +20,7 @@ class HomePage extends Component {
         //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
 
         // Fetch top 20 most popular games on twitch through twitch API. /Johandg
-        fetch(getPopularGames, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+        fetch(fetchTopGames, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
         //Convert response into json. /Johandg
         .then(response => response.json())
         //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
@@ -46,12 +50,12 @@ class HomePage extends Component {
       }
     }
 
-    renderContainer = () => {
+     renderContainer = () => {
       if (!this.state.showGamePage) {
       return(
-        <div className="popular-games-container">    
-            {this.renderPopularGames()}
-            <div className="filler-div"></div>
+        <div className="popular-games-container">
+          {this.renderPopularGames()}
+          <div className="filler-div"></div>
         </div>
 
       )
@@ -67,10 +71,18 @@ class HomePage extends Component {
       this.setState({showGamePage: true})
     }
 
+    homeButtonOnClick = () => {
+      this.setState({showGamePage: false})
+    }
+
   render() {
     return (
       <div className="container">
+        <Header onClick={this.homeButtonOnClick}/>
         {this.renderContainer()}
+        <SideBar> </SideBar>
+        
+        
       </div>
     );
   }
