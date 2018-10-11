@@ -10,11 +10,14 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-player": "^1.6.6",
-    "react-scripts": "^1.1.5"
+    "react-scripts": "^1.1.5",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test_case": "mocha",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
