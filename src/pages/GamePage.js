@@ -28,14 +28,14 @@ class GamePage extends Component {
                 
                 streamerId = response.data[0].user_id;
                 streamDataArray = response.data;
-                console.log(response.data[1].thumbnail_url);
-                console.log(streamDataArray[1].thumbnail_url); //Works if have var and [] at top without state
-                // thumbnail1untrimmed = streamDataArray[1].thumbnail_url;
+                // console.log(response.data[1].thumbnail_url);
+                // console.log(streamDataArray[1].thumbnail_url); //Works if have var and [] at top without state
+                
+                // Need to trim the thumbnailurl to replace the {width}x{height}
                 thumbnail1 = (streamDataArray[1].thumbnail_url).substring(0, (streamDataArray[1].thumbnail_url).length - 20);
                 thumbnail2 = (streamDataArray[2].thumbnail_url).substring(0, (streamDataArray[2].thumbnail_url).length - 20);
                 thumbnail3 = (streamDataArray[3].thumbnail_url).substring(0, (streamDataArray[3].thumbnail_url).length - 20);
-                // thumbnail2umtrimmed = streamDataArray[2].thumbnail_url;
-                // thumbnail3umtrimmed = streamDataArray[3].thumbnail_url;
+            
                 
                 const streamerName = "http://localhost:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerId
                   fetch(streamerName, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab' }})
@@ -48,9 +48,9 @@ class GamePage extends Component {
 
               })
       }
-    // compnentdidmount
+
     render() {
-        console.log(thumbnail1); 
+        // console.log(thumbnail1); 
         return(
             <div className="game-page-container">
                 <MediaWindow streamName={this.state.streamName} />
