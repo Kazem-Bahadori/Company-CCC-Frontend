@@ -10,9 +10,8 @@ class InfoWindow extends Component {
   
 
   render() {
-    
+   
     return (
-      
       <div className="Thumbnail-window-holder">
         
         
