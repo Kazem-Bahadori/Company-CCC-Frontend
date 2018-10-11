@@ -12,7 +12,7 @@ class InfoWindow extends Component {
       
       <div className="Info-window-holder">
         <div className="Name-holder">
-            <h1 className="Name-text-info"> StreamName </h1>
+            <h1 className="Name-text-info"> {this.props.streamName} </h1>
             <p>No. of views</p> 
             <p>Gamer</p> 
             <p>Rating</p> 

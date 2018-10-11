@@ -54,7 +54,7 @@ class GamePage extends Component {
         return(
             <div className="game-page-container">
                 <MediaWindow streamName={this.state.streamName} />
-                <InfoWindow />
+                <InfoWindow streamName={this.state.streamName}/>
                 {/* <ThumbnailWindow streamArray={streamDataArray}/> */}
                 <div className="Thumbnail-window-holder">
                     <Thumbnail 
