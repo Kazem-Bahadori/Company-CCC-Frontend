@@ -20,7 +20,7 @@ class MediaWindow extends Component {
 
 componentDidMount() {
 
-  const currentStream = "http://localhost:8080/api/twitch/filters?filterType=streams&additionalFilter=game_id&amount=" + this.props.gameId
+  const currentStream = "http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=streams&additionalFilter=game_id&amount=" + this.props.gameId
   fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
         //Convert response into json. /Johandg
         .then(response => response.json())
@@ -29,7 +29,7 @@ componentDidMount() {
           
           streamerId = response.data[0].user_id;
           
-          const streamerName = "http://localhost:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerId
+          const streamerName = "http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerId
             fetch(streamerName, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab' }})
                 .then(response => response.json())
                 .then(response => {
