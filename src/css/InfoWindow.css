@@ -1,0 +1,24 @@
+.Info-window-holder {
+    display: flex;
+    width: 10%;
+    height: 70%;
+    /*margin-top: 8rem;*/
+    /*justify-content: center;
+    align-items: center;*/
+    /*flex-direction: row;*/
+    position: relative;
+    background-color: lightgray;;
+    border-style: solid;
+    border-color: rgb(0, 228, 133);
+    
+    
+}
+.Name-holder {
+    height: 10%;
+    margin-left: 3%;
+}
+
+.Name-text-info {
+    font-size: 1em;
+    color: black; 
+}

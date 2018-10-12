@@ -1,0 +1,29 @@
+.media-window-holder {
+    /*margin-top: 8rem;*/
+    display: flex;
+    width: 70%;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    background-color: black;
+    border-style: solid;
+    border-color: rgb(0, 228, 133);
+    
+}
+
+.media-window-media {
+    display: flex;
+    margin-right: 3%;
+    width: 100%;
+    height: 100%;    
+}
+
+.media-window-chat {
+    display: flex;
+    width: 40%;
+    height: 100%;
+    
+}
+

@@ -1,0 +1,33 @@
+.thumbnail-holder {
+    display: flex;
+    flex-direction: column;
+    background-color: green;
+    width: 22rem;
+    height: auto;
+    margin: 1%;
+    justify-content: center;    
+}
+
+.thumbnail-stream-name-holder {
+    display: flex;
+    background-color: lightgray;
+    justify-content: center;
+}
+
+.thumbnail-game-name {
+    display: flex;
+    font-size: 1em;
+    color: white;
+}
+
+.thumbnail-popular-game-image-container {
+    display: flex;
+    flex: 1;
+    background-color: white;
+}
+
+.thumbnaik-popular-game-image {
+    display: flex;
+    width: 100%;
+    height:100%;
+}

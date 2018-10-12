@@ -1,0 +1,12 @@
+.game-page-container {
+    /*margin-top: 10rem;*/
+    display: flex;
+    overflow-y: auto;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    /*saknas något från FR025??*/
+    position: absolute;
+}

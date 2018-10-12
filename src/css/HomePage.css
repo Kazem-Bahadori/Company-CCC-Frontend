@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    flex: 1 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-container {
+    margin-top: 10rem;
+    display: flex;
+    overflow-y: auto;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.home-button {
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 10rem;
+}
+
+.filler-div {
+    display: flex;
+    height: 35%;
+    width: 100%;
+}
+
+

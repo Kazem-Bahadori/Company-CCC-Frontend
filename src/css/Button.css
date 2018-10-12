@@ -1,0 +1,7 @@
+.button{
+    width: fit-content;
+    height: auto;
+    background-color: white;
+    padding: 1rem;
+    border: solid black 1px;
+}
