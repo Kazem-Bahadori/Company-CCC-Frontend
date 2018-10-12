@@ -21,7 +21,7 @@ class GamePage extends Component {
         //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
         streamerInfo = []
         //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
-        let currentStream = "http://localhost:8080/api/twitch/filters?filterType=streams&additionalFilter=game_id&amount=" + this.props.gameId
+        let currentStream = "http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=streams&additionalFilter=game_id&amount=" + this.props.gameId
         fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
               //Convert response into json. /Johandg
               .then(response => response.json())
@@ -50,7 +50,7 @@ class GamePage extends Component {
 
       //Function that makes a fetch call to our api to get the streamer (twitch)name used to do: twitch.tv/streamername. /Johandg
       accessStreamerName(streamerId, index) {
-        let getStreamerName = "http://localhost:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerId[index].user_id
+        let getStreamerName = "http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerId[index].user_id
         fetch(getStreamerName, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab' }})
             .then(response => response.json())
             .then(response => {
