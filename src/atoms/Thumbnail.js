@@ -5,7 +5,7 @@ class Thumbnail extends Component {
   render() {
     return (
     
-      <div className="thumbnail-holder">
+      <div className="thumbnail-holder" onClick={this.props.onClick}>
 
 
         <div className="thumbnail-stream-name-holder">
