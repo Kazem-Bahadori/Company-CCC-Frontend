@@ -1,7 +1,7 @@
-const assert = require('chai').assert; //bringring in the chai library
+/*const assert = require('chai').assert; //bringring in the chai library
 //const app = require('../../atoms/Button'); //Bringing in the app from the app.js, i.e. the file we want to test
 import React from 'react/addons';
-import Button from '../../atoms/Button';
+import Button from '../src/App/Button';
 
 describe("testing button", () => {
 
@@ -21,3 +21,4 @@ describe("testing button", () => {
     });
 
 });
+*/
