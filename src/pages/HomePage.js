@@ -7,7 +7,7 @@ import '../css/HomePage.css';
 
 //const getPopularGames = 'https://api.twitch.tv/helix/games/top'
 //const backendUrl = 'http://localhost:8080/api/twitch/filters'
-const fetchTopGames ="http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=games&assetType=top" 
+const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=games&assetType=top" 
 class HomePage extends Component {
 
   state = {
