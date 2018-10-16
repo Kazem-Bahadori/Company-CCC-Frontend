@@ -7,10 +7,6 @@ describe('FR002', () =>{
     //the second parameter is what it is supposed to return
     assert.isNotNull(button); 
     
-    
   });
 }); //App is what we name the file we're testing, here app.js. local variable
 
-//npm run test_case -s To run the test
-
-// https://mochajs.org

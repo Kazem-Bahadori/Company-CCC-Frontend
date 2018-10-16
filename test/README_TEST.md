@@ -11,3 +11,7 @@ Dependencies
 * babel-plugin-css-modules-transform - Is a plug-in for the babel compiler. This plug-in ignores the css files. THIS PLUG IN CAN'T BE USED WITH FRONTEND. Read more: https://github.com/michalkvasnicak/babel-plugin-css-modules-transform/blob/master/README.md
 
 The file .babelrc is a config file to the babel compiler. 
+
+* TO RUN THE TEST - npm run test_case -s To run the test
+
+Read more about mocha - https://mochajs.org
