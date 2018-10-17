@@ -23,7 +23,7 @@ class MediaWindow extends Component {
             frameBorder="0"
             scrolling="no"
             id="chat_embed"
-            src={"https://www.twitch.tv/embed/" + this.props.streaName + "/chat"}
+            src={"https://www.twitch.tv/embed/" + this.props.streaName + "/chat?darkpopout"}
             height="100%"
             //???width="100%">
             />
