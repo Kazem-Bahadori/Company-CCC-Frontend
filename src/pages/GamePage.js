@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/GamePage.css';
+import ChatAndInfoWindow from '../organisms/ChatAndInfoWindow.js';
 import MediaWindow from '../molecules/MediaWindow.js';
 import InfoWindow from '../molecules/InfoWindow.js';
 // import ThumbnailWindow from '../molecules/ThumbnailWindow.js';
@@ -63,8 +64,11 @@ class GamePage extends Component {
         
         return(
             <div className="game-page-container">
-                <MediaWindow streamName={this.state.streamName} />
-                <InfoWindow streamName={this.state.streamName}/>
+              <div className="media-and-chat-holder">
+               <MediaWindow streamName={this.state.streamName}/>
+                <ChatAndInfoWindow streamName={this.state.streamName}/>
+                </div>
+                
                 {/* <ThumbnailWindow streamArray={streamDataArray}/> */}
                 <div className="Thumbnail-window-holder">
                     <Thumbnail 
