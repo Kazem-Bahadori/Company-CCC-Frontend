@@ -83,9 +83,8 @@ class HomePage extends Component {
   render() {
     return (
       <div className="container">
-        <Header onClick={this.homeButtonOnClick}/>
         {this.renderContainer()}
-        <SideBar />
+        <SideBar HomeButtonResponse={this.homeButtonOnClick}/>
         
         
       </div>
