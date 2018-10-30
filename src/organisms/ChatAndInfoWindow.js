@@ -33,13 +33,13 @@ class ChatAndInfoWindow extends Component {
                     <button className="button-style" onClick={this.onClickChat}>  Chat </button>
                     <button className="button-style" onClick={this.onClickInfo}> Game Info </button>
                 </div>
-                    <div className="content-window">
-                        {this.renderContent()}
-                    </div>
-                        <div className="buy-on-steam-holder">
-                            <button className="buy-on-steam-btn"> Buy on Steam </button>
-                        </div>
-                
+                <div className="content-window">
+                    {this.renderContent()}
+                </div>
+                {/* Should be in infowindow? /Joakim */}
+                <div className="buy-on-steam-holder"> 
+                    <button className="buy-on-steam-btn"> Buy on Steam </button>
+                </div>
             </div>
         );
     }
