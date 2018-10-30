@@ -12,7 +12,7 @@ class ChatAndInfoWindow extends Component {
         if (this.state.showChat) {
             return (<TwitchChat streamName={this.props.streamName} />);
         } else {
-            return (<InfoWindow streamName={this.props.streamName} />)
+            return (<InfoWindow streamName={this.props.streamName} viewers={this.props.viewers} />)
         }
     }
 
