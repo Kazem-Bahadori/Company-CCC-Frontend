@@ -8,13 +8,14 @@ class PopularGame extends Component {
     return (
     
       <div onClick={this.props.onClick} className="popular-game-holder">
+        
         <div className="game-name-holder">
             <h1 className="game-name"> {this.props.gameName}</h1>
         </div>
             <div className="popular-game-image-container">
             <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
             </div>
-      
+        
       </div>
     );
   }
