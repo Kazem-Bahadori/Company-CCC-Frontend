@@ -16,7 +16,7 @@ class ChatAndInfoWindow extends Component {
             return <TwitchChat streamName={this.props.streamName} />;
 
             case "Reviews":
-            return <InfoWindow streamName={this.props.streamName} />;
+            return <InfoWindow streamName={this.props.streamName} viewers={this.props.viewers}/>;
 
             case "System Requirements":
             alert("Not implemented");

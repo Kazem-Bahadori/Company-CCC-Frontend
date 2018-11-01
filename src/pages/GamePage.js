@@ -12,6 +12,7 @@ let streamDataArray = [];
 let thumbnail1 = '';
 let thumbnail2 = '';
 let thumbnail3 = '';
+let viewercount = '';
 class GamePage extends Component {
     
       state = {
@@ -34,6 +35,9 @@ class GamePage extends Component {
               
                 streamDataArray = response.data;
                 
+                // Viewer count (later sent to infowindow though chatandinfowindow)
+                viewercount=streamDataArray[0].viewer_count;
+           
                 // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
                 thumbnail1 = (streamDataArray[1].thumbnail_url).substring(0, (streamDataArray[1].thumbnail_url).length - 20);
                 thumbnail2 = (streamDataArray[2].thumbnail_url).substring(0, (streamDataArray[2].thumbnail_url).length - 20);
@@ -52,9 +56,11 @@ class GamePage extends Component {
       //Function that makes a fetch call to our api to get the streamer (twitch)name used to do: twitch.tv/streamername. /Johandg
       accessStreamerName(streamerId, index) {
         let getStreamerName = "http://localhost:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerId[index].user_id
+        
         fetch(getStreamerName, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab' }})
             .then(response => response.json())
             .then(response => {
+      
             //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
             this.setState({streamName: response.data[0].login  })
           })
@@ -66,7 +72,7 @@ class GamePage extends Component {
             <div className="game-page-container">
               <div className="media-and-chat-holder">
                <MediaWindow streamName={this.state.streamName}/>
-                <ChatAndInfoWindow streamName={this.state.streamName}/>
+                <ChatAndInfoWindow streamName={this.state.streamName} viewers={viewercount}/>
                 </div>
                 
                 {/* <ThumbnailWindow streamArray={streamDataArray}/> */}
