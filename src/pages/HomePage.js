@@ -6,6 +6,8 @@ import '../css/HomePage.css';
 
 const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=games&assetType=top" 
 var categories = ["Top Games", "Category 1", "Category 2", "Category 3" ];
+let currentFetch;
+
 class HomePage extends React.Component {
   state = {
     currentCategory: "Top Games",
@@ -14,11 +16,19 @@ class HomePage extends React.Component {
     gamesPage: null,
   }
     componentDidMount() {
-        // To show the data in terminal:
+       this.fetchFromBackend()
+    }
+
+    fetchFromBackend = () => {
+      console.log("Fetching data")
+       // To show the data in terminal:
         //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
 
         // Fetch top 20 most popular games on twitch through twitch API. /Johandg
-        fetch(fetchTopGames, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+        if (this.state.currentCategory === "Top Games") {
+          currentFetch = fetchTopGames;
+        }
+        fetch(currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
         //Convert response into json. /Johandg
         .then(response => response.json())
         //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
@@ -27,6 +37,7 @@ class HomePage extends React.Component {
           this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )  
         })
+
     }
   
     renderGames = () => {
@@ -48,6 +59,7 @@ class HomePage extends React.Component {
         gameArray = [];
         break;
       }
+      
       if (gameArray < 1) return <p className="homepage-placeholder"> No games available for this category </p>;
       var gameList = gameArray.map((game,i) =>
         <PopularGame
@@ -71,6 +83,8 @@ class HomePage extends React.Component {
 
   categoryButtonOnClick = (category) => {
     this.setState({currentCategory: category})
+    this.setState({popularGameArray: []})
+    this.fetchFromBackend();
   }
 
   render() {
