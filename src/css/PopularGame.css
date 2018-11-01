@@ -1,16 +1,11 @@
 .popular-game-holder {
     display: flex;
     flex-direction: column;
-    background-color: green;
+    background-color: black;
     width: 22rem;
     height: auto;
     margin: 1%;
     justify-content: center;    
-}
-
-.popular-game-holder:hover {
-   border-color: red;
-   border-style: solid;
 }
 
 .game-name-holder {
@@ -29,6 +24,11 @@
     display: flex;
     flex: 1;
     background-color: white;
+}
+
+.popular-game-image-container:hover {
+    border-color: gold;
+    border-style: solid;
 }
 
 .popular-game-image {
