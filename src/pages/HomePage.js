@@ -92,7 +92,7 @@ class HomePage extends React.Component {
         <div className="content-container">
           {!this.state.showGamePage && 
             <div className="homepage-header">
-              <p className="header-text">{this.state.currentCategory}</p>
+              <p className="header-text">{currentCategory}</p>
             </div>
           }
           {currentWindow}
