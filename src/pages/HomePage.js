@@ -5,12 +5,14 @@ import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
 const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=games&assetType=top" 
-var categories = ["Top Games", "Category 1", "Category 2", "Category 3" ];
+let categories = ["Top Games", "Category 1", "Category 2", "Category 3" ];
+let currentCategory = "Top Games"
 let currentFetch;
+let listOfGames
 
 class HomePage extends React.Component {
   state = {
-    currentCategory: "Top Games",
+    
     popularGameArray: [],
     showGamePage: false,
     gamesPage: null,
@@ -24,10 +26,18 @@ class HomePage extends React.Component {
        // To show the data in terminal:
         //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
 
-        // Fetch top 20 most popular games on twitch through twitch API. /Johandg
-        if (this.state.currentCategory === "Top Games") {
+        // Fetch games depending on what category is active. /Johandg
+        
+         if (currentCategory === "Category 1") {
+          //currentFetch = another const to a backend call
+        } else if (currentCategory === "Category 2") {
+          //currentFetch = another const to a backend call
+        } else if (currentCategory === "Category 3") {
+          //currentFetch = another const to a backend call
+        } else {
           currentFetch = fetchTopGames;
         }
+
         fetch(currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
         //Convert response into json. /Johandg
         .then(response => response.json())
@@ -40,36 +50,24 @@ class HomePage extends React.Component {
 
     }
   
-    renderGames = () => {
-      var gameArray;
-      switch(this.state.currentCategory){
-        case "Top Games":
-        gameArray = this.state.popularGameArray;
-        break;
-
-        case "Category 1":
-        gameArray = [];
-        break;
-
-        case "Category 2":
-        gameArray = [];
-        break;
-
-        case "Category 3":
-        gameArray = [];
-        break;
-      }
+   //Function to render the top 20 games. /Johandg
+   renderGames = () => {
+    listOfGames = [];
+    for (var i=0; i < this.state.popularGameArray.length; i++) {
       
-      if (gameArray < 1) return <p className="homepage-placeholder"> No games available for this category </p>;
-      var gameList = gameArray.map((game,i) =>
-        <PopularGame
-          gameName={game.name}
-          key={game.id}
-          image={'https://static-cdn.jtvnw.net/ttv-boxart/' + game.name + '-800x800.jpg'}
-          onClick={() => this.popularGameOnClick(gameArray,i)}
-        />
-      )
-      return gameList;
+      listOfGames.push(
+      <PopularGame 
+        gameName={this.state.popularGameArray[i].name}
+        key={this.state.popularGameArray[i].id}
+        image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
+        onClick={this.popularGameOnClick.bind(this, i)}/>)
+    }
+    if (listOfGames < 1) {
+       return <p className="homepage-placeholder"> No games available for this category </p>;
+    } else {
+    return listOfGames;
+    
+    }
   }
 
   popularGameOnClick = (gameArray, input) => {
@@ -82,7 +80,7 @@ class HomePage extends React.Component {
   }
 
   categoryButtonOnClick = (category) => {
-    this.setState({currentCategory: category})
+    currentCategory = category;
     this.setState({popularGameArray: []})
     this.fetchFromBackend();
   }
