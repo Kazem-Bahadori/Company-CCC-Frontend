@@ -9,6 +9,7 @@ class Sidebar extends React.Component{
 state = {
     collapsed: true,
     activeCategory: false,
+    currentCategory: "Top Games"
 }
 
 handleClick = () => {
@@ -45,16 +46,15 @@ render(){
             <div className="side-bar-container">
                 <div className="side-bar-content"  ref={panel =>{this.panel = panel}}  onClick={this.handleClick}>
                     <div className="side-bar-image-container">
-                        <img className="side-bar-image" onClick={this.props.HomeButtonResponse} src= {fish} alt="FlatFishTV"/>
+                        <img className="side-bar-image" onClick={this.props.homeButtonResponse} src= {fish} alt="FlatFishTV"/>
                     </div>
                     <div className="side-bar-search" onClick={(e) => this.handleSearch(e)}>
                         <img className="side-bar-search-image" src= {search} alt="Search"/>
                         Search
                     </div>
-                    <div className="side-bar-button" onClick={(e) => this.handleCategory(e)}>Top Streams</div>
-                    <div className="side-bar-button" onClick={(e) => this.handleCategory(e)}>Category 1</div>
-                    <div className="side-bar-button" onClick={(e) => this.handleCategory(e)}>Category 2</div>
-                    <div className="side-bar-button" onClick={(e) => this.handleCategory(e)}>Category 3</div>
+                    {this.props.categories.map((category) => 
+                        <div key={category} className="side-bar-button" onClick={() => this.props.categoryOnClick(category)}>{category}</div>
+                    )}
                 </div>
                 <div className="side-bar-arrow">
                     <img className="side-bar-arrow-image" src= {arrowLeft} alt="Arrow"/>

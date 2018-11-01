@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PopularGame from '../molecules/PopularGame.js';
 import GamePage from '../pages/GamePage.js';
-import Header from '../molecules/Header'
 import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
-//const getPopularGames = 'https://api.twitch.tv/helix/games/top'
-//const backendUrl = 'http://localhost:8080/api/twitch/filters'
 const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=games&assetType=top" 
-class HomePage extends Component {
-
+var categories = ["Top Games", "Category 1", "Category 2", "Category 3" ];
+class HomePage extends React.Component {
   state = {
+    currentCategory: "Top Games",
     popularGameArray: [],
     showGamePage: false,
     gamesPage: null,
@@ -31,62 +29,66 @@ class HomePage extends Component {
         })
     }
   
-    //Function to render the top 20 games. /Johandg
-    renderPopularGames = () => {
-      var listOfGames = [];
-      for (var i=0; i < this.state.popularGameArray.length; i++) {
-        
-        listOfGames.push(
-        <PopularGame 
-          gameName={this.state.popularGameArray[i].name}
-          key={this.state.popularGameArray[i].id}
-          image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
-          onClick={this.popularGameOnClick.bind(this, i)}/>)
+    renderGames = () => {
+      var gameArray;
+      switch(this.state.currentCategory){
+        case "Top Games":
+        gameArray = this.state.popularGameArray;
+        break;
+
+        case "Category 1":
+        gameArray = [];
+        break;
+
+        case "Category 2":
+        gameArray = [];
+        break;
+
+        case "Category 3":
+        gameArray = [];
+        break;
       }
-      if (!listOfGames) {
-        return <p> Loading... </p>
-      } else {
-      return listOfGames;
-      }
-    }
-
-     renderContainer = () => {
-      if (!this.state.showGamePage) {
-      return(
-        <div className="content-container">
-          {this.renderPopularGames()}
-          <div className="filler-div"></div>
-        </div>
-
+      if (gameArray < 1) return <p className="homepage-placeholder"> No games available for this category </p>;
+      var gameList = gameArray.map((game,i) =>
+        <PopularGame
+          gameName={game.name}
+          key={game.id}
+          image={'https://static-cdn.jtvnw.net/ttv-boxart/' + game.name + '-800x800.jpg'}
+          onClick={() => this.popularGameOnClick(gameArray,i)}
+        />
       )
-    } else {
-      return(
-        <div className="content-container">
-        {this.state.gamePage}
-        </div>
-    
-      )
-    }
+      return gameList;
+  }
 
-    }
+  popularGameOnClick = (gameArray, input) => {
+    this.setState({showGamePage: true})
+    this.setState({gamePage: <GamePage gameId={gameArray[input].id} />})
+  }
 
-    popularGameOnClick(input)  {
-      
-      this.setState({showGamePage: true})
-      this.setState({gamePage: <GamePage gameId={this.state.popularGameArray[input].id} />})
-    }
+  homeButtonOnClick = () => {
+    this.setState({showGamePage: false})
+  }
 
-    homeButtonOnClick = () => {
-      this.setState({showGamePage: false})
-    }
+  categoryButtonOnClick = (category) => {
+    this.setState({currentCategory: category})
+  }
 
   render() {
+    var currentWindow = (this.state.showGamePage)? this.state.gamePage:this.renderGames();
     return (
-      <div className="container">
-        {this.renderContainer()}
-        <SideBar HomeButtonResponse={this.homeButtonOnClick}/>
-        
-        
+      <div className="container">    
+        <div className="content-container">
+          {!this.state.showGamePage && 
+            <div className="homepage-header">
+              <p className="header-text">{this.state.currentCategory}</p>
+            </div>
+          }
+          {currentWindow}
+        </div>
+        <SideBar 
+          homeButtonResponse={this.homeButtonOnClick} 
+          categoryOnClick={this.categoryButtonOnClick} 
+          categories={categories}/>  
       </div>
     );
   }
