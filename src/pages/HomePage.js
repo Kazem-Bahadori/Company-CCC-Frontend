@@ -70,9 +70,9 @@ class HomePage extends React.Component {
     }
   }
 
-  popularGameOnClick = (gameArray, input) => {
+  popularGameOnClick = (input) => {
     this.setState({showGamePage: true})
-    this.setState({gamePage: <GamePage gameId={gameArray[input].id} />})
+    this.setState({gamePage: <GamePage gameId={this.state.popularGameArray[input].id} />})
   }
 
   homeButtonOnClick = () => {
