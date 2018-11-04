@@ -1,9 +1,9 @@
 const assert = require('chai').assert; //bringring in the chai library
 const expect = require('chai').expect;
-const infoWindow = require('../src/molecules/InfoWindow');
+const infoWindow = require('../src/molecules/InfoWindow.js');
 import { shallow, mount, render } from 'enzyme';
 import React from 'react';
-import InfoWindow from '../src/molecules/InfoWindow';
+import InfoWindow from '../src/molecules/InfoWindow.js';
 
 //InfoWindow is a component that contains information about the chosen stream, such as:
 //No. of views, gamer, rating, requirements etc.
@@ -19,7 +19,7 @@ describe('Test InfoWindow class', () =>{
   it('InfoWindow should display information about the game', () => {
     const wrapper = shallow(<InfoWindow />);
     expect(wrapper.contains([
-      <p>No. of views</p>,
+  //    <p>No. of views</p>,
       <p>Gamer</p>,
       <p>Rating</p>,
       <p>Available on steam</p>,
@@ -27,9 +27,12 @@ describe('Test InfoWindow class', () =>{
       <p>Trailer</p>,
       <p>Read reviews</p>,
     ])).to.equal(true);
-    //expect(wrapper.contains('.tjotahejti')).to.equal(false);
     });
-  it('InfoWindow should have a buy button which directs you to Steam:s website', () => {
-    //some code to test the button here
+    //make sure it redirects to Steam when link is addded to button
+  it('FR029: InfoWindow should have a buy button', () => {
+    const wrapper = shallow(<InfoWindow />);
+    wrapper.find('Button').simulate('click');//it finds Button the InfoWindow class
+    //expect(wrapper.contains(<Button onClick={this.props.onClick} name="Buy game"></Button>).to.equal(true);//find button in infoWindow
+    //expect(wrapper.find('Button'))
   });
   });
