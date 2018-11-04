@@ -33,6 +33,7 @@ class HomePage extends Component {
   
     //Function to render the top 20 games. /Johandg
     renderPopularGames = () => {
+      console.log(this.state.popularGameArray);
       var listOfGames = [];
       for (var i=0; i < this.state.popularGameArray.length; i++) {
         
