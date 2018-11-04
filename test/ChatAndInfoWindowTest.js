@@ -11,7 +11,7 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 
-/*describe('FR029: Test ChatAndInfoWindow class', () =>{
+describe('FR029: Test ChatAndInfoWindow class', () =>{
   it('ChatAndInfoWindow should have a buy button', () => {
     //const state = {
     //        showChat: true,
@@ -22,7 +22,7 @@ configure({ adapter: new Adapter() });
     //wrapper.find('Button').simulate('click');//it finds Button the InfoWindow class
   });
 });
-*/
+
 
 //tests of different imports, seems like components with state variables can't be imported? Compiler problem, can be solved with jest/babel/changed babelrc?
 //const thumbnail = require('../src/atoms/Thumbnail.js'); [works]
