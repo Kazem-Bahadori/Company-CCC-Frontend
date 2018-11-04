@@ -34,12 +34,6 @@ handleSearch = (e) => {
     alert("This function will be inplemented in future sprints");
 }
 
-handleCategory = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    alert("This function will be inplemented in future sprints");
-}
-
 render(){
     if(!this.state.collapsed){
         return(
