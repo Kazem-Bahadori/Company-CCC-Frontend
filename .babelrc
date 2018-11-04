@@ -3,5 +3,5 @@
         "env",
         "react"
     ],
-    "plugins": ["css-modules-transform"] 
+    "plugins": ["css-modules-transform", "transform-class-properties"]
 }
