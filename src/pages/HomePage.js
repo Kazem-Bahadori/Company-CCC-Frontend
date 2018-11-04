@@ -5,7 +5,7 @@ import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
 const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=games&assetType=top" 
-let categories = ["Top Games", "Category 1", "Category 2", "Category 3" ];
+let categories = ["Top Games", "Steam Games", "Games on Sale", "Category 3" ];
 let currentCategory = "Top Games"
 let currentFetch;
 let listOfGames
@@ -26,9 +26,9 @@ class HomePage extends React.Component {
       //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
 
       // Fetch games depending on what category is active. /Johandg 
-      if (currentCategory === "Category 1") {
+      if (currentCategory === "Steam games") {
         //currentFetch = another const to a backend call
-      } else if (currentCategory === "Category 2") {
+      } else if (currentCategory === "Games on Sale") {
         //currentFetch = another const to a backend call
       } else if (currentCategory === "Category 3") {
         //currentFetch = another const to a backend call
