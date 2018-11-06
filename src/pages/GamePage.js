@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import '../css/GamePage.css';
 import ChatAndInfoWindow from '../organisms/ChatAndInfoWindow.js';
 import MediaWindow from '../molecules/MediaWindow.js';
-import InfoWindow from '../molecules/InfoWindow.js';
-// import ThumbnailWindow from '../molecules/ThumbnailWindow.js';
 import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
 
@@ -14,7 +12,7 @@ let thumbnail2 = '';
 let thumbnail3 = '';
 let viewercount = '';
 class GamePage extends Component {
-    
+
       state = {
         streamName: [],
       }
