@@ -4,7 +4,7 @@ import GamePage from '../pages/GamePage.js';
 import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
-const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=10" 
+const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let currentCategory = "Top Games"
 let currentFetch;
