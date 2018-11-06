@@ -8,6 +8,10 @@ class ChatAndInfoWindow extends Component {
     state = {
         contentWindow: "Chat"
     }
+
+    componentDidMount() {
+        
+    }
     
     renderContent = (state) => {
 
@@ -45,6 +49,7 @@ class ChatAndInfoWindow extends Component {
                     </div>
                         <div className="buy-on-steam-holder">
                             <button className="buy-on-steam-btn"> Buy on Steam </button>
+                            <p> Hej</p>
                         </div>
                 
             </div>

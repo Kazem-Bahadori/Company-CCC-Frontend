@@ -20,6 +20,7 @@ class GamePage extends Component {
       }
 
       componentDidMount() {
+        console.log(this.props.price)
         //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
         streamerInfo = []
         //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
@@ -52,26 +53,14 @@ class GamePage extends Component {
 
       accessStreamerName(streamerInfo, index) {
             //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
-
-            /*
-            let getStreamerName =  "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game_id&filterValue=" + this.props.gameId
-            fetch(getStreamerName)
-            .then(response => response.json())
-            .then(response => {
-              console.log(response.data[0].user_name)
-              this.setState({streamName: response.data[index].user_name})
-            })
-            */
-
             let getStreamerName = "http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
             fetch(getStreamerName)
             .then(response => response.json())
             .then(response => {
               this.setState({streamName: response.data[0].login})
             })
-            
-
-            this.setState({streamName: streamerInfo[index].user_name})
+          
+            //this.setState({streamName: streamerInfo[index].user_name})
             
             console.log("accessStreamerName")
             
