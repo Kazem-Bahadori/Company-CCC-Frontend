@@ -7,16 +7,11 @@ import '../css/MediaWindow.css';
 
 class MediaWindow extends Component {
 
- 
-
-
   render() {
-    console.log(ReactPlayer.canPlay('https://www.twitch.tv/' + this.props.streamName));
-
-    console.log("Render Media Window")
-    console.log(this.props.streamName);
-    console.log(this.props.streamName.length)
     
+    console.log(ReactPlayer.canPlay('https://www.twitch.tv/' + this.props.streamName));
+    console.log("Render Media Window")
+  
     if (this.props.streamName.length === 0) {
       console.log("IF SATS")
       return null;

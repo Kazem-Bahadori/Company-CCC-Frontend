@@ -55,6 +55,7 @@ class GamePage extends Component {
       accessStreamerName(streamerInfo, index) {
             //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
 
+            /*
             let getStreamerName =  "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game_id&filterValue=" + this.props.gameId
             fetch(getStreamerName)
             .then(response => response.json())
@@ -62,6 +63,8 @@ class GamePage extends Component {
               console.log(response.data[0].user_name)
               this.setState({streamName: response.data[index].user_name})
             })
+            */
+
            /* let getStreamerName = "http://localhost:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
             fetch(getStreamerName)
             .then(response => response.json())
@@ -70,7 +73,7 @@ class GamePage extends Component {
             })
             */
 
-            //this.setState({streamName: streamerInfo[index].user_name})
+            this.setState({streamName: streamerInfo[index].user_name})
             
             console.log("accessStreamerName")
             
