@@ -4,7 +4,7 @@ import GamePage from '../pages/GamePage.js';
 import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
-const fetchTopGames ="http://localhost:8080/api/twitch/filters?assetType=games&filterType=top" 
+const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=10" 
 let categories = ["Top Games", "Steam Games", "Games on Sale", "Category 3" ];
 let currentCategory = "Top Games"
 let currentFetch;
@@ -40,7 +40,7 @@ class HomePage extends React.Component {
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
-        response.data.map((index) =>
+        response.map((index) =>
         this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )  
       })
