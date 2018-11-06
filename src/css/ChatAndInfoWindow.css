@@ -1,8 +1,6 @@
 .container-window {
     display: flex;
-    border-style: solid;
-    border-color: blue;
-    background-color: black;
+    background-color: rgb(41,41,41);
     justify-content: center;
     flex-direction: column;
     width: 45%;
@@ -14,8 +12,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    border-style: solid;
-    border-color: red;
+   
 }
 
 .header {
@@ -26,7 +23,7 @@
 }
 
 .button-style {
-    color: gold;
+    color: white;
     width: 30%;
     background-color: black;
     border: 0;

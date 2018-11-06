@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TwitchChat from '../molecules/TwitchChat.js';
 import InfoWindow from '../molecules/InfoWindow.js';
+import SystemRequirements from '../molecules/SystemRequirements.js';
 import '../css/ChatAndInfoWindow.css'
 
 var tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
@@ -23,8 +24,7 @@ class ChatAndInfoWindow extends Component {
             return <InfoWindow streamName={this.props.streamName} viewers={this.props.viewers}/>;
 
             case "System Requirements":
-            alert("Not implemented");
-            break;
+            return <SystemRequirements />
 
             case "Trailer":
             alert("Not implemented");
@@ -49,7 +49,7 @@ class ChatAndInfoWindow extends Component {
                     </div>
                         <div className="buy-on-steam-holder">
                             <button className="buy-on-steam-btn"> Buy on Steam </button>
-                            <p> Hej</p>
+                            <p>{this.props.price}</p>
                         </div>
                 
             </div>

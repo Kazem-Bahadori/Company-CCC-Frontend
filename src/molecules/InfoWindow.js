@@ -20,10 +20,6 @@ class InfoWindow extends Component {
             <p>Read reviews</p> 
             {/* Placeholder */}
             <p>Price of the game</p> 
-            {/* Old buy on steam button */}
-            <Button onClick={this.props.onClick} name="Buy game"></Button>
-            
-
         </div>
       </div>
 

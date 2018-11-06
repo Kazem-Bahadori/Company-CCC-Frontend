@@ -11,6 +11,7 @@ let streamDataArray = [];
 let thumbnail1 = '';
 let thumbnail2 = '';
 let thumbnail3 = '';
+let thumbnail4 = '';
 let viewercount = '';
 let streamerName = '';
 class GamePage extends Component {
@@ -43,6 +44,7 @@ class GamePage extends Component {
                 thumbnail1 = (streamDataArray[1].thumbnail_url).substring(0, (streamDataArray[1].thumbnail_url).length - 20);
                 thumbnail2 = (streamDataArray[2].thumbnail_url).substring(0, (streamDataArray[2].thumbnail_url).length - 20);
                 thumbnail3 = (streamDataArray[3].thumbnail_url).substring(0, (streamDataArray[3].thumbnail_url).length - 20);
+                thumbnail4 = (streamDataArray[4].thumbnail_url).substring(0, (streamDataArray[4].thumbnail_url).length - 20);
               //Calling accessStreamerName function to start the initial stream. /Johandg
               
               this.accessStreamerName(streamerInfo, 0);
@@ -66,14 +68,20 @@ class GamePage extends Component {
             
       }
 
+
     render() {
         
         return(
             <div className="game-page-container">
               <div className="media-and-chat-holder">
                <MediaWindow streamName={this.state.streamName}/>
-                <ChatAndInfoWindow streamName={this.state.streamName} viewers={viewercount}/>
+                <ChatAndInfoWindow streamName={this.state.streamName} viewers={viewercount} price={this.props.price}/>
                 </div>
+
+                <div className="streamer-and-viewers-holder"> 
+                  <p className="streamer-text"> {this.state.streamName} | View Count: {viewercount} </p>
+                  
+                  </div>
                 
                 {/* <ThumbnailWindow streamArray={streamDataArray}/> */}
                 <div className="Thumbnail-window-holder">
@@ -88,6 +96,10 @@ class GamePage extends Component {
                     <Thumbnail 
                     image={thumbnail3+'800x800.jpg'}
                     onClick={this.accessStreamerName.bind(this, streamerInfo, 3)}
+                    />
+                    <Thumbnail 
+                    image={thumbnail4+'800x800.jpg'}
+                    onClick={this.accessStreamerName.bind(this, streamerInfo, 4)}
                     />
                  </div>
         

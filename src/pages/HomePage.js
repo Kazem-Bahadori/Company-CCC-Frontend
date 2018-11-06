@@ -75,7 +75,7 @@ class HomePage extends React.Component {
   }
 
   popularGameOnClick = (input) => {
-    let price;
+    var price;
 
     if (this.state.popularGameArray[input].steam.price ==! undefined) {
       price = this.state.popularGameArray[input].steam.price.final / 100
