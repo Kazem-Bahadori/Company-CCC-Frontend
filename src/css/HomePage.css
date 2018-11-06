@@ -19,6 +19,7 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-left: 6rem;
+    padding-right: 6rem;
     color: blanchedalmond;
 }
 
@@ -43,4 +44,5 @@
 
 .header-text{
     font-size: 250%;
+    font-weight: bold;
 }
