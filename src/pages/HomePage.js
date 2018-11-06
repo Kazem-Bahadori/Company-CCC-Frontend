@@ -1,92 +1,102 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PopularGame from '../molecules/PopularGame.js';
 import GamePage from '../pages/GamePage.js';
-import Header from '../molecules/Header'
 import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
-//const getPopularGames = 'https://api.twitch.tv/helix/games/top'
-//const backendUrl = 'http://localhost:8080/api/twitch/filters'
 const fetchTopGames ="http://localhost:8080/api/twitch/filters?assetType=games&filterType=top" 
-class HomePage extends Component {
+let categories = ["Top Games", "Steam Games", "Games on Sale", "Category 3" ];
+let currentCategory = "Top Games"
+let currentFetch;
+let listOfGames
 
-  state = {
+class HomePage extends React.Component {
+  state = { 
     popularGameArray: [],
     showGamePage: false,
     gamesPage: null,
   }
     componentDidMount() {
-        // To show the data in terminal:
-        //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
+       this.fetchFromBackend()
+    }
 
-        // Fetch top 20 most popular games on twitch through twitch API. /Johandg
-        fetch(fetchTopGames, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
-        //Convert response into json. /Johandg
-        .then(response => response.json())
-        //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
-        .then(response => {
-          response.data.map((index) =>
-          this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
+    fetchFromBackend = () => {
+      // console.log("Fetching data")
+      //  To show the data in terminal:
+      //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
+
+      // Fetch games depending on what category is active. /Johandg 
+      if (currentCategory === "Steam games") {
+        //currentFetch = another const to a backend call
+      } else if (currentCategory === "Games on Sale") {
+        //currentFetch = another const to a backend call
+      } else if (currentCategory === "Category 3") {
+        //currentFetch = another const to a backend call
+      } else {
+        currentFetch = fetchTopGames;
+      }
+      fetch(currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+      //Convert response into json. /Johandg
+      .then(response => response.json())
+      //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
+      .then(response => {
+        response.data.map((index) =>
+        this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )  
-        })
+      })
     }
   
-    //Function to render the top 20 games. /Johandg
-    renderPopularGames = () => {
-      var listOfGames = [];
-      for (var i=0; i < this.state.popularGameArray.length; i++) {
-        
-        listOfGames.push(
+   //Function to render the top 20 games. /Johandg
+   renderGames = () => {
+    listOfGames = [];
+    for (var i=0; i < this.state.popularGameArray.length; i++) {
+      listOfGames.push(
         <PopularGame 
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
-          onClick={this.popularGameOnClick.bind(this, i)}/>)
-      }
-      if (!listOfGames) {
-        return <p> Loading... </p>
-      } else {
-      return listOfGames;
-      }
-    }
-
-     renderContainer = () => {
-      if (!this.state.showGamePage) {
-      return(
-        <div className="content-container">
-          {this.renderPopularGames()}
-          <div className="filler-div"></div>
-        </div>
-
+          onClick={this.popularGameOnClick.bind(this, i)}
+        />
       )
+    }
+    if (listOfGames < 1) {
+       return <p className="homepage-placeholder"> No games available for this category </p>;
     } else {
-      return(
-        <div className="content-container">
-        {this.state.gamePage}
-        </div>
-    
-      )
+    return listOfGames; 
     }
+  }
 
-    }
+  popularGameOnClick = (input) => {
+    this.setState({showGamePage: true})
+    this.setState({gamePage: <GamePage gameId={this.state.popularGameArray[input].id} />})
+  }
 
-    popularGameOnClick(input)  {
-      
-      this.setState({showGamePage: true})
-      this.setState({gamePage: <GamePage gameId={this.state.popularGameArray[input].id} />})
-    }
+  homeButtonOnClick = () => {
+    this.setState({showGamePage: false})
+  }
 
-    homeButtonOnClick = () => {
-      this.setState({showGamePage: false})
-    }
+  categoryButtonOnClick = (category) => {
+    currentCategory = category;
+    this.setState({popularGameArray: []})
+    this.fetchFromBackend();
+  }
 
   render() {
+    var currentWindow = (this.state.showGamePage)? this.state.gamePage:this.renderGames();
     return (
-      <div className="container">
-        {this.renderContainer()}
-        <SideBar HomeButtonResponse={this.homeButtonOnClick}/>
-        
-        
+      <div className="container">    
+        <div className="content-container">
+          {!this.state.showGamePage && 
+            <div className="homepage-header">
+              <p className="header-text">{currentCategory}</p>
+            </div>
+          }
+          {currentWindow}
+        </div>
+        <SideBar 
+          homeButtonResponse={this.homeButtonOnClick} 
+          categoryOnClick={this.categoryButtonOnClick} 
+          categories={categories}/>  
       </div>
     );
   }
