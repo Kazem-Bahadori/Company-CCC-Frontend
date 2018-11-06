@@ -65,13 +65,13 @@ class GamePage extends Component {
             })
             */
 
-           /* let getStreamerName = "http://localhost:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
+            let getStreamerName = "http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
             fetch(getStreamerName)
             .then(response => response.json())
             .then(response => {
               this.setState({streamName: response.data[0].login})
             })
-            */
+            
 
             this.setState({streamName: streamerInfo[index].user_name})
             
