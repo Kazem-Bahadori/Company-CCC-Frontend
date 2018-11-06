@@ -5,7 +5,7 @@ import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
 const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=10" 
-let categories = ["Top Games", "Steam Games", "Games on Sale", "Category 3" ];
+let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let currentCategory = "Top Games"
 let currentFetch;
 let listOfGames
@@ -16,6 +16,7 @@ class HomePage extends React.Component {
     showGamePage: false,
     gamesPage: null,
   }
+  
     componentDidMount() {
        this.fetchFromBackend()
     }
@@ -29,8 +30,6 @@ class HomePage extends React.Component {
       if (currentCategory === "Steam games") {
         //currentFetch = another const to a backend call
       } else if (currentCategory === "Games on Sale") {
-        //currentFetch = another const to a backend call
-      } else if (currentCategory === "Category 3") {
         //currentFetch = another const to a backend call
       } else {
         currentFetch = fetchTopGames;
@@ -96,7 +95,8 @@ class HomePage extends React.Component {
         <SideBar 
           homeButtonResponse={this.homeButtonOnClick} 
           categoryOnClick={this.categoryButtonOnClick} 
-          categories={categories}/>  
+          categories={categories}
+        />  
       </div>
     );
   }
