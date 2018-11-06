@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import ReactPlayer from 'react-player';
 import '../css/InfoWindow.css';
 import Button from '../atoms/Button.js';
 
-var StreamName = 'riotgames';
+
 class InfoWindow extends Component {
   render() {
     

@@ -4,6 +4,7 @@ import ChatAndInfoWindow from '../organisms/ChatAndInfoWindow.js';
 import MediaWindow from '../molecules/MediaWindow.js';
 import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
+import ReactPlayer from 'react-player'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -11,17 +12,18 @@ let thumbnail1 = '';
 let thumbnail2 = '';
 let thumbnail3 = '';
 let viewercount = '';
+let streamerName = '';
 class GamePage extends Component {
 
       state = {
-        streamName: [],
+        streamName: '',
       }
 
       componentDidMount() {
         //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
         streamerInfo = []
         //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
-        let currentStream = "http://localhost:8080/api/twitch/filters?filterType=streams&additionalFilter=game_id&amount=" + this.props.gameId
+        let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game_id&filterValue=" + this.props.gameId
         fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
               //Convert response into json. /Johandg
               .then(response => response.json())
@@ -29,8 +31,8 @@ class GamePage extends Component {
               .then(response => {
                 response.data.map((index) =>
                 streamerInfo.push(index)
+                
               )  
-              
                 streamDataArray = response.data;
                 
                 // Viewer count (later sent to infowindow though chatandinfowindow)
@@ -41,27 +43,38 @@ class GamePage extends Component {
                 thumbnail2 = (streamDataArray[2].thumbnail_url).substring(0, (streamDataArray[2].thumbnail_url).length - 20);
                 thumbnail3 = (streamDataArray[3].thumbnail_url).substring(0, (streamDataArray[3].thumbnail_url).length - 20);
               //Calling accessStreamerName function to start the initial stream. /Johandg
+              
               this.accessStreamerName(streamerInfo, 0);
+              //console.log(this.state.streamName)
                 
               })
       }
 
-      //onClick function for thumbnail images below active stream /Johandg
-      onClickThumbnail(activeStreamer, index) {
-        this.accessStreamerName(activeStreamer, index)
-      }
+      accessStreamerName(streamerInfo, index) {
+            //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
 
-      //Function that makes a fetch call to our api to get the streamer (twitch)name used to do: twitch.tv/streamername. /Johandg
-      accessStreamerName(streamerId, index) {
-        let getStreamerName = "http://localhost:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerId[index].user_id
-        
-        fetch(getStreamerName, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab' }})
+            /*
+            let getStreamerName =  "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game_id&filterValue=" + this.props.gameId
+            fetch(getStreamerName)
             .then(response => response.json())
             .then(response => {
-      
-            //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
-            this.setState({streamName: response.data[0].login  })
-          })
+              console.log(response.data[0].user_name)
+              this.setState({streamName: response.data[index].user_name})
+            })
+            */
+
+            let getStreamerName = "http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
+            fetch(getStreamerName)
+            .then(response => response.json())
+            .then(response => {
+              this.setState({streamName: response.data[0].login})
+            })
+            
+
+            this.setState({streamName: streamerInfo[index].user_name})
+            
+            console.log("accessStreamerName")
+            
       }
 
     render() {
@@ -77,15 +90,15 @@ class GamePage extends Component {
                 <div className="Thumbnail-window-holder">
                     <Thumbnail 
                     image={thumbnail1+'800x800.jpg'}
-                    onClick={this.onClickThumbnail.bind(this, streamerInfo, 1)}
+                    onClick={this.accessStreamerName.bind(this, streamerInfo, 1)}
                     />
                     <Thumbnail 
                     image={thumbnail2+'800x800.jpg'}
-                    onClick={this.onClickThumbnail.bind(this, streamerInfo, 2)}
+                    onClick={this.accessStreamerName.bind(this, streamerInfo, 2)}
                     />
                     <Thumbnail 
                     image={thumbnail3+'800x800.jpg'}
-                    onClick={this.onClickThumbnail.bind(this, streamerInfo, 3)}
+                    onClick={this.accessStreamerName.bind(this, streamerInfo, 3)}
                     />
                  </div>
         
