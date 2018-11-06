@@ -6,6 +6,7 @@ import InfoWindow from '../molecules/InfoWindow.js';
 // import ThumbnailWindow from '../molecules/ThumbnailWindow.js';
 import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
+import ReactPlayer from 'react-player'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -32,8 +33,8 @@ class GamePage extends Component {
               .then(response => {
                 response.data.map((index) =>
                 streamerInfo.push(index)
+                
               )  
-              
                 streamDataArray = response.data;
                 
                 // Viewer count (later sent to infowindow though chatandinfowindow)
@@ -53,7 +54,23 @@ class GamePage extends Component {
 
       accessStreamerName(streamerInfo, index) {
             //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
-            this.setState({streamName: streamerInfo[index].user_name})
+
+            let getStreamerName =  "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game_id&filterValue=" + this.props.gameId
+            fetch(getStreamerName)
+            .then(response => response.json())
+            .then(response => {
+              console.log(response.data[0].user_name)
+              this.setState({streamName: response.data[index].user_name})
+            })
+           /* let getStreamerName = "http://localhost:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
+            fetch(getStreamerName)
+            .then(response => response.json())
+            .then(response => {
+              this.setState({streamName: response.data[0].login})
+            })
+            */
+
+            //this.setState({streamName: streamerInfo[index].user_name})
             
             console.log("accessStreamerName")
             
