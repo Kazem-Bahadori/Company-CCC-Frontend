@@ -26,7 +26,10 @@ class ChatAndInfoWindow extends Component {
             console.log(steamId)
             this.accessGamePrice(steamId)   
         })
-    } 
+    } else {
+        price = 'Not available on Steam';
+        currency = ''
+    }
     }
     
     accessGamePrice = (steamId) => {
@@ -35,7 +38,7 @@ class ChatAndInfoWindow extends Component {
         fetch(getPrice)
         .then(response => response.json())
         .then(response => {
-            price = response.final
+            price = response.final/100
             currency = response.currency
             console.log(price)
         })
@@ -77,7 +80,7 @@ class ChatAndInfoWindow extends Component {
                     </div>
                         <div className="buy-on-steam-holder">
                             <button className="buy-on-steam-btn"> Buy on Steam </button>
-                            <p className="price-currency">{price / 100} {currency}</p>
+                            <p className="price-currency">{price} {currency}</p>
                         </div>
                 
             </div>
