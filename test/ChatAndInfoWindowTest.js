@@ -4,15 +4,12 @@ import { shallow, mount, render } from 'enzyme';
 import React from 'react';
 import ChatAndInfoWindow from '../src/organisms/ChatAndInfoWindow.js';
 import sinon from 'sinon';
-import ReactTestUtils from 'react-dom/test-utils'; //ES6
 
 
 describe('FR062: Display chat', () =>{
-  it('ChatAndInfoWindow should display chat and hide info at loading', () => {
+  it('ChatAndInfoWindow should display chat at loading', () => {
     let wrapper = shallow(<ChatAndInfoWindow/>);
-    expect(wrapper.state('showChat')).to.equal(true);
-    expect(wrapper.state('showInfo')).to.equal(false);
-    expect(wrapper.find('.button-style')).to.have.length(2);
+    expect(wrapper.state('contentWindow')).to.equal('Chat');
   });
 });
 
@@ -22,8 +19,11 @@ describe('FR062: Display Chat', () =>{
   it('When "Game Info" is pressed, state of showChat should be set to false and showInfo should be set to true', ()=> {
     //code below finds the two buttons and makes sure they're clickable.
     let wrapper = shallow(<ChatAndInfoWindow/>);
+    //One button for each tab in ChatAndInfoWindow
     wrapper.find('.button-style').at(0).simulate('click');
     wrapper.find('.button-style').at(1).simulate('click');
+    wrapper.find('.button-style').at(2).simulate('click');
+    wrapper.find('.button-style').at(3).simulate('click');
 
     //TODO: use spies to assure they're clicked
     //const wrapperInstance = getShallowlyRenderedInstance(<ChatAndInfoWindow />);
@@ -37,7 +37,7 @@ describe('FR029: Test ChatAndInfoWindow class', () =>{
   it('ChatAndInfoWindow should have a buy button', () => {
     let wrapper = shallow(<ChatAndInfoWindow/>);
     expect(wrapper.find('.buy-on-steam-btn').text()).to.equal(' Buy on Steam ');
-    wrapper.find('.buy-on-steam-btn').simulate('click');
+    wrapper.find('.buy-on-steam-btn').simulate('click'); //makes sure it redirects to steam when this is implemented
   });
 });
 
