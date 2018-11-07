@@ -28,6 +28,7 @@
     background-color: black;
     border: 0;
     outline: 0;
+    
 }
 
 .button-style:focus {
@@ -37,5 +38,19 @@
 .buy-on-steam-holder {
     display: flex;
     height: 10%;
+}
 
+.price-currency {
+    margin-left: 5%;
+}
+.buy-on-steam-btn {
+    background-color: #F8F2DD;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+}
+
+.steam-buy-logo {
+    height: 40%;
+    width: 40%;
 }
