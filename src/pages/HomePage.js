@@ -52,16 +52,14 @@ class HomePage extends React.Component {
     //console.log(this.state.popularGameArray[3].steam.price.final / 100)
     let price;
     for (var i=0; i < this.state.popularGameArray.length; i++) {
-      if(this.state.popularGameArray[i].steam ==! undefined) {
-        price = this.state.popularGameArray[i].steam.price.final / 100
-      }
-      
+     console.log(this.state.popularGameArray[i].steam) 
       listOfGames.push(
         <PopularGame 
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
           onClick={this.popularGameOnClick.bind(this, i)}
+          steamBool={this.state.popularGameArray[i].steam}
          
         />
       )

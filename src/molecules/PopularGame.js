@@ -3,6 +3,8 @@ import '../css/PopularGame.css';
 
 class PopularGame extends Component {
   render() {
+
+    if (!this.props.steamBool) {
     return (
       <div onClick={this.props.onClick} className="popular-game-holder">
         <div className="popular-game-image-container">
@@ -13,6 +15,20 @@ class PopularGame extends Component {
         </div>
       </div>
     );
+  } else {
+    return(
+      <div onClick={this.props.onClick} className="popular-game-holder">
+        <div className="popular-game-image-container">
+        <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
+      </div>
+      <div className="game-name-holder">
+        <p className="game-name"> {this.props.gameName}</p>
+      </div>
+    </div>
+
+    );
+  }
+
   }
 }
 
