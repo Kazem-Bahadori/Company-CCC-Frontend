@@ -5,15 +5,43 @@ import SystemRequirements from '../molecules/SystemRequirements.js';
 import '../css/ChatAndInfoWindow.css'
 
 var tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
+let price;
+let currency;
+let steamId;
+
 class ChatAndInfoWindow extends Component {
     state = {
         contentWindow: "Chat"
     }
 
     componentDidMount() {
-        
+        console.log("CHAT AND INFO WINDOW DID MOUNT")
+        console.log("steamBool: " + this.props.steamBool)
+        if (this.props.steamBool) {
+        let getSteamId = 'http://localhost:8080/api/steam/filters?filterType=on_twitch&assetType=games&filterValue=' + this.props.gameName
+        fetch(getSteamId)
+        .then(response => response.json())
+        .then(response => {
+            steamId = response.appId
+            console.log(steamId)
+            this.accessGamePrice(steamId)   
+        })
+    } 
     }
     
+    accessGamePrice = (steamId) => {
+
+        let getPrice = 'http://localhost:8080/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
+        fetch(getPrice)
+        .then(response => response.json())
+        .then(response => {
+            price = response.final
+            currency = response.currency
+            console.log(price)
+        })
+     
+    }
+
     renderContent = (state) => {
 
         switch(state){
@@ -49,7 +77,7 @@ class ChatAndInfoWindow extends Component {
                     </div>
                         <div className="buy-on-steam-holder">
                             <button className="buy-on-steam-btn"> Buy on Steam </button>
-                            <p>{this.props.price}</p>
+                            <p className="price-currency">{price / 100} {currency}</p>
                         </div>
                 
             </div>

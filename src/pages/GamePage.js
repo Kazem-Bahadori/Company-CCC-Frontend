@@ -65,7 +65,13 @@ class GamePage extends Component {
       <div className="game-page-container">
         <div className="media-and-chat-holder">
           <MediaWindow streamName={this.state.streamName}/>
-          <ChatAndInfoWindow streamName={this.state.streamName} viewers={viewercount} price={this.props.price}/>
+          <ChatAndInfoWindow 
+          gameName={this.props.gameName}
+          streamName={this.state.streamName} 
+          viewers={viewercount} 
+          price={this.props.price}
+          steamBool={this.props.steamBool}
+          />
           </div>
 
           <div className="streamer-and-viewers-holder"> 
@@ -77,6 +83,7 @@ class GamePage extends Component {
               <Thumbnail 
               image={thumbnail+'800x800.jpg'}
               onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
+              key={index}
               />
             )}
           </div>
