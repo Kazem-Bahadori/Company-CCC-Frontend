@@ -5,9 +5,10 @@ import SideBar from '../organisms/Sidebar'
 import '../css/HomePage.css';
 
 const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
+const fetchTopSteamGames ="http://localhost:8080/api/steam/filters?assetType=games&filterType=category&filterValue=steamGames"
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
-let currentCategory = "Top Games"
-let currentFetch;
+// let currentCategory = "Top Games"
+// let currentFetch;
 let listOfGames
 
 class HomePage extends React.Component {
@@ -15,6 +16,8 @@ class HomePage extends React.Component {
     popularGameArray: [],
     showGamePage: false,
     gamesPage: null,
+    currentFetch: fetchTopGames,
+    currentCategory: "Top Games"
   }
   
     componentDidMount() {
@@ -27,14 +30,21 @@ class HomePage extends React.Component {
       //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
 
       // Fetch games depending on what category is active. /Johandg 
-      if (currentCategory === "Steam games") {
-        //currentFetch = another const to a backend call
-      } else if (currentCategory === "Games on Sale") {
-        //currentFetch = another const to a backend call
-      } else {
-        currentFetch = fetchTopGames;
-      }
-      fetch(currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+      // console.log(this.state.currentCategory);
+      // if (this.state.currentCategory === "Steam games") {
+      //   //currentFetch = another const to a backend call
+      //   this.setState({currentFetch:fetchTopSteamGames});
+      // } else if (this.state.currentCategory === "Games on Sale") {
+      //   //currentFetch = another const to a backend call
+
+      // } else if(this.state.currentCategory==="Top Games"){
+      //   this.setState({currentFetch:fetchTopGames});
+      // }
+      // else {
+      //   this.setState({currentFetch:fetchTopGames});
+        
+      // }
+      fetch(this.state.currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
@@ -52,7 +62,7 @@ class HomePage extends React.Component {
     //console.log(this.state.popularGameArray[3].steam.price.final / 100)
     let price;
     for (var i=0; i < this.state.popularGameArray.length; i++) {
-     console.log(this.state.popularGameArray[i].steam) 
+    //  console.log(this.state.popularGameArray[i].steam) 
       listOfGames.push(
         <PopularGame 
           gameName={this.state.popularGameArray[i].name}
@@ -89,9 +99,25 @@ class HomePage extends React.Component {
   }
 
   categoryButtonOnClick = (category) => {
-    currentCategory = category;
+    console.log(this.state.currentCategory);
+    this.setState({currentCategory: category});
+    if (category === "Steam games") {
+      //currentFetch = another const to a backend call
+      this.setState({currentFetch:fetchTopSteamGames});
+    } else if (category === "Games on Sale") {
+      //currentFetch = another const to a backend call
+
+    } else if(category==="Top Games"){
+      this.setState({currentFetch:fetchTopGames});
+    }
+
+
     this.setState({popularGameArray: []})
     this.fetchFromBackend();
+    console.log(this.state.currentCategory);
+    console.log(this.state.currentFetch);
+
+
   }
 
   render() {
@@ -101,7 +127,7 @@ class HomePage extends React.Component {
         <div className="content-container">
           {!this.state.showGamePage && 
             <div className="homepage-header">
-              <p className="header-text">{currentCategory}</p>
+              <p className="header-text">{this.state.currentCategory}</p>
             </div>
           }
           {currentWindow}
