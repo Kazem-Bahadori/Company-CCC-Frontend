@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
 import '../css/PopularGame.css';
 
-
-
 class PopularGame extends Component {
   render() {
+
+    if (!this.props.steamBool) {
     return (
-    
       <div onClick={this.props.onClick} className="popular-game-holder">
-        
-        <div className="game-name-holder">
-            <h1 className="game-name"> {this.props.gameName}</h1>
+        <div className="popular-game-image-container">
+          <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
         </div>
-            <div className="popular-game-image-container">
-            <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
-            </div>
-        
+        <div className="game-name-holder">
+          <p className="game-name"> {this.props.gameName}</p>
+        </div>
       </div>
     );
+  } else {
+    return(
+      <div onClick={this.props.onClick} className="popular-game-holder">
+        <div className="popular-game-image-container">
+        <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
+      </div>
+      <div className="game-name-holder">
+        <p className="game-name"> {this.props.gameName}</p>
+      </div>
+    </div>
+
+    );
+  }
+
   }
 }
 

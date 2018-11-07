@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import ReactPlayer from 'react-player';
 import '../css/InfoWindow.css';
 import Button from '../atoms/Button.js';
 
-var StreamName = 'riotgames';
+
 class InfoWindow extends Component {
   render() {
     
@@ -21,10 +20,6 @@ class InfoWindow extends Component {
             <p>Read reviews</p> 
             {/* Placeholder */}
             <p>Price of the game</p> 
-            {/* Old buy on steam button */}
-            <Button onClick={this.props.onClick} name="Buy game"></Button>
-            
-
         </div>
       </div>
 

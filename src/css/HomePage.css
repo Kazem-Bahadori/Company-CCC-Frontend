@@ -18,6 +18,9 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    color: blanchedalmond;
 }
 
 .home-button {
@@ -28,10 +31,18 @@
     height: 10rem;
 }
 
-.filler-div {
-    display: flex;
-    height: 35%;
-    width: 100%;
+.homepage-placeholder{
+    font-size: xx-large;
 }
 
+.homepage-header{
+    color: blanchedalmond;
+    width: 100%;
+    height: 6rem;
+    padding-bottom: 0.5rem;
+} 
 
+.header-text{
+    font-size: 250%;
+    font-weight: bold;
+}
