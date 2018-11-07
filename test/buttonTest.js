@@ -1,24 +1,34 @@
-/*const assert = require('chai').assert; //bringring in the chai library
-//const app = require('../../atoms/Button'); //Bringing in the app from the app.js, i.e. the file we want to test
-import React from 'react/addons';
-import Button from '../src/App/Button';
+const assert = require('chai').assert; //bringring in the chai library
+const expect = require('chai').expect;
+const button = require('../src/atoms/Button.js'); //Bringing in the app from the app.js, i.e. the file we want to test
+import { shallow, mount, render } from 'enzyme';
+import React from 'react';
+import Button from '../src/atoms/Button.js';
 
-describe("testing button", () => {
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
- beforeEach(function() {
-     let {TestUtils} = React.addons;
+configure({ adapter: new Adapter() });
 
-     this.component = TestUtils.renderIntoDocument(<Greeter initialName="my first test" />);
-     this.renderedDOM = () => React.findDOMNode(this.component);
-   });
 
-  it("wraps a paragraph with a <div> with a proper class name", function() {
-      let rootElement = this.renderedDOM();
+describe('FR002', () =>{
+  it('Button should not be NULL', ()=> { //first parameter is the description, the second parameter is
+    //assert.isEmpty(button); //first parameter is the file being tested (the paraenthesis is because app is returning a function!)
+    //the second parameter is what it is supposed to return
+    assert.isNotNull(button);
 
-      expect(rootElement.tagName).toEqual("DIV");
-      expect(rootElement.classList.length).toEqual(1);
-      //expect(rootElement.classList[0]).toEqual("greeter");
-    });
+  });
+}); //App is what we name the file we're testing, here app.js. local variable
 
+describe('Test button class', () =>{
+  it('Button should have class button', () => { //first parameter is the description, the second parameter is
+    //assert.isEmpty(button); //first parameter is the file being tested (the paraenthesis is because app is returning a function!)
+    //the second parameter is what it is supposed to return
+    let btn = shallow(<Button />);
+    expect(btn.hasClass('button')).to.equal(true);
+  });
 });
-*/
+
+//npm run test_case -s To run the test
+
+// https://mochajs.org
