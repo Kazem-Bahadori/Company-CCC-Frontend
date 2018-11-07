@@ -3,6 +3,7 @@ import TwitchChat from '../molecules/TwitchChat.js';
 import InfoWindow from '../molecules/InfoWindow.js';
 import SystemRequirements from '../molecules/SystemRequirements.js';
 import '../css/ChatAndInfoWindow.css'
+import steamlogo from '../images/steamlogo.png';
 
 var tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
 let price;
