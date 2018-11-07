@@ -6,15 +6,46 @@ import '../css/ChatAndInfoWindow.css'
 import steamlogo from '../images/steamlogo.png';
 
 var tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
+let price;
+let currency;
+let steamId;
+
 class ChatAndInfoWindow extends Component {
     state = {
         contentWindow: "Chat"
     }
 
     componentDidMount() {
-        
+        console.log("CHAT AND INFO WINDOW DID MOUNT")
+        console.log("steamBool: " + this.props.steamBool)
+        if (this.props.steamBool) {
+        let getSteamId = 'http://localhost:8080/api/steam/filters?filterType=on_twitch&assetType=games&filterValue=' + this.props.gameName
+        fetch(getSteamId)
+        .then(response => response.json())
+        .then(response => {
+            steamId = response.appId
+            console.log(steamId)
+            this.accessGamePrice(steamId)   
+        })
+    } else {
+        price = 'Not available on Steam';
+        currency = ''
+    }
     }
     
+    accessGamePrice = (steamId) => {
+
+        let getPrice = 'http://localhost:8080/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
+        fetch(getPrice)
+        .then(response => response.json())
+        .then(response => {
+            price = response.final/100
+            currency = response.currency
+            console.log(price)
+        })
+     
+    }
+
     renderContent = (state) => {
 
         switch(state){
@@ -49,14 +80,8 @@ class ChatAndInfoWindow extends Component {
                         {this.renderContent(this.state.contentWindow)}
                     </div>
                         <div className="buy-on-steam-holder">
-                            <button className="buy-on-steam-btn" > 
-                                
-                                
-                                <span>Buy on Steam </span>
-                            </button>
-                            
-
-                           
+                            <button className="buy-on-steam-btn"> Buy on Steam </button>
+                            <p className="price-currency">{price} {currency}</p>
                         </div>
                 
             </div>
