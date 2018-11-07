@@ -2,13 +2,12 @@ import React from 'react';
 import PopularGame from '../molecules/PopularGame.js';
 import GamePage from '../pages/GamePage.js';
 import SideBar from '../organisms/Sidebar'
+import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
 
 const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
-const fetchTopSteamGames ="http://localhost:8080/api/steam/filters?assetType=games&filterType=category&filterValue=steamGames"
+const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
-// let currentCategory = "Top Games"
-// let currentFetch;
 let listOfGames
 
 class HomePage extends React.Component {
@@ -17,7 +16,7 @@ class HomePage extends React.Component {
     showGamePage: false,
     gamesPage: null,
     currentFetch: fetchTopGames,
-    currentCategory: "Top Games"
+    currentCategory: categories[0]
   }
   
     componentDidMount() {
@@ -25,57 +24,39 @@ class HomePage extends React.Component {
     }
 
     fetchFromBackend = () => {
-      // console.log("Fetching data")
-      //  To show the data in terminal:
-      //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
-
-      // Fetch games depending on what category is active. /Johandg 
-      // console.log(this.state.currentCategory);
-      // if (this.state.currentCategory === "Steam games") {
-      //   //currentFetch = another const to a backend call
-      //   this.setState({currentFetch:fetchTopSteamGames});
-      // } else if (this.state.currentCategory === "Games on Sale") {
-      //   //currentFetch = another const to a backend call
-
-      // } else if(this.state.currentCategory==="Top Games"){
-      //   this.setState({currentFetch:fetchTopGames});
-      // }
-      // else {
-      //   this.setState({currentFetch:fetchTopGames});
-        
-      // }
       fetch(this.state.currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
         response.map((index) =>
-        this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
-        )  
-       
+        this.setState({ popularGameArray: [...this.state.popularGameArray, index] }),
+        console.log(response)
+        )    
       })
     }
   
    //Function to render the top 20 games. /Johandg
    renderGames = () => {
     listOfGames = [];
-    //console.log(this.state.popularGameArray[3].steam.price.final / 100)
-    let price;
     for (var i=0; i < this.state.popularGameArray.length; i++) {
-    //  console.log(this.state.popularGameArray[i].steam) 
       listOfGames.push(
         <PopularGame 
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
           onClick={this.popularGameOnClick.bind(this, i)}
-          steamBool={this.state.popularGameArray[i].steam}
-         
+          steamBool={this.state.popularGameArray[i].steam}    
         />
       )
     }
     if (listOfGames < 1) {
-       return <p className="homepage-placeholder"> Loading... </p>;
+       return (
+       <p className="homepage-placeholder">
+        <img className="home-page-loading" src= {fish} alt="FlatFishTV"/>
+          Loading... 
+        </p>
+      );
     } else {
     return listOfGames; 
     }
@@ -88,9 +69,7 @@ class HomePage extends React.Component {
       price = this.state.popularGameArray[input].steam.price.final / 100
       console.log(price)
     }
-    
     this.setState({showGamePage: true})
-
     this.setState({gamePage: <GamePage gameId={this.state.popularGameArray[input].id} price={price} />})
   }
 
@@ -99,25 +78,17 @@ class HomePage extends React.Component {
   }
 
   categoryButtonOnClick = (category) => {
-    console.log(this.state.currentCategory);
+    this.setState({showGamePage:false});
     this.setState({currentCategory: category});
     if (category === "Steam games") {
-      //currentFetch = another const to a backend call
       this.setState({currentFetch:fetchTopSteamGames});
     } else if (category === "Games on Sale") {
-      //currentFetch = another const to a backend call
-
+      //setState
     } else if(category==="Top Games"){
       this.setState({currentFetch:fetchTopGames});
     }
-
-
     this.setState({popularGameArray: []})
     this.fetchFromBackend();
-    console.log(this.state.currentCategory);
-    console.log(this.state.currentFetch);
-
-
   }
 
   render() {
