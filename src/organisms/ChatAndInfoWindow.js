@@ -10,6 +10,7 @@ var tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
 let price;
 let currency;
 let steamId;
+let steamUrl
 
 class ChatAndInfoWindow extends Component {
     state = {
@@ -25,6 +26,8 @@ class ChatAndInfoWindow extends Component {
         .then(response => response.json())
         .then(response => {
             steamId = response.appId
+            //Sets the URL to correct Steam page, used when clicking on "Buy now"
+            steamUrl = "https://store.steampowered.com/app/" + steamId + this.props.gameName
             console.log(steamId)
             this.accessGamePrice(steamId)   
         })
@@ -33,6 +36,7 @@ class ChatAndInfoWindow extends Component {
         currency = ''
         steamId = undefined
      }
+
     }
     
     accessGamePrice = (steamId) => {
@@ -75,9 +79,13 @@ class ChatAndInfoWindow extends Component {
         if (steamId) {
         return(
             <div className="buy-on-steam-holder">
-                <button className="buy-on-steam-btn"> 
-                    <img className="steam-buy-logo" src={steamBuyLogo} /> 
+                
+                <button className="buy-on-steam-btn">
+                <a href={steamUrl} target="_blank"> 
+                    <img className="steam-buy-logo" src={steamBuyLogo} />
+                </a>
                 </button>
+                
                 <p className="price-currency">{price} {currency}</p>
             </div>
         );
