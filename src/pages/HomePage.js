@@ -2,19 +2,21 @@ import React from 'react';
 import PopularGame from '../molecules/PopularGame.js';
 import GamePage from '../pages/GamePage.js';
 import SideBar from '../organisms/Sidebar'
+import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
 
-const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
+// const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
+// const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
-let currentCategory = "Top Games"
-let currentFetch;
 let listOfGames
+let currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
 
 class HomePage extends React.Component {
   state = { 
     popularGameArray: [],
     showGamePage: false,
     gamesPage: null,
+    currentCategory: categories[0]
   }
   
     componentDidMount() {
@@ -22,35 +24,21 @@ class HomePage extends React.Component {
     }
 
     fetchFromBackend = () => {
-      // console.log("Fetching data")
-      //  To show the data in terminal:
-      //curl -H "Client-ID: 3jxj3x3uo4h6xcxh2o120cu5wehsab"  -X GET "https://api.twitch.tv/helix/games/top"  /Johandg
-
-      // Fetch games depending on what category is active. /Johandg 
-      if (currentCategory === "Steam games") {
-        //currentFetch = another const to a backend call
-      } else if (currentCategory === "Games on Sale") {
-        //currentFetch = another const to a backend call
-      } else {
-        currentFetch = fetchTopGames;
-      }
-      fetch(currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+      this.setState({ popularGameArray: [] });
+      fetch(currentFetch, { headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'} }) 
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
         response.map((index) =>
         this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
-        )  
-       
+        )    
       })
     }
   
    //Function to render the top 20 games. /Johandg
    renderGames = () => {
     listOfGames = [];
-    //console.log(this.state.popularGameArray[3].steam.price.final / 100)
-    let price;
     for (var i=0; i < this.state.popularGameArray.length; i++) {
       listOfGames.push(
         <PopularGame 
@@ -58,13 +46,17 @@ class HomePage extends React.Component {
           key={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
           onClick={this.popularGameOnClick.bind(this, i)}
-          steamBool={this.state.popularGameArray[i].steam}
-         
+          steamBool={this.state.popularGameArray[i].steam}    
         />
       )
     }
     if (listOfGames < 1) {
-       return <p className="homepage-placeholder"> Loading... </p>;
+       return (
+       <p className="homepage-placeholder">
+        <img className="home-page-loading" src= {fish} alt="FlatFishTV"/>
+          Loading... 
+        </p>
+      );
     } else {
     return listOfGames; 
     }
@@ -72,14 +64,10 @@ class HomePage extends React.Component {
 
   popularGameOnClick = (input) => {
     var price;
-
     if (this.state.popularGameArray[input].steam.price ==! undefined) {
       price = this.state.popularGameArray[input].steam.price.final / 100
-      console.log(price)
     }
-    
     this.setState({showGamePage: true})
-
     this.setState({
       gamePage: 
       <GamePage gameName={this.state.popularGameArray[input].name} 
@@ -93,19 +81,26 @@ class HomePage extends React.Component {
   }
 
   categoryButtonOnClick = (category) => {
-    currentCategory = category;
-    this.setState({popularGameArray: []})
+    this.setState({currentCategory: category});
+    if (category === "Steam Games") {
+      currentFetch = "http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame";
+    } else if (category === "Games on Sale") {
+      //setState
+    } else if(category === "Top Games"){
+      currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50";
+    }
+    this.setState({showGamePage:false});
     this.fetchFromBackend();
   }
 
   render() {
-    var currentWindow = (this.state.showGamePage)? this.state.gamePage:this.renderGames();
+    var currentWindow = (this.state.showGamePage) ? this.state.gamePage : this.renderGames();
     return (
       <div className="container">    
         <div className="content-container">
           {!this.state.showGamePage && 
             <div className="homepage-header">
-              <p className="header-text">{currentCategory}</p>
+              <p className="header-text">{this.state.currentCategory}</p>
             </div>
           }
           {currentWindow}

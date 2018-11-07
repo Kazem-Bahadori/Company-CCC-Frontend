@@ -33,6 +33,7 @@
 
 .homepage-placeholder{
     font-size: xx-large;
+    text-align: center;
 }
 
 .homepage-header{
@@ -45,4 +46,11 @@
 .header-text{
     font-size: 250%;
     font-weight: bold;
+}
+
+.home-page-loading{
+    display: block;
+    width: 20rem;
+    height: auto;
+
 }
