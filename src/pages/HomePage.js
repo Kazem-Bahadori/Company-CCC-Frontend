@@ -5,17 +5,17 @@ import SideBar from '../organisms/Sidebar'
 import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
 
-const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
-const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
+// const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
+// const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let listOfGames
+let currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
 
 class HomePage extends React.Component {
   state = { 
     popularGameArray: [],
     showGamePage: false,
     gamesPage: null,
-    currentFetch: fetchTopGames,
     currentCategory: categories[0]
   }
   
@@ -24,14 +24,13 @@ class HomePage extends React.Component {
     }
 
     fetchFromBackend = () => {
-      fetch(this.state.currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+      fetch(currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
         response.map((index) =>
-        this.setState({ popularGameArray: [...this.state.popularGameArray, index] }),
-        console.log(response)
+        this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )    
       })
     }
@@ -64,13 +63,10 @@ class HomePage extends React.Component {
 
   popularGameOnClick = (input) => {
     var price;
-
     if (this.state.popularGameArray[input].steam.price ==! undefined) {
       price = this.state.popularGameArray[input].steam.price.final / 100
-      console.log(price)
     }
     this.setState({showGamePage: true})
-
     this.setState({
       gamePage: 
       <GamePage gameName={this.state.popularGameArray[input].name} 
@@ -84,16 +80,17 @@ class HomePage extends React.Component {
   }
 
   categoryButtonOnClick = (category) => {
-    this.setState({showGamePage:false});
     this.setState({currentCategory: category});
-    if (category === "Steam games") {
-      this.setState({currentFetch:fetchTopSteamGames});
+    
+    if (category === "Steam Games") {
+      currentFetch = "http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame";
     } else if (category === "Games on Sale") {
       //setState
     } else if(category==="Top Games"){
-      this.setState({currentFetch:fetchTopGames});
+      currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50";
     }
-    this.setState({popularGameArray: []})
+    this.setState({showGamePage:false});
+    this.setState({popularGameArray: []});
     this.fetchFromBackend();
   }
 
