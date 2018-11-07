@@ -49,7 +49,7 @@ class ChatAndInfoWindow extends Component {
                     </div>
                         <div className="buy-on-steam-holder">
                             <button className="buy-on-steam-btn"> Buy on Steam </button>
-                            <p>{this.props.price}</p>
+                       
                         </div>
                 
             </div>
