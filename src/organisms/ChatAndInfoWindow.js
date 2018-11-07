@@ -30,6 +30,7 @@ class ChatAndInfoWindow extends Component {
     } else {
         price = 'Not available on Steam';
         currency = ''
+        steamId = undefined
     }
     }
     
@@ -56,7 +57,7 @@ class ChatAndInfoWindow extends Component {
             return <InfoWindow streamName={this.props.streamName} viewers={this.props.viewers}/>;
 
             case "System Requirements":
-            return <SystemRequirements />
+            return <SystemRequirements steamId={steamId} />
 
             case "Trailer":
             alert("Not implemented");
