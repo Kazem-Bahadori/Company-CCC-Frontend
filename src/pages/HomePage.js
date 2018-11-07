@@ -24,7 +24,8 @@ class HomePage extends React.Component {
     }
 
     fetchFromBackend = () => {
-      fetch(currentFetch, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+      this.setState({ popularGameArray: [] });
+      fetch(currentFetch, { headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'} }) 
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
@@ -81,21 +82,19 @@ class HomePage extends React.Component {
 
   categoryButtonOnClick = (category) => {
     this.setState({currentCategory: category});
-    
     if (category === "Steam Games") {
       currentFetch = "http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame";
     } else if (category === "Games on Sale") {
       //setState
-    } else if(category==="Top Games"){
+    } else if(category === "Top Games"){
       currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50";
     }
     this.setState({showGamePage:false});
-    this.setState({popularGameArray: []});
     this.fetchFromBackend();
   }
 
   render() {
-    var currentWindow = (this.state.showGamePage)? this.state.gamePage:this.renderGames();
+    var currentWindow = (this.state.showGamePage) ? this.state.gamePage : this.renderGames();
     return (
       <div className="container">    
         <div className="content-container">
