@@ -4,6 +4,7 @@ import InfoWindow from '../molecules/InfoWindow.js';
 import SystemRequirements from '../molecules/SystemRequirements.js';
 import '../css/ChatAndInfoWindow.css'
 import steamlogo from '../images/steamlogo.png';
+import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
 var tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
 let price;
@@ -31,20 +32,20 @@ class ChatAndInfoWindow extends Component {
         price = 'Not available on Steam';
         currency = ''
         steamId = undefined
-    }
+     }
     }
     
     accessGamePrice = (steamId) => {
 
         let getPrice = 'http://localhost:8080/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
-        fetch(getPrice)
+        fetch(getPrice) 
         .then(response => response.json())
         .then(response => {
             price = response.final/100
             currency = response.currency
             console.log(price)
         })
-     
+    
     }
 
     renderContent = (state) => {
@@ -69,6 +70,20 @@ class ChatAndInfoWindow extends Component {
         this.setState({contentWindow: newSubject});
     }
 
+    renderBuySteam = () => {
+
+        if (steamId) {
+        return(
+            <div className="buy-on-steam-holder">
+                <button className="buy-on-steam-btn"> 
+                    <img className="steam-buy-logo" src={steamBuyLogo} /> 
+                </button>
+                <p className="price-currency">{price} {currency}</p>
+            </div>
+        );
+     }
+    }
+
     render() {
         return(
             <div className="container-window">
@@ -80,10 +95,7 @@ class ChatAndInfoWindow extends Component {
                     <div className="content-window">
                         {this.renderContent(this.state.contentWindow)}
                     </div>
-                        <div className="buy-on-steam-holder">
-                            <button className="buy-on-steam-btn"> Buy on Steam </button>
-                            <p className="price-currency">{price} {currency}</p>
-                        </div>
+                    {this.renderBuySteam()}
                 
             </div>
         );
