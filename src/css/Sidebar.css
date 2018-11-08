@@ -69,6 +69,7 @@
     padding: 0.8rem;
     padding-left: 3rem;
     font-size: large;
+    cursor: pointer;
 }
 
 .side-bar-button:hover {
