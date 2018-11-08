@@ -5,8 +5,6 @@ import SideBar from '../organisms/Sidebar'
 import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
 
-// const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
-// const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let listOfGames
 let currentFetch = "http://backend.c3.netplus.se/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
