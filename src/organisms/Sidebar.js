@@ -1,9 +1,15 @@
 import React from 'react';
 import '../css/Sidebar.css';
+import fish from '../images/fishtv4_yes.png';
+import search from '../images/search_icon.png';
+import arrowLeft from '../images/arrow-left.png'
+import arrowRight from '../images/arrow-right.png'
 
 class Sidebar extends React.Component{
 state = {
-    collapsed: true 
+    collapsed: true,
+    activeCategory: false,
+    currentCategory: "Top Games"
 }
 
 handleClick = () => {
@@ -24,39 +30,35 @@ handleClickOutside = (e) => {
 
 handleSearch = (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); 
     alert("This function will be inplemented in future sprints");
-}
-
-handleOnSaleGames = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    alert("This function will be inplemented in future sprints");
-}
-
-handleSteamGames = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    alert("This function will be inplemented in future sprints");
-
 }
 
 render(){
     if(!this.state.collapsed){
         return(
-            <div className="side-bar-container"  ref={panel =>{this.panel = panel}}  onClick={this.handleClick}>
-                <h2> FlatFish TV</h2>
-                <div className="side-bar-button" onClick={(e) => this.handleSearch(e)}>Click to search</div>
-                <div>Home button</div>
-                <h3> Categories</h3>
-                <div className="side-bar-button" onClick={(e) => this.handleOnSaleGames(e)}>On sale</div>
-                <div className="side-bar-button" onClick={(e) => this.handleSteamGames(e)}>Steam Games</div>
+            <div className="side-bar-container">
+                <div className="side-bar-content"  ref={panel =>{this.panel = panel}}  onClick={this.handleClick}>
+                    <div className="side-bar-image-container">
+                        <img className="side-bar-image" onClick={this.props.homeButtonResponse} src= {fish} alt="FlatFishTV"/>
+                    </div>
+                    <div className="side-bar-search" onClick={(e) => this.handleSearch(e)}>
+                        <img className="side-bar-search-image" src= {search} alt="Search"/>
+                        Search
+                    </div>
+                    {this.props.categories.map((category) => 
+                        <div key={category} className="side-bar-button" onClick={() => this.props.categoryOnClick(category)}>{category}</div>
+                    )}
+                </div>
+                <div className="side-bar-arrow">
+                    <img className="side-bar-arrow-image" src= {arrowLeft} alt="Arrow"/>
+                </div>
             </div>
         )
     }
     return(
         <div className="side-bar-container-collapsed" onClick={this.handleClick}>
-            <div className="side-bar-button" onClick={(e) => this.handleSearch(e)}>icon</div>
+            <img className="side-bar-arrow-image" src= {arrowRight} alt="Arrow"/>
         </div>
     )
 }

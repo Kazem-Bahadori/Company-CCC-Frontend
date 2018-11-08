@@ -1,0 +1,58 @@
+.container-window {
+    display: flex;
+    background-color: rgb(41,41,41);
+    justify-content: center;
+    flex-direction: column;
+    width: 45%;
+   
+}
+
+.content-window {
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+   
+}
+
+.header {
+    display:flex;
+    width: 100%;
+    height: 10%;
+    background-color: black;
+}
+
+.button-style {
+    color: white;
+    width: 30%;
+    background-color: black;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    
+}
+
+.button-style:focus {
+    background-color: gray;
+}
+
+.buy-on-steam-holder {
+    display: flex;
+    height: 10%;
+}
+
+.price-currency {
+    margin-left: 5%;
+}
+.buy-on-steam-btn {
+    display: flex;
+    background-color: #F8F2DD;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.steam-buy-logo {
+    height: 50%;
+    width: 50%;
+}

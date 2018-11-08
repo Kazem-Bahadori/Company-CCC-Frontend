@@ -4,33 +4,36 @@ import ReactPlayer from 'react-player';
 import '../css/MediaWindow.css';
 
 
+
 class MediaWindow extends Component {
 
   render() {
+    
+    console.log(ReactPlayer.canPlay('https://www.twitch.tv/' + this.props.streamName));
+    console.log("Render Media Window")
+  
+    if (this.props.streamName.length === 0) {
+      console.log("IF SATS")
+      return null;
+     
+    }
+   
     return (
       <div className="media-window-holder">
         <div className="media-window-media">
             <ReactPlayer
-                url={'https://www.twitch.tv/' + this.props.streamName} 
+                url={ 'https://www.twitch.tv/' + this.props.streamName} 
                 playing
                 width="100%"
                 height="100%"
+                
               />
         </div>
-        <div className="media-window-chat">
-          <iframe
-            title="twitch-chat"
-            frameBorder="0"
-            scrolling="no"
-            id="chat_embed"
-            src={"https://www.twitch.tv/embed/" + this.props.streaName + "/chat"}
-            height="100%"
-            //???width="100%">
-            />
+      
           </div>
-          </div>
-  
+    
     );
+  
   }
 }
 

@@ -2,11 +2,56 @@
     /*margin-top: 10rem;*/
     display: flex;
     overflow-y: auto;
-    background-color: white;
+    background-color:black;
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
     /*saknas något från FR025??*/
     position: absolute;
+}
+
+.game-name-header {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 4%;
+    margin-top: 2%;
+    font-size: 250%;
+    color: white;
+
+}
+
+.media-and-chat-holder {
+    display: flex;
+    height: 70%;
+    width: 100%;
+    background-color:black;
+    justify-content: flex-end;
+    margin-right: 3%;
+    margin-top: 3%;
+}
+
+.streamer-and-viewers-holder {
+    display: flex;
+    width: 70%;
+    height: 4rem;
+    background-color: black;
+    margin-right: auto;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+
+.viewer-count-text {
+    display: flex;
+    font-size: 30%
+}
+
+.streamer-text {
+    display: flex;
+    font-size: 200%;
+    margin-left: 3%;
 }
