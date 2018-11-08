@@ -23,7 +23,7 @@ class ChatAndInfoWindow extends Component {
         console.log("CHAT AND INFO WINDOW DID MOUNT")
         console.log("steamBool: " + this.props.steamBool)
         if (this.props.steamBool) {
-        let getSteamId = 'http://localhost:8080/api/steam/filters?filterType=on_twitch&assetType=games&filterValue=' + this.props.gameName
+        let getSteamId = 'http://backend.c3.netplus.se/api/steam/filters?filterType=on_twitch&assetType=games&filterValue=' + this.props.gameName
         fetch(getSteamId)
         .then(response => response.json())
         .then(response => {
@@ -43,7 +43,7 @@ class ChatAndInfoWindow extends Component {
     
     accessGamePrice = (steamId) => {
 
-        let getPrice = 'http://localhost:8080/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
+        let getPrice = 'http://backend.c3.netplus.se/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
         fetch(getPrice) 
         .then(response => response.json())
         .then(response => {

@@ -9,7 +9,7 @@ import '../css/HomePage.css';
 // const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let listOfGames
-let currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
+let currentFetch = "http://backend.c3.netplus.se/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
 
 class HomePage extends React.Component {
   state = { 
@@ -83,11 +83,11 @@ class HomePage extends React.Component {
   categoryButtonOnClick = (category) => {
     this.setState({currentCategory: category});
     if (category === "Steam Games") {
-      currentFetch = "http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame";
+      currentFetch = "http://backend.c3.netplus.se/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame";
     } else if (category === "Games on Sale") {
       //setState
     } else if(category === "Top Games"){
-      currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50";
+      currentFetch = "http://backend.c3.netplus.se/api/twitch/filters?filterType=top&assetType=games&filterValue=50";
     }
     this.setState({showGamePage:false});
     this.fetchFromBackend();
