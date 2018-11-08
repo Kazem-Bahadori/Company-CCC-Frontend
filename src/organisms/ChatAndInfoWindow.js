@@ -7,14 +7,16 @@ import steamlogo from '../images/steamlogo.png';
 import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
 var tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
-let price;
-let currency;
+//let price;
+//let currency;
 let steamId;
 let steamUrl
 
 class ChatAndInfoWindow extends Component {
     state = {
-        contentWindow: "Chat"
+        contentWindow: "Chat",
+        price: '',
+        currency: '',
     }
 
     componentDidMount() {
@@ -32,8 +34,8 @@ class ChatAndInfoWindow extends Component {
             this.accessGamePrice(steamId)   
         })
     } else {
-        price = 'Not available on Steam';
-        currency = ''
+        this.setState({price: 'Not available on Steam' })
+        this.setState({currency: ''})
         steamId = undefined
      }
 
@@ -45,9 +47,9 @@ class ChatAndInfoWindow extends Component {
         fetch(getPrice) 
         .then(response => response.json())
         .then(response => {
-            price = response.final/100
-            currency = response.currency
-            console.log(price)
+            this.setState({price: response.final/100 })
+            this.setState({currency: response.currency})
+            console.log(this.state.price)
         })
     
     }
@@ -86,7 +88,7 @@ class ChatAndInfoWindow extends Component {
                 </a>
                 
                 
-                <p className="price-currency">{price} {currency}</p>
+                <p className="price-currency">{this.state.price} {this.state.currency}</p>
             </div>
         );
      }
