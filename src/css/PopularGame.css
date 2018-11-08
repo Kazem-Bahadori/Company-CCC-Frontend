@@ -39,6 +39,7 @@
     display: flex;
     flex: 1;
     background-color: #998675;
+    cursor: pointer;
 }
 
 .popular-game-image-container-steam {

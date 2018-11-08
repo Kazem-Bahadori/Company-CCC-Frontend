@@ -63,6 +63,7 @@ class GamePage extends Component {
   render() {
     return(
       <div className="game-page-container">
+      <div className="game-name-header"> {this.props.gameName} </div>
         <div className="media-and-chat-holder">
           <MediaWindow streamName={this.state.streamName}/>
           <ChatAndInfoWindow 

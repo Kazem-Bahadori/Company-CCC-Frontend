@@ -8,6 +8,7 @@
     justify-content: center;
     border-style: solid;
     border-color:  #998675;
+    cursor: pointer;
 }
 
 .thumbnail-stream-name-holder {

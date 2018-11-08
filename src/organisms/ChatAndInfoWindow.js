@@ -80,11 +80,11 @@ class ChatAndInfoWindow extends Component {
         return(
             <div className="buy-on-steam-holder">
                 
-                <button className="buy-on-steam-btn">
-                <a href={steamUrl} target="_blank"> 
+                
+                <a href={steamUrl} target="_blank" className="buy-on-steam-btn"> 
                     <img className="steam-buy-logo" src={steamBuyLogo} />
                 </a>
-                </button>
+                
                 
                 <p className="price-currency">{price} {currency}</p>
             </div>

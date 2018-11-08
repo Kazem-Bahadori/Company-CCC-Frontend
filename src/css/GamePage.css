@@ -11,6 +11,17 @@
     position: absolute;
 }
 
+.game-name-header {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 4%;
+    margin-top: 2%;
+    font-size: 250%;
+    color: white;
+
+}
+
 .media-and-chat-holder {
     display: flex;
     height: 70%;
@@ -36,11 +47,11 @@
 
 .viewer-count-text {
     display: flex;
-    font-size: 50%
+    font-size: 30%
 }
 
 .streamer-text {
     display: flex;
-    font-size: 250%;
+    font-size: 200%;
     margin-left: 3%;
 }
