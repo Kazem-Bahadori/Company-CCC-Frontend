@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts babel",
-    "test_case": "mocha --compilers js:babel-core/register",
+    "test_case": "mocha ./mochacfg.js --compilers js:babel-core/register mochacfg.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

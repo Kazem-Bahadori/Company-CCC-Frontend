@@ -1,3 +1,4 @@
+
 const assert = require('chai').assert; //bringring in the chai library
 const expect = require('chai').expect;
 const button = require('../src/atoms/Button.js'); //Bringing in the app from the app.js, i.e. the file we want to test
@@ -12,23 +13,15 @@ configure({ adapter: new Adapter() });
 
 
 describe('FR002', () =>{
-  it('Button should not be NULL', ()=> { //first parameter is the description, the second parameter is
-    //assert.isEmpty(button); //first parameter is the file being tested (the paraenthesis is because app is returning a function!)
-    //the second parameter is what it is supposed to return
+  it('Button should not be NULL', ()=> {
     assert.isNotNull(button);
 
   });
-}); //App is what we name the file we're testing, here app.js. local variable
+});
 
 describe('Test button class', () =>{
-  it('Button should have class button', () => { //first parameter is the description, the second parameter is
-    //assert.isEmpty(button); //first parameter is the file being tested (the paraenthesis is because app is returning a function!)
-    //the second parameter is what it is supposed to return
+  it('Button should have class button', () => {
     let btn = shallow(<Button />);
     expect(btn.hasClass('button')).to.equal(true);
   });
 });
-
-//npm run test_case -s To run the test
-
-// https://mochajs.org
