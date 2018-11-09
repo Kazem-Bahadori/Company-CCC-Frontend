@@ -4,17 +4,21 @@ import GamePage from '../pages/GamePage.js';
 import SideBar from '../organisms/Sidebar'
 import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
+import SearchPage from '../pages/SearchPage.js';
 
 // const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
 // const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
+let pages = ["HomePage", "GamePage", "SearchPage"];
 let listOfGames
 let currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
 
 class HomePage extends React.Component {
   state = { 
+    currentPage: pages[0],
     popularGameArray: [],
     showGamePage: false,
+    showSearchPage: false,
     gamesPage: null,
     currentCategory: categories[0]
   }
@@ -67,7 +71,7 @@ class HomePage extends React.Component {
     if (this.state.popularGameArray[input].steam.price ==! undefined) {
       price = this.state.popularGameArray[input].steam.price.final / 100
     }
-    this.setState({showGamePage: true})
+    this.setState({currentPage: pages[1]})
     this.setState({
       gamePage: 
       <GamePage gameName={this.state.popularGameArray[input].name} 
@@ -77,7 +81,7 @@ class HomePage extends React.Component {
   }
 
   homeButtonOnClick = () => {
-    this.setState({showGamePage: false})
+    this.setState({current: pages[0]})
   }
 
   categoryButtonOnClick = (category) => {
@@ -89,16 +93,28 @@ class HomePage extends React.Component {
     } else if(category === "Top Games"){
       currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50";
     }
-    this.setState({showGamePage:false});
+    this.setState({currentPage: pages[0]});
     this.fetchFromBackend();
   }
 
+  searchButtonOnClick = () => {
+    this.setState({currentPage: pages[2]})
+  }
+
   render() {
-    var currentWindow = (this.state.showGamePage) ? this.state.gamePage : this.renderGames();
+    var currentWindow;
+    if (this.state.currentPage == pages[2]) {
+      currentWindow =  <SearchPage></SearchPage>
+    } else if (this.state.currentPage == pages[1]) {
+      currentWindow = this.state.gamesPage;
+    } else {
+      this.renderGames();
+    }
     return (
       <div className="container">    
         <div className="content-container">
           {!this.state.showGamePage && 
+          !this.state.showSearchPage &&
             <div className="homepage-header">
               <p className="header-text">{this.state.currentCategory}</p>
             </div>
@@ -107,6 +123,7 @@ class HomePage extends React.Component {
         </div>
         <SideBar 
           homeButtonResponse={this.homeButtonOnClick} 
+          searchButtonResponse={this.searchButtonOnClick}
           categoryOnClick={this.categoryButtonOnClick} 
           categories={categories}
         />  
