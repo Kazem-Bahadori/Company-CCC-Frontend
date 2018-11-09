@@ -4,6 +4,8 @@ import ChatAndInfoWindow from '../organisms/ChatAndInfoWindow.js';
 import MediaWindow from '../molecules/MediaWindow.js';
 import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
+import player_icon from '../images/player_icon.png';
+import views_icon from '../images/views_icon.png';
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -76,7 +78,7 @@ class GamePage extends Component {
           </div>
 
           <div className="streamer-and-viewers-holder"> 
-            <p className="streamer-text"> {this.state.streamName} | View Count: {viewercount} </p>
+            <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName} <img className="player-icon"src={views_icon} alt="views icon"/>    View Count: {viewercount} </p>
           </div>
 
           <div className="Thumbnail-window-holder">

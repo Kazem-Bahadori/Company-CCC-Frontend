@@ -19,7 +19,6 @@
     margin-top: 2%;
     font-size: 250%;
     color: white;
-
 }
 
 .media-and-chat-holder {
@@ -42,7 +41,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    
+    padding-top: 0.3rem;
 }
 
 .viewer-count-text {
@@ -51,7 +50,15 @@
 }
 
 .streamer-text {
+    width: 100%;
     display: flex;
-    font-size: 200%;
+    font-size: x-large;
     margin-left: 3%;
+}
+
+.player-icon {
+    height: 1.7rem;
+    width: auto;
+    padding-top: 0.3rem;
+    padding-right: 1rem;
 }
