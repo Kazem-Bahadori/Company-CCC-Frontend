@@ -52,7 +52,7 @@ class GamePage extends Component {
 
   accessStreamerName(streamerInfo, index) {
     //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
-    let getStreamerName = "http://backend.c3.netplus.se:8080/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
+    let getStreamerName = "http://s1.backend.c3.netplus.se/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
     fetch(getStreamerName)
     .then(response => response.json())
     .then(response => {
