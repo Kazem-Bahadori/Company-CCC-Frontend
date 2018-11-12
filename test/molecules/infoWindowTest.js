@@ -1,9 +1,9 @@
 const assert = require('chai').assert; //bringring in the chai library
 const expect = require('chai').expect;
-const infoWindow = require('../src/molecules/InfoWindow.js');
+const infoWindow = require('../../src/molecules/InfoWindow.js');
 import { shallow, mount, render } from 'enzyme';
 import React from 'react';
-import InfoWindow from '../src/molecules/InfoWindow.js';
+import InfoWindow from '../../src/molecules/InfoWindow.js';
 import ReactTestUtils from 'react-dom/test-utils';
 //Test of InfoWindow
 

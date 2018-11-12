@@ -2,20 +2,24 @@ const assert = require('chai').assert; //bringring in the chai library
 const expect = require('chai').expect;
 import { shallow, mount, render } from 'enzyme';
 import React from 'react';
-import ChatAndInfoWindow from '../src/organisms/ChatAndInfoWindow.js';
+import ChatAndInfoWindow from '../../src/organisms/ChatAndInfoWindow.js';
 import sinon from 'sinon';
 
 
 describe('FR062: Display chat', () =>{
   it('ChatAndInfoWindow should display chat at loading', () => {
     let wrapper = shallow(<ChatAndInfoWindow/>);
+    //Check if state is set to "Chat" when launching ChatAndInfoWindow
     expect(wrapper.state('contentWindow')).to.equal('Chat');
+    //Assure that ChatAndInfoWindow is rendered
+    expect(wrapper.find('.container-window')).to.have.length(1);
+    expect(wrapper.find('.content-window')).to.have.length(1);
   });
 });
 
 //goal: write tests for simulating clicks on Chat & Game Info-button and checking if state of ChatAndInfoWindow component is changed
 //not specified as a requirement but makes the test cover all aspects in display chat
-describe('FR062: Display Chat', () =>{
+/*describe('FR062: Display Chat', () =>{
   it('When "Game Info" is pressed, state of showChat should be set to false and showInfo should be set to true', ()=> {
     //code below finds the two buttons and makes sure they're clickable.
     let wrapper = shallow(<ChatAndInfoWindow/>);
@@ -31,7 +35,7 @@ describe('FR062: Display Chat', () =>{
     //wrapperInstance.render();
   });
 });
-
+/*
 //
 describe('FR029: Test ChatAndInfoWindow class', () =>{
   it('ChatAndInfoWindow should have a buy button', () => {

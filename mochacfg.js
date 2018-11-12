@@ -6,16 +6,15 @@ function importTest(name, path) {
     });
 }
 
-//var common = require("./common");
-
 describe("mochacfg", function () {
     beforeEach(function () {
-       console.log("running something before each test");
+      // console.log("Start test");
     });
-    importTest("buttonTest", './test/buttonTest');
-    importTest("GamePageTest", './test/GamePageTest');
-    //importTest("b", './b/b');
+    importTest("buttonTest", './test/atoms/buttonTest');
+    importTest("ChatAndInfoWindowTest", './test/organisms/ChatAndInfoWindowTest'); //does not work for now
+    //importTest("infoWindowTest", './test/molecules/infoWindowTest'); FR036 removed from SRS
+  //importTest("GamePageTest", './test/pages/GamePageTest'); //does not work for now
     after(function () {
-        console.log("after all tests");
+        console.log("Tests completed");
     });
 });

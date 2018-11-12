@@ -5,7 +5,7 @@ const assert = require('chai').assert; //bringring in the chai library
 const expect = require('chai').expect;
 import { shallow, mount } from 'enzyme';
 import React, { Component } from 'react';
-import GamePage from '../src/pages/GamePage.js';
+import GamePage from '../../src/pages/GamePage.js';
 
 //how to access componentDidMount and see if it is executed correctly?
 describe('FR024: Active stream on game page', () =>{
