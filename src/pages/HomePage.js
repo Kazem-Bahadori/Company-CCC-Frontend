@@ -17,9 +17,7 @@ class HomePage extends React.Component {
   state = { 
     currentPage: pages[0],
     popularGameArray: [],
-    showGamePage: false,
-    showSearchPage: false,
-    gamesPage: null,
+    gamePage: null,
     currentCategory: categories[0]
   }
   
@@ -103,18 +101,17 @@ class HomePage extends React.Component {
 
   render() {
     var currentWindow;
-    if (this.state.currentPage == pages[2]) {
+    if (this.state.currentPage === pages[2]) {
       currentWindow =  <SearchPage></SearchPage>
-    } else if (this.state.currentPage == pages[1]) {
-      currentWindow = this.state.gamesPage;
+    } else if (this.state.currentPage === pages[1]) {
+      currentWindow = this.state.gamePage;
     } else {
-      this.renderGames();
+      currentWindow = this.renderGames();
     }
     return (
       <div className="container">    
         <div className="content-container">
-          {!this.state.showGamePage && 
-          !this.state.showSearchPage &&
+            {this.state.currentPage === pages[0] && 
             <div className="homepage-header">
               <p className="header-text">{this.state.currentCategory}</p>
             </div>
