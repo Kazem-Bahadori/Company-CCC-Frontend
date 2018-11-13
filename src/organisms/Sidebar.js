@@ -28,12 +28,6 @@ handleClickOutside = (e) => {
     this.handleClick(e);
 }
 
-handleSearch = (e) => {
-    e.preventDefault();
-    e.stopPropagation(); 
-    alert("This function will be inplemented in future sprints");
-}
-
 render(){
     if(!this.state.collapsed){
         return(
@@ -42,7 +36,7 @@ render(){
                     <div className="side-bar-image-container">
                         <img className="side-bar-image" onClick={this.props.homeButtonResponse} src= {fish} alt="FlatFishTV"/>
                     </div>
-                    <div className="side-bar-search" onClick={(e) => this.handleSearch(e)}>
+                    <div className="side-bar-search" onClick = {this.props.searchButtonResponse}>
                         <img className="side-bar-search-image" src= {search} alt="Search"/>
                         Search
                     </div>

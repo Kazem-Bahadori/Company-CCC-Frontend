@@ -55,10 +55,16 @@
 .side-bar-search{
     padding: 1rem;
     text-align: center;
-    font-weight: bold;
+    font-weight: normal;
     font-size: x-large;
     border: solid black 1px;
     margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.side-bar-search:hover {
+    font-weight: bold;
+    cursor: pointer;
 }
 .side-bar-search-image{
     height: 1.2rem;
