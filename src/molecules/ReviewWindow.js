@@ -55,9 +55,9 @@ class ReviewWindow extends Component {
     <div className="Name-holder">
     <p> Score: {this.state.review_score}/10 </p>
     <p> Average feelings: <span className={reviewColor}> {this.state.review_score_desc} </span> </p>
-    <p> Review Score: {this.state.review_score_desc} </p>
-    <p> Review Score: {this.state.review_score_desc} </p>
-    <p> Review Score: {this.state.review_score_desc} </p>
+    <p> Total Positive: <span className={"review-color-green"}> {this.state.total_positive} </span> </p>
+    <p> Total Negative: <span className={"review-color-red"}>{this.state.total_negative} </span> </p>
+    <p> Total Reviews: {this.state.total_reviews} </p>
     </div>
     );
 
