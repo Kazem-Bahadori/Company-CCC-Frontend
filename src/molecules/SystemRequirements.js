@@ -13,12 +13,15 @@ class SystemRequirements extends Component {
     
     console.log("system req steamId: " + this.props.steamId)
     if (this.props.steamId !== undefined) {
-    let fetchSystemReq = "http://localhost:8080/api/steam/filters?assetType=system_requirements&filterType=app_id&filterValue=" + this.props.steamId
+    let fetchSystemReq = "http://backend.c3.netplus.se/api/steam/filters?assetType=system_requirements&filterType=app_id&filterValue=" + this.props.steamId
     fetch(fetchSystemReq)
     .then(response => response.json())
     .then(response => {
       console.log("system req response: " + response.pc_requirements.minimum)
-      this.setState({ miniReq: response.pc_requirements.minimum })
+      var temp = JSON.stringify(response.pc_requirements.minimum)
+      temp = temp.replace(/"([^"]+(?="))"/g, '$1')
+      console.log(temp)
+      this.setState({ miniReq: temp })
       
     })
   } else {
@@ -32,8 +35,8 @@ class SystemRequirements extends Component {
       
       <div className="Info-window-holder">
         <div className="Name-holder">
-           Minimum Requirements
-           <p> {this.state.miniReq} </p>
+          
+           <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.miniReq }}/>
 
         </div>
       </div>
