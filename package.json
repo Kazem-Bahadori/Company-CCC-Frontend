@@ -10,6 +10,7 @@
     "chai-react": "^3.0.1",
     "es6-promise": "^4.2.5",
     "isomorphic-fetch": "^2.2.1",
+    "mocha-junit-reporter": "^1.18.0",
     "nodejs": "0.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -21,6 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts babel",
     "test_case": "mocha ./mochacfg.js --compilers js:babel-core/register mochacfg.js",
+    "create_result": "mocha ./mochacfg.js --compilers js:babel-core/register mochacfg.js test --reporter mocha-junit-reporter",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
