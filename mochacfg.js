@@ -20,7 +20,7 @@ describe("mochacfg", function () {
     importTest('ChatAndInfoWindowTest', './test/organisms/ChatAndInfoWindowTest');
     importTest('SidebarTest','./test/organisms/SidebarTest');
     //importTest("infoWindowTest", './test/molecules/infoWindowTest'); outdated
-    //importTest("GamePageTest", './test/pages/GamePageTest'); works but gets an error message
+    importTest("GamePageTest", './test/pages/GamePageTest'); //works but gets an error message
     after(function () {
         console.log("\n Tests completed \n Summary:");
     });
