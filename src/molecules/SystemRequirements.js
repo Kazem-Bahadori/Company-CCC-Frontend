@@ -25,7 +25,7 @@ class SystemRequirements extends Component {
       console.log(mini)
       this.setState({ miniReq: mini })
 
-      if (response.pc_requirements.recommended != undefined) {
+      if (response.pc_requirements.recommended !== undefined) {
         var reco = JSON.stringify(response.pc_requirements.recommended)
         reco = reco.replace(/"([^"]+(?="))"/g, '$1')
         console.log(reco)
