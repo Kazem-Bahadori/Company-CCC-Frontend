@@ -14,9 +14,11 @@ class Thumbnail extends Component {
             
         </div>
         <div className="thumbnail-stream-name-holder">
-            <p> {this.props.views} viewers </p>
+            <p className="thumbnail-viewers"> {this.props.views} viewers </p>
+            <div className="thumbnail-game-name-holder">
             <h1 className="thumbnail-game-name"> {this.props.streamName} </h1>
-            <p> {this.props.streamerName} </p>
+            </div>
+            <p className="thumbnail-streamer"> {this.props.streamerName} </p>
         </div>
       
       </div>
