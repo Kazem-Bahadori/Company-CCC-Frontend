@@ -1,7 +1,6 @@
 .thumbnail-holder {
     display: flex;
     flex-direction: column;
-    background-color: green;
     width: 22rem;
     height: auto;
     margin: 1%;
@@ -13,7 +12,6 @@
 
 .thumbnail-stream-name-holder {
     display: flex;
-    background-color: black;
     justify-content: center;
 }
 

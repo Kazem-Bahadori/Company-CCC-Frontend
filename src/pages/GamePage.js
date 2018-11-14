@@ -78,7 +78,8 @@ class GamePage extends Component {
           </div>
 
           <div className="streamer-and-viewers-holder"> 
-            <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName} <img className="player-icon"src={views_icon} alt="views icon"/>    View Count: {viewercount} </p>
+            <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
+            <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
 
           <div className="Thumbnail-window-holder">

@@ -2,7 +2,6 @@
     /*margin-top: 10rem;*/
     display: flex;
     overflow-y: auto;
-    background-color:black;
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
@@ -25,7 +24,6 @@
     display: flex;
     height: 70%;
     width: 100%;
-    background-color:black;
     justify-content: flex-end;
     margin-right: 3%;
     margin-top: 3%;
@@ -35,7 +33,6 @@
     display: flex;
     width: 70%;
     height: 4rem;
-    background-color: black;
     margin-right: auto;
     justify-content: flex-start;
     flex-direction: row;
@@ -50,14 +47,14 @@
 }
 
 .streamer-text {
-    width: 100%;
+
     display: flex;
     font-size: x-large;
     margin-left: 3%;
 }
 
 .player-icon {
-    height: 1.7rem;
+    height: 1.3rem;
     width: auto;
     padding-top: 0.3rem;
     padding-right: 1rem;
