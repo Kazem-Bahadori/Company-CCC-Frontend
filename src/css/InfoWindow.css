@@ -13,6 +13,7 @@
 .Name-holder {
     height: 10%;
     margin-left: 3%;
+    color: white;
 }
 
 .Name-text-info {
@@ -26,4 +27,16 @@
 
 a {
     color: #f1c40e;
+}
+ 
+.review-color-green {
+    color: green;
+}
+
+.review-color-orange {
+    color: orange;
+}
+
+.review-color-red {
+    color: red;
 }
