@@ -4,11 +4,14 @@ import ChatAndInfoWindow from '../organisms/ChatAndInfoWindow.js';
 import MediaWindow from '../molecules/MediaWindow.js';
 import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
+import player_icon from '../images/player_icon.png';
+import views_icon from '../images/views_icon.png';
 
 let streamerInfo = [];
 let streamDataArray = [];
 let viewercount = '';
 let thumbnailArray = [];
+let viewCountArray = [];
 
 class GamePage extends Component {
   state = {
@@ -32,16 +35,19 @@ class GamePage extends Component {
       streamDataArray = response.data;
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
-      viewercount=streamDataArray[0].viewer_count;
-  
+          viewercount=streamDataArray[0].viewer_count;
+
+      viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
       if(streamDataArray.length>=4){
         for(let i=1; i<5; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
+          viewCountArray[i]=(streamDataArray[i].viewer_count);
         }
       }else{
         for(let i=1; i<streamDataArray.length+1; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
+          viewCountArray[i]=(streamDataArray[i].viewer_count);
         }
       }
       
@@ -57,7 +63,9 @@ class GamePage extends Component {
     .then(response => response.json())
     .then(response => {
       this.setState({streamName: response.data[0].login})
-    })   
+    })
+    console.log(viewCountArray[index]);
+    viewercount = viewCountArray[index];
   }
 
   render() {
@@ -76,7 +84,8 @@ class GamePage extends Component {
           </div>
 
           <div className="streamer-and-viewers-holder"> 
-            <p className="streamer-text"> {this.state.streamName} | View Count: {viewercount} </p>
+            <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
+            <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
 
           <div className="Thumbnail-window-holder">

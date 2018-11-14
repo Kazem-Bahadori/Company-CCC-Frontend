@@ -51,9 +51,9 @@ render(){
         )
     }
     return(
-        <div className="side-bar-container-collapsed" onClick={this.handleClick}>
-            <img className="side-bar-arrow-image" src= {arrowRight} alt="Arrow"/>
-        </div>
+            <div className="side-bar-container-collapsed" onClick={this.handleClick}>
+                    <img className="side-bar-arrow-image" src= {arrowRight} alt="Arrow"/>
+                </div>
     )
 }
 
