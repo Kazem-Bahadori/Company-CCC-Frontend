@@ -21,6 +21,14 @@
     color: black; 
 }
 
+.Reqs {
+    padding: 1em;
+}
+
+a {
+    color: #f1c40e;
+}
+ 
 .review-color-green {
     color: green;
 }
