@@ -19,9 +19,13 @@ describe("mochacfg", function () {
     importTest('buttonTest', './test/atoms/buttonTest');
     importTest('ChatAndInfoWindowTest', './test/organisms/ChatAndInfoWindowTest');
     importTest('SidebarTest','./test/organisms/SidebarTest');
-    //importTest("infoWindowTest", './test/molecules/infoWindowTest'); outdated
-    importTest("GamePageTest", './test/pages/GamePageTest'); //works but gets an error message
+    importTest('SearchPageTest', './test/pages/SearchPageTest'); //search button yet to be implemented
+  //  importTest("GamePageTest", './test/pages/GamePageTest'); //works but throws an error
     after(function () {
         console.log("\n Tests completed \n Summary:");
     });
 });
+
+/*
+outdated tests:
+importTest("infoWindowTest", './test/molecules/infoWindowTest'); outdated*/
