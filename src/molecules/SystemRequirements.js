@@ -18,7 +18,10 @@ class SystemRequirements extends Component {
     .then(response => response.json())
     .then(response => {
       console.log("system req response: " + response.pc_requirements.minimum)
-      this.setState({ miniReq: response.pc_requirements.minimum })
+      var temp = JSON.stringify(response.pc_requirements.minimum)
+      temp = temp.replace(/"([^"]+(?="))"/g, '$1')
+      console.log(temp)
+      this.setState({ miniReq: temp })
       
     })
   } else {
@@ -32,8 +35,8 @@ class SystemRequirements extends Component {
       
       <div className="Info-window-holder">
         <div className="Name-holder">
-           Minimum Requirements
-           <p> {this.state.miniReq} </p>
+          
+           <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.miniReq }}/>
 
         </div>
       </div>

@@ -11,6 +11,7 @@ let streamerInfo = [];
 let streamDataArray = [];
 let viewercount = '';
 let thumbnailArray = [];
+let viewCountArray = [];
 
 class GamePage extends Component {
   state = {
@@ -34,16 +35,19 @@ class GamePage extends Component {
       streamDataArray = response.data;
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
-      viewercount=streamDataArray[0].viewer_count;
-  
+          viewercount=streamDataArray[0].viewer_count;
+
+      viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
       if(streamDataArray.length>=4){
         for(let i=1; i<5; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
+          viewCountArray[i]=(streamDataArray[i].viewer_count);
         }
       }else{
         for(let i=1; i<streamDataArray.length+1; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
+          viewCountArray[i]=(streamDataArray[i].viewer_count);
         }
       }
       
@@ -59,7 +63,9 @@ class GamePage extends Component {
     .then(response => response.json())
     .then(response => {
       this.setState({streamName: response.data[0].login})
-    })   
+    })
+    console.log(viewCountArray[index]);
+    viewercount = viewCountArray[index];
   }
 
   render() {
