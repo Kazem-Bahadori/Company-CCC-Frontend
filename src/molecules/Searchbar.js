@@ -1,94 +1,138 @@
+import Autosuggest from 'react-autosuggest';
 import React from 'react';
-import Autosuggest, {AutosuggestHighlightMatch ,AutosuggestHighlightParse} from 'react-autosuggest';
+import '../css/Searchbar.css';
 
-
-// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
-function escapeRegexCharacters(str) {
+const languages = [
+    {
+      name: 'C',
+      year: 1972
+    },
+    {
+      name: 'C#',
+      year: 2000
+    },
+    {
+      name: 'C++',
+      year: 1983
+    },
+    {
+      name: 'Clojure',
+      year: 2007
+    },
+    {
+      name: 'Elm',
+      year: 2012
+    },
+    {
+      name: 'Go',
+      year: 2009
+    },
+    {
+      name: 'Haskell',
+      year: 1990
+    },
+    {
+      name: 'Java',
+      year: 1995
+    },
+    {
+      name: 'Javascript',
+      year: 1995
+    },
+    {
+      name: 'Perl',
+      year: 1987
+    },
+    {
+      name: 'PHP',
+      year: 1995
+    },
+    {
+      name: 'Python',
+      year: 1991
+    },
+    {
+      name: 'Ruby',
+      year: 1995
+    },
+    {
+      name: 'Scala',
+      year: 2003
+    }
+  ];
+    // auto-suggestion searchbar
+  function escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function getSuggestions(value) {
-    const escapedValue = escapeRegexCharacters(value.trim());
-
-    if (escapedValue === '') {
-        return [];
-    }
-
-    const regex = new RegExp('^' + escapedValue, 'i');
-
-    return languages.filter(language => regex.test(language.name));
-}
-
-function getSuggestionValue(suggestion) {
-    return suggestion.name;
-}
-
-function renderSuggestion(suggestion, { query }) {
-    const matches = AutosuggestHighlightMatch(suggestion.name, query);
-    const parts = AutosuggestHighlightParse(suggestion.name, matches);
-
-    return (
-        <span>
-        {parts.map((part, index) => {
-            const className = part.highlight ? 'react-autosuggest__suggestion-match' : null;
-
-            return (
-            <span className={className} key={index}>
-                {part.text}
-            </span>
-            );
-        })}
-        </span>
-    );
-}
+  }
+  
+  function getSuggestions(textValue) {
+    const escapedValue = escapeRegexCharacters(textValue.trim());
     
-class Searchbar extends React.Component {
+    if (escapedValue === '') {
+      return [];
+    }
+  
+    const regex = new RegExp('^' + escapedValue, 'i');
+  
+    return languages.filter(language => regex.test(language.name));
+  }
+  
+  function getSuggestionValue(suggestion) {
+    return suggestion.name;
+  }
+  
+  function renderSuggestion(suggestion) {
+    return (
+      <span>{suggestion.name}</span>
+    );
+  }
+  
+  class Searchbar extends React.Component {
     constructor() {
-        super();
-
-        this.state = {
-        value: '',
+      super();
+  
+      this.state = {
+        textValue: '',
         suggestions: []
-        };    
+      };    
     }
-
+  
     onChange = (event, { newValue, method }) => {
-        this.setState({
-        value: newValue
-        });
+      this.setState({
+        textValue: newValue
+      });
     };
-
-    onSuggestionsFetchRequested = ({ value }) => {
-        this.setState({
-        suggestions: getSuggestions(value)
-        });
+    
+    onSuggestionsFetchRequested = ({ textValue }) => {
+      this.setState({
+        suggestions: getSuggestions(textValue)
+      });
     };
-
+  
     onSuggestionsClearRequested = () => {
-        this.setState({
+      this.setState({
         suggestions: []
-        });
+      });
     };
-
+  
     render() {
-        const { value, suggestions } = this.state;
-        const inputProps = {
-        placeholder: "Type 'c'",
-        value,
+      const { textValue, suggestions } = this.state;
+      const inputProps = {
+        placeholder: "Search...",
+        textValue,
         onChange: this.onChange
-        };
-
-        return (
-            <Autosuggest 
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                inputProps={inputProps}
-            />
-        );
+      };
+  
+      return (
+        <Autosuggest 
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          inputProps={inputProps} />
+      );
     }
-}
-
-export default Searchbar;
+  }
+  
+export default Searchbar;  
