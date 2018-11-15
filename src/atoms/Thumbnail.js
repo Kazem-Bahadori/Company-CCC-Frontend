@@ -3,6 +3,7 @@ import '../css/Thumbnail.css';
 
 class Thumbnail extends Component {
   render() {
+    console.log(this.props.streamerName);
     return (
       
       <div className="thumbnail-holder" onClick={this.props.onClick}>
@@ -18,6 +19,7 @@ class Thumbnail extends Component {
             <h1 className="thumbnail-game-name"> {this.props.streamName} </h1>
             </div>
             <p className="thumbnail-streamer"> {this.props.streamerName} </p>
+
         </div>
       
       </div>

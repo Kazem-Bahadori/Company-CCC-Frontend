@@ -1,7 +1,6 @@
 .popular-game-holder {
     display: flex;
     flex-direction: column;
-    background-color: black;
     width: 16rem;
     height: 24rem;
     margin: 1%;
@@ -11,7 +10,6 @@
 .game-name-holder {
     display: flex;
     height: 3rem;
-    background-color: black;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -52,8 +50,8 @@
 }
 
 .popular-game-image-container:hover {
-    border-color: #998675;
-    border-style: solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.1);
 }
 
 .popular-game-image {

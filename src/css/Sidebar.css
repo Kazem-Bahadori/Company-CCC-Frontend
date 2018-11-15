@@ -9,9 +9,9 @@
     position: fixed;
     left: 0;
     height: 100%;
-    width: 13rem;
     background-color: #282828;
-    border-right: solid 0.5rem  #998675; 
+    border-right: solid 0.5rem  #998675;
+    box-shadow: 15px 0px 30px black;
     color: white;
     overflow: hidden;
 }
@@ -34,15 +34,17 @@
 }
 
 .side-bar-image{
-    margin-top: 0,5rem;
+    margin-top: 0.5rem;
     display: block;
     width: 10rem;
     height: auto;
     margin: auto;
     margin-top: 0.5rem; 
+    cursor: pointer;
 }
 
 .side-bar-image-container{
+    margin-top: 2.5rem;
     height: 10rem;
     width: 13rem;
 }
@@ -57,7 +59,9 @@
     text-align: center;
     font-weight: normal;
     font-size: x-large;
-    border: solid black 1px;
+    border-top: solid #191816 3px;
+    border-bottom: solid #191816 3px;
+    box-shadow: 5px 0px 5px 0 rgba(0, 0, 0, 0.15), 5px 0px 5px 0 rgba(0, 0, 0, 0.15);
     margin-bottom: 2rem;
     cursor: pointer;
 }
@@ -76,6 +80,7 @@
     padding-left: 3rem;
     font-size: large;
     cursor: pointer;
+    border-left:#282828 solid 0.3rem;
 }
 
 .side-bar-button:hover {

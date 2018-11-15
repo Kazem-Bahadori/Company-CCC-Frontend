@@ -4,6 +4,8 @@ import ChatAndInfoWindow from '../organisms/ChatAndInfoWindow.js';
 import MediaWindow from '../molecules/MediaWindow.js';
 import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
+import player_icon from '../images/player_icon.png';
+import views_icon from '../images/views_icon.png';
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -20,7 +22,7 @@ class GamePage extends Component {
     //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
     //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
-    let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game_id&filterValue=" + this.props.gameId
+    let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
     fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
       //Convert response into json. /Johandg
       .then(response => response.json())
@@ -31,6 +33,7 @@ class GamePage extends Component {
         
       )  
       streamDataArray = response.data;
+      
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
           viewercount=streamDataArray[0].viewer_count;
@@ -56,7 +59,7 @@ class GamePage extends Component {
 
   accessStreamerName(streamerInfo, index) {
     //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
-    let getStreamerName = "http://s1.backend.c3.netplus.se/api/twitch/filters?filterType=users&additionalFilter=id&amount=" + streamerInfo[index].user_id
+    let getStreamerName = "http://localhost:8080/api/twitch/filters?assetType=streamer_info&filterValue=" + streamerInfo[index].user_id
     fetch(getStreamerName)
     .then(response => response.json())
     .then(response => {
@@ -82,7 +85,8 @@ class GamePage extends Component {
           </div>
 
           <div className="streamer-and-viewers-holder"> 
-            <p className="streamer-text"> {this.state.streamName} | View Count: {viewercount} </p>
+            <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
+            <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
 
           <div className="Thumbnail-window-holder">
@@ -91,7 +95,7 @@ class GamePage extends Component {
               image={thumbnail+'800x800.jpg'}
               views={viewCountArray[index]}
               streamName={streamerInfo[index].title}
-              streamerName={streamerInfo[index].display_name}
+              streamerName={streamerInfo[index].user_name}
               onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
               key={index}
               />
