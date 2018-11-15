@@ -47,8 +47,12 @@ class ChatAndInfoWindow extends Component {
         fetch(getPrice) 
         .then(response => response.json())
         .then(response => {
-            this.setState({price: response.final/100 })
-            this.setState({currency: response.currency})
+            if(response.final != 0){
+                this.setState({price: response.final/100 })
+                this.setState({currency: response.currency})
+                } else{
+                this.setState({price: 'FREE'})
+                }
             console.log(this.state.price)
         })
     
