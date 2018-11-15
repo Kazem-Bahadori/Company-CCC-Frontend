@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import '../css/InfoWindow.css';
 import Button from '../atoms/Button.js';
 
-let total_reviews = ''
-let review_score = ''
-let review_score_desc = ''
-let total_positive = ''
-let total_negative = ''
+
 
 class ReviewWindow extends Component {
 

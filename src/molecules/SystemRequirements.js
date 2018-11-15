@@ -7,6 +7,7 @@ class SystemRequirements extends Component {
 
   state = {
     miniReq: '',
+    recommended: '',
   }
 
   componentDidMount() {
@@ -17,11 +18,20 @@ class SystemRequirements extends Component {
     fetch(fetchSystemReq)
     .then(response => response.json())
     .then(response => {
-      console.log("system req response: " + response.pc_requirements.minimum)
-      var temp = JSON.stringify(response.pc_requirements.minimum)
-      temp = temp.replace(/"([^"]+(?="))"/g, '$1')
-      console.log(temp)
-      this.setState({ miniReq: temp })
+      console.log("system req response: " + response.pc_requirements.minimum + response.pc_requirements.recommended)
+
+      var mini = JSON.stringify(response.pc_requirements.minimum)
+      mini = mini.replace(/"([^"]+(?="))"/g, '$1')
+      console.log(mini)
+      this.setState({ miniReq: mini })
+
+      if (response.pc_requirements.recommended !== undefined) {
+        var reco = JSON.stringify(response.pc_requirements.recommended)
+        reco = reco.replace(/"([^"]+(?="))"/g, '$1')
+        console.log(reco)
+        this.setState({ recommended: reco })
+      }
+      
       
     })
   } else {
@@ -37,6 +47,7 @@ class SystemRequirements extends Component {
         <div className="Name-holder">
           
            <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.miniReq }}/>
+           <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.recommended }}/>
 
         </div>
       </div>
