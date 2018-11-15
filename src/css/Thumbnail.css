@@ -41,11 +41,13 @@
     flex: 1;
     height: 15rem;
     background-color: white;
+    border-color: #998675;
 }
 
 .thumbnail-popular-game-image-container:hover {
-    border-color: #998675;
     border-style: solid;
+    transform: scale(1.05);
+    transition: transform 0.1s;
 }
 
 .thumbnaik-popular-game-image {
@@ -58,6 +60,7 @@
     font-size: 0.7rem;
     color: white;
     margin: 0px;
+    margin-top: 0.3rem;
 }
 
 .thumbnail-streamer {
