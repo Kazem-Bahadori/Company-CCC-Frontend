@@ -22,7 +22,7 @@ class GamePage extends Component {
     //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
     streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
-    let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game_id&filterValue=" + this.props.gameId
+    let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
     fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
       //Convert response into json. /Johandg
       .then(response => response.json())

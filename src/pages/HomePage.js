@@ -11,7 +11,7 @@ import SearchPage from '../pages/SearchPage.js';
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let pages = ["HomePage", "GamePage", "SearchPage"];
 let listOfGames
-let currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
+let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50"
 
 class HomePage extends React.Component {
   state = { 
@@ -85,11 +85,11 @@ class HomePage extends React.Component {
   categoryButtonOnClick = (category) => {
     this.setState({currentCategory: category});
     if (category === "Steam Games") {
-      currentFetch = "http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame";
+      currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=category&assetType=games&filterValue=steamGame";
     } else if (category === "Games on Sale") {
       //setState
     } else if(category === "Top Games"){
-      currentFetch = "http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50";
+      currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
     }
     this.setState({currentPage: pages[0]});
     this.fetchFromBackend();
