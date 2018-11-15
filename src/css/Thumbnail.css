@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     background-color: black;
-    width: 16rem;
+    width: 15rem;
     height: 14rem;
     margin: 1%;
     justify-content: center;
@@ -41,8 +41,11 @@
     flex: 1;
     height: 15rem;
     background-color: white;
+}
+
+.thumbnail-popular-game-image-container:hover {
+    border-color: #998675;
     border-style: solid;
-    border-color:  #998675;
 }
 
 .thumbnaik-popular-game-image {
