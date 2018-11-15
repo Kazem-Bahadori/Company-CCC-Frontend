@@ -11,7 +11,8 @@ class Thumbnail extends Component {
 
         
         <div className="thumbnail-popular-game-image-container">
-            <img className="thumbnaik-popular-game-image" src={this.props.image} alt={this.props.gameName} />    
+            <img className="thumbnaik-popular-game-image" src={this.props.image} alt={this.props.gameName} />
+            <div className="overlay_img"> </div>    
         </div>
         <div className="thumbnail-stream-name-holder">
             <p className="thumbnail-viewers"> {this.props.views} viewers </p>
