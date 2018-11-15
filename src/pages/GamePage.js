@@ -20,7 +20,7 @@ class GamePage extends Component {
 
   componentDidMount() {
     //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
-    streamerInfo = []
+    //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
     let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
     fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
@@ -33,6 +33,7 @@ class GamePage extends Component {
         
       )  
       streamDataArray = response.data;
+      
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
           viewercount=streamDataArray[0].viewer_count;
@@ -92,6 +93,9 @@ class GamePage extends Component {
             {thumbnailArray.map((thumbnail, index) =>
               <Thumbnail 
               image={thumbnail+'800x800.jpg'}
+              views={viewCountArray[index]}
+              streamName={streamerInfo[index].title}
+              streamerName={streamerInfo[index].user_name}
               onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
               key={index}
               />
