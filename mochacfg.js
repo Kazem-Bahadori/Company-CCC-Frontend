@@ -22,6 +22,7 @@ describe("mochacfg", function () {
     importTest('SearchPageTest', './test/pages/SearchPageTest'); //search button yet to be implemented
     //importTest('HomePageTest', './test/pages/HomePageTest'); //works but throws an error. bug report written. not currently used
     importTest("GamePageTest", './test/pages/GamePageTest'); //works but throws an error. bug report written
+    importTest("MediaWindowTest", './test/molecules/MediaWindowTest');
     after(function () {
         console.log("\n Tests completed \n Summary:");
     });

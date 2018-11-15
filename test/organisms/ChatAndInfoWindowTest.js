@@ -5,9 +5,10 @@ import React from 'react';
 import ChatAndInfoWindow from '../../src/organisms/ChatAndInfoWindow.js';
 import sinon from 'sinon';
 
-
+//FR062: Display ChatAndInfoWindow
+//Desc: ChatAndInfoWindow should display chat at loading
 describe('FR062: Display chat', () =>{
-  it('ChatAndInfoWindow should display chat at loading', () => {
+  it('ChatAndInfoWindow is rendered correctly', () => {
     let wrapper = shallow(<ChatAndInfoWindow/>);
     //Check if state is set to "Chat" when launching ChatAndInfoWindow
     expect(wrapper.state('contentWindow')).to.equal('Chat');
@@ -17,52 +18,13 @@ describe('FR062: Display chat', () =>{
   });
 });
 
-//goal: write tests for simulating clicks on Chat & Game Info-button and checking if state of ChatAndInfoWindow component is changed
-//not specified as a requirement but makes the test cover all aspects in display chat
-/*describe('FR062: Display Chat', () =>{
-  it('When "Game Info" is pressed, state of showChat should be set to false and showInfo should be set to true', ()=> {
-    //code below finds the two buttons and makes sure they're clickable.
-    let wrapper = shallow(<ChatAndInfoWindow/>);
-    //One button for each tab in ChatAndInfoWindow
-    wrapper.find('.button-style').at(0).simulate('click');
-    wrapper.find('.button-style').at(1).simulate('click');
-    wrapper.find('.button-style').at(2).simulate('click');
-    wrapper.find('.button-style').at(3).simulate('click');
-
-    //TODO: use spies to assure they're clicked
-    //const wrapperInstance = getShallowlyRenderedInstance(<ChatAndInfoWindow />);
-    //const spy = sinon.spy(wrapperInstance, 'onClickChat');
-    //wrapperInstance.render();
-  });
-});
-/*
-//
-describe('FR029: Test ChatAndInfoWindow class', () =>{
+//FR029: Purchase button, response
+//Desc: Purchase button should redirect to Steam's webpage
+describe('FR029: Purchase button, response', () =>{
   it('ChatAndInfoWindow should have a buy button', () => {
-    let wrapper = shallow(<ChatAndInfoWindow/>);
-    expect(wrapper.find('.buy-on-steam-btn').text()).to.equal(' Buy on Steam ');
-    wrapper.find('.buy-on-steam-btn').simulate('click'); //makes sure it redirects to steam when this is implemented
+    const mockRenderBuySteam = 100;
+    const wrapper = shallow(<ChatAndInfoWindow renderBuySteam={mockRenderBuySteam}/>);
+    expect(wrapper.find('.button-style')).to.have.length(4); //returns 4 buttons!
+    wrapper.find('.button-style').first().simulate('click'); //TODO: check the four buttons returned and test click all
   });
 });
-
-//npm install react-addons-test-utils -save to make this work?
-/*getShallowlyRenderedInstance(component) {
-    const renderer = ReactTestUtils.createRenderer();
-    renderer.render(component);
-    return renderer._instance && renderer._instance._instance;
-};*/
-
-/*describe('FooComponent', () => {
-    it('Renders bar by default', () => {
-        const fooInstance = getShallowlyRenderedInstance(<FooComponent />);
-
-        // Now you can spy on instance methods
-        const barSpy = sinon.spy(fooInstance, 'getBar');
-
-        // Now render the instance to execute the expected code path
-        fooInstance.render();
-
-        // Assert that getBar was called as expected
-        assert(barSpy.called);
-    });
-});*/

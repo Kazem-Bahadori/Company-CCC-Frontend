@@ -15,7 +15,7 @@ describe('FR007: Game picture pressed', () => {
     const wrapper = shallow(<HomePage renderGames={homepageSpy}/>);
     const inst = wrapper.instance();
     expect(inst).to.be.instanceOf(HomePage);
-    console.log(wrapper.find('.container').children());
+    wrapper.find('.container');
     //expect(wrapper.find(PopularGame)).to.have.length(1);//.simulate('click');
 
 
