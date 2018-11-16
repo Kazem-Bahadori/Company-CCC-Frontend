@@ -16,7 +16,7 @@
 
 .thumbnail-game-name-holder {
     display: flex;
-    height: auto;
+    height: 0.9rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -50,7 +50,7 @@
 }
 
 .thumbnaik-popular-game-image {
-    display: flex;
+    height: 7.05rem;
     width: 100%;
 }
 
