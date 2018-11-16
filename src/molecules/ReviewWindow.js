@@ -61,7 +61,7 @@ class ReviewWindow extends Component {
   render() {
     return (
       
-      <div className="Info-window-holder">
+      <div>
         
         {this.renderReviews()}
         

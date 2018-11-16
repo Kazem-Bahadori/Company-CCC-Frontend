@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import TwitchChat from '../molecules/TwitchChat.js';
-import ReviewWindow from '../molecules/ReviewWindow';
-import SystemRequirements from '../molecules/SystemRequirements.js';
+import GameInfo from '../molecules/GameInfo.js';
 import '../css/ChatAndInfoWindow.css'
 import steamlogo from '../images/steamlogo.png';
 import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
-let tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
+let tabSubs = ["Chat", "Game Info", "Trailer"];
 let steamId;
 let steamUrl
 
@@ -63,11 +62,8 @@ class ChatAndInfoWindow extends Component {
             case "Chat":
             return <TwitchChat streamName={this.props.streamName} />;
 
-            case "Reviews":
-            return <ReviewWindow steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers}/>;
-
-            case "System Requirements":
-            return <SystemRequirements steamId={steamId} />
+            case "Game Info":
+            return <GameInfo steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers}/>;
 
             case "Trailer":
             alert("Not implemented");
