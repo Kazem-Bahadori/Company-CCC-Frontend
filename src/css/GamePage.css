@@ -1,3 +1,15 @@
+.Testbox {
+    height: 100px;
+}
+/* 
+.Thumbnail-window-holder {
+    overflow: auto; 
+    overflow-y: visible;
+    white-space: nowrap;
+    height: 80%;
+    
+} */
+
 .game-page-container {
     /*margin-top: 10rem;*/
     display: flex;

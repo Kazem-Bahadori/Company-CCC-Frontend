@@ -33,7 +33,7 @@ class GamePage extends Component {
         
       )  
       streamDataArray = response.data;
-      
+      console.log(streamDataArray);
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
           viewercount=streamDataArray[0].viewer_count;
@@ -41,7 +41,7 @@ class GamePage extends Component {
       viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
       if(streamDataArray.length>=4){
-        for(let i=1; i<5; i++){
+        for(let i=1; i<streamDataArray.length; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
         }
@@ -100,7 +100,9 @@ class GamePage extends Component {
               key={index}
               />
             )}
+
           </div>
+         
         </div>
     )
   }
