@@ -90,6 +90,7 @@ class GamePage extends Component {
           </div>
 
           <div className="Thumbnail-window-holder">
+          
             {thumbnailArray.map((thumbnail, index) =>
               <Thumbnail 
               image={thumbnail+'800x800.jpg'}
