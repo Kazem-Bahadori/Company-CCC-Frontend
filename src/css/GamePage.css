@@ -2,7 +2,6 @@
     /*margin-top: 10rem;*/
     display: flex;
     overflow-y: auto;
-    background-color:black;
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
@@ -19,14 +18,12 @@
     margin-top: 2%;
     font-size: 250%;
     color: white;
-
 }
 
 .media-and-chat-holder {
     display: flex;
     height: 70%;
     width: 100%;
-    background-color:black;
     justify-content: flex-end;
     margin-right: 3%;
     margin-top: 3%;
@@ -36,13 +33,12 @@
     display: flex;
     width: 70%;
     height: 4rem;
-    background-color: black;
     margin-right: auto;
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    
+    padding-top: 0.3rem;
 }
 
 .viewer-count-text {
@@ -51,7 +47,15 @@
 }
 
 .streamer-text {
+
     display: flex;
-    font-size: 200%;
+    font-size: x-large;
     margin-left: 3%;
+}
+
+.player-icon {
+    height: 1.3rem;
+    width: auto;
+    padding-top: 0.3rem;
+    padding-right: 1rem;
 }
