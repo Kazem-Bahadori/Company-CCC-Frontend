@@ -12,7 +12,8 @@ let streamDataArray = [];
 let viewercount = '';
 let thumbnailArray = [];
 let viewCountArray = [];
-
+let streamNameArray = [];
+let currentStreamName = '';
 class GamePage extends Component {
   state = {
     streamName: '',
@@ -33,22 +34,26 @@ class GamePage extends Component {
         
       )  
       streamDataArray = response.data;
-      
+      //Getting name of the currently active stream
+          currentStreamName=streamDataArray[0].title;
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
           viewercount=streamDataArray[0].viewer_count;
 
+      streamNameArray[0]=streamDataArray[0].title;
       viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
       if(streamDataArray.length>=4){
         for(let i=1; i<5; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
+
         }
       }else{
         for(let i=1; i<streamDataArray.length+1; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
+          streamNameArray[i]=(streamDataArray[i].title);
         }
       }
       
@@ -63,10 +68,13 @@ class GamePage extends Component {
     fetch(getStreamerName)
     .then(response => response.json())
     .then(response => {
+      console.log(response.data)
       this.setState({streamName: response.data[0].login})
     })
     console.log(viewCountArray[index]);
+    
     viewercount = viewCountArray[index];
+    currentStreamName = streamNameArray[index];
   }
 
   render() {
@@ -83,7 +91,9 @@ class GamePage extends Component {
           steamBool={this.props.steamBool}
           />
           </div>
-
+          <div className="stream-title">
+            <p className="stream-title-name">{currentStreamName}</p>
+          </div>
           <div className="streamer-and-viewers-holder"> 
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
