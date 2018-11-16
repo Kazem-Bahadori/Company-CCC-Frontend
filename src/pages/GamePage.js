@@ -6,6 +6,7 @@ import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
 import player_icon from '../images/player_icon.png';
 import views_icon from '../images/views_icon.png';
+import arrowRight from '../images/arrow-right.png'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -72,16 +73,16 @@ class GamePage extends Component {
   render() {
     return(
       <div className="game-page-container">
-      <div className="game-name-header"> {this.props.gameName} </div>
-        <div className="media-and-chat-holder">
-          <MediaWindow streamName={this.state.streamName}/>
-          <ChatAndInfoWindow 
-          gameName={this.props.gameName}
-          streamName={this.state.streamName} 
-          viewers={viewercount} 
-          price={this.props.price}
-          steamBool={this.props.steamBool}
-          />
+        <div className="game-name-header"> {this.props.gameName} </div>
+          <div className="media-and-chat-holder">
+            <MediaWindow streamName={this.state.streamName}/>
+            <ChatAndInfoWindow 
+            gameName={this.props.gameName}
+            streamName={this.state.streamName} 
+            viewers={viewercount} 
+            price={this.props.price}
+            steamBool={this.props.steamBool}
+            />
           </div>
 
           <div className="streamer-and-viewers-holder"> 
@@ -89,22 +90,29 @@ class GamePage extends Component {
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
 
-          <div className="Thumbnail-window-holder">
-          
-            {thumbnailArray.map((thumbnail, index) =>
-              <Thumbnail 
-              image={thumbnail+'800x800.jpg'}
-              views={viewCountArray[index]}
-              streamName={streamerInfo[index].title}
-              streamerName={streamerInfo[index].user_name}
-              onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
-              key={index}
-              />
-            )}
+          {/* <div className="thumbnail-window-and-arrow-holder"> */}
+            <div className="Thumbnail-window-holder">
+              {thumbnailArray.map((thumbnail, index) =>
+                <Thumbnail 
+                image={thumbnail+'800x800.jpg'}
+                views={viewCountArray[index]}
+                streamName={streamerInfo[index].title}
+                streamerName={streamerInfo[index].user_name}
+                onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
+                key={index}
+                />
+              )}
 
-          </div>
-         
+            </div>
+              {/* Thumbnail right arrow */}
+              {/* <div className="thumbnail-right-arrow-container"> */}
+                <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
+              {/* </div> */}
+              
+          {/* </div> */}
+
         </div>
+        
     )
   }
 }
