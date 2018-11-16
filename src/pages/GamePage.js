@@ -31,7 +31,7 @@ class GamePage extends Component {
         response.data.map((index) =>
         streamerInfo.push(index)
         
-      )  
+      )
       streamDataArray = response.data;
       
       
@@ -53,7 +53,7 @@ class GamePage extends Component {
       }
       
       //Calling accessStreamerName function to start the initial stream. /Johandg
-      this.accessStreamerName(streamerInfo, 0);
+      this.accessStreamerName(streamDataArray, 0);
     })
   }
 
@@ -94,9 +94,9 @@ class GamePage extends Component {
               <Thumbnail 
               image={thumbnail+'800x800.jpg'}
               views={viewCountArray[index]}
-              streamName={streamerInfo[index].title}
-              streamerName={streamerInfo[index].user_name}
-              onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
+              streamName={streamDataArray[index].title}
+              streamerName={streamDataArray[index].user_name}
+              onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
               key={index}
               />
             )}
