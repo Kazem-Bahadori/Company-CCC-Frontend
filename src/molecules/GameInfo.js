@@ -16,8 +16,6 @@ class GameInfo extends Component {
     
         )
     }
-       
-
 }
 
 export default GameInfo;

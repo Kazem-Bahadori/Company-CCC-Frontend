@@ -11,9 +11,20 @@
 }
 
 .Name-holder {
-    height: 10%;
+    height: 10px;
     margin-left: 3%;
     color: white;
+}
+
+.ProgressBar-holder {
+    width: 100%;
+    background-color: grey;
+}
+
+.ProgressBar-progress {
+    display: block;
+    height: 25px;
+    background-color: green;
 }
 
 .Name-text-info {

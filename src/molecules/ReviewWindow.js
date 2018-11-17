@@ -48,12 +48,14 @@ class ReviewWindow extends Component {
     reviewColor = "review-color-red"
   }
     return(
+
     <div className="Name-holder">
-    <p> Score: {this.state.review_score}/10 </p>
-    <p> Average feelings: <span className={reviewColor}> {this.state.review_score_desc} </span> </p>
-    <p> Total Positive: <span className={"review-color-green"}> {this.state.total_positive} </span> </p>
-    <p> Total Negative: <span className={"review-color-red"}>{this.state.total_negative} </span> </p>
-    <p> Total Reviews: {this.state.total_reviews} </p>
+      <div className="Name-holder">  
+        <div className="ProgressBar-holder">
+          <span className="ProgressBar-progress" style={{width: (this.state.total_positive/this.state.total_reviews)*100 +'%'}}></span>
+        </div>
+      </div>
+      {(this.state.total_positive/this.state.total_reviews)*100 +'%'}
     </div>
     );
 
