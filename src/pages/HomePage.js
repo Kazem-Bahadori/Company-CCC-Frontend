@@ -1,5 +1,5 @@
 import React from 'react';
-import PopularGame from '../molecules/PopularGame.js';
+import GameHolder from '../molecules/GameHolder.js';
 import GamePage from '../pages/GamePage.js';
 import SideBar from '../organisms/Sidebar'
 import fish from '../images/fishtv4_yes.png';
@@ -32,6 +32,7 @@ class HomePage extends React.Component {
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
+        console.log(response),
         response.map((index) =>
         this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )    
@@ -43,9 +44,10 @@ class HomePage extends React.Component {
     listOfGames = [];
     for (var i=0; i < this.state.popularGameArray.length; i++) {
       listOfGames.push(
-        <PopularGame 
+        <GameHolder 
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
+          gameId={this.state.popularGameArray[i].id} 
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
           onClick={this.popularGameOnClick.bind(this, i)}
           steamBool={this.state.popularGameArray[i].steam}    
@@ -64,21 +66,22 @@ class HomePage extends React.Component {
     }
   }
 
-  popularGameOnClick = (input) => {
-    var price;
-    if (this.state.popularGameArray[input].steam.price ==! undefined) {
-      price = this.state.popularGameArray[input].steam.price.final / 100
+  popularGameOnClick = (index, gameId, gameName, steam) => {
+    let price;
+    if (steam.price) {
+      price = steam.price.final / 100
     }
     this.setState({currentPage: pages[1]})
     this.setState({
       gamePage: 
-      <GamePage gameName={this.state.popularGameArray[input].name} 
-                gameId={this.state.popularGameArray[input].id} 
+      <GamePage gameName={gameName} 
+                gameId={gameId} 
                 price={price}
-                steamBool={this.state.popularGameArray[input].steam}/>})
+                steamBool={steam}/>})
   }
 
   homeButtonOnClick = () => {
+
     this.setState({currentPage: pages[0]})
   }
 
@@ -96,13 +99,14 @@ class HomePage extends React.Component {
   }
 
   searchButtonOnClick = () => {
+    this.setState({currentCategory: categories[0]})
     this.setState({currentPage: pages[2]})
   }
 
   render() {
     var currentWindow;
     if (this.state.currentPage === pages[2]) {
-      currentWindow =  <SearchPage></SearchPage>
+      currentWindow =  <SearchPage/>
     } else if (this.state.currentPage === pages[1]) {
       currentWindow = this.state.gamePage;
     } else {

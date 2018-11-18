@@ -65,7 +65,6 @@ class GamePage extends Component {
     .then(response => {
       this.setState({streamName: response.data[0].login})
     })
-    console.log(viewCountArray[index]);
     viewercount = viewCountArray[index];
   }
 
