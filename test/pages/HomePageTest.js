@@ -40,16 +40,20 @@ describe('FR002: Home button response', () => {
   it('Pressing home button redirects you to start page', () => {
     const homebuttonSpy = sinon.spy();
     const sidebarSpy = sinon.spy();
-    const wrapper = mount( <HomePage homeButtonOnClick = {homebuttonSpy} handleClick={sidebarSpy} />);
-    expect(wrapper.state().currentPage).to.equal("HomePage");
     let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-    wrapper.setState({categories: mockCategories}); //needed to set state of sidebar to not collapsed.
-    //TODO: how to reach sidebar when it is collapsed by default?
+    //const wrapper = mount( <HomePage homeButtonOnClick = {homebuttonSpy} categories = {mockCategories}> <SideBar handleClick = {sidebarSpy} /> </HomePage>);
+    //const wrapper = shallow(<HomePage homeButtonOnClick = {homebuttonSpy}/>);
+    const wrapper = mount(<HomePage componentDidMount={homebuttonSpy}/>);
+  //  expect(wrapper.find(SideBar)).to.have.lengthOf(1); //fails since rendering fails bc of missing data from backend
+    expect(wrapper.state().currentPage).to.equal("HomePage");
+
+    //wrapper.setState({ categories: mockCategories }); //needed to set state of sidebar to not collapsed.
+
+    //TODO: how to reach sidebar when it is collapsed by default? how to mock fetch call in homepage?
+    // console.log(wrapper.find(SideBar).instance().state());
     //expect(wrapper.find(SideBar)).to.have.length(1);
     //wrapperSideBar.find('.side-bar-image').simulate('click'); //to return to homepage
     //wrapper.setState({ currentPage: "SearchPage" }); //test from other pages
     //assert(wrapper.state().currentPage != "HomePage");
-
-
   });
 });
