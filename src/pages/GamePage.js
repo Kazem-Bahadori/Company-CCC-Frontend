@@ -19,6 +19,7 @@ class GamePage extends Component {
   }
 
   componentDidMount() {
+    document.title = 'FlatfishTV | ' + this.props.gameName;
     //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
     //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg

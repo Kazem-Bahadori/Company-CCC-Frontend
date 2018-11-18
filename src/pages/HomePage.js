@@ -80,10 +80,12 @@ class HomePage extends React.Component {
 
   homeButtonOnClick = () => {
     this.setState({currentPage: pages[0]})
+    document.title = 'FlatfishTV';
   }
 
   categoryButtonOnClick = (category) => {
     this.setState({currentCategory: category});
+    document.title = 'FlatfishTV';
     if (category === "Steam Games") {
       currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=category&assetType=games&filterValue=steamGame";
     } else if (category === "Games on Sale") {
@@ -96,6 +98,7 @@ class HomePage extends React.Component {
   }
 
   searchButtonOnClick = () => {
+    document.title = 'FlatfishTV';
     this.setState({currentPage: pages[2]})
   }
 
