@@ -46,6 +46,7 @@ class HomePage extends React.Component {
         <PopularGame 
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
+          gameId={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
           onClick={this.popularGameOnClick.bind(this, i)}
           steamBool={this.state.popularGameArray[i].steam}    
@@ -76,6 +77,7 @@ class HomePage extends React.Component {
                 gameId={this.state.popularGameArray[input].id} 
                 price={price}
                 steamBool={this.state.popularGameArray[input].steam}/>})
+                console.log(this.state.popularGameArray[input].id)
   }
 
   homeButtonOnClick = () => {
