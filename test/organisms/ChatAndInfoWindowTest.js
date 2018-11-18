@@ -4,7 +4,6 @@ import { shallow, mount, render } from 'enzyme';
 import React from 'react';
 import ChatAndInfoWindow from '../../src/organisms/ChatAndInfoWindow.js';
 import sinon from 'sinon';
-
 //FR062: Display ChatAndInfoWindow
 //Desc: ChatAndInfoWindow should display chat at loading
 describe('FR062: Display chat', () =>{
@@ -18,13 +17,23 @@ describe('FR062: Display chat', () =>{
   });
 });
 
-//FR029: Purchase button, response
-//Desc: Purchase button should redirect to Steam's webpage
-describe('FR029: Purchase button, response', () =>{
-  it('ChatAndInfoWindow should have a buy button', () => {
+describe('FR062: Display chat', () =>{
+  it('ChatAndInfoWindow should have a button for chat that displays the chat if pressed', () => {
     const mockRenderBuySteam = 100;
-    const wrapper = shallow(<ChatAndInfoWindow renderBuySteam={mockRenderBuySteam}/>);
-    expect(wrapper.find('.button-style')).to.have.length(4); //returns 4 buttons!
-    wrapper.find('.button-style').first().simulate('click'); //TODO: check the four buttons returned and test click all
+    var buttonSpy = sinon.spy();
+    let tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
+    const wrapper = shallow(<ChatAndInfoWindow renderBuySteam={mockRenderBuySteam} handleContentWindow={buttonSpy("Chat")}/>); //set contentWindow to Chat
+    expect(wrapper.state().contentWindow).to.equal("Chat"); //making sure "chat" is displayed first
+    expect(wrapper.find('.button-style')).to.have.length(4); //returns 4 buttons (chat, review, system requirements, trailer)
+    //check that ChatAndInfoWindow displays chat when pressed from other tabSubs
+    var i = 0;
+    wrapper.find('.button-style').forEach((node) => {
+      wrapper.find('.button-style').at(i).simulate('click'); //clicking the tab at place i
+      wrapper.find('.button-style').first().simulate('click'); //clicking the tab "Chat
+      expect(buttonSpy.calledOnce).to.equal(true);
+      expect(wrapper.state().contentWindow).to.equal("Chat"); //assure that State is set to "Chat"
+      expect
+      i++;
+    });
   });
 });

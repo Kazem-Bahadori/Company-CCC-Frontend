@@ -8,7 +8,8 @@ import React, { Component } from 'react';
 import HomePage from '../../src/pages/HomePage.js';
 import sinon from 'sinon';
 
-//how to access componentDidMount and see if it is executed correctly?
+//FR007: Game picture pressed
+//Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
 describe('FR007: Game picture pressed', () => {
   it('The button for a specific game shall when pressed redirect the user to that specific game’s page.', () => {
     const homepageSpy = sinon.spy();
@@ -28,3 +29,6 @@ describe('FR007: Game picture pressed', () => {
     //wrapper.find();
   });
 });
+
+//FR029: Purchase button, response
+//Desc: Purchase button should redirect to Steam's webpage
