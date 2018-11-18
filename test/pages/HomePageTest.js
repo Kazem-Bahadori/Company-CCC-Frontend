@@ -6,29 +6,50 @@ const expect = require('chai').expect;
 import { shallow, mount } from 'enzyme';
 import React, { Component } from 'react';
 import HomePage from '../../src/pages/HomePage.js';
+import PopularGame from '../../src/molecules/PopularGame.js';
+import SideBar from '../../src/organisms/SideBar.js';
 import sinon from 'sinon';
 
 //FR007: Game picture pressed
 //Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
 describe('FR007: Game picture pressed', () => {
-  it('The button for a specific game shall when pressed redirect the user to that specific game’s page.', () => {
+  it('Home page is rendered correctly', () => {
     const homepageSpy = sinon.spy();
-    const wrapper = shallow(<HomePage renderGames={homepageSpy}/>);
+    const wrapper = shallow(<HomePage/>);
     const inst = wrapper.instance();
     expect(inst).to.be.instanceOf(HomePage);
-    wrapper.find('.container');
-    //expect(wrapper.find(PopularGame)).to.have.length(1);//.simulate('click');
-
-
-    //const wrapper = mount(<GamePage />);
-
-    //console.log(inst);
-    //expect(inst).to.be.instanceOf(GamePage);
-    //console.log(wrapper.currentStream);
-    //wrapper.find(currentStream);
-    //wrapper.find();
+    expect(wrapper.state().currentPage).to.equal("HomePage");
   });
 });
 
-//FR029: Purchase button, response
-//Desc: Purchase button should redirect to Steam's webpage
+describe('FR007: Game picture pressed', () => {
+  it('The button for a specific game shall when pressed redirect the user to that specific game’s page.', () => {
+    const homepageSpy = sinon.spy();
+    const wrapper = shallow( <HomePage popularGameOnClick={homepageSpy(0)} />);
+    //TODO
+    const mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
+    wrapper.setState({ popularGameArray: "mockGameArray" });
+    //expect(wrapper.find(PopularGame)).to.have.length(2); // returns 13 games?
+    //wrapper.find(PopularGame).simulate('click'); /
+  });
+});
+
+//FR007: Home button response
+//Desc: The user shall be redirected to the home page when pressing the home button.
+describe('FR002: Home button response', () => {
+  it('Pressing home button redirects you to start page', () => {
+    const homebuttonSpy = sinon.spy();
+    const sidebarSpy = sinon.spy();
+    const wrapper = mount( <HomePage homeButtonOnClick = {homebuttonSpy} handleClick={sidebarSpy} />);
+    expect(wrapper.state().currentPage).to.equal("HomePage");
+    let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
+    wrapper.setState({categories: mockCategories}); //needed to set state of sidebar to not collapsed.
+    //TODO: how to reach sidebar when it is collapsed by default?
+    //expect(wrapper.find(SideBar)).to.have.length(1);
+    //wrapperSideBar.find('.side-bar-image').simulate('click'); //to return to homepage
+    //wrapper.setState({ currentPage: "SearchPage" }); //test from other pages
+    //assert(wrapper.state().currentPage != "HomePage");
+
+
+  });
+});
