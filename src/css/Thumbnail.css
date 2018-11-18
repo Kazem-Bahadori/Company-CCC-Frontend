@@ -1,34 +1,66 @@
 .thumbnail-holder {
     display: flex;
     flex-direction: column;
-    width: 22rem;
-    height: auto;
+    background-color: black;
+    width: 15rem;
+    height: 14rem;
     margin: 1%;
     justify-content: center;
-    border-style: solid;
-    border-color:  #998675;
     cursor: pointer;
 }
 
 .thumbnail-stream-name-holder {
-    display: flex;
+    background-color: black;
     justify-content: center;
+    flex-direction: column;
+}
+
+.thumbnail-game-name-holder {
+    display: flex;
+    height: auto;
+    background-color: black;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+    margin-bottom: 0rem;
 }
 
 .thumbnail-game-name {
-    display: flex;
-    font-size: 1em;
-    color: white;
+    font-size: 0.9rem;
+    width: 18rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .thumbnail-popular-game-image-container {
     display: flex;
     flex: 1;
+    height: 15rem;
     background-color: white;
+}
+
+.thumbnail-popular-game-image-container:hover {
+    border-color: #998675;
+    border-style: solid;
 }
 
 .thumbnaik-popular-game-image {
     display: flex;
     width: 100%;
     height:100%;
+}
+
+.thumbnail-viewers {
+    font-size: 0.7rem;
+    color: white;
+    margin: 0px;
+}
+
+.thumbnail-streamer {
+    color: #998675;
+    margin-top: 0.2rem;
 }
