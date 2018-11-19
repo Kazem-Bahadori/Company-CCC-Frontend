@@ -106,7 +106,7 @@ class HomePage extends React.Component {
   render() {
     var currentWindow;
     if (this.state.currentPage === pages[2]) {
-      currentWindow =  <SearchPage/>
+      currentWindow =  <SearchPage onClick={this.popularGameOnClick}/>
     } else if (this.state.currentPage === pages[1]) {
       currentWindow = this.state.gamePage;
     } else {

@@ -1,10 +1,19 @@
 import React from 'react';
+import SearchResult from '../molecules/SearchResult.js';
 
 class SearchPage extends React.Component {
-    state = {suggestions:[]};
+    state = {
+        games: [],
+        streamers: [],
+    };
     render () {
+        const { games, streamers} = this.state;
         return(
-            <h1>Search...</h1>
+            <div>
+                <h1>Search...</h1>
+                < SearchResult games={games} streamers={streamers} />
+            </div>
+            
         )        
     }
 }
