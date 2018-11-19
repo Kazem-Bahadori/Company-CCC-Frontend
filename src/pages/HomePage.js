@@ -71,7 +71,7 @@ class HomePage extends React.Component {
     }
     this.setState({currentPage: pages[1]})
     this.setState({
-      gamePage: 
+      gamePage:
       <GamePage gameName={this.state.popularGameArray[input].name}
                 gameId={this.state.popularGameArray[input].id}
                 price={price}

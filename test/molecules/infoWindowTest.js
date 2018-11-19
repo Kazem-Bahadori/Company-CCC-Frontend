@@ -7,7 +7,6 @@ import InfoWindow from '../../src/molecules/InfoWindow.js';
 import ReactTestUtils from 'react-dom/test-utils';
 
 //Test of InfoWindow, outdated due to changed SRS
-
 describe('Test InfoWindow class', () =>{
   it('InfoWindow should not be null & have class InfoWindow', () => {
     assert.isNotNull(infoWindow);

@@ -18,11 +18,11 @@ describe("mochacfg", function () {
     });
     importTest('buttonTest', './test/atoms/buttonTest');
     importTest('ChatAndInfoWindowTest', './test/organisms/ChatAndInfoWindowTest');
-    importTest('SidebarTest','./test/organisms/SidebarTest');
-    importTest('SearchPageTest', './test/pages/SearchPageTest'); //search button yet to be implemented
+    //importTest('SidebarTest','./test/organisms/SidebarTest');
     importTest("GamePageTest", './test/pages/GamePageTest'); //works but throws an error. bug report written
     importTest("MediaWindowTest", './test/molecules/MediaWindowTest');
     importTest('HomePageTest', './test/pages/HomePageTest'); //works but throws an error. bug report written
+    importTest('SearchPageTest', './test/pages/SearchPageTest'); //search button yet to be implemented
     after(function () {
         console.log("\n Tests completed \n Summary:");
     });

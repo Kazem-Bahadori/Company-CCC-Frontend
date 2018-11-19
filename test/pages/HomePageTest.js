@@ -24,13 +24,25 @@ describe('FR007: Game picture pressed', () => {
 
 describe('FR007: Game picture pressed', () => {
   it('The button for a specific game shall when pressed redirect the user to that specific game’s page.', () => {
-    const homepageSpy = sinon.spy();
-    const wrapper = shallow( <HomePage popularGameOnClick={homepageSpy(0)} />);
-    //TODO
-    const mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
-    wrapper.setState({ popularGameArray: "mockGameArray" });
-    //expect(wrapper.find(PopularGame)).to.have.length(2); // returns 13 games?
+    const gameSpy = sinon.spy();
+    const wrapper = shallow( <HomePage popularGameOnClick={gameSpy(0)} />);
+    expect(wrapper.state().currentPage).to.equal("HomePage");
+    var mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
+    var mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
+    wrapper.setState({ popularGameArray: mockGameArray, categories: mockCategories }); //setting up mock games for rendering
+    wrapper.instance().renderGames();
+    expect(wrapper.find(PopularGame)).to.have.length(2);
+    wrapper.find(PopularGame).first().simulate('click');
+    expect(gameSpy.calledOnce).to.equal(true);
+    expect(wrapper.state().currentPage).to.equal("GamePage");
+
     //wrapper.find(PopularGame).simulate('click'); /
+
+    // const wrapper = shallow( <HomePage searchButtonOnClick = {searchSpy} > <SideBar handleClick= {sidebarSpy}/> </HomePage>); //since searchpage is reached from homepage, we render homepage
+    // var mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
+    // wrapper.setState({ categories: mockCategories });
+    // const mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }]; //must set this array after mounting
+    // wrapper.setState({ popularGameArray: mockGameArray });
   });
 });
 
@@ -41,13 +53,11 @@ describe('FR002: Home button response', () => {
     const homebuttonSpy = sinon.spy();
     const sidebarSpy = sinon.spy();
     let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-    //const wrapper = mount( <HomePage homeButtonOnClick = {homebuttonSpy} categories = {mockCategories}> <SideBar handleClick = {sidebarSpy} /> </HomePage>);
-    //const wrapper = shallow(<HomePage homeButtonOnClick = {homebuttonSpy}/>);
-    const wrapper = mount(<HomePage componentDidMount={homebuttonSpy}/>);
-  //  expect(wrapper.find(SideBar)).to.have.lengthOf(1); //fails since rendering fails bc of missing data from backend
+    const wrapper = mount( <HomePage homeButtonOnClick = {homebuttonSpy} categories = {mockCategories}> <SideBar handleClick = {sidebarSpy} /> </HomePage>);
+    //const wrapper = shallow(<HomePage homeButtonOnClick = {homebuttonSpy}/>);    //wrapper.setState({ categories: mockCategories }); //needed to set state of sidebar to not collapsed.
+    wrapper.setState({ categories: mockCategories }); //needed to set state of sidebar to not collapsed.
+    //expect(wrapper.find(SideBar)).to.have.length(1); //fails since rendering fails bc of missing data from backend
     expect(wrapper.state().currentPage).to.equal("HomePage");
-
-    //wrapper.setState({ categories: mockCategories }); //needed to set state of sidebar to not collapsed.
 
     //TODO: how to reach sidebar when it is collapsed by default? how to mock fetch call in homepage?
     // console.log(wrapper.find(SideBar).instance().state());
