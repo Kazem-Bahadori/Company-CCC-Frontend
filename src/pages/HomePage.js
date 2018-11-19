@@ -15,7 +15,8 @@ let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top
 
 class HomePage extends React.Component {
   state = { 
-    currentPage: pages[0],
+    // currentPage: pages[0],
+    currentPage: pages[2],
     popularGameArray: [],
     gamePage: null,
     currentCategory: categories[0]
@@ -32,7 +33,7 @@ class HomePage extends React.Component {
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
-        console.log(response),
+        // console.log(response),
         response.map((index) =>
         this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )    
