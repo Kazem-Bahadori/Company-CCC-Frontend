@@ -24,14 +24,14 @@ class GamePage extends Component {
     //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
     let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
-    fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+    fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}})
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
         response.data.map((index) =>
         streamerInfo.push(index)
-        
+
       )
       streamDataArray = response.data;
       
@@ -51,7 +51,7 @@ class GamePage extends Component {
           viewCountArray[i]=(streamDataArray[i].viewer_count);
         }
       }
-      
+
       //Calling accessStreamerName function to start the initial stream. /Johandg
       this.accessStreamerName(streamDataArray, 0);
     })
@@ -83,7 +83,7 @@ class GamePage extends Component {
             />
           </div>
 
-          <div className="streamer-and-viewers-holder"> 
+          <div className="streamer-and-viewers-holder">
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
@@ -91,7 +91,7 @@ class GamePage extends Component {
           <div className="Thumbnail-window-holder">
             {/* For each element in thumbnailarray a thumbnail is placed  */}
             {thumbnailArray.map((thumbnail, index) =>
-              <Thumbnail 
+              <Thumbnail
               image={thumbnail+'800x800.jpg'}
               views={viewCountArray[index]}
               streamName={streamerInfo[index].title}
