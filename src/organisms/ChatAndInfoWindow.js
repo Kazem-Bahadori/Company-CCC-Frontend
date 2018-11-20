@@ -29,7 +29,7 @@ class ChatAndInfoWindow extends Component {
             //Sets the URL to correct Steam page, used when clicking on "Buy now" /Johan dG
             steamUrl = "https://store.steampowered.com/app/" + steamId + this.props.gameName
             console.log(steamId)
-            this.accessGamePrice(steamId)   
+            this.accessGamePrice(steamId)
         })
     } else {
         this.setState({price: 'Not available on Steam' })
@@ -38,12 +38,12 @@ class ChatAndInfoWindow extends Component {
      }
 
     }
-    
+
     accessGamePrice = (steamId) => {
 
         // Function to access the price of a steam game. If the price of the game is 0 we instead display "FREE TO PLAY". /Johan dG
         let getPrice = 'http://localhost:8080/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
-        fetch(getPrice) 
+        fetch(getPrice)
         .then(response => response.json())
         .then(response => {
             if (response.final !== 0) {
@@ -54,7 +54,7 @@ class ChatAndInfoWindow extends Component {
             this.setState({currency: response.currency})
             console.log(this.state.price)
         })
-    
+
     }
 
     renderContent = (state) => {
@@ -86,13 +86,13 @@ class ChatAndInfoWindow extends Component {
         if (steamId) {
         return(
             <div className="buy-on-steam-holder">
-                
-                
-                <a href={steamUrl} target="_blank" className="buy-on-steam-btn"> 
+
+
+                <a href={steamUrl} target="_blank" className="buy-on-steam-btn">
                     <img className="steam-buy-logo" src={steamBuyLogo} />
                 </a>
-                
-                
+
+
                 <p className="price-currency">{this.state.price} {this.state.currency}</p>
             </div>
         );
@@ -111,7 +111,7 @@ class ChatAndInfoWindow extends Component {
                         {this.renderContent(this.state.contentWindow)}
                     </div>
                     {this.renderBuySteam()}
-                
+
             </div>
         );
     }
