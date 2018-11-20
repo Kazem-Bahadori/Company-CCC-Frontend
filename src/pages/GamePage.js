@@ -32,12 +32,11 @@ class GamePage extends Component {
         response.data.map((index) =>
         streamerInfo.push(index)
         
-      )  
+      )
       streamDataArray = response.data;
-      console.log(streamDataArray);
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
-          viewercount=streamDataArray[0].viewer_count;
+      viewercount=streamDataArray[0].viewer_count;
 
       viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
@@ -54,7 +53,7 @@ class GamePage extends Component {
       }
       
       //Calling accessStreamerName function to start the initial stream. /Johandg
-      this.accessStreamerName(streamerInfo, 0);
+      this.accessStreamerName(streamDataArray, 0);
     })
   }
 
@@ -66,7 +65,6 @@ class GamePage extends Component {
     .then(response => {
       this.setState({streamName: response.data[0].login})
     })
-    console.log(viewCountArray[index]);
     viewercount = viewCountArray[index];
   }
 
@@ -90,27 +88,21 @@ class GamePage extends Component {
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
 
-          {/* <div className="thumbnail-window-and-arrow-holder"> */}
-            <div className="Thumbnail-window-holder">
-              {thumbnailArray.map((thumbnail, index) =>
-                <Thumbnail 
-                image={thumbnail+'800x800.jpg'}
-                views={viewCountArray[index]}
-                streamName={streamerInfo[index].title}
-                streamerName={streamerInfo[index].user_name}
-                onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
-                key={index}
-                />
-              )}
-
+          <div className="Thumbnail-window-holder">
+            {/* For each element in thumbnailarray a thumbnail is placed  */}
+            {thumbnailArray.map((thumbnail, index) =>
+              <Thumbnail 
+              image={thumbnail+'800x800.jpg'}
+              views={viewCountArray[index]}
+              streamName={streamerInfo[index].title}
+              streamerName={streamerInfo[index].user_name}
+              onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
+              key={index}
+              />
+            )}
             </div>
-              {/* Thumbnail right arrow */}
-              {/* <div className="thumbnail-right-arrow-container"> */}
-                <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
-              {/* </div> */}
-              
-          {/* </div> */}
-
+            {/* Arrow for more thumbnails */}
+            <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
         </div>
         
     )
