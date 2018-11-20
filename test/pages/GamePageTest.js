@@ -51,7 +51,7 @@ describe('FR007: Game picture pressed', () => {
       expect(gameSpy.calledOnce).to.equal(true);
       expect(wrapper.state().currentPage).to.equal("GamePage");
       expect(wrapper.find(GamePage).dive().find(MediaWindow).dive()).to.have.length(1); //one stream is playing
-      //expect(wrapper.find(GamePage).props().streamName).to.equal("fooGame");
+      //expect(wrapper.find(GamePage).props().streamName).to.equal("fooGame"); TODO check if correct game is played
       //console.log(wrapper.find(GamePage).dive().find(MediaWindow).dive().find(ReactPlayer).props());
     });
   });

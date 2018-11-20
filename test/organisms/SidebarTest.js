@@ -12,6 +12,7 @@ describe('FR002, Home button response (SideBar component)' ,() => {
     const wrapper = shallow(<Sidebar />);
     expect(wrapper.state('collapsed')).to.equal(true);
     expect(wrapper.find('.side-bar-container-collapsed')).to.have.length(1);
+    wrapper.setState({ collapsed: false });
     //  wrapper.find('.side-bar-container-collapsed').simulate('click'); //doesn't work for now, get an error message saying
     //"cannot read map of undefined". Leaving this on hold for now
   });

@@ -16,7 +16,7 @@ describe("mochacfg", function () {
     beforeEach(function () {
       // console.log("Start test");
     });
-    importTest('buttonTest', './test/atoms/buttonTest');
+    
     importTest('ChatAndInfoWindowTest', './test/organisms/ChatAndInfoWindowTest');
     //importTest('SidebarTest','./test/organisms/SidebarTest');
     importTest("GamePageTest", './test/pages/GamePageTest'); //works but throws an error. bug report written
