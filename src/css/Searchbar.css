@@ -1,0 +1,16 @@
+.searchbar-container {
+  position: absolute;
+  left: 10rem; 
+  top: 4.5rem;
+}
+.searchbar-input {
+  width: 50rem;
+    height: 30px;
+    font-weight: bold;
+    font-size: 36px;
+    border: transparent;
+    border-bottom: 2px solid #c6b398;
+    padding-bottom: 0.3rem;
+    background-color: transparent;
+    color: #f9f4dc;
+}
