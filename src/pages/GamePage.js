@@ -71,7 +71,7 @@ class GamePage extends Component {
   render() {
     return(
       <div className="game-page-container">
-        <div className="game-name-header"> {this.props.gameName} </div>
+        
           <div className="media-and-chat-holder">
             <MediaWindow streamName={this.state.streamName}/>
             <ChatAndInfoWindow 
@@ -83,7 +83,8 @@ class GamePage extends Component {
             />
           </div>
 
-          <div className="streamer-and-viewers-holder">
+          <div className="streamer-and-viewers-holder"> 
+          <p className="game-name"> {this.props.gameName} </p>
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
