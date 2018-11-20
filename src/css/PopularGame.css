@@ -15,7 +15,7 @@
     margin: 0;
     justify-content: center;
     border-style: solid;
-    border-color: gold;  
+    border-color:#998675; 
 }
 
 
@@ -56,7 +56,8 @@
 
 .popular-game-image-container:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transform: scale(1.1);
+    transform: scale(1.07);
+    transition: transform 0.1s;
 }
 
 .highlighted-game-img {
@@ -68,11 +69,12 @@
     flex: 1;
 }
 
-.highlighted-game-img:hover {
+/*.highlighted-game-img:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transform: scale(1.05);
     transition: transform 0.1s;
 }
+*/
 
 .popular-game-image {
     display: flex;
@@ -86,5 +88,12 @@
     width: 15%;
     height:90%;
     position: relative;
-   
+}
+
+.popular-game-image-logo-highlight {
+    display: flex;
+    margin-bottom: 5%;
+    width: 15%;
+    height:120%;
+    position: relative;
 }

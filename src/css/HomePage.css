@@ -20,7 +20,7 @@
     justify-content: center;
     padding-left: 6rem;
     padding-right: 6rem;
-    color: black;
+    color: blanchedalmond;
 }
 
 .home-button {
@@ -52,5 +52,6 @@
     display: block;
     width: 20rem;
     height: auto;
+    color:blanchedalmond;
 
 }
