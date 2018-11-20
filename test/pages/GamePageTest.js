@@ -27,31 +27,28 @@ describe('FR024: Active stream on game page (GamePage component)', () => {
     });
   });
 
-describe('FR007: Game picture pressed', () => {
-    it('Home page is rendered correctly', () => {
-      const homepageSpy = sinon.spy();
-      const wrapper = shallow(<HomePage/>);
-      const inst = wrapper.instance();
-      expect(inst).to.be.instanceOf(HomePage);
-      expect(wrapper.state().currentPage).to.equal("HomePage");
-    });
-  });
-
-describe('FR007: Game picture pressed', () => {
+//FR007: Game picture pressed
+//Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
+describe('FR007: Game picture pressed (Homepage component)', () => {
     it('The button for a specific game shall when pressed redirect the user to that specific game’s page.', () => {
       const gameSpy = sinon.spy();
       const wrapper = shallow( <HomePage popularGameOnClick={gameSpy(0)} />);
+      //Home page is displayed when app is loaded
       expect(wrapper.state().currentPage).to.equal("HomePage");
+      //Mock variables needed for rendering PopularGame
       var mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
       var mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
-      wrapper.setState({ popularGameArray: mockGameArray, categories: mockCategories }); //setting up mock games for rendering
+      wrapper.setState({ popularGameArray: mockGameArray, categories: mockCategories });
       wrapper.instance().renderGames();
+      //Renders correct number of games
       expect(wrapper.find(PopularGame)).to.have.length(2);
+      //Clicking the a popular game component redirects you to that gamepage
       wrapper.find(PopularGame).first().simulate('click');
       expect(gameSpy.calledOnce).to.equal(true);
       expect(wrapper.state().currentPage).to.equal("GamePage");
-      expect(wrapper.find(GamePage).dive().find(MediaWindow).dive()).to.have.length(1); //one stream is playing
-      //expect(wrapper.find(GamePage).props().streamName).to.equal("fooGame"); TODO check if correct game is played
-      //console.log(wrapper.find(GamePage).dive().find(MediaWindow).dive().find(ReactPlayer).props());
+      //One stream is playing on game page
+      expect(wrapper.find(GamePage).dive().find(MediaWindow).dive()).to.have.length(1);
+      //Checking that game page contains correct game
+      expect(wrapper.find(GamePage).dive().find('.game-name-header').text()).to.equal(" fooGame ");
     });
   });
