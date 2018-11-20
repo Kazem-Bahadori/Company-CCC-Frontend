@@ -47,7 +47,9 @@ class ReviewWindow extends Component {
 
   checkPrice = () => {
     if (this.props.price !== "FREE TO PLAY") {
-      this.price_format = 'Price: '
+      if (this.props.price !== "Not available on Steam") {
+        this.price_format = 'Price: '
+      }
     }
   }
 
@@ -61,6 +63,8 @@ class ReviewWindow extends Component {
       reviewColor = "review-color-red"
     }
     return (
+      <div className="Game-name">
+      <p>{this.props.gameName}</p>
       <div className="Review-holder">
         <div className="ProgressBar-holder">
           <span className="ProgressBar-progress" style={{ width: (this.state.total_positive / this.state.total_reviews) * 100 + '%' }}></span>
@@ -74,6 +78,7 @@ class ReviewWindow extends Component {
           {this.price_format}
           {this.props.price}
           {this.props.currency}
+        </div>
         </div>
       </div>
     );

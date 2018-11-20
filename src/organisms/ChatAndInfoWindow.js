@@ -63,8 +63,8 @@ class ChatAndInfoWindow extends Component {
             return <TwitchChat streamName={this.props.streamName} />;
 
             case "Game Info":
-            return <GameInfo steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
-
+            return <GameInfo gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
+    
             case "Trailer":
             alert("Not implemented");
             break;
