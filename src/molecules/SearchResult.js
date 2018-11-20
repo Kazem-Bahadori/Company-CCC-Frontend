@@ -1,58 +1,66 @@
 import React from 'react';
 import GameHolder from '../molecules/GameHolder.js';
 import StreamerHolder from '../molecules/StreamerHolder.js';
+import '../css/SearchResult.css';
 
 class SearchResult extends React.Component {
     
-    getGameList(){ 
-        console.log("getGameList");
+    getGameList = () => { 
         if(this.props.games.length < 1){
             return <p> No games matches...</p>
         }
         let listOfGames = [];
-       
-        for (var i=0; i < 4; i++){
-            if (i === 4) return;
-            console.log(this.props.games[i].name);
+        this.props.games.map(game => {
             listOfGames.push(
                 <GameHolder 
-                    gameName={this.props.games[i].name}
-                    key={this.props.games[i].id}
-                    gameId={this.props.games[i].id} 
-                    image={this.props.games[i].box_art_url}
-                    onClick={()=> this.props.OnClick}
-                    steamBool={this.props.games[i].steam}    
-                />          
-            )
-            
-        }
-        console.log(listOfGames);
-        return listOfGames;
+                    gameName={game.name}
+                    key={game.id}
+                    gameId={game.id} 
+                    image={game.box_art_url}
+                    // onClick={()=> game.OnClick}
+                    // steamBool={game.steam}    
+                />  
+            )    
+        })
+        return listOfGames.slice(0,4);
     }
 
-    // getStreamerList = () =>{
-    //     if(!this.props.streams){
-    //         return <p> No streamers matches...</p>
-    //     }
-    //     let listOfStreams = this.props.streams.map((stream, index2)=>{
-    //         <StreamerHolder 
-    //             gameName={stream.name}
-    //             key={stream.id}
-    //             gameId={stream.id} 
-    //             image={'https://static-cdn.jtvnw.net/ttv-boxart/' + stream.name + '-800x800.jpg'}
-    //             onClick={()=> this.props.OnClick}
-    //             steamBool={stream.steam}    
-    //         />
-    //         if (index2 === 5) return;
-    //     })
-    //     return listOfStreams;
-    // }
+    getStreamerList = () =>{
+        if(!this.props.streams){
+            return <p> No streamers matches...</p>
+        }
+        let listOfStreams = [];
+        this.props.streams.map(stream=>{
+            // console.log(stream.channel.display_name);
+            listOfStreams.push(
+                <StreamerHolder 
+                    streamName={stream.channel.display_name}
+                    key={stream.id}
+                    gameId={stream.id} 
+                    image={stream.channel.logo}
+                    // onClick={()=> this.props.OnClick}
+                    // steamBool={stream.steam}    
+                />
+            )
+        })
+        return listOfStreams.slice(0, 6);
+    }
 
     render() {
-        console.log(this.props);
         return(
-            <div>
-               {this.getGameList()}
+            <div >
+                {this.props.value &&
+                <div>
+                    <div className="search-result">
+                        {this.getGameList()}
+                    </div> 
+                    <div className="search-result">
+                        {this.getStreamerList()}
+                    </div>
+                </div>                                     
+                }
+               
+               
             </div>
         );
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/StreamerHolder.css'
 
 class StreamerHolder extends React.Component {
 

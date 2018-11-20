@@ -82,7 +82,6 @@ class HomePage extends React.Component {
   }
 
   homeButtonOnClick = () => {
-
     this.setState({currentPage: pages[0]})
   }
 
