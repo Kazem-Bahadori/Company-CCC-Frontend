@@ -29,7 +29,7 @@ describe('FR024: Active stream on game page (GamePage component)', () => {
 
 //FR007: Game picture pressed
 //Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
-describe('FR007: Game picture pressed (Homepage component)', () => {
+describe('FR007: Game picture pressed', () => {
     it('The button for a specific game shall when pressed redirect the user to that specific game’s page.', () => {
       const gameSpy = sinon.spy();
       const wrapper = shallow( <HomePage popularGameOnClick={gameSpy(0)} />);
@@ -49,6 +49,6 @@ describe('FR007: Game picture pressed (Homepage component)', () => {
       //One stream is playing on game page
       expect(wrapper.find(GamePage).dive().find(MediaWindow).dive()).to.have.length(1);
       //Checking that game page contains correct game
-      expect(wrapper.find(GamePage).dive().find('.game-name-header').text()).to.equal(" fooGame ");
+      expect(wrapper.find(GamePage).dive().find('.game-name').text()).to.equal(" fooGame ");
     });
   });
