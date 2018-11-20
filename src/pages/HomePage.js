@@ -15,8 +15,7 @@ let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top
 
 class HomePage extends React.Component {
   state = { 
-    // currentPage: pages[0],
-    currentPage: pages[2],
+    currentPage: pages[0],
     popularGameArray: [],
     gamePage: null,
     currentCategory: categories[0]
