@@ -2,22 +2,10 @@ import React, { Component } from 'react';
 import '../css/PopularGame.css';
 import steamlogo from '../images/steamlogo.png';
 
-let holderStyle;
 class PopularGame extends Component {
 
-  componentDidMount() {
-    console.log("PG DID MOUNT " + this.props.gameId)
-   
-    if (this.props.gameId === '21779') {
-      holderStyle = 'highlighted-game'
-      console.log("LEAGUE OF LEGENDS")
-    } else {
-       holderStyle = 'popular-game-holder';
-    }
-  }
-
   render() {
-
+    //Checks if the game is Dota 2 or Dead by Daylight (highlighted)
     if (this.props.steamBool && (this.props.gameId === '29595'|| this.props.gameId === '491487')) {
     return (
       <div onClick={this.props.onClick} className='highlighted-game'>
@@ -33,7 +21,7 @@ class PopularGame extends Component {
     </div>
      
     );
-    //Checks if the game is Fortnite (highlighted)
+    //Checks if the game is a steam game
   } else if (this.props.steamBool) {
     return(
       <div onClick={this.props.onClick} className='popular-game-holder'>
@@ -51,7 +39,7 @@ class PopularGame extends Component {
     );
   } else {
     return(
-      <div onClick={this.props.onClick} className={holderStyle}>
+      <div onClick={this.props.onClick} className='popular-game-holder'>
       <div className="popular-game-image-container">
         <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
       </div>
