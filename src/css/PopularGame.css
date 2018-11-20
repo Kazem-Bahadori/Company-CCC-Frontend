@@ -7,6 +7,17 @@
     justify-content: center;    
 }
 
+.highlighted-game {
+    display: flex;
+    flex-direction: column;
+    width: 32rem;
+    height: 24rem;
+    margin: 0;
+    justify-content: center;
+    border-style: solid;
+    border-color: gold;  
+}
+
 
 .game-name-holder {
     display: flex;
@@ -46,18 +57,17 @@
     transform: scale(1.1);
 }
 
-.highlighted-game {
+.highlighted-game-img {
     display: flex;
-    flex: 1;
+    width: 50%;
+    height: 100%;
     background-color: #998675;
     cursor: pointer;
-    border-style: solid;
-    border-color: gold;
 }
 
-.highlighted-game:hover {
+.highlighted-game-img:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .popular-game-image {
