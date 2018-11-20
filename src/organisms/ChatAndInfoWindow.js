@@ -46,7 +46,7 @@ class ChatAndInfoWindow extends Component {
         .then(response => response.json())
         .then(response => {
             if (response.final !== 0) {
-            this.setState({price: response.final/100 })
+                this.setState({price: response.final/100 })
             } else {
                 this.setState({price: "FREE TO PLAY"})
             }
@@ -63,7 +63,7 @@ class ChatAndInfoWindow extends Component {
             return <TwitchChat streamName={this.props.streamName} />;
 
             case "Game Info":
-            return <GameInfo steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers}/>;
+            return <GameInfo steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
 
             case "Trailer":
             alert("Not implemented");

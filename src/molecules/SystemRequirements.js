@@ -42,7 +42,7 @@ class SystemRequirements extends Component {
   render() {
     return (
       
-        <div className="Name-holder">
+        <div>
           
            <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.miniReq }}/>
            <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.recommended }}/>
