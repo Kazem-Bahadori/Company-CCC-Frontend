@@ -13,6 +13,7 @@ let streamDataArray = [];
 let viewercount = '';
 let thumbnailArray = [];
 let viewCountArray = [];
+let thumbnailUpdateNumber='';
 
 class GamePage extends Component {
   state = {
@@ -54,6 +55,7 @@ class GamePage extends Component {
       
       //Calling accessStreamerName function to start the initial stream. /Johandg
       this.accessStreamerName(streamDataArray, 0);
+     
     })
   }
 
@@ -67,6 +69,8 @@ class GamePage extends Component {
     })
     viewercount = viewCountArray[index];
   }
+
+  
 
   render() {
     return(
@@ -90,8 +94,10 @@ class GamePage extends Component {
 
           <div className="Thumbnail-window-holder">
             {/* For each element in thumbnailarray a thumbnail is placed  */}
+           
             {thumbnailArray.map((thumbnail, index) =>
-              <Thumbnail 
+              <Thumbnail
+              id={"thumbnail"+index}
               image={thumbnail+'800x800.jpg'}
               views={viewCountArray[index]}
               streamName={streamerInfo[index].title}
@@ -100,9 +106,12 @@ class GamePage extends Component {
               key={index}
               />
             )}
+           
             </div>
             {/* Arrow for more thumbnails */}
+           <a href="#thumbnail8" className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow">
             <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
+           </a> 
         </div>
         
     )
