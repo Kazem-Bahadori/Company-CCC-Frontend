@@ -66,16 +66,12 @@ class HomePage extends React.Component {
   }
 
   popularGameOnClick = (input) => {
-    var price;
-    if (this.state.popularGameArray[input].steam.price ==! undefined) {
-      price = this.state.popularGameArray[input].steam.price.final / 100
-    }
+   
     this.setState({currentPage: pages[1]})
     this.setState({
       gamePage: 
       <GamePage gameName={this.state.popularGameArray[input].name} 
                 gameId={this.state.popularGameArray[input].id} 
-                price={price}
                 steamBool={this.state.popularGameArray[input].steam}/>})
                 console.log(this.state.popularGameArray[input].id)
   }

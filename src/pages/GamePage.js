@@ -80,7 +80,6 @@ class GamePage extends Component {
           gameName={this.props.gameName}
           streamName={this.state.streamName} 
           viewers={viewercount} 
-          price={this.props.price}
           steamBool={this.props.steamBool}
           />
           </div>
