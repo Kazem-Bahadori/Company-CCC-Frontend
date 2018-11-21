@@ -37,14 +37,16 @@ class GamePage extends Component {
         
       )
       streamDataArray = response.data;
+      // console.log(streamDataArray);
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
       viewercount=streamDataArray[0].viewer_count;
 
-      viewCountArray[0]=streamDataArray[0].viewer_count;
+      // viewCountArray[0]=streamDataArray[0].viewer_count;
+      
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
       if(streamDataArray.length>=4){
-        for(let i=1; i<streamDataArray.length; i++){
+        for(let i=0; i<streamDataArray.length; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
         }
@@ -105,15 +107,24 @@ class GamePage extends Component {
           {this.state.streamName.length !== 0 &&
           <div className="Thumbnail-window-holder">
             {/* For each element in thumbnailarray a thumbnail is placed  */}
-            {thumbnailArray.map((thumbnail, index) =>
-              <Thumbnail 
-              image={thumbnail+'800x800.jpg'}
-              views={viewCountArray[index]}
-              streamName={streamerInfo[index].title}
-              streamerName={streamerInfo[index].user_name}
-              onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
-              key={index}
-              />
+            {thumbnailArray.map((thumbnail, index) => {
+              
+              // Lowercase name to be able to compare streamName to streamerInfo name
+              var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
+        
+              // Only print a thumbnail if not playing in mediawindow
+              if(this.state.streamName!==nameLowerCase){  
+                return(
+                <Thumbnail 
+                image={thumbnail+'800x800.jpg'}
+                views={viewCountArray[index]}
+                streamName={streamDataArray[index].title}
+                streamerName={streamDataArray[index].user_name}
+                onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                key={index}
+                />);
+              }
+              return;}
             )}
             </div>
           }

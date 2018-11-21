@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import TwitchChat from '../molecules/TwitchChat.js';
-import ReviewWindow from '../molecules/ReviewWindow';
-import SystemRequirements from '../molecules/SystemRequirements.js';
+import GameInfo from '../molecules/GameInfo.js';
 import '../css/ChatAndInfoWindow.css'
 import steamlogo from '../images/steamlogo.png';
 import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
-let tabSubs = ["Chat", "Reviews", "System Requirements" , "Trailer"];
+let tabSubs = [];
 let steamId;
 let steamUrl
 
@@ -31,9 +30,11 @@ class ChatAndInfoWindow extends Component {
             console.log(steamId)
             this.accessGamePrice(steamId)   
         })
+            tabSubs = ["Chat", "Game Info", "Trailer"];
+        
     } else {
-        this.setState({price: 'Not available on Steam' })
-        this.setState({currency: ''})
+        tabSubs = ["Chat", "Trailer"]
+        this.setState({contentWindow: "Chat"})
         steamId = undefined
      }
 
@@ -47,7 +48,7 @@ class ChatAndInfoWindow extends Component {
         .then(response => response.json())
         .then(response => {
             if (response.final !== 0) {
-            this.setState({price: response.final/100 })
+                this.setState({price: response.final/100 })
             } else {
                 this.setState({price: "FREE TO PLAY"})
             }
@@ -62,13 +63,10 @@ class ChatAndInfoWindow extends Component {
         switch(state){
             case "Chat":
             return <TwitchChat streamName={this.props.streamName} />;
-
-            case "Reviews":
-            return <ReviewWindow steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers}/>;
-
-            case "System Requirements":
-            return <SystemRequirements steamId={steamId} />
-
+            
+            case "Game Info":
+            return <GameInfo steamUrl={steamUrl} gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
+            
             case "Trailer":
             alert("Not implemented");
             break;
@@ -79,24 +77,6 @@ class ChatAndInfoWindow extends Component {
         //onClick function that sets the State to which tab you clicked.
         // Kind of a helper function to "renderContent()" /Johan dG
         this.setState({contentWindow: newSubject});
-    }
-
-    renderBuySteam = () => {
-        // Function that renders the "Buy on Steam Button" depending on wether the game is steam game or not. /Johan dG
-        if (steamId) {
-        return(
-            <div className="buy-on-steam-holder">
-                
-                
-                <a href={steamUrl} target="_blank" className="buy-on-steam-btn"> 
-                    <img className="steam-buy-logo" src={steamBuyLogo} />
-                </a>
-                
-                
-                <p className="price-currency">{this.state.price} {this.state.currency}</p>
-            </div>
-        );
-     }
     }
 
     render() {
@@ -110,7 +90,6 @@ class ChatAndInfoWindow extends Component {
                     <div className="content-window">
                         {this.renderContent(this.state.contentWindow)}
                     </div>
-                    {this.renderBuySteam()}
                 
             </div>
         );
