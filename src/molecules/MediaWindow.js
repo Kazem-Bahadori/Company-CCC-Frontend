@@ -30,7 +30,6 @@ class MediaWindow extends Component {
     console.log("Render Media Window")
   
     if (this.props.streamName.length === 0) {
-      console.log("IF SATS")
       return(
       <div className="error-message">
       <h1> Sorry there are no active streams for this game </h1>
