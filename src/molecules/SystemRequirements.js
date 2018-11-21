@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/InfoWindow.css';
 import Button from '../atoms/Button.js';
 
 
@@ -35,7 +34,7 @@ class SystemRequirements extends Component {
       
     })
   } else {
-    this.setState({ miniReq: "Sorry we can't show you the requirements for this game!" })
+    this.setState({ miniReq: "Sorry, game information is not available for this game!" })
   }
 
   
@@ -43,16 +42,12 @@ class SystemRequirements extends Component {
   render() {
     return (
       
-      <div className="Info-window-holder">
-        <div className="Name-holder">
+        <div>
           
            <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.miniReq }}/>
            <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.recommended }}/>
 
         </div>
-      </div>
-
-
     );
   }
 }
