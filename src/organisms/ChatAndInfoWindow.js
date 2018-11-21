@@ -5,13 +5,13 @@ import '../css/ChatAndInfoWindow.css'
 import steamlogo from '../images/steamlogo.png';
 import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
-let tabSubs = ["Chat", "Game Info", "Trailer"];
+let tabSubs = ["Game Info", "Chat", "Trailer"];
 let steamId;
 let steamUrl
 
 class ChatAndInfoWindow extends Component {
     state = {
-        contentWindow: "Chat",
+        contentWindow: "Game Info",
         price: '',
         currency: '',
     }
