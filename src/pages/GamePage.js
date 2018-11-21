@@ -35,11 +35,8 @@ class GamePage extends Component {
         
       )
       streamDataArray = response.data;
-<<<<<<< HEAD
       //Getting name of the currently active stream
           currentStreamName=streamDataArray[0].title;
-=======
->>>>>>> dev
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
       viewercount=streamDataArray[0].viewer_count;
@@ -75,11 +72,6 @@ class GamePage extends Component {
       console.log(response.data)
       this.setState({streamName: response.data[0].login})
     })
-<<<<<<< HEAD
-    console.log(viewCountArray[index]);
-    
-=======
->>>>>>> dev
     viewercount = viewCountArray[index];
     currentStreamName = streamNameArray[index];
   }
@@ -98,11 +90,11 @@ class GamePage extends Component {
             steamBool={this.props.steamBool}
             />
           </div>
-          <div className="stream-title">
-            <p className="stream-title-name">{currentStreamName}</p>
-          </div>
+
+          
           <div className="streamer-and-viewers-holder"> 
-          <p className="game-name"> {this.props.gameName} </p>
+            <p className="stream-title-name">{currentStreamName}</p>
+            <p className="game-name"> {this.props.gameName} </p>
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
