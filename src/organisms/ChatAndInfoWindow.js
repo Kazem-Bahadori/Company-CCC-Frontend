@@ -63,7 +63,8 @@ class ChatAndInfoWindow extends Component {
             return <TwitchChat streamName={this.props.streamName} />;
 
             case "Game Info":
-            return <GameInfo  gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
+
+            return <GameInfo steamUrl={steamUrl} gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
     
             case "Trailer":
             alert("Not implemented");
@@ -77,23 +78,6 @@ class ChatAndInfoWindow extends Component {
         this.setState({contentWindow: newSubject});
     }
 
-    renderBuySteam = () => {
-        // Function that renders the "Buy on Steam Button" depending on wether the game is steam game or not. /Johan dG
-        if (steamId) {
-        return(
-            <div className="buy-on-steam-holder">                  
-                <a href={steamUrl} target="_blank" className="buy-on-steam-btn"> 
-                    <div style={{margin: '0.5rem'}}>
-                        {'Buy Game on'}
-                    </div>    
-                    <img className="steam-buy-logo" src={steamBuyLogo} />
-                </a>
-
-            </div>
-        );
-     }
-    }
-
     render() {
         return(
             <div className="container-window">
@@ -105,7 +89,6 @@ class ChatAndInfoWindow extends Component {
                     <div className="content-window">
                         {this.renderContent(this.state.contentWindow)}
                     </div>
-                    {this.renderBuySteam()}
                 
             </div>
         );
