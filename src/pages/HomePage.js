@@ -92,7 +92,7 @@ class HomePage extends React.Component {
     if (category === "Steam Games") {
       currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=category&assetType=games&filterValue=steamGame";
     } else if (category === "Games on Sale") {
-      
+      currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
     } else if(category === "Top Games"){
       currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
     }

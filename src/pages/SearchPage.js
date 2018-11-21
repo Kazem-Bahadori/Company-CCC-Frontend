@@ -15,7 +15,6 @@ class SearchPage extends React.Component {
 
     fetchGamesFromBackend = (value) => { 
         this.setState({ gameArray: [] });
-
         fetch(starterStringGames.concat(value), {})
         .then(response => response.json())
         .then(response => {

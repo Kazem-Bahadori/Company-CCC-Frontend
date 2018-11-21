@@ -38,6 +38,8 @@
     flex: 1;
     background-color: #998675;
     cursor: pointer;
+    transition: transform 0.1s;
+    
 }
 
 .popular-game-image-container-steam {
@@ -46,12 +48,12 @@
     border-color: darkgreen;
     border-style: solid;
     
-    
 }
 
 .popular-game-image-container:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transform: scale(1.1);
+    transition: transform 0.1s;
 }
 
 .popular-game-image {

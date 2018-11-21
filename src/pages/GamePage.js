@@ -6,6 +6,7 @@ import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
 import player_icon from '../images/player_icon.png';
 import views_icon from '../images/views_icon.png';
+import arrowRight from '../images/arrow-right.png'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -34,14 +35,13 @@ class GamePage extends Component {
       )
       streamDataArray = response.data;
       
-      
       // Viewer count (later sent to infowindow though chatandinfowindow)
-          viewercount=streamDataArray[0].viewer_count;
+      viewercount=streamDataArray[0].viewer_count;
 
       viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
       if(streamDataArray.length>=4){
-        for(let i=1; i<5; i++){
+        for(let i=1; i<streamDataArray.length; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
         }
@@ -71,36 +71,41 @@ class GamePage extends Component {
   render() {
     return(
       <div className="game-page-container">
-      <div className="game-name-header"> {this.props.gameName} </div>
-        <div className="media-and-chat-holder">
-          <MediaWindow streamName={this.state.streamName}/>
-          <ChatAndInfoWindow 
-          gameName={this.props.gameName}
-          streamName={this.state.streamName} 
-          viewers={viewercount} 
-          price={this.props.price}
-          steamBool={this.props.steamBool}
-          />
+        
+          <div className="media-and-chat-holder">
+            <MediaWindow streamName={this.state.streamName}/>
+            <ChatAndInfoWindow 
+            gameName={this.props.gameName}
+            streamName={this.state.streamName} 
+            viewers={viewercount} 
+            price={this.props.price}
+            steamBool={this.props.steamBool}
+            />
           </div>
 
           <div className="streamer-and-viewers-holder"> 
+          <p className="game-name"> {this.props.gameName} </p>
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div>
 
           <div className="Thumbnail-window-holder">
+            {/* For each element in thumbnailarray a thumbnail is placed  */}
             {thumbnailArray.map((thumbnail, index) =>
               <Thumbnail 
               image={thumbnail+'800x800.jpg'}
               views={viewCountArray[index]}
-              streamName={streamDataArray[index].title}
-              streamerName={streamDataArray[index].user_name}
-              onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+              streamName={streamerInfo[index].title}
+              streamerName={streamerInfo[index].user_name}
+              onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
               key={index}
               />
             )}
-          </div>
+            </div>
+            {/* Arrow for more thumbnails */}
+            <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
         </div>
+        
     )
   }
 }
