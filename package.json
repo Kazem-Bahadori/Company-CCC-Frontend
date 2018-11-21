@@ -21,10 +21,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts babel",
-    "test_frontend": "mocha ./mochacfg.js --compilers js:babel-core/register mochacfg.js",
+    "test_frontend": "nyc --reporter=cobertura mocha ./mochacfg.js --compilers js:babel-core/register mochacfg.js",
     "create_result": "mocha ./mochacfg.js --compilers js:babel-core/register mochacfg.js test --reporter mocha-junit-reporter",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coverage": "nyc report"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -39,6 +40,17 @@
     "jsdom": "13.0.0",
     "jsdom-global": "3.0.2",
     "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
     "react-addons-test-utils": "^15.6.2"
+  },
+  "nyc": {
+    "include": [
+      "**/atoms/*.js",
+      "**/molecules/*.js",
+      "**/organisms/*.js",
+      "**/pages/*.js"
+    
+    ]
   }
+
 }

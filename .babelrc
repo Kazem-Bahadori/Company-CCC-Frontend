@@ -1,7 +1,9 @@
 {
-    "presets": [
-        "env",
-        "react"
-    ],
+    "presets": ["env", "react"],
+    "env": {
+        "test": {
+            "plugins": ["istanbul"]
+        }
+    },
     "plugins": ["css-modules-transform", "transform-class-properties"]
 }
