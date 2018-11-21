@@ -21,12 +21,11 @@ class GamePage extends Component {
 
   componentDidMount() {
     document.title = 'FlatfishTV | ' + this.props.gameName;
-    console.log(this.props.gameId)
     //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
     //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
     let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
-    fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+    fetch(currentStream) 
       .then(this.handleErrors)
       //Convert response into json. /Johandg
       .then(response => response.json())

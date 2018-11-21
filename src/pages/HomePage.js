@@ -35,7 +35,7 @@ class HomePage extends React.Component {
     fetchFromBackend = () => {
       if (this.mounted) {
       this.setState({ popularGameArray: [] });
-      fetch(currentFetch, {}) 
+      fetch(currentFetch) 
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg

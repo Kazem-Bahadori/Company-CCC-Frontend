@@ -27,7 +27,6 @@ class ChatAndInfoWindow extends Component {
             steamId = response.appId
             //Sets the URL to correct Steam page, used when clicking on "Buy now" /Johan dG
             steamUrl = "https://store.steampowered.com/app/" + steamId + this.props.gameName
-            console.log(steamId)
             this.accessGamePrice(steamId)   
         })
             tabSubs = ["Chat", "Game Info", "Trailer"];
@@ -53,7 +52,6 @@ class ChatAndInfoWindow extends Component {
                 this.setState({price: "FREE TO PLAY"})
             }
             this.setState({currency: response.currency})
-            console.log(this.state.price)
         })
     
     }
