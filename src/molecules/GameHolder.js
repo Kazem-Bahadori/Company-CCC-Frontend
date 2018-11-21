@@ -10,6 +10,24 @@ class GameHolder extends React.Component {
     let steamBool = this.props.steamBool;
     let onClick = this.props.onClick;
 
+     //Checks if the game is Dota 2 or Dead by Daylight (highlighted)
+     if (this.props.steamBool && (this.props.gameId === '29595'|| this.props.gameId === '491487')) {
+      return (
+        <div onClick={onClick.bind(this, gameId, gameName, steamBool)}className='highlighted-game'>
+          <div className='highlighted-game-img'>
+          <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
+          <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
+          
+        </div>
+        <div className="game-name-holder">
+          <p className="game-name"> {this.props.gameName}</p>
+          <img className="popular-game-image-logo-highlight" src={steamlogo} />
+        </div>
+      </div>
+       
+      );
+    }
+
     return(
       <div onClick={onClick.bind(this, gameId, gameName, steamBool)} className="popular-game-holder">
         <div className="popular-game-image-container">
