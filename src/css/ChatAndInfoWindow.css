@@ -39,20 +39,23 @@
 .buy-on-steam-holder {
     display: flex;
     height: 2.7rem;
-    margin: 0.5rem;
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    position: absolute;
     bottom: 0;
-    
 }
 
 .price-currency {
     margin-left: 5%;
 }
+
 .buy-on-steam-btn {
     display: flex;
     background-color: #998675;
     justify-content: center;
     align-items: center;
-    width: 45%;
+    width: 55%;
     text-decoration: none;
     color: black;
     font-weight: bold;

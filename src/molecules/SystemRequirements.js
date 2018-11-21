@@ -34,7 +34,7 @@ class SystemRequirements extends Component {
       
     })
   } else {
-    this.setState({ miniReq: "Sorry we can't show you the requirements for this game!" })
+    this.setState({ miniReq: "Sorry, game information is not available for this game!" })
   }
 
   

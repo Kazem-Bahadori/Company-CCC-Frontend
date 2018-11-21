@@ -63,7 +63,6 @@ class ChatAndInfoWindow extends Component {
             return <TwitchChat streamName={this.props.streamName} />;
 
             case "Game Info":
-
             return <GameInfo steamUrl={steamUrl} gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
     
             case "Trailer":
