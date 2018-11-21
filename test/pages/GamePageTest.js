@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import HomePage from '../../src/pages/HomePage.js';
 import GamePage from '../../src/pages/GamePage.js';
 import MediaWindow from '../../src/molecules/MediaWindow.js';
-import PopularGame from '../../src/molecules/PopularGame';
+import GameHolder from '../../src/molecules/GameHolder';
 import ReactPlayer from 'react-player';
 import sinon from 'sinon';
 
@@ -32,18 +32,18 @@ describe('FR024: Active stream on game page (GamePage component)', () => {
 describe('FR007: Game picture pressed', () => {
     it('The button for a specific game shall when pressed redirect the user to that specific game’s page.', () => {
       const gameSpy = sinon.spy();
-      const wrapper = shallow( <HomePage popularGameOnClick={gameSpy(0)} />);
+      const wrapper = shallow( <HomePage GameHolderOnClick={gameSpy(0)} />);
       //Home page is displayed when app is loaded
       expect(wrapper.state().currentPage).to.equal("HomePage");
-      //Mock variables needed for rendering PopularGame
+      //Mock variables needed for rendering GameHolder
       var mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
       var mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
-      wrapper.setState({ popularGameArray: mockGameArray, categories: mockCategories });
+      wrapper.setState({ GameHolderArray: mockGameArray, categories: mockCategories });
       wrapper.instance().renderGames();
       //Renders correct number of games
-      expect(wrapper.find(PopularGame)).to.have.length(2);
+      expect(wrapper.find(GameHolder)).to.have.length(2);
       //Clicking the a popular game component redirects you to that gamepage
-      wrapper.find(PopularGame).first().simulate('click');
+      wrapper.find(GameHolder).first().simulate('click');
       expect(gameSpy.calledOnce).to.equal(true);
       expect(wrapper.state().currentPage).to.equal("GamePage");
       //One stream is playing on game page

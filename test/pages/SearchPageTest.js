@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 import HomePage from '../../src/pages/HomePage.js';
 import SearchPage from '../../src/pages/SearchPage.js';
 import Sidebar from '../../src/organisms/Sidebar.js';
-import PopularGame from  '../../src/molecules/PopularGame.js';
 import sinon from 'sinon';
 
 //FR012: Search bar, response

@@ -6,7 +6,6 @@ const expect = require('chai').expect;
 import { shallow, mount } from 'enzyme';
 import React, { Component } from 'react';
 import HomePage from '../../src/pages/HomePage.js';
-import PopularGame from '../../src/molecules/PopularGame.js';
 import SideBar from '../../src/organisms/SideBar.js';
 import sinon from 'sinon';
 
