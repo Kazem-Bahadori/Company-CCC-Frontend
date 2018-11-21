@@ -1,6 +1,8 @@
 import React from 'react';
 import '../css/PopularGame.css';
 import steamlogo from '../images/steamlogo.png';
+import deadbydaylightpromo from '../images/deadbydaylight.png';
+import dota2promo from '../images/dota2promo.png';
 
 
 class GameHolder extends React.Component {
@@ -15,8 +17,12 @@ class GameHolder extends React.Component {
       return (
         <div onClick={onClick.bind(this, gameId, gameName, steamBool)}className='highlighted-game'>
           <div className='highlighted-game-img'>
-          <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
-          <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
+          {this.props.gameId === '491487' &&
+          <img className="popular-game-image" src={deadbydaylightpromo} alt={this.props.gameName} />
+          }
+          {this.props.gameId === '29595' &&
+          <img className="popular-game-image" src={dota2promo} alt={this.props.gameName} />
+        }
           
         </div>
         <div className="game-name-holder">
