@@ -12,6 +12,7 @@ let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let pages = ["HomePage", "GamePage", "SearchPage"];
 let listOfGames
 let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50"
+let mounted;
 
 class HomePage extends React.Component {
   state = { 
@@ -22,10 +23,17 @@ class HomePage extends React.Component {
   }
   
     componentDidMount() {
+       this.mounted = true;
        this.fetchFromBackend()
     }
 
+    componentWillUnmount() {
+      //Cancel the setState of popularGameArray inside fetchFromBackend().
+      this.mounted = false;
+    }
+
     fetchFromBackend = () => {
+      if (this.mounted) {
       this.setState({ popularGameArray: [] });
       fetch(currentFetch, {}) 
       //Convert response into json. /Johandg
@@ -37,6 +45,7 @@ class HomePage extends React.Component {
         this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )    
       })
+    }
     }
   
    //Function to render the top 20 games. /Johandg

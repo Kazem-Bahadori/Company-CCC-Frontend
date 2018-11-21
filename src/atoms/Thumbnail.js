@@ -3,7 +3,7 @@ import '../css/Thumbnail.css';
 
 class Thumbnail extends Component {
   render() {
-    console.log(this.props.streamerName);
+   
     return (
       <div className="thumbnail-holder" onClick={this.props.onClick}>  
         <div className="thumbnail-popular-game-image-container">
