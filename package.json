@@ -14,7 +14,6 @@
     "nodejs": "0.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-addons-test-utils": "^15.6.2",
     "react-player": "^1.6.6",
     "react-scripts": "^1.1.5",
     "sinon": "^7.1.1"
@@ -42,7 +41,6 @@
     "jsdom-global": "3.0.2",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0"
-    
   },
   "nyc": {
     "include": [
@@ -50,8 +48,6 @@
       "**/molecules/*.js",
       "**/organisms/*.js",
       "**/pages/*.js"
-    
     ]
   }
-
 }
