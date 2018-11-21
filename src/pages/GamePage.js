@@ -34,6 +34,7 @@ class GamePage extends Component {
         
       )
       streamDataArray = response.data;
+      // console.log(streamDataArray);
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
       viewercount=streamDataArray[0].viewer_count;
@@ -95,7 +96,7 @@ class GamePage extends Component {
             {thumbnailArray.map((thumbnail, index) => {
               
               // Lowercase name to be able to compare streamName to streamerInfo name
-              var nameLowerCase=(streamerInfo[index].user_name).toLowerCase();
+              var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
         
               // Only print a thumbnail if not playing in mediawindow
               if(this.state.streamName!==nameLowerCase){  
@@ -103,8 +104,8 @@ class GamePage extends Component {
                 <Thumbnail 
                 image={thumbnail+'800x800.jpg'}
                 views={viewCountArray[index]}
-                streamName={streamerInfo[index].title}
-                streamerName={streamerInfo[index].user_name}
+                streamName={streamDataArray[index].title}
+                streamerName={streamDataArray[index].user_name}
                 onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
                 key={index}
                 />);
