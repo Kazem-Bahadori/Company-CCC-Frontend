@@ -20,11 +20,13 @@ class GamePage extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.gameId)
     //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
     //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
     let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
     fetch(currentStream, {headers: {"Client-ID": '3jxj3x3uo4h6xcxh2o120cu5wehsab'}}) 
+      .then(this.handleErrors)
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
@@ -56,8 +58,18 @@ class GamePage extends Component {
       
       //Calling accessStreamerName function to start the initial stream. /Johandg
       this.accessStreamerName(streamDataArray, 0);
-    })
+    }).catch(function(error) {
+      console.log(error);
+  });
+  
   }
+
+   handleErrors = (response) => {
+    if (!response.ok) {
+        throw Error(response.statusText + " This game has no active streams");
+    }
+    return response;
+}
 
   accessStreamerName(streamerInfo, index) {
     //Here we set the streamName state which is used to start a stream of a specific streamer. /Johandg
@@ -84,13 +96,14 @@ class GamePage extends Component {
             steamBool={this.props.steamBool}
             />
           </div>
-
+          {this.state.streamName.length !== 0 &&
           <div className="streamer-and-viewers-holder"> 
           <p className="game-name"> {this.props.gameName} </p>
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
-          </div>
-
+          </div> }
+          
+          {this.state.streamName.length !== 0 &&
           <div className="Thumbnail-window-holder">
             {/* For each element in thumbnailarray a thumbnail is placed  */}
             {thumbnailArray.map((thumbnail, index) => {
@@ -106,17 +119,20 @@ class GamePage extends Component {
                 views={viewCountArray[index]}
                 streamName={streamDataArray[index].title}
                 streamerName={streamDataArray[index].user_name}
-                onClick={this.accessStreamerName.bind(this, streamerInfo, index)}
+                onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                 key={index}
                 />);
               }
               return;}
             )}
-          </div>
-            {/* Arrow for more thumbnails */}
+            </div>
+          }
+            {this.state.streamName.length !== 0 &&
             <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
-      </div>
-        
+            }
+          
+        </div>
+          
     )
   }
 }
