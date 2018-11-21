@@ -5,7 +5,7 @@ import '../css/ChatAndInfoWindow.css'
 import steamlogo from '../images/steamlogo.png';
 import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
-let tabSubs = ["Game Info", "Chat", "Trailer"];
+let tabSubs = [];
 let steamId;
 let steamUrl
 
@@ -30,9 +30,11 @@ class ChatAndInfoWindow extends Component {
             console.log(steamId)
             this.accessGamePrice(steamId)   
         })
+            tabSubs = ["Game Info", "Chat", "Trailer"];
+        
     } else {
-        this.setState({price: 'Not available on Steam' })
-        this.setState({currency: ''})
+        tabSubs = ["Chat", "Trailer"]
+        this.setState({contentWindow: "Chat"})
         steamId = undefined
      }
 
@@ -61,10 +63,10 @@ class ChatAndInfoWindow extends Component {
         switch(state){
             case "Chat":
             return <TwitchChat streamName={this.props.streamName} />;
-
+            
             case "Game Info":
             return <GameInfo steamUrl={steamUrl} gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
-    
+            
             case "Trailer":
             alert("Not implemented");
             break;
