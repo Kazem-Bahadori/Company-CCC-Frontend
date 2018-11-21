@@ -1,5 +1,7 @@
 import React from 'react';
-import Searchbar from '../molecules/Searchbar';
+import SearchResult from '../molecules/SearchResult.js';
+import Searchbar from '../molecules/Searchbar.js';
+import '../css/SearchResult.css';
 
 let starterStringGames = 'http://localhost:8080/api/twitch/search?assetType=games&queryString=';
 let starterStringStreamers = 'http://localhost:8080/api/twitch/search?assetType=streams&queryString=';
@@ -7,7 +9,8 @@ class SearchPage extends React.Component {
 
     state = {
         gameArray:[],
-        streamerArray: []
+        streamerArray: [],
+        value:''
     };    
 
     fetchGamesFromBackend = (value) => { 
@@ -47,6 +50,7 @@ class SearchPage extends React.Component {
 
     handleChange = (e) => {
         let inputValue = this.handleInputChars(e.target.value.trim());
+        this.setState({value: inputValue});
         if(inputValue <1){
             return;
         } 
@@ -55,12 +59,15 @@ class SearchPage extends React.Component {
     }
 
     render () {
-        if(this.state.gameArray.length>1){
-
-        }  
         return(
-            <div>
+            <div className="search-result-container">
                 <Searchbar onChange={this.handleChange}/>
+                <SearchResult 
+                    games={this.state.gameArray} 
+                    streams={this.state.streamerArray} 
+                    value={this.state.value} 
+                    onClick={this.props.onClick}
+                />
             </div>        
         )        
     }
