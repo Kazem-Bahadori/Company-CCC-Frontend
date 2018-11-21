@@ -1,7 +1,12 @@
 .Game-name {
     display: flex;
     flex-direction: column;
-    margin: 0.5rem;
+    font-size: 1.7rem;
+    color: #998675;
+    margin: 0.7rem;
+    margin-left: 0.5rem;
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
 .Info-window-holder {
@@ -13,11 +18,13 @@
 }
 
 .Pricetag {
+    margin-left: 0.5rem;
     color: grey;
     font-size: 0.85rem;
 }
 
 .Review-holder {
+    margin-left: 0.5rem;
     height: 1rem;
     display: flex;
     flex-direction: row;
@@ -43,14 +50,20 @@
     background-color: green;
 }
 
+.Percentage-holder {
+    margin-right: 0.2rem;
+}
+
 .Name-text-info {
     font-size: 1em;
     color: black; 
 }
 
 .Reqs {
-    padding: 0.5em;
+    padding: 0.5rem;
     font-size: 0.75em;
+    margin-top: 0.5rem;
+
 }
 
 a {

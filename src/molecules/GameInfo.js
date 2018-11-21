@@ -10,7 +10,10 @@ class GameInfo extends Component {
         return(
 
             <div className="Info-window-holder">
-                <ReviewWindow gameName={this.props.gameName} steamId={this.props.steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.props.price} currency={this.props.currency}/>
+                <div className="Game-name">
+                    {this.props.gameName}
+                </div>
+                <ReviewWindow steamId={this.props.steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.props.price} currency={this.props.currency}/>
                 <SystemRequirements steamId={this.props.steamId} />
             </div>
     

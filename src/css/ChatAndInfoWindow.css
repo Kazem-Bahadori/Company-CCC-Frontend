@@ -46,13 +46,16 @@
 }
 .buy-on-steam-btn {
     display: flex;
-    background-color: #F8F2DD;
+    background-color: #998675;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 45%;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 
 .steam-buy-logo {
-    height: 50%;
-    width: 50%;
+    height: 1.5rem;
+    width: 4.5rem;
 }

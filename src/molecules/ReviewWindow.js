@@ -63,16 +63,14 @@ class ReviewWindow extends Component {
       reviewColor = "review-color-red"
     }
     return (
-      <div className="Game-name">
-      <p>{this.props.gameName}</p>
       <div className="Review-holder">
         <div className="ProgressBar-holder">
           <span className="ProgressBar-progress" style={{ width: (this.state.total_positive / this.state.total_reviews) * 100 + '%' }}></span>
         </div>
-        <div>
-          {Math.round((this.state.total_positive / this.state.total_reviews) * 100) + '%  '}
-        </div>
-        <FontAwesomeIcon icon={['far', 'thumbs-up']}/>
+        <div className="Percentage-holder">
+          {Math.round((this.state.total_positive / this.state.total_reviews) * 100) + '%'}
+        </div>    
+          <FontAwesomeIcon icon={['far', 'thumbs-up']}/>
         <div className="Pricetag">
           {this.checkPrice()}
           {this.price_format}
@@ -80,7 +78,6 @@ class ReviewWindow extends Component {
           {this.props.currency}
         </div>
         </div>
-      </div>
     );
 
   }
