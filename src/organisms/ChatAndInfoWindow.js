@@ -11,7 +11,7 @@ let steamUrl
 
 class ChatAndInfoWindow extends Component {
     state = {
-        contentWindow: "Game Info",
+        contentWindow: "Chat",
         price: '',
         currency: '',
     }
@@ -30,7 +30,7 @@ class ChatAndInfoWindow extends Component {
             console.log(steamId)
             this.accessGamePrice(steamId)   
         })
-            tabSubs = ["Game Info", "Chat", "Trailer"];
+            tabSubs = ["Chat", "Game Info", "Trailer"];
         
     } else {
         tabSubs = ["Chat", "Trailer"]
