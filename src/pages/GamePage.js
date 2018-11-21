@@ -47,7 +47,7 @@ class GamePage extends Component {
         for(let i=1; i<5; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
-
+          streamNameArray[i]=(streamDataArray[i].title);
         }
       }else{
         for(let i=1; i<streamDataArray.length+1; i++){
