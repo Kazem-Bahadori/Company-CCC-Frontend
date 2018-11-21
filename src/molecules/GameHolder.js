@@ -8,9 +8,10 @@ class GameHolder extends React.Component {
     let gameName = this.props.gameName;
     let gameId = this.props.gameId;
     let steamBool = this.props.steamBool;
+    let onClick = this.props.onClick;
 
     return(
-      <div onClick={() => this.props.onClick(gameId, gameName, steamBool)} className="popular-game-holder">
+      <div onClick={onClick.bind(this, gameId, gameName, steamBool)} className="popular-game-holder">
         <div className="popular-game-image-container">
           <img className="popular-game-image" src={this.props.image} alt={this.props.gameName} />
         </div>

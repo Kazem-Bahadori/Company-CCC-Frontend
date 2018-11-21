@@ -1,24 +1,35 @@
 import React from 'react';
 import GameHolder from '../molecules/GameHolder.js';
 import StreamerHolder from '../molecules/StreamerHolder.js';
+import fish from '../images/fishtv4_yes.png';
 import '../css/SearchResult.css';
 
+
 class SearchResult extends React.Component {
+
+    getFishPlaceholder(string) {
+        return(
+            <p className="search-placeholder">
+            <img className="search-loading" src= {fish} alt="FlatFishTV"/>
+              {string} 
+            </p>
+        )
+    }
     
     getGameList = () => { 
         if(this.props.games.length < 1){
-            return <p> No games matches...</p>
+            return  this.getFishPlaceholder("Loading...")
         }
         let listOfGames = [];
-        this.props.games.map(game => {
+        this.props.games.map((game,i) => {
             listOfGames.push(
                 <GameHolder 
                     gameName={game.name}
                     key={game.id}
                     gameId={game.id} 
                     image={game.box_art_url}
-                    // onClick={()=> game.OnClick}
-                    // steamBool={game.steam}    
+                    onClick={this.props.onClick}
+                    steamBool={false}    
                 />  
             )    
         })
@@ -26,20 +37,19 @@ class SearchResult extends React.Component {
     }
 
     getStreamerList = () =>{
-        if(!this.props.streams){
-            return <p> No streamers matches...</p>
+        if(this.props.streams.length < 1){
+            return;
         }
         let listOfStreams = [];
-        this.props.streams.map(stream=>{
-            // console.log(stream.channel.display_name);
+        this.props.streams.map(stream => {
             listOfStreams.push(
                 <StreamerHolder 
                     streamName={stream.channel.display_name}
                     key={stream.id}
                     gameId={stream.id} 
                     image={stream.channel.logo}
-                    // onClick={()=> this.props.OnClick}
-                    // steamBool={stream.steam}    
+                    streamGame={stream.channel.game}
+                    
                 />
             )
         })
@@ -48,12 +58,14 @@ class SearchResult extends React.Component {
 
     render() {
         return(
-            <div >
+            <div>
                 {this.props.value &&
                 <div>
+                    <p className="search-titles">Games</p>
                     <div className="search-result">
                         {this.getGameList()}
                     </div> 
+                    <p className="search-titles">Streamers</p>
                     <div className="search-result">
                         {this.getStreamerList()}
                     </div>

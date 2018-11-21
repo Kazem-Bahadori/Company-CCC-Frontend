@@ -15,8 +15,7 @@ let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top
 
 class HomePage extends React.Component {
   state = { 
-    // currentPage: pages[0],
-    currentPage: pages[2],
+    currentPage: pages[0],
     popularGameArray: [],
     gamePage: null,
     currentCategory: categories[0]
@@ -50,7 +49,7 @@ class HomePage extends React.Component {
           key={this.state.popularGameArray[i].id}
           gameId={this.state.popularGameArray[i].id} 
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
-          onClick={this.popularGameOnClick.bind(this, i)}
+          onClick={this.popularGameOnClick.bind(this)}
           steamBool={this.state.popularGameArray[i].steam}    
         />
       )
@@ -67,7 +66,7 @@ class HomePage extends React.Component {
     }
   }
 
-  popularGameOnClick = (index, gameId, gameName, steam) => {
+  popularGameOnClick = (gameId, gameName, steam) => {
     let price;
     if (steam.price) {
       price = steam.price.final / 100
@@ -75,10 +74,13 @@ class HomePage extends React.Component {
     this.setState({currentPage: pages[1]})
     this.setState({
       gamePage: 
-      <GamePage gameName={gameName} 
-                gameId={gameId} 
-                price={price}
-                steamBool={steam}/>})
+      <GamePage 
+        gameName={gameName} 
+        gameId={gameId} 
+        price={price}
+        steamBool={steam}
+      />
+    })
   }
 
   homeButtonOnClick = () => {

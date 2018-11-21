@@ -19,7 +19,6 @@ class SearchPage extends React.Component {
         fetch(starterStringGames.concat(value), {})
         .then(response => response.json())
         .then(response => {
-            // console.log(response)
             if (!response.games) return;
             response.games.map((index) =>
                 this.setState({ gameArray: [...this.state.gameArray, index] }),
@@ -32,7 +31,6 @@ class SearchPage extends React.Component {
         fetch(starterStringStreamers.concat(value), {})
         .then(response => response.json())
         .then(response => {
-            console.log(response)
             if (!response.streams) return;
             response.streams.map((index) =>
                 this.setState({ streamerArray: [...this.state.streamerArray, index] }),
@@ -65,7 +63,12 @@ class SearchPage extends React.Component {
         return(
             <div className="search-result-container">
                 <Searchbar onChange={this.handleChange}/>
-                <SearchResult games={this.state.gameArray} streams={this.state.streamerArray} value={this.state.value}/>
+                <SearchResult 
+                    games={this.state.gameArray} 
+                    streams={this.state.streamerArray} 
+                    value={this.state.value} 
+                    onClick={this.props.onClick}
+                />
             </div>        
         )        
     }
