@@ -10,7 +10,7 @@ class MediaWindow extends Component {
   renderMediaWindow = () => {
     if (this.props.streamName !== null) {
       return(
-        <div className="media-window-media">
+      <div className="media-window-media">
         <ReactPlayer
             url={ 'https://www.twitch.tv/' + this.props.streamName} 
             playing
@@ -18,7 +18,7 @@ class MediaWindow extends Component {
             height="100%"
             
           />
-    </div>
+      </div>
 
       );
     } 
@@ -27,23 +27,19 @@ class MediaWindow extends Component {
   render() {
     
     console.log(ReactPlayer.canPlay('https://www.twitch.tv/' + this.props.streamName));
-    console.log("Render Media Window")
-  
+
     if (this.props.streamName.length === 0) {
       return(
       <div className="error-message">
       <h1> Sorry there are no active streams for this game </h1>
       </div>
       );
-     
     }
    
     return (
       <div className="media-window-holder">
        {this.renderMediaWindow()}
-      
           </div>
-    
     );
   
   }
