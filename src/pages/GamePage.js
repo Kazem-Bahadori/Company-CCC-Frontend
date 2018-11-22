@@ -34,7 +34,7 @@ class GamePage extends Component {
       .then(response => {
         response.data.map((index) =>
         streamerInfo.push(index)
-        
+
       )
       streamDataArray = response.data;
       //Getting name of the currently active stream
@@ -59,7 +59,7 @@ class GamePage extends Component {
           streamNameArray[i]=(streamDataArray[i].title);
         }
       }
-      
+
       //Calling accessStreamerName function to start the initial stream. /Johandg
       this.accessStreamerName(streamDataArray, 0);
     }).catch(function(error) {
