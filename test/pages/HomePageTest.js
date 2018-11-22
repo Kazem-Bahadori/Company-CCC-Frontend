@@ -6,7 +6,7 @@ const expect = require('chai').expect;
 import { shallow, mount } from 'enzyme';
 import React, { Component } from 'react';
 import HomePage from '../../src/pages/HomePage.js';
-import SideBar from '../../src/organisms/SideBar.js';
+import Sidebar from '../../src/organisms/Sidebar.js';
 import sinon from 'sinon';
 
 //FR007: Game picture pressed
