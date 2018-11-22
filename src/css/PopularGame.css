@@ -7,6 +7,15 @@
     justify-content: center;    
 }
 
+.highlighted-game {
+    display: flex;
+    flex-direction: column;
+    width: 32rem;
+    height: 25rem;
+    margin: 0;
+    justify-content: center;
+}
+
 .game-name-holder {
     display: flex;
     height: 3rem;
@@ -42,19 +51,27 @@
     
 }
 
-.popular-game-image-container-steam {
-    display: flex;
-    flex: 1;
-    border-color: darkgreen;
-    border-style: solid;
-    
-}
-
 .popular-game-image-container:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transform: scale(1.1);
+    transform: scale(1.07);
     transition: transform 0.1s;
 }
+
+.highlighted-game-img {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #998675;
+    cursor: pointer;
+    flex: 1;
+}
+
+.highlighted-game-img:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.05);
+    transition: transform 0.1s;
+}
+
 
 .popular-game-image {
     display: flex;
@@ -65,8 +82,14 @@
 
 .popular-game-image-logo {
     display: flex;
-    width: 15%;
+    width: 18%;
     height:90%;
     position: relative;
-   
+}
+
+.popular-game-image-logo-highlight {
+    display: flex;
+    width: 9%;
+    height:92%;
+    position: relative;
 }
