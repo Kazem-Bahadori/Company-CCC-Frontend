@@ -15,6 +15,7 @@ let thumbnailArray = [];
 let viewCountArray = [];
 let streamNameArray = [];
 let currentStreamName = '';
+
 class GamePage extends Component {
   state = {
     streamName: '',
@@ -130,7 +131,20 @@ class GamePage extends Component {
                 streamerName={streamDataArray[index].user_name}
                 onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                 key={index}
+                currentStream={this.state.streamName===nameLowerCase}
                 />);
+              }else{
+                return(
+                  <Thumbnail 
+                  image={thumbnail+'800x800.jpg'}
+                  views={viewCountArray[index]}
+                  streamName={streamDataArray[index].title}
+                  streamerName={streamDataArray[index].user_name}
+                  // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                  key={index}
+                  currentStream={this.state.streamName===nameLowerCase}
+                  />);
+
               }
               return;}
             )}

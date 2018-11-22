@@ -6,7 +6,7 @@ class Thumbnail extends Component {
    
     return (
       <div className="thumbnail-holder" onClick={this.props.onClick}>  
-        <div className="thumbnail-popular-game-image-container">
+        <div className={this.props.currentStream ? "thumbnail-popular-game-image-container disabled" : "thumbnail-popular-game-image-container"}>
             <img className="thumbnaik-popular-game-image" src={this.props.image} alt={this.props.gameName} />
             <div className="overlay_img"> </div>    
         </div>
