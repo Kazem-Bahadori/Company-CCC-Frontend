@@ -15,9 +15,8 @@ describe('FR062: Display chat', () =>{
   it('ChatAndInfoWindow is rendered correctly', () => {
     let wrapper = shallow(<ChatAndInfoWindow/>);
     //Check if state is set to "Chat" when launching ChatAndInfoWindow
-    expect(wrapper.state().contentWindow).to.equal('Game Info');
+    expect(wrapper.state().contentWindow).to.equal('Chat');
     //Assure that ChatAndInfoWindow & TwitchChat is rendered when switch to chat tab
-    wrapper.setState({ contentWindow: "Chat" });
     expect(wrapper.find('.container-window')).to.have.length(1);
     expect(wrapper.find('.content-window')).to.have.length(1);
     expect(wrapper.find(TwitchChat)).to.have.length(1);
@@ -31,8 +30,8 @@ describe('FR062: Display chat', () =>{
      //Implement spy on chat button/tab
      const wrapper = shallow(<ChatAndInfoWindow renderBuySteam={mockRenderBuySteam} handleContentWindow={buttonSpy("Chat")}/>);
      //Expecting "game info" to be displayed first
-     expect(wrapper.state().contentWindow).to.equal("Game Info");
-     expect(wrapper.find('.button-style')).to.have.length(3); //returns 4 buttons (game info, chat, trailer)
+     expect(wrapper.state().contentWindow).to.equal("Chat");
+     expect(wrapper.find('.button-style')).to.have.length(2); //returns 4 buttons (game info, chat) //game info only showed if steambool true
     //Check that ChatAndInfoWindow displays chat when pressed from other tabSubs
     var i = 0;
     //Error message from following code bc. of alert notice in chatandinfowindow ("Trailer").
