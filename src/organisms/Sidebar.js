@@ -52,8 +52,22 @@ render(){
     }
     return(
             <div className="side-bar-container-collapsed" onClick={this.handleClick}>
+                <div className="side-bar-content">
+                    <div className="side-bar-image-container">
+                        <img className="side-bar-image" onClick={this.props.homeButtonResponse} src= {fish} alt="FlatFishTV"/>
+                    </div>
+                    <div className="side-bar-search" onClick = {this.props.searchButtonResponse}>
+                        <img className="side-bar-search-image" src= {search} alt="Search"/>
+                        Search
+                    </div>
+                    {this.props.categories.map((category) => 
+                        <div key={category} className="side-bar-button" onClick={() => this.props.categoryOnClick(category)}>{category}</div>
+                    )}
+                    </div>
+                    <div className="side-bar-arrow">
                     <img className="side-bar-arrow-image" src= {arrowRight} alt="Arrow"/>
                 </div>
+            </div>
     )
 }
 

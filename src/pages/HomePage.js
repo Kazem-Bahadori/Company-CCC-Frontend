@@ -35,7 +35,7 @@ class HomePage extends React.Component {
     fetchFromBackend = () => {
       if (this.mounted) {
       this.setState({ popularGameArray: [] });
-      fetch(currentFetch, {})
+      fetch(currentFetch) 
       //Convert response into json. /Johandg
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
@@ -56,7 +56,7 @@ class HomePage extends React.Component {
         <GameHolder 
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
-          gameId={this.state.popularGameArray[i].id} 
+          gameId={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
           onClick={this.popularGameOnClick.bind(this)}
           steamBool={this.state.popularGameArray[i].steam}    
@@ -94,10 +94,12 @@ class HomePage extends React.Component {
 
   homeButtonOnClick = () => {
     this.setState({currentPage: pages[0]})
+    document.title = 'FlatfishTV';
   }
 
   categoryButtonOnClick = (category) => {
     this.setState({currentCategory: category});
+    document.title = 'FlatfishTV';
     if (category === "Steam Games") {
       currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=category&assetType=games&filterValue=steamGame";
     } else if (category === "Games on Sale") {
@@ -110,6 +112,7 @@ class HomePage extends React.Component {
   }
 
   searchButtonOnClick = () => {
+    document.title = 'FlatfishTV';
     this.setState({currentCategory: categories[0]})
     this.setState({currentPage: pages[2]})
   }
