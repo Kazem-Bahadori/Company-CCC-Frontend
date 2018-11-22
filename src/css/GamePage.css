@@ -1,8 +1,41 @@
-.game-page-container {
-    /*margin-top: 10rem;*/
+.thumbnail-window-and-arrow-holder{
     display: flex;
+    width: 100%;
+    height: 40%;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    justify-content: left;
+    flex-direction: row;
+    position: relative;
+    vertical-align: top;
+   
+
+}
+.thumbnail-right-arrow-container{
+    /* display:flex;
+    position:absolute; */
+    /* height:-50%; */
+    bottom:0;
+
+}
+
+/* 
+.Thumbnail-window-holder {
+    overflow: auto; 
+    overflow-y: visible;
+    white-space: nowrap;
+    height: 80%;
+    
+} */
+
+::-webkit-scrollbar {
+    /* Remove scrollbar for thumbnails */
+    background: transparent;  
+}
+
+.game-page-container {
+    /*display: flex;*/
     overflow-y: auto;
-    background-color:black;
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
@@ -11,22 +44,12 @@
     position: absolute;
 }
 
-.game-name-header {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    padding-left: 4%;
-    margin-top: 2%;
-    font-size: 250%;
-    color: white;
 
-}
 
 .media-and-chat-holder {
     display: flex;
     height: 70%;
     width: 100%;
-    background-color:black;
     justify-content: flex-end;
     margin-right: 3%;
     margin-top: 3%;
@@ -35,23 +58,46 @@
 .streamer-and-viewers-holder {
     display: flex;
     width: 70%;
-    height: 4rem;
-    background-color: black;
+    height: 0rem;
     margin-right: auto;
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    
+    padding-top: 0.3rem;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+}
+
+.game-name {
+    color:#998675;
+    padding-left: 0.5rem;
 }
 
 .viewer-count-text {
     display: flex;
-    font-size: 30%
+    color: #F9F4DC;
 }
 
 .streamer-text {
     display: flex;
-    font-size: 200%;
-    margin-left: 3%;
+    font-size: 1rem;
+    color: #F9F4DC;
+    font-family: RenogareSoft, Tahoma, sans-serif;
+    
+}
+.stream-title-name{
+    font-size: 1rem;
+    color: #F9F4DC;
+    font-family: RenogareSoft, Tahoma, sans-serif;
+    padding-left: 4rem;
+}
+
+.player-icon {
+    height: 1rem;
+    width: auto;
+    padding-right: 0.5rem;
+    padding-left: 2rem;
+    padding-top: 0.2rem;
+
 }

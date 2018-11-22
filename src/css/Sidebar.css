@@ -2,7 +2,9 @@
     position: fixed;
     height: 100%;
     width: 14.6rem;
-    left: 0;
+    left: -14.6rem;
+    transform: translateX(14.6rem);
+    transition: 0.5s ease-in-out;
 }
 
 .side-bar-content {
@@ -11,7 +13,8 @@
     height: 100%;
     width: 13rem;
     background-color: #282828;
-    border-right: solid 0.5rem  #998675; 
+    border-right: solid 0.5rem  #998675;
+    box-shadow: 15px 0px 30px black;
     color: white;
     overflow: hidden;
 }
@@ -20,29 +23,35 @@
     position: fixed;
     left: 0;
     height: 100%;
-    width: 1.3rem;
-    border-left: solid 0.5rem  #998675; 
     color: white;
+    transform: translateX(-13rem);
+    transition: 0.5s ease-in-out;
 }
 
 .side-bar-arrow-image{
     width: 1rem;
     height: auto;
-    position: absolute;
+    position: fixed;
     top: 50%;
-    right:0;
+    right: 0;
+    left: -0.4rem;
+    transform: translateX(14.6rem);
+    transition: transform 1s ease-in-out;
 }
 
 .side-bar-image{
-    margin-top: 0,5rem;
+    margin-top: 0.5rem;
     display: block;
     width: 10rem;
     height: auto;
     margin: auto;
     margin-top: 0.5rem; 
+    cursor: pointer;
+    transition: 2s;
 }
 
 .side-bar-image-container{
+    margin-top: 2.5rem;
     height: 10rem;
     width: 13rem;
 }
@@ -55,10 +64,18 @@
 .side-bar-search{
     padding: 1rem;
     text-align: center;
-    font-weight: bold;
+    font-weight: normal;
     font-size: x-large;
-    border: solid black 1px;
+    border-top: solid #191816 3px;
+    border-bottom: solid #191816 3px;
+    box-shadow: 5px 0px 5px 0 rgba(0, 0, 0, 0.15), 5px 0px 5px 0 rgba(0, 0, 0, 0.15);
     margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.side-bar-search:hover {
+    font-weight: bold;
+    cursor: pointer;
 }
 .side-bar-search-image{
     height: 1.2rem;
@@ -70,6 +87,7 @@
     padding-left: 3rem;
     font-size: large;
     cursor: pointer;
+    border-left:#282828 solid 0.3rem;
 }
 
 .side-bar-button:hover {

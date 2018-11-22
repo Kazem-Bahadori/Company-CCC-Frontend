@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/InfoWindow.css';
 import Button from '../atoms/Button.js';
 
 
@@ -7,6 +6,7 @@ class SystemRequirements extends Component {
 
   state = {
     miniReq: '',
+    recommended: '',
   }
 
   componentDidMount() {
@@ -17,12 +17,24 @@ class SystemRequirements extends Component {
     fetch(fetchSystemReq)
     .then(response => response.json())
     .then(response => {
-      console.log("system req response: " + response.pc_requirements.minimum)
-      this.setState({ miniReq: response.pc_requirements.minimum })
+      console.log("system req response: " + response.pc_requirements.minimum + response.pc_requirements.recommended)
+
+      var mini = JSON.stringify(response.pc_requirements.minimum)
+      mini = mini.replace(/"([^"]+(?="))"/g, '$1')
+      console.log(mini)
+      this.setState({ miniReq: mini })
+
+      if (response.pc_requirements.recommended !== undefined) {
+        var reco = JSON.stringify(response.pc_requirements.recommended)
+        reco = reco.replace(/"([^"]+(?="))"/g, '$1')
+        console.log(reco)
+        this.setState({ recommended: reco })
+      }
+      
       
     })
   } else {
-    this.setState({ miniReq: "Sorry we can't show you the requirements for this game!" })
+    this.setState({ miniReq: "Sorry, game information is not available for this game!" })
   }
 
   
@@ -30,15 +42,12 @@ class SystemRequirements extends Component {
   render() {
     return (
       
-      <div className="Info-window-holder">
-        <div className="Name-holder">
-           Minimum Requirements
-           <p> {this.state.miniReq} </p>
+        <div>
+          
+           <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.miniReq }}/>
+           <div className="Reqs" dangerouslySetInnerHTML={{ __html: this.state.recommended }}/>
 
         </div>
-      </div>
-
-
     );
   }
 }
