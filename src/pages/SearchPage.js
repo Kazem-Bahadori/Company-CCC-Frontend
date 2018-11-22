@@ -3,8 +3,8 @@ import SearchResult from '../molecules/SearchResult.js';
 import Searchbar from '../molecules/Searchbar.js';
 import '../css/SearchResult.css';
 
-let starterStringGames = 'http://localhost:8080/api/twitch/search?assetType=games&queryString=';
-let starterStringStreamers = 'http://localhost:8080/api/twitch/search?assetType=streams&queryString=';
+let starterStringGames = 'http://backend.c3.netplus.se/api/twitch/search?assetType=games&queryString=';
+let starterStringStreamers = 'http://backend.c3.netplus.se/api/twitch/search?assetType=streams&queryString=';
 class SearchPage extends React.Component {
 
     state = {

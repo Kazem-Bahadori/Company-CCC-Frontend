@@ -11,7 +11,7 @@ import SearchPage from '../pages/SearchPage.js';
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let pages = ["HomePage", "GamePage", "SearchPage"];
 let listOfGames
-let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50"
+let currentFetch = "http://backend.c3.netplus.se/api/aggregation/filters?filterType=top&assetType=games&filterValue=50"
 let mounted;
 
 class HomePage extends React.Component {
@@ -101,11 +101,11 @@ class HomePage extends React.Component {
     this.setState({currentCategory: category});
     document.title = 'FlatfishTV';
     if (category === "Steam Games") {
-      currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=category&assetType=games&filterValue=steamGame";
+      currentFetch = "http://backend.c3.netplus.se/api/aggregation/filters?filterType=category&assetType=games&filterValue=steamGame";
     } else if (category === "Games on Sale") {
-      currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
+      currentFetch = "http://backend.c3.netplus.se/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
     } else if(category === "Top Games"){
-      currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
+      currentFetch = "http://backend.c3.netplus.se/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
     }
     this.setState({currentPage: pages[0]});
     this.fetchFromBackend();

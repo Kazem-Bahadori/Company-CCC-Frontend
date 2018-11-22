@@ -20,7 +20,7 @@ class ChatAndInfoWindow extends Component {
         // When the component mounts we check if it's a steam game and then fetch the steam id and assigns it to a variable ->
         // to later be used. /Johan dG
         if (this.props.steamBool) {
-        let getSteamId = 'http://localhost:8080/api/steam/filters?filterType=on_twitch&assetType=games&filterValue=' + this.props.gameName
+        let getSteamId = 'http://backend.c3.netplus.se/api/steam/filters?filterType=on_twitch&assetType=games&filterValue=' + this.props.gameName
         fetch(getSteamId)
         .then(response => response.json())
         .then(response => {
@@ -42,7 +42,7 @@ class ChatAndInfoWindow extends Component {
     accessGamePrice = (steamId) => {
 
         // Function to access the price of a steam game. If the price of the game is 0 we instead display "FREE TO PLAY". /Johan dG
-        let getPrice = 'http://localhost:8080/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
+        let getPrice = 'http://backend.c3.netplus.se/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
         fetch(getPrice)
         .then(response => response.json())
         .then(response => {

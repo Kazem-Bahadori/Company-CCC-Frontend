@@ -22,7 +22,7 @@ class ReviewWindow extends Component {
   componentDidMount() {
 
     if (this.props.steamId !== undefined) {
-      let fetchReviews = "http://localhost:8080/api/steam/filters?assetType=reviews&filterType=app_id&filterValue=" + this.props.steamId
+      let fetchReviews = "http://backend.c3.netplus.se/api/steam/filters?assetType=reviews&filterType=app_id&filterValue=" + this.props.steamId
       fetch(fetchReviews)
         .then(response => response.json())
         .then(response => {
