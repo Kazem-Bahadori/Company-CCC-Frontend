@@ -47,19 +47,19 @@ class HomePage extends React.Component {
       })
     }
     }
-  
+
    //Function to render the top 20 games. /Johandg
    renderGames = () => {
     listOfGames = [];
     for (var i=0; i < this.state.popularGameArray.length; i++) {
       listOfGames.push(
-        <GameHolder 
+        <GameHolder
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
-          gameId={this.state.popularGameArray[i].id} 
+          gameId={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
           onClick={this.popularGameOnClick.bind(this)}
-          steamBool={this.state.popularGameArray[i].steam}    
+          steamBool={this.state.popularGameArray[i].steam}
         />
       )
     }
@@ -82,10 +82,10 @@ class HomePage extends React.Component {
     }
     this.setState({currentPage: pages[1]})
     this.setState({
-      gamePage: 
-      <GamePage 
-        gameName={gameName} 
-        gameId={gameId} 
+      gamePage:
+      <GamePage
+        gameName={gameName}
+        gameId={gameId}
         price={price}
         steamBool={steam}
       />
