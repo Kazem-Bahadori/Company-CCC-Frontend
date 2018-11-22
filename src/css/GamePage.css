@@ -34,8 +34,7 @@
 }
 
 .game-page-container {
-    /*margin-top: 10rem;*/
-    display: flex;
+    /*display: flex;*/
     overflow-y: auto;
     height: 100%;
     width: 100%;
@@ -59,7 +58,7 @@
 .streamer-and-viewers-holder {
     display: flex;
     width: 70%;
-    height: 5rem;
+    height: 0rem;
     margin-right: auto;
     justify-content: flex-start;
     flex-direction: row;
@@ -67,6 +66,7 @@
     align-items: center;
     padding-top: 0.3rem;
     padding-left: 2rem;
+    padding-bottom: 1rem;
 }
 
 .game-name {
@@ -86,12 +86,18 @@
     font-family: RenogareSoft, Tahoma, sans-serif;
     
 }
+.stream-title-name{
+    font-size: 1rem;
+    color: #F9F4DC;
+    font-family: RenogareSoft, Tahoma, sans-serif;
+    padding-left: 4rem;
+}
 
 .player-icon {
     height: 1rem;
     width: auto;
     padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-left: 2rem;
     padding-top: 0.2rem;
 
 }
