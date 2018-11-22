@@ -20,14 +20,12 @@ class GameHolder extends React.Component {
           {this.props.gameId === '491487' &&
           <img className="popular-game-image" src={deadbydaylightpromo} alt={this.props.gameName} />
           }
-          {this.props.gameId === '29595' &&
-          <img className="popular-game-image" src={dota2promo} alt={this.props.gameName} />
-        }
+         
           
         </div>
         <div className="game-name-holder">
           <p className="game-name"> {this.props.gameName}</p>
-          <img className="popular-game-image-logo-highlight" src={steamlogo} />
+          
         </div>
       </div>
        
