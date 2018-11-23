@@ -63,7 +63,7 @@
     height: 15rem;
     transition: transform 0.1s;
     /*background-color: white;*/
-    cursor: none;
+    cursor: default;
     border: 2px solid;
 
 }
@@ -108,9 +108,8 @@
     width: 12rem;
     opacity: 0.9;
     position: absolute;
-    
     background: #000000;    /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, transparent 50%, black 100%); 
     background: linear-gradient(to bottom, transparent 50%, black 100%);
-
 }
+
