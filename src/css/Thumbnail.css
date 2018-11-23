@@ -28,6 +28,11 @@
     justify-content: center;
     flex-direction: column;
 }
+.thumbnail-stream-name-holder-current-stream {
+    justify-content: center;
+    flex-direction: column;
+    cursor: default;
+}
 
 .thumbnail-game-name-holder {
     display: flex;
