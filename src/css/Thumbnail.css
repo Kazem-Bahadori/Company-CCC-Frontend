@@ -57,15 +57,22 @@
     /*background-color: white;*/
 }
 
-.thumbnail-popular-game-image-container.disabled {
+.thumbnail-popular-game-image-container-current-stream {
     display: flex;
     flex: 1;
     height: 15rem;
     transition: transform 0.1s;
     /*background-color: white;*/
     cursor: none;
+    border: 2px solid;
+
 }
 
+.thumbnail-popular-game-image-current-stream {
+    height: 7.05rem;
+    width: 100%;
+
+}
 
 .thumbnail-popular-game-image-container:hover {
     transform: scale(1.05);
@@ -74,7 +81,7 @@
     /*border-style: solid;        */
 }
 
-.thumbnaik-popular-game-image {
+.thumbnail-popular-game-image {
     height: 7.05rem;
     width: 100%;
 }
