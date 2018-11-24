@@ -103,15 +103,17 @@ class GamePage extends Component {
             steamBool={this.props.steamBool}
             />
           </div>
+          {this.state.streamName.length !== 0 &&
           <div>
           <p className="stream-title-name">{currentStreamName}</p>
-          </div>
-          {this.state.streamName.length !== 0 &&
+          
+          
           <div className="streamer-and-viewers-holder"> 
                 
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
-          </div> }
+          </div> 
+          </div>}
           
           {this.state.streamName.length !== 0 &&
           <div className="Thumbnail-window-holder">
