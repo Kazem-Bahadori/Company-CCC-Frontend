@@ -82,7 +82,7 @@ class ChatAndInfoWindow extends Component {
             <div className="container-window">
                 <div className="header">
                 {tabSubs.map((subject) =>
-                <button className="button-style" key={subject} onClick={() => this.handleContentWindow(subject)}>  {subject} </button>
+                <button className={subject===this.state.contentWindow ? "button-highlight": "button-style"} key={subject} onClick={() => this.handleContentWindow(subject)}>  {subject} </button>
                     )}
                 </div>
                     <div className="content-window">
