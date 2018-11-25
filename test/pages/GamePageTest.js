@@ -28,6 +28,7 @@ describe('FR024: Active stream on game page (GamePage component)', () => {
     });
   });
 
+
 //FR007: Game picture pressed
 //Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
 // describe('FR007: Game picture pressed', () => {
