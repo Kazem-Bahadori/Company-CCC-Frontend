@@ -51,22 +51,3 @@ describe('FR062: Display chat', () =>{
     //  });
   });
 });
-
-
-  // FR029: Purchase button, response
-  // Desc: Purchase button should redirect to Steam's webpage
-describe('FR029: Purchase button, response ', () => {
-  it('ChatAndInfoWindow should have a purchase button if game is on Steam', () => {
-    const mockContent = sinon.spy();
-    const wrapper =  mount(<ChatAndInfoWindow renderContent={mockContent("GameInfo")}/>);
-    wrapper.setState({ steamId: 100, steamUrl: "www.mocksteam.com", contentWindow: "Game Info", price: 20, currency: "SEK" });
-    expect(wrapper.state().steamId).to.equal(100);
-    expect(wrapper.state().steamUrl).to.equal("www.mocksteam.com");
-    expect(wrapper.state().contentWindow).to.equal("Game Info");
-  //  wrapper.setProps({ gameName: "fooGame", streamName: "fooStreamer", viewers: 2 }); //Information needed to render GameInfo
-    wrapper.find(GameInfo).instance().renderBuySteam();
-    expect(wrapper.find(GameInfo)).to.have.length(1);//.find('.buy-on-steam-holder')).to.have.length(1);
-    //note: how to find "buy-on-steam-holder" if dive is not allowed? (dive isn't allowed since chatandinfowindow is a host component)
-
-    });
-  });
