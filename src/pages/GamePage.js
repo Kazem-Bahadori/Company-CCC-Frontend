@@ -116,43 +116,46 @@ class GamePage extends Component {
           </div>}
           
           {this.state.streamName.length !== 0 &&
-          <div className="Thumbnail-window-holder">
-            {/* For each element in thumbnailarray a thumbnail is placed  */}
-            {thumbnailArray.map((thumbnail, index) => {
-              
-              // Lowercase name to be able to compare streamName to streamerInfo name
-              var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
-        
-              // Only print a thumbnail if not playing in mediawindow
-              if(this.state.streamName!==nameLowerCase){  
-                return(
-                <Thumbnail 
-                image={thumbnail+'800x800.jpg'}
-                views={viewCountArray[index]}
-                streamName={streamDataArray[index].title}
-                streamerName={streamDataArray[index].user_name}
-                onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
-                key={index}
-                currentStream={this.state.streamName===nameLowerCase}
-                />);
-              }else{
-                return(
+          <div className="Thumbnail-and-shadow-holder">
+            <div className="Thumbnail-window-holder">
+            
+              {/* For each element in thumbnailarray a thumbnail is placed  */}
+              {thumbnailArray.map((thumbnail, index) => {
+                
+                // Lowercase name to be able to compare streamName to streamerInfo name
+                var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
+          
+                // Only print a thumbnail if not playing in mediawindow
+                if(this.state.streamName!==nameLowerCase){  
+                  return(
                   <Thumbnail 
                   image={thumbnail+'800x800.jpg'}
                   views={viewCountArray[index]}
                   streamName={streamDataArray[index].title}
                   streamerName={streamDataArray[index].user_name}
-                  // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                  onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                   key={index}
                   currentStream={this.state.streamName===nameLowerCase}
                   />);
+                }else{
+                  return(
+                    <Thumbnail 
+                    image={thumbnail+'800x800.jpg'}
+                    views={viewCountArray[index]}
+                    streamName={streamDataArray[index].title}
+                    streamerName={streamDataArray[index].user_name}
+                    // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                    key={index}
+                    currentStream={this.state.streamName===nameLowerCase}
+                    />);
 
-              }
-              return;}
-            )}
+                }
+                return;}
+              )}
+              </div>
+              <div className="overlay-shadow"></div>
             </div>
           }
-          <div className="overlay-shadow"></div>
             {this.state.streamName.length !== 0 &&
             <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
             }
