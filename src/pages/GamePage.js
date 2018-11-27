@@ -13,6 +13,8 @@ let streamDataArray = [];
 let viewercount = '';
 let thumbnailArray = [];
 let viewCountArray = [];
+let streamNameArray = [];
+let currentStreamName = '';
 
 class GamePage extends Component {
   state = {
@@ -33,29 +35,32 @@ class GamePage extends Component {
       .then(response => {
         response.data.map((index) =>
         streamerInfo.push(index)
-        
+
       )
       streamDataArray = response.data;
-      // console.log(streamDataArray);
+      //Getting name of the currently active stream
+          currentStreamName=streamDataArray[0].title;
       
       // Viewer count (later sent to infowindow though chatandinfowindow)
       viewercount=streamDataArray[0].viewer_count;
 
-      // viewCountArray[0]=streamDataArray[0].viewer_count;
-      
+      streamNameArray[0]=streamDataArray[0].title;
+      //viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
       if(streamDataArray.length>=4){
         for(let i=0; i<streamDataArray.length; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
+          streamNameArray[i]=(streamDataArray[i].title);
         }
       }else{
         for(let i=1; i<streamDataArray.length+1; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
+          streamNameArray[i]=(streamDataArray[i].title);
         }
       }
-      
+
       //Calling accessStreamerName function to start the initial stream. /Johandg
       this.accessStreamerName(streamDataArray, 0);
     }).catch(function(error) {
@@ -77,9 +82,11 @@ class GamePage extends Component {
     fetch(getStreamerName)
     .then(response => response.json())
     .then(response => {
+      console.log(response.data)
       this.setState({streamName: response.data[0].login})
     })
     viewercount = viewCountArray[index];
+    currentStreamName = streamNameArray[index];
   }
 
   render() {
@@ -97,11 +104,16 @@ class GamePage extends Component {
             />
           </div>
           {this.state.streamName.length !== 0 &&
+          <div>
+          <p className="stream-title-name">{currentStreamName}</p>
+          
+          
           <div className="streamer-and-viewers-holder"> 
-          <p className="game-name"> {this.props.gameName} </p>
+                
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
-          </div> }
+          </div> 
+          </div>}
           
           {this.state.streamName.length !== 0 &&
           <div className="Thumbnail-window-holder">
@@ -121,7 +133,20 @@ class GamePage extends Component {
                 streamerName={streamDataArray[index].user_name}
                 onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                 key={index}
+                currentStream={this.state.streamName===nameLowerCase}
                 />);
+              }else{
+                return(
+                  <Thumbnail 
+                  image={thumbnail+'800x800.jpg'}
+                  views={viewCountArray[index]}
+                  streamName={streamDataArray[index].title}
+                  streamerName={streamDataArray[index].user_name}
+                  // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                  key={index}
+                  currentStream={this.state.streamName===nameLowerCase}
+                  />);
+
               }
               return;}
             )}

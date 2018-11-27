@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
 import '../css/MediaWindow.css';
 
-
-
 class MediaWindow extends Component {
 
   renderMediaWindow = () => {
@@ -25,7 +23,7 @@ class MediaWindow extends Component {
   }
 
   render() {
-    
+
     console.log(ReactPlayer.canPlay('https://www.twitch.tv/' + this.props.streamName));
 
     if (this.props.streamName.length === 0) {
@@ -35,13 +33,13 @@ class MediaWindow extends Component {
       </div>
       );
     }
-   
+
     return (
       <div className="media-window-holder">
        {this.renderMediaWindow()}
           </div>
     );
-  
+
   }
 }
 

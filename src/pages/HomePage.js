@@ -6,7 +6,7 @@ import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
 import SearchPage from '../pages/SearchPage.js';
 
-// const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50" 
+// const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
 // const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let pages = ["HomePage", "GamePage", "SearchPage"];
@@ -15,13 +15,13 @@ let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top
 let mounted;
 
 class HomePage extends React.Component {
-  state = { 
+  state = {
     currentPage: pages[0],
     popularGameArray: [],
     gamePage: null,
     currentCategory: categories[0]
   }
-  
+
     componentDidMount() {
        this.mounted = true;
        this.fetchFromBackend()
@@ -43,23 +43,23 @@ class HomePage extends React.Component {
         // console.log(response),
         response.map((index) =>
         this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
-        )    
+        )
       })
     }
     }
-  
+
    //Function to render the top 20 games. /Johandg
    renderGames = () => {
     listOfGames = [];
     for (var i=0; i < this.state.popularGameArray.length; i++) {
       listOfGames.push(
-        <GameHolder 
+        <GameHolder
           gameName={this.state.popularGameArray[i].name}
           key={this.state.popularGameArray[i].id}
           gameId={this.state.popularGameArray[i].id}
           image={'https://static-cdn.jtvnw.net/ttv-boxart/' + this.state.popularGameArray[i].name + '-800x800.jpg'}
           onClick={this.popularGameOnClick.bind(this)}
-          steamBool={this.state.popularGameArray[i].steam}    
+          steamBool={this.state.popularGameArray[i].steam}
         />
       )
     }
@@ -67,11 +67,11 @@ class HomePage extends React.Component {
        return (
        <p className="homepage-placeholder">
         <img className="home-page-loading" src= {fish} alt="FlatFishTV"/>
-          Loading... 
+          Loading...
         </p>
       );
     } else {
-    return listOfGames; 
+    return listOfGames;
     }
   }
 
@@ -82,10 +82,10 @@ class HomePage extends React.Component {
     }
     this.setState({currentPage: pages[1]})
     this.setState({
-      gamePage: 
-      <GamePage 
-        gameName={gameName} 
-        gameId={gameId} 
+      gamePage:
+      <GamePage
+        gameName={gameName}
+        gameId={gameId}
         price={price}
         steamBool={steam}
       />
@@ -127,21 +127,21 @@ class HomePage extends React.Component {
       currentWindow = this.renderGames();
     }
     return (
-      <div className="container">    
+      <div className="container">
         <div className="content-container">
-            {this.state.currentPage === pages[0] && 
+            {this.state.currentPage === pages[0] &&
             <div className="homepage-header">
               <p className="header-text">{this.state.currentCategory}</p>
             </div>
           }
           {currentWindow}
         </div>
-        <SideBar 
-          homeButtonResponse={this.homeButtonOnClick} 
+        <SideBar
+          homeButtonResponse={this.homeButtonOnClick}
           searchButtonResponse={this.searchButtonOnClick}
-          categoryOnClick={this.categoryButtonOnClick} 
+          categoryOnClick={this.categoryButtonOnClick}
           categories={categories}
-        />  
+        />
       </div>
     );
   }

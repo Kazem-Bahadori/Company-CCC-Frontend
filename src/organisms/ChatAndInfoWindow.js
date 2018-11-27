@@ -38,12 +38,12 @@ class ChatAndInfoWindow extends Component {
      }
 
     }
-    
+
     accessGamePrice = (steamId) => {
 
         // Function to access the price of a steam game. If the price of the game is 0 we instead display "FREE TO PLAY". /Johan dG
         let getPrice = 'http://localhost:8080/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
-        fetch(getPrice) 
+        fetch(getPrice)
         .then(response => response.json())
         .then(response => {
             if (response.final !== 0) {
@@ -53,7 +53,7 @@ class ChatAndInfoWindow extends Component {
             }
             this.setState({currency: response.currency})
         })
-    
+
     }
 
     renderContent = (state) => {
@@ -82,7 +82,7 @@ class ChatAndInfoWindow extends Component {
             <div className="container-window">
                 <div className="header">
                 {tabSubs.map((subject) =>
-                <button className="button-style" key={subject} onClick={() => this.handleContentWindow(subject)}>  {subject} </button>
+                <button className={subject===this.state.contentWindow ? "button-highlight": "button-style"} key={subject} onClick={() => this.handleContentWindow(subject)}>  {subject} </button>
                     )}
                 </div>
                     <div className="content-window">
