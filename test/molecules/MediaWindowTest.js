@@ -7,7 +7,7 @@ import ReactPlayer from 'react-player';
 
 //FR024: Active stream on game page (MediaWindow component)
 //Desc: Game page shall display an active stream when loaded
-describe('FR024: Active stream on game page (MediaWindow component)', () => {
+describe('FR024: Active stream on game page, part II (MediaWindow component)', () => {
   it('The MediaWindow component is rendered correctly', () => {
     const mockStreamer = "randomStreamer";
     const wrapper = shallow(<MediaWindow streamName={mockStreamer}/>);

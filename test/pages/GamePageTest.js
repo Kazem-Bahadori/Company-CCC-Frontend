@@ -11,12 +11,13 @@ import MediaWindow from '../../src/molecules/MediaWindow.js';
 import GameHolder from '../../src/molecules/GameHolder';
 import GameInfo from '../../src/molecules/GameInfo';
 import ChatAndInfoWindow from '../../src/organisms/ChatAndInfoWindow';
+import TwitchChat from '../../src/molecules/TwitchChat.js';
 import ReactPlayer from 'react-player';
 import sinon from 'sinon';
 
 //FR024: Active Stream on GamePage.
 //Desc: Game page shall display an active stream when loaded
-describe('FR024: Active stream on game page (GamePage component)', () => {
+describe('FR024: Active stream on game page, part I(GamePage component)', () => {
   const wrapper = shallow(<GamePage />);
   it('The GamePage component is rendered correctly', () => {
     const inst = wrapper.instance();
@@ -38,7 +39,8 @@ describe('FR024: Active stream on game page (GamePage component)', () => {
 //       let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
 //       const wrapper = shallow( <HomePage PopularGameOnClick={gameSpy(0)} categories={mockCategories} />);
 //       wrapper.setState({ currentPage: "GamePage" });
-//       expect(wrapper.find(MediaWindow)).to.have.length(1);//(ChatAndInfoWindow).dive();//.setState({ price: 100 });
+//
+//       expect(wrapper.find(MediaWindow)).to.have.length(1);
 //       //Home page is displayed when app is loaded
 //       expect(wrapper.state().currentPage).to.equal("HomePage");
 //       //Mock variables needed for rendering GameHolder
@@ -60,19 +62,25 @@ describe('FR024: Active stream on game page (GamePage component)', () => {
 //     });
 //   });
 
-//Note: how to send props down to gameinfo? Needs steamId to redner
+//Note:
 // FR029: Purchase button, response
 // Desc: Purchase button should redirect to Steam's webpage
-describe('FR029: Purchase button, response ', () => {
-  it('ChatAndInfoWindow should have a purchase button if game is on Steam', () => {
-    const mockContent = sinon.spy();
+describe('FR029: Purchase button, response part I (GamePage) ', () => {
+  it('ChatAndInfoWindow should display GameInfo if a steamId exist', () => {
+    const mockContent = sinon.spy(); //note: use spies or not?
     const contentWindowSpy = sinon.spy();
-    const wrapper =  mount(<GamePage handleContentWindow={contentWindowSpy("Game Info")} renderContent={mockContent("Game Info")} steamId={100} steamUrl={"www.mocksteam.com"} contentWindow={"Game Info"} price={20} currency={"SEK"}/>);
-  //  expect(wrapper.find(ChatAndInfoWindow).state().steamId).to.equal(100);
+    const wrapper =  mount(<GamePage handleContentWindow={contentWindowSpy("Game Info")} renderContent={mockContent("Game Info")}/>);
+    //Set state of ChatAndInfoWindow to Game Info
     wrapper.find(ChatAndInfoWindow).instance().handleContentWindow("Game Info");
-    //wrapper.find(ChatAndInfoWindow).instance().renderContent("Game Info");
-    expect(contentWindowSpy.calledOnce).to.equal(true);
+    //Props needed to render GameInfo
+    wrapper.setProps({ steamId: 100, steamUrl: "www.mocksteam.com", price: 20, currency: "SEK" });
+    //Assure steamId is set to 100
+    expect(wrapper.props().steamId).to.equal(100);
+    //Assure state of ChatAndInfoWindow is Game Info
     expect(wrapper.find(ChatAndInfoWindow).state().contentWindow).to.equal("Game Info");
-  //  expect(wrapper.find(GameInfo)).to.have.length(1);//.find(GameInfo)).to.have.length(1);
+    //Assure that GameInfo is rendered
+    expect(wrapper.find(GameInfo)).to.have.length(1);
+    console.log("Game Page props: ");
+    //Test buybutton
     });
   });
