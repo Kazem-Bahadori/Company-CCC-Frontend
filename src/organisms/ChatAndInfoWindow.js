@@ -32,7 +32,7 @@ class ChatAndInfoWindow extends Component {
             tabSubs = ["Chat", "Game Info", "Trailer"];
         
     } else {
-        tabSubs = ["Chat", "Trailer"]
+        tabSubs = ["Chat"]
         this.setState({contentWindow: "Chat"})
         steamId = undefined
      }
