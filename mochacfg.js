@@ -19,6 +19,7 @@ describe("mochacfg", function () {
     importTest('HomePageTest', './test/pages/HomePageTest'); //works but throws an error. bug report written
     importTest('SearchPageTest', './test/pages/SearchPageTest');
     importTest('ChatAndInfoWindowTest', './test/organisms/ChatAndInfoWindowTest');
+    importTest('GameInfoTest', './test/molecules/GameInfoTest');
     after(function () {
         console.log("\n Tests completed \n Summary:");
     });
