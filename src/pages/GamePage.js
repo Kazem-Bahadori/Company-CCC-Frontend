@@ -7,6 +7,7 @@ import '../css/ThumbnailWindow.css';
 import player_icon from '../images/player_icon.png';
 import views_icon from '../images/views_icon.png';
 import arrowRight from '../images/arrow-right.png'
+import arrowLeft from '../images/arrow-left.png'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -44,9 +45,12 @@ class GamePage extends Component {
       // Viewer count (later sent to infowindow though chatandinfowindow)
       viewercount=streamDataArray[0].viewer_count;
 
+     
+
       streamNameArray[0]=streamDataArray[0].title;
       //viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
+      
       if(streamDataArray.length>=4){
         for(let i=0; i<streamDataArray.length; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
@@ -58,6 +62,7 @@ class GamePage extends Component {
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
           streamNameArray[i]=(streamDataArray[i].title);
+          
         }
       }
 
@@ -65,10 +70,13 @@ class GamePage extends Component {
       this.accessStreamerName(streamDataArray, 0);
     }).catch(function(error) {
       console.log(error);
+      
+ 
   });
   
   }
 
+    
    handleErrors = (response) => {
     if (!response.ok) {
         throw Error(response.statusText + " This game has no active streams");
@@ -125,6 +133,9 @@ class GamePage extends Component {
         
               // Only print a thumbnail if not playing in mediawindow
               if(this.state.streamName!==nameLowerCase){  
+                { var rect = this.state.streamName.getBoundingClientRect();
+                  console.log(rect.top, rect.right, rect.bottom, rect.left);
+                    console.log("@@@@@@@@@@@@");}
                 return(
                 <Thumbnail 
                 image={thumbnail+'800x800.jpg'}
@@ -134,7 +145,10 @@ class GamePage extends Component {
                 onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                 key={index}
                 currentStream={this.state.streamName===nameLowerCase}
-                />);
+                
+                />
+                );
+               
               }else{
                 return(
                   <Thumbnail 
@@ -155,6 +169,13 @@ class GamePage extends Component {
             {this.state.streamName.length !== 0 &&
             <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
             }
+            {this.state.streamName.length !== 0 &&
+            <img className="thumbnail-left-arrow-image" src= {arrowLeft} alt="Arrow"/>
+            
+            }
+            
+            
+            
           
         </div>
           
