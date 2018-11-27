@@ -17,7 +17,7 @@ import sinon from 'sinon';
 
 //FR024: Active Stream on GamePage.
 //Desc: Game page shall display an active stream when loaded
-describe('FR024: Active stream on game page, part I(GamePage component)', () => {
+describe('FR024: Active stream on game page, part I (GamePage component)', () => {
   const wrapper = shallow(<GamePage />);
   it('The GamePage component is rendered correctly', () => {
     const inst = wrapper.instance();
@@ -62,7 +62,6 @@ describe('FR024: Active stream on game page, part I(GamePage component)', () => 
 //     });
 //   });
 
-//Note:
 // FR029: Purchase button, response
 // Desc: Purchase button should redirect to Steam's webpage
 describe('FR029: Purchase button, response part I (GamePage) ', () => {
@@ -79,8 +78,5 @@ describe('FR029: Purchase button, response part I (GamePage) ', () => {
     //Assure state of ChatAndInfoWindow is Game Info
     expect(wrapper.find(ChatAndInfoWindow).state().contentWindow).to.equal("Game Info");
     //Assure that GameInfo is rendered
-    expect(wrapper.find(GameInfo)).to.have.length(1);
-    console.log("Game Page props: ");
-    //Test buybutton
     });
   });

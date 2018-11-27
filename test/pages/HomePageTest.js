@@ -20,7 +20,7 @@ describe('FR002: Home button response part II (HomePage)', () => {
     const homebuttonSpy = sinon.spy();
     const sidebarSpy = sinon.spy();
     let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-    const wrapper = shallow( <HomePage homeButtonOnClick = {homebuttonSpy} categories = {mockCategories} />);
+    const wrapper = shallow(<HomePage homeButtonOnClick = {homebuttonSpy} categories = {mockCategories} />);
     expect(wrapper.state().currentPage).to.equal("HomePage");
     wrapper.setState({ currentPage: "GamePage" });
     //Check that currentpage is changed to game page
