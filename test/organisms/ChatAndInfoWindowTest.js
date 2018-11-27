@@ -3,6 +3,7 @@ const expect = require('chai').expect;
 import { shallow, mount, render } from 'enzyme';
 import React from 'react';
 import ChatAndInfoWindow from '../../src/organisms/ChatAndInfoWindow.js';
+import GameInfo from '../../src/molecules/GameInfo.js';
 import TwitchChat from '../../src/molecules/TwitchChat.js';
 import sinon from 'sinon';
 
@@ -31,12 +32,11 @@ describe('FR062: Display chat', () =>{
      const wrapper = shallow(<ChatAndInfoWindow renderBuySteam={mockRenderBuySteam} handleContentWindow={buttonSpy("Chat")}/>);
      //Expecting "game info" to be displayed first
      expect(wrapper.state().contentWindow).to.equal("Chat");
-     expect(wrapper.find('.button-style')).to.have.length(2); //returns 4 buttons (game info, chat) //game info only showed if steambool true
+     expect(wrapper.find('.button-style')).to.have.length(1); //should return one button
     //Check that ChatAndInfoWindow displays chat when pressed from other tabSubs
     var i = 0;
     //Error message from following code bc. of alert notice in chatandinfowindow ("Trailer").
-    //However, the test does not fail. Could be solved with a workaround where number of '.button-style' is saved and
-    //looped through but the code below should not throw an error when trailer is implemented. Put on hold for now.
+    //However, the test does not fail. The code below should not throw an error when trailer is implemented since "alert" will be removed. Put on hold for now.
 
     // wrapper.find('.button-style').forEach((node) => {
     //   if (wrapper.state().contentWindow != "Trailer") {
@@ -51,35 +51,3 @@ describe('FR062: Display chat', () =>{
     //  });
   });
 });
-
-//FR029: Purchase button, response
-//Desc: Purchase button should redirect to Steam's webpage
-describe('FR029: Purchase button, response ', () => {
-  it('ChatAndInfoWindow should have a purchase button if game is on Steam', () => {
-    const mockRenderBuySteam = 100;
-    const wrapper =  shallow(<ChatAndInfoWindow renderBuySteam={mockRenderBuySteam}/>);
-    // expect(wrapper.find('.buy-on-steam-holder')).to.have.length(1);
-    //wrapper.setProps({ steamID: 100 });
-    // let ChatAndInfoWindowDummy = class extends ChatAndInfoWindow { 
-    //   componentDidMount() {
-    //   //  steamId = 100
-    //   }
-    // };
-    //const wrapper = shallow(<ChatAndInfoWindowDummy renderBuySteam={mockRenderBuySteam}/>);
-    // let wrapper = ReactTestUtils.renderIntoDocument(<ChatAndInfoWindowDummy/>);
-
-  });
-});
-
-
-// var i = 0;
-// wrapper.find('.button-style').forEach((node) => {
-//     wrapper.find('.button-style').at(i).simulate('click'); //clicking the tab at place i
-//     if (i > 0) {
-//       assert(wrapper.state().contentWindow !== "Chat"); //Assure that state of contentwindow is changed
-//     }
-// //   wrapper.find('.button-style').first().simulate('click'); //clicking the tab "Chat"
-// //   expect(buttonSpy.calledOnce).to.equal(true);
-// //     expect(wrapper.state().contentWindow).to.equal("Chat"); //assure that State is set to "Chat"
-// //   expect(wrapper.find(TwitchChat)).to.have.length(1); //assure that twitchChat is rendered
-// //   i++;
