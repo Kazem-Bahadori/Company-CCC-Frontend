@@ -9,10 +9,6 @@ import HomePage from '../../src/pages/HomePage.js';
 import Sidebar from '../../src/organisms/Sidebar.js';
 import sinon from 'sinon';
 
-//FR007: Game picture pressed
-//Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
-
-
 //FR007: Home button response
 //Desc: The user shall be redirected to the home page when pressing the home button.
 describe('FR002: Home button response part II (HomePage)', () => {
@@ -35,5 +31,26 @@ describe('FR002: Home button response part II (HomePage)', () => {
     wrapper.instance().homeButtonOnClick();
     //Check that currentpage has been changed to home page
     expect(wrapper.state().currentPage).to.equal("HomePage");
+  });
+});
+
+//FR064: Filter
+//Desc: "The application shall, when the user presses a certain category, filter games on that
+//       specific category."
+describe('FR064: Filter', () => {
+  it('The application shall, when the user presses a certain category, filter games on that specific category', () => {
+    const categorySpy = sinon.spy();
+    //Categories needed to shallow render sidebar correctly
+    var mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
+    const wrapper = mount(<HomePage categoryOnClick={categorySpy} categories={mockCategories} />);
+    //Assure Sidebar is rendered correctly, should be 3 categories: Top Games, Steam Games and Games on sale.
+    expect(wrapper.find('.side-bar-button')).to.have.length(3);
+    expect(wrapper.state().currentCategory).to.equal("Top Games");
+    //Click button "Steam Games", should change currentCategory to "Steam Games"
+    wrapper.find('.side-bar-button').at(1).simulate('click');
+    expect(wrapper.state().currentCategory).to.equal("Steam Games");
+    //Click button "Games on Sale", should change currentCategory to "Games on Sale"
+    wrapper.find('.side-bar-button').at(2).simulate('click');
+    expect(wrapper.state().currentCategory).to.equal("Games on Sale");
   });
 });
