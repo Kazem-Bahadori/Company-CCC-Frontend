@@ -32,7 +32,7 @@ describe('FR062: Display chat', () =>{
      const wrapper = shallow(<ChatAndInfoWindow renderBuySteam={mockRenderBuySteam} handleContentWindow={buttonSpy("Chat")}/>);
      //Expecting "game info" to be displayed first
      expect(wrapper.state().contentWindow).to.equal("Chat");
-     expect(wrapper.find('.button-style')).to.have.length(1); //should return one button
+     expect(wrapper.find('.button-highlight')).to.have.length(1); //should return one button
     //Check that ChatAndInfoWindow displays chat when pressed from other tabSubs
     var i = 0;
     //Error message from following code bc. of alert notice in chatandinfowindow ("Trailer").
