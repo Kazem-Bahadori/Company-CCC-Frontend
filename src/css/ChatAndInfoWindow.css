@@ -32,7 +32,12 @@
     
 }
 
-.button-style:focus {
+.button-highlight {
+    color: white;
+    width: 30%;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
     background-color: gray;
 }
 

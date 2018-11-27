@@ -1,8 +1,8 @@
 .popular-game-holder {
     display: flex;
     flex-direction: column;
-    width: 16rem;
-    height: 24rem;
+    width: 14rem;
+    height: 22rem;
     margin: 1%;
     justify-content: center;    
 }
@@ -10,8 +10,8 @@
 .highlighted-game {
     display: flex;
     flex-direction: column;
-    width: 32rem;
-    height: 25rem;
+    width: 28rem;
+    height: 23rem;
     margin: 0;
     justify-content: center;
 }
@@ -47,14 +47,12 @@
     flex: 1;
     background-color: #998675;
     cursor: pointer;
-    transition: transform 0.1s;
-    
+    transition: transform 0.1s;   
 }
 
 .popular-game-image-container:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transform: scale(1.07);
-    transition: transform 0.1s;
 }
 
 .highlighted-game-img {
@@ -77,14 +75,12 @@
     display: flex;
     width: 100%;
     height:100%;
-    
 }
 
 .popular-game-image-logo {
     display: flex;
     width: 18%;
     height:90%;
-    position: relative;
 }
 
 .popular-game-image-logo-highlight {
