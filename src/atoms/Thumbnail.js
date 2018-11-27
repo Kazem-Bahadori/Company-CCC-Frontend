@@ -8,7 +8,7 @@ class Thumbnail extends Component {
       <div className="thumbnail-holder" onClick={this.props.onClick}>  
         <div className={this.props.currentStream ? "thumbnail-popular-game-image-container-current-stream" : "thumbnail-popular-game-image-container"}>
             <img className={this.props.currentStream ? "thumbnail-popular-game-image-current-stream" :"thumbnail-popular-game-image"} src={this.props.image} alt={this.props.gameName} />
-            {this.props.currentStream ?  "" : <div className="overlay_img"> </div> };
+            {this.props.currentStream ?  "" : <div className="overlay_img"> </div> }
         </div>
         <div className={this.props.currentStream ? "thumbnail-stream-name-holder-current-stream":"thumbnail-stream-name-holder"}>
             <p className="thumbnail-viewers"> {this.props.views} viewers </p>
