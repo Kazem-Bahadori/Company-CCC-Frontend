@@ -133,6 +133,9 @@ class GamePage extends Component {
         
               // Only print a thumbnail if not playing in mediawindow
               if(this.state.streamName!==nameLowerCase){  
+                { var rect = this.state.streamName.getBoundingClientRect();
+                  console.log(rect.top, rect.right, rect.bottom, rect.left);
+                    console.log("@@@@@@@@@@@@");}
                 return(
                 <Thumbnail 
                 image={thumbnail+'800x800.jpg'}
