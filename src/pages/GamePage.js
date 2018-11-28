@@ -15,6 +15,7 @@ let thumbnailArray = [];
 let viewCountArray = [];
 let streamNameArray = [];
 let currentStreamName = '';
+let gameName = '';
 
 class GamePage extends Component {
   state = {
@@ -105,9 +106,8 @@ class GamePage extends Component {
           </div>
           {this.state.streamName.length !== 0 &&
           <div>
+          <p className="game-name">{this.props.gameName}</p>
           <p className="stream-title-name">{currentStreamName}</p>
-          
-          
           <div className="streamer-and-viewers-holder"> 
                 
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
