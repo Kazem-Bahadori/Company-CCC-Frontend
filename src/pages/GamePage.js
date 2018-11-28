@@ -7,6 +7,7 @@ import '../css/ThumbnailWindow.css';
 import player_icon from '../images/player_icon.png';
 import views_icon from '../images/views_icon.png';
 import arrowRight from '../images/arrow-right.png'
+import arrowLeft from '../images/arrow-left.png'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -103,6 +104,9 @@ class GamePage extends Component {
             steamBool={this.props.steamBool}
             />
           </div>
+          {this.state.streamName.length !== 0 &&
+            <img className="thumbnail-left-arrow-image" src= {arrowLeft} alt="Arrow"/>
+            }
           {this.state.streamName.length !== 0 &&
           <div>
           <p className="stream-title-name">{currentStreamName}</p>
