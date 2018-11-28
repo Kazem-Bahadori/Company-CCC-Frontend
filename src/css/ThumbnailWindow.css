@@ -23,6 +23,15 @@
     right:0;
 }
 
+.thumbnail-left-arrow-image{
+    width: 1rem;
+    height: auto;
+    position: absolute;
+    /* top: 30%; */
+    bottom: -10%;
+    left:2rem;
+}
+
 
 .Thumbnail-holder {
     border-style: solid;

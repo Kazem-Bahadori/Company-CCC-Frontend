@@ -7,6 +7,7 @@ import '../css/ThumbnailWindow.css';
 import player_icon from '../images/player_icon.png';
 import views_icon from '../images/views_icon.png';
 import arrowRight from '../images/arrow-right.png'
+import arrowLeft from '../images/arrow-left.png'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -109,7 +110,9 @@ class GamePage extends Component {
           
           
           <div className="streamer-and-viewers-holder"> 
-                
+          {this.state.streamName.length !== 0 &&
+            <img className="thumbnail-left-arrow-image" src= {arrowLeft} alt="Arrow"/>
+            }
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
           </div> 
