@@ -14,20 +14,19 @@
     -webkit-overflow-scrolling: touch;
     
 }
+/*Adds styling to the right arrow in the thumbnail row*/
 .thumbnail-right-arrow-image{
     width: 1rem;
     height: auto;
     position: absolute;
-    /* top: 30%; */
     bottom: -10%;
     right:0;
 }
-
+/*Adds styling to the left arrow in the thumbnail row*/
 .thumbnail-left-arrow-image{
     width: 1rem;
     height: auto;
     position: absolute;
-    /* top: 30%; */
     bottom: -10%;
     left:2rem;
 }
