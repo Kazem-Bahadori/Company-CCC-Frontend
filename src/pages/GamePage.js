@@ -6,11 +6,7 @@ import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
 import player_icon from '../images/player_icon.png';
 import views_icon from '../images/views_icon.png';
-<<<<<<< HEAD
-import arrowRight from '../images/arrow-right.png'
-=======
 import arrowRight from '../images/arrow-right.png';
->>>>>>> dev
 import arrowLeft from '../images/arrow-left.png'
 
 let streamerInfo = [];
