@@ -84,6 +84,7 @@ class HomePage extends React.Component {
     this.setState({
       gamePage:
       <GamePage
+        backButtonOnClick={this.homeButtonOnClick}
         gameName={gameName}
         gameId={gameId}
         price={price}
@@ -93,6 +94,10 @@ class HomePage extends React.Component {
   }
 
   homeButtonOnClick = () => {
+    if(this.state.currentPage !== pages[0]) {
+      this.setState({currentPage: pages[0]})
+      this.fetchFromBackend();
+    }
     this.setState({currentPage: pages[0]})
     document.title = 'FlatfishTV';
     this.setState({currentCategory: "Top Games"});
