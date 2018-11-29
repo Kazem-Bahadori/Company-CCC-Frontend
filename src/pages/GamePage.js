@@ -96,7 +96,7 @@ class GamePage extends Component {
       <div className="game-page-container">
         <div className="game-page-back-button" onClick={this.props.backButtonOnClick}>
           <img className="back-button-arrow" src= {arrowLeft} alt="Arrow"/>
-          <div className="back-button-text">Back to homepage</div>
+          <div className="back-button-text">Back to Homepage</div>
         </div>
           <div className="media-and-chat-holder">
             <MediaWindow streamName={this.state.streamName}/>
