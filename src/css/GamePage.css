@@ -71,7 +71,9 @@
 
 .game-name {
     color:#998675;
-    padding-left: 0.5rem;
+    padding-left: 4rem;
+    font-size: x-large;
+    margin-bottom: -0.5rem;
 }
 
 .viewer-count-text {
@@ -84,6 +86,7 @@
     font-size: 1rem;
     color: #F9F4DC;
     font-family: RenogareSoft, Tahoma, sans-serif;
+    line-height: 1rem;
     
 }
 .stream-title-name{
