@@ -11,6 +11,10 @@ import MediaWindow from '../../src/molecules/MediaWindow.js';
 import GameHolder from '../../src/molecules/GameHolder';
 import GameInfo from '../../src/molecules/GameInfo';
 import ChatAndInfoWindow from '../../src/organisms/ChatAndInfoWindow';
+<<<<<<< HEAD
+=======
+import Thumbnail from '../../src/atoms/Thumbnail';
+>>>>>>> dev
 import TwitchChat from '../../src/molecules/TwitchChat.js';
 import ReactPlayer from 'react-player';
 import sinon from 'sinon';
@@ -30,6 +34,7 @@ describe('FR024: Active stream on game page, part I (GamePage component)', () =>
     });
   });
 
+<<<<<<< HEAD
 
 //FR007: Game picture pressed
 //Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
@@ -62,6 +67,8 @@ describe('FR024: Active stream on game page, part I (GamePage component)', () =>
 //     });
 //   });
 
+=======
+>>>>>>> dev
 // FR029: Purchase button, response
 // Desc: Purchase button should redirect to Steam's webpage
 describe('FR029: Purchase button, response part I (GamePage) ', () => {
@@ -80,3 +87,32 @@ describe('FR029: Purchase button, response part I (GamePage) ', () => {
     //Assure that GameInfo is rendered
     });
   });
+<<<<<<< HEAD
+=======
+
+  // describe('FR056: Switch streams', () => {
+  //   it('The application shall when the user selects an optional stream play that selected stream', () => {
+  //       const gameSpy = sinon.spy();
+  //   //    let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
+  //       const mockViewCountArray = [100, 20, 30];
+  //       const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mock.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.foo.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.bar.com" }];
+  //       let mockThumbnailArray =[];
+  //       for(let i=0; i<mockStreamDataArray.length; i++){
+  //         mockThumbnailArray[i]=(mockStreamDataArray[i].thumbnail_url);
+  //       };
+  //       const wrapper = shallow( <GamePage viewCountArray={mockViewCountArray} streamDataArray={mockStreamDataArray} thumbnailArray={mockThumbnailArray} />);
+  //
+  //       console.log("hello world");
+  //       wrapper.setState({ streamName: 'mockstreamer' });
+  //       console.log(wrapper.state().streamName);
+  //       mockThumbnailArray.map((thumbnail, index) => {
+  //         console.log(mockViewCountArray[index])
+  //         console.log(mockStreamDataArray[index].title)
+  //         console.log(mockStreamDataArray[index].user_name)
+  //       });
+  //       // console.log(wrapper.props().streamDataArray[0].user_name);
+  //     //  expect(wrapper.find(Thumbnail)).to.have.length(1);
+  //       //NOTE: doesn't render thumbnail. Find Thumbnail-window-holder though.
+  //     });
+  //   });
+>>>>>>> dev
