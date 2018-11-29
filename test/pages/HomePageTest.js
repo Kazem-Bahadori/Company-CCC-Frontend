@@ -36,33 +36,6 @@ describe('FR002: Home button response part II (HomePage)', () => {
   });
 });
 
-<<<<<<< HEAD
-=======
-//FR007: Game picture pressed
-//Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
-describe('FR007: Game picture pressed', () => {
-    it('The button for a specific game shall when pressed redirect the user to that specific game’s page.', () => {
-      const gameSpy = sinon.spy();
-      //Setting up variables needed for correct rendering
-      const mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-      const wrapper = mount( <HomePage popularGameOnClick={gameSpy(0)} categories={mockCategories} />);
-      const mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
-      //Set state to mock variables
-      wrapper.setState({ popularGameArray: mockGameArray, categories: mockCategories });
-      //Check that correct rendering has been done
-      expect(wrapper.state().currentPage).to.equal("HomePage");
-      expect(wrapper.find(GameHolder)).to.have.length(2);
-      wrapper.find(GameHolder).first().simulate('click');
-      //Assure populargame was called
-      expect(gameSpy.calledOnce).to.equal(true);
-      //Assure that currentpage is gamepage
-      expect(wrapper.state().currentPage).to.equal("GamePage");
-      //Assure correct game is streamed
-      expect(wrapper.find(ChatAndInfoWindow).props().gameName).to.equal("fooGame");
-    });
-  });
-
->>>>>>> dev
 //FR064: Filter
 //Desc: "The application shall, when the user presses a certain category, filter games on that
 //       specific category."
