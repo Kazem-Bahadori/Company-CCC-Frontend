@@ -95,6 +95,9 @@ class HomePage extends React.Component {
   homeButtonOnClick = () => {
     this.setState({currentPage: pages[0]})
     document.title = 'FlatfishTV';
+    this.setState({currentCategory: "Top Games"});
+    currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
+    this.fetchFromBackend();
   }
 
   categoryButtonOnClick = (category) => {
