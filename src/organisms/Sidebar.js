@@ -1,7 +1,8 @@
 import React from 'react';
 import '../css/Sidebar.css';
 import fish from '../images/fishtv4_yes.png';
-import search from '../images/search_icon.png';
+import search from '../images/search-logo2.png';
+import searchHover from '../images/search-logo2-hover.png';
 import arrowLeft from '../images/arrow-left.png'
 import arrowRight from '../images/arrow-right.png'
 
@@ -37,8 +38,10 @@ render(){
                         <img className="side-bar-image" onClick={this.props.homeButtonResponse} src= {fish} alt="FlatFishTV"/>
                     </div>
                     <div className="side-bar-search" onClick = {this.props.searchButtonResponse}>
+                    <a>
                         <img className="side-bar-search-image" src= {search} alt="Search"/>
-                        Search
+                        <img className="side-bar-search-image" src= {searchHover} alt="Search"/>
+                        </a>
                     </div>
                     {this.props.categories.map((category) => 
                         <div key={category} className="side-bar-button" onClick={() => this.props.categoryOnClick(category)}>{category}</div>
@@ -58,7 +61,6 @@ render(){
                     </div>
                     <div className="side-bar-search" onClick = {this.props.searchButtonResponse}>
                         <img className="side-bar-search-image" src= {search} alt="Search"/>
-                        Search
                     </div>
                     {this.props.categories.map((category) => 
                         <div key={category} className="side-bar-button" onClick={() => this.props.categoryOnClick(category)}>{category}</div>
