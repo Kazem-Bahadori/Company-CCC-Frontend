@@ -108,6 +108,13 @@ class GamePage extends Component {
             steamBool={this.props.steamBool}
             />
           </div>
+
+         
+          {this.state.streamName.length !== 0 &&
+           //Adding left arrow to the thumbnail array
+            <img className="thumbnail-left-arrow-image" src= {arrowLeft} alt="Arrow"/>
+          }
+
           {this.state.streamName.length !== 0 &&
           <div>
           <p className="game-name-gamepage">{this.props.gameName}</p>
