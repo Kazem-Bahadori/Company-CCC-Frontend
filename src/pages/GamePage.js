@@ -106,7 +106,7 @@ class GamePage extends Component {
           </div>
           {this.state.streamName.length !== 0 &&
           <div>
-          <p className="game-name">{this.props.gameName}</p>
+          <p className="game-name-gamepage">{this.props.gameName}</p>
           <p className="stream-title-name">{currentStreamName}</p>
           <div className="streamer-and-viewers-holder"> 
                 
