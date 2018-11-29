@@ -44,8 +44,34 @@
     position: absolute;
 }
 
+.game-page-back-button {
+    width: 18rem;
+    height: 3rem;
+    cursor: pointer;
+    font-size: medium;
+}
 
+.back-button-arrow{
+    width: 0.6rem;
+    height: auto;
+    margin: 0;
+    padding-left: 2rem;
+    margin-right: 0.5rem;
+    padding-top: 1em;
+}
 
+.back-button-text{
+    left: 4rem;
+    top: 1em;
+    position: absolute;
+    width: 12rem;
+    visibility: hidden;
+}
+
+.back-button-text:hover {
+    visibility: visible;
+    background-color: blue;
+}
 .media-and-chat-holder {
     display: flex;
     height: 70%;

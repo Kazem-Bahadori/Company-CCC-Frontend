@@ -6,7 +6,8 @@ import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
 import player_icon from '../images/player_icon.png';
 import views_icon from '../images/views_icon.png';
-import arrowRight from '../images/arrow-right.png'
+import arrowRight from '../images/arrow-right.png';
+import arrowLeft from '../images/arrow-left.png'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -92,7 +93,10 @@ class GamePage extends Component {
   render() {
     return(
       <div className="game-page-container">
-        
+        <div className="game-page-back-button" onClick={this.props.backButtonOnClick}>
+          <img className="back-button-arrow" src= {arrowLeft} alt="Arrow"/>
+          <div className="back-button-text">Back to homepage</div>
+        </div>
           <div className="media-and-chat-holder">
             <MediaWindow streamName={this.state.streamName}/>
             <ChatAndInfoWindow 
