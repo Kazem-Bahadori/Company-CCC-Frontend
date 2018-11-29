@@ -4,7 +4,7 @@
 
 .Thumbnail-window-holder {
     display: flex;
-    width: 100%; 
+    width: 90%; 
     height: 100%;
     margin-left: 3rem;
     margin-right: 3rem;
@@ -17,6 +17,21 @@
     white-space: nowrap; 
     -webkit-overflow-scrolling: touch;
 }
+
+.overlay-shadow {
+    width: 90%; 
+    height: 11.2rem;
+    margin-top: -21.5%;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    position: absolute;
+    -webkit-overflow-scrolling: touch;
+    content: "";
+    background: -webkit-linear-gradient(to bottom right, transparent 80%, #0b0b0b 100%), -webkit-linear-gradient(to right, transparent 70%, #0f0f0f 90%); 
+    background:  linear-gradient(to bottom right, transparent 80%, #0b0b0b 100%), linear-gradient(to right, transparent 70%, #0f0f0f 90%);
+    pointer-events: none;
+  }
+
 /*Adds styling to the right arrow in the thumbnail row*/
 .thumbnail-right-arrow-image{
     width: 1rem;

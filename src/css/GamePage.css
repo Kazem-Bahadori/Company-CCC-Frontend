@@ -36,6 +36,7 @@
 .game-page-container {
     /*display: flex;*/
     overflow-y: auto;
+    overflow-x: hidden;
     height: 100%;
     width: 100%;
     flex-wrap: wrap;
