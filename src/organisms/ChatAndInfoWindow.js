@@ -29,7 +29,7 @@ class ChatAndInfoWindow extends Component {
             steamUrl = "https://store.steampowered.com/app/" + steamId + this.props.gameName
             this.accessGamePrice(steamId)   
         })
-            tabSubs = ["Chat", "Game Info", "Trailer"];
+            tabSubs = ["Chat", "Game Info"];
         
     } else {
         tabSubs = ["Chat"]
@@ -64,10 +64,7 @@ class ChatAndInfoWindow extends Component {
             
             case "Game Info":
             return <GameInfo steamUrl={steamUrl} gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
-            
-            case "Trailer":
-            alert("Not implemented");
-            break;
+        
         }
     }
 
