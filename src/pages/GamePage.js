@@ -6,7 +6,8 @@ import Thumbnail from '../atoms/Thumbnail.js';
 import '../css/ThumbnailWindow.css';
 import player_icon from '../images/player_icon.png';
 import views_icon from '../images/views_icon.png';
-import arrowRight from '../images/arrow-right.png'
+import arrowRight from '../images/arrow-right.png';
+import arrowLeft from '../images/arrow-left.png'
 
 let streamerInfo = [];
 let streamDataArray = [];
@@ -15,6 +16,7 @@ let thumbnailArray = [];
 let viewCountArray = [];
 let streamNameArray = [];
 let currentStreamName = '';
+let gameName = '';
 
 class GamePage extends Component {
   state = {
@@ -92,7 +94,10 @@ class GamePage extends Component {
   render() {
     return(
       <div className="game-page-container">
-        
+        <div className="game-page-back-button" onClick={this.props.backButtonOnClick}>
+          <img className="back-button-arrow" src= {arrowLeft} alt="Arrow"/>
+          <div className="back-button-text">Back to Homepage</div>
+        </div>
           <div className="media-and-chat-holder">
             <MediaWindow streamName={this.state.streamName}/>
             <ChatAndInfoWindow 
@@ -103,11 +108,17 @@ class GamePage extends Component {
             steamBool={this.props.steamBool}
             />
           </div>
+
+         
+          {this.state.streamName.length !== 0 &&
+           //Adding left arrow to the thumbnail array
+            <img className="thumbnail-left-arrow-image" src= {arrowLeft} alt="Arrow"/>
+          }
+
           {this.state.streamName.length !== 0 &&
           <div>
+          <p className="game-name-gamepage">{this.props.gameName}</p>
           <p className="stream-title-name">{currentStreamName}</p>
-          
-          
           <div className="streamer-and-viewers-holder"> 
                 
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
