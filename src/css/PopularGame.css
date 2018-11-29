@@ -1,8 +1,8 @@
 .popular-game-holder {
     display: flex;
     flex-direction: column;
-    width: 14rem;
-    height: 22rem;
+    width: 12rem;
+    height: 19rem;
     margin: 1%;
     justify-content: center;    
 }
@@ -10,10 +10,9 @@
 .highlighted-game {
     display: flex;
     flex-direction: column;
-    width: 28rem;
-    height: 22.9rem;
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 26rem;
+    height: 19rem;
+    margin: 1%;
     justify-content: center;
 }
 
@@ -46,7 +45,6 @@
 .popular-game-image-container {
     display: flex;
     flex: 1;
-    background-color: #998675;
     cursor: pointer;
     transition: transform 0.1s;   
 }
@@ -60,7 +58,6 @@
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: #998675;
     cursor: pointer;
     flex: 1;
 }
@@ -81,7 +78,6 @@
 .popular-game-image-logo {
     display: flex;
     width: 18%;
-    height:90%;
 }
 
 .popular-game-image-logo-highlight {
