@@ -75,7 +75,14 @@ class ChatAndInfoWindow extends Component {
     }
 
     render() {
-        return(
+
+        if (this.props.streamName.length === 0) {
+            return (
+                null
+            )
+          }
+      
+          return (
             <div className="container-window">
                 <div className="header">
                 {tabSubs.map((subject) =>
