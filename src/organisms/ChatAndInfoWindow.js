@@ -27,7 +27,7 @@ class ChatAndInfoWindow extends Component {
             steamId = response.appId
             //Sets the URL to correct Steam page, used when clicking on "Buy now" /Johan dG
             steamUrl = "https://store.steampowered.com/app/" + steamId + this.props.gameName
-            this.accessGamePrice(steamId)   
+            this.accessGamePrice(steamId)
         })
             tabSubs = ["Chat", "Game Info"];
         
@@ -61,7 +61,7 @@ class ChatAndInfoWindow extends Component {
         switch(state){
             case "Chat":
             return <TwitchChat streamName={this.props.streamName} />;
-            
+
             case "Game Info":
             return <GameInfo steamUrl={steamUrl} gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
         
@@ -85,7 +85,7 @@ class ChatAndInfoWindow extends Component {
                     <div className="content-window">
                         {this.renderContent(this.state.contentWindow)}
                     </div>
-                
+
             </div>
         );
     }

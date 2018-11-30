@@ -12,6 +12,7 @@ import GameHolder from '../../src/molecules/GameHolder';
 import GameInfo from '../../src/molecules/GameInfo';
 import ChatAndInfoWindow from '../../src/organisms/ChatAndInfoWindow';
 import Thumbnail from '../../src/atoms/Thumbnail';
+import ThumbnailWindow from '../../src/molecules/ThumbnailWindow';
 import TwitchChat from '../../src/molecules/TwitchChat.js';
 import ReactPlayer from 'react-player';
 import sinon from 'sinon';
@@ -50,28 +51,34 @@ describe('FR029: Purchase button, response part I (GamePage) ', () => {
     });
   });
 
-  // describe('FR056: Switch streams', () => {
-  //   it('The application shall when the user selects an optional stream play that selected stream', () => {
-  //       const gameSpy = sinon.spy();
-  //   //    let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-  //       const mockViewCountArray = [100, 20, 30];
-  //       const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mock.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.foo.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.bar.com" }];
-  //       let mockThumbnailArray =[];
-  //       for(let i=0; i<mockStreamDataArray.length; i++){
-  //         mockThumbnailArray[i]=(mockStreamDataArray[i].thumbnail_url);
-  //       };
-  //       const wrapper = shallow( <GamePage viewCountArray={mockViewCountArray} streamDataArray={mockStreamDataArray} thumbnailArray={mockThumbnailArray} />);
-  //
-  //       console.log("hello world");
-  //       wrapper.setState({ streamName: 'mockstreamer' });
-  //       console.log(wrapper.state().streamName);
-  //       mockThumbnailArray.map((thumbnail, index) => {
-  //         console.log(mockViewCountArray[index])
-  //         console.log(mockStreamDataArray[index].title)
-  //         console.log(mockStreamDataArray[index].user_name)
-  //       });
-  //       // console.log(wrapper.props().streamDataArray[0].user_name);
-  //     //  expect(wrapper.find(Thumbnail)).to.have.length(1);
-  //       //NOTE: doesn't render thumbnail. Find Thumbnail-window-holder though.
-  //     });
-  //   });
+//FR056: Switch streams
+//desc: The application shall when the user selects an optional stream play that selected stream
+// describe('FR056: Switch streams', () => {
+//    it('The application shall when the user selects an optional stream play that selected stream', () => {
+//         const gameSpy = sinon.spy();
+//     //    let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
+//         const mockViewCountArray = [100, 20, 30];
+//         const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mock.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.foo.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.bar.com" }];
+//         const mockThumbnailArray =[];
+//         const mockCurrentStream = true;
+//         for(let i=0; i<mockStreamDataArray.length; i++){
+//           mockThumbnailArray[i]=(mockStreamDataArray[i].thumbnail_url);
+//         };
+//         const wrapper = shallow( <GamePage currentStream={mockCurrentStream} viewCountArray={mockViewCountArray} streamDataArray={mockStreamDataArray} thumbnailArray={mockThumbnailArray} />);
+//         console.log("hello world");
+//         wrapper.setState({ streamName: 'mockstreamer' });
+//         console.log(wrapper.state().streamName);
+//   //     console.log(wrapper.props().currentStream); //undefined
+//         var nameLowerCase=(mockStreamDataArray[1].user_name).toLowerCase();
+//         console.log(wrapper.props().streamName===nameLowerCase); //funkar, ej problem med currentStream...
+//         mockThumbnailArray.map((thumbnail, index) => {
+//           console.log(mockViewCountArray[index])
+//           console.log(mockStreamDataArray[index].title)
+//           console.log(mockStreamDataArray[index].user_name)
+//         });
+//         expect(wrapper.find('.Thumbnail-window-holder')).to.have.length(1);
+//     //    expect(wrapper.find('.Thumbnail-window-holder').contains([ <div className="overlay-shadow"></div> ])).to.equal(true);
+//         // console.log(wrapper.props().streamDataArray[0].user_name);
+//       //    expect(wrapper.find('.Thumbnail-winodw-holder')).to.have.length(1);
+//       });
+//     });

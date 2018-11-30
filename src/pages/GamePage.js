@@ -16,7 +16,6 @@ let thumbnailArray = [];
 let viewCountArray = [];
 let streamNameArray = [];
 let currentStreamName = '';
-let gameName = '';
 
 class GamePage extends Component {
   state = {
@@ -29,7 +28,7 @@ class GamePage extends Component {
     //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
     let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
-    fetch(currentStream) 
+    fetch(currentStream)
       .then(this.handleErrors)
       //Convert response into json. /Johandg
       .then(response => response.json())
@@ -42,7 +41,7 @@ class GamePage extends Component {
       streamDataArray = response.data;
       //Getting name of the currently active stream
           currentStreamName=streamDataArray[0].title;
-      
+
       // Viewer count (later sent to infowindow though chatandinfowindow)
       viewercount=streamDataArray[0].viewer_count;
 
@@ -68,7 +67,7 @@ class GamePage extends Component {
     }).catch(function(error) {
       console.log(error);
   });
-  
+
   }
 
    handleErrors = (response) => {
@@ -100,10 +99,10 @@ class GamePage extends Component {
         </div>
           <div className="media-and-chat-holder">
             <MediaWindow streamName={this.state.streamName}/>
-            <ChatAndInfoWindow 
+            <ChatAndInfoWindow
             gameName={this.props.gameName}
-            streamName={this.state.streamName} 
-            viewers={viewercount} 
+            streamName={this.state.streamName}
+            viewers={viewercount}
             price={this.props.price}
             steamBool={this.props.steamBool}
             />
@@ -119,60 +118,58 @@ class GamePage extends Component {
           <div>
           <p className="game-name-gamepage">{this.props.gameName}</p>
           <p className="stream-title-name">{currentStreamName}</p>
-          <div className="streamer-and-viewers-holder"> 
-                
+
+
+          <div className="streamer-and-viewers-holder">
+
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
-          </div> 
+          </div>
           </div>}
-          
+
           {this.state.streamName.length !== 0 &&
-          <div className="Thumbnail-and-shadow-holder">
-            <div className="Thumbnail-window-holder">
-            
-              {/* For each element in thumbnailarray a thumbnail is placed  */}
-              {thumbnailArray.map((thumbnail, index) => {
-                
-                // Lowercase name to be able to compare streamName to streamerInfo name
-                var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
-          
-                // Only print a thumbnail if not playing in mediawindow
-                if(this.state.streamName!==nameLowerCase){  
-                  return(
-                  <Thumbnail 
+          <div className="Thumbnail-window-holder">
+            {/* For each element in thumbnailarray a thumbnail is placed  */}
+            {thumbnailArray.map((thumbnail, index) => {
+
+              // Lowercase name to be able to compare streamName to streamerInfo name
+              var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
+
+              // Only print a thumbnail if not playing in mediawindow
+              if(this.state.streamName!==nameLowerCase){
+                return(
+                <Thumbnail
+                image={thumbnail+'800x800.jpg'}
+                views={viewCountArray[index]}
+                streamName={streamDataArray[index].title}
+                streamerName={streamDataArray[index].user_name}
+                onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                key={index}
+                currentStream={this.state.streamName===nameLowerCase}
+                />);
+              }else{
+                return(
+                  <Thumbnail
                   image={thumbnail+'800x800.jpg'}
                   views={viewCountArray[index]}
                   streamName={streamDataArray[index].title}
                   streamerName={streamDataArray[index].user_name}
-                  onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                  // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                   key={index}
                   currentStream={this.state.streamName===nameLowerCase}
                   />);
-                }else{
-                  return(
-                    <Thumbnail 
-                    image={thumbnail+'800x800.jpg'}
-                    views={viewCountArray[index]}
-                    streamName={streamDataArray[index].title}
-                    streamerName={streamDataArray[index].user_name}
-                    // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
-                    key={index}
-                    currentStream={this.state.streamName===nameLowerCase}
-                    />);
-
-                }
-                return;}
-              )}
-              </div>
-              <div className="overlay-shadow"></div>
+              }
+              return;}
+            )}
             </div>
           }
+          <div className="overlay-shadow"></div>
             {this.state.streamName.length !== 0 &&
             <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
             }
-          
+
         </div>
-          
+
     )
   }
 }
