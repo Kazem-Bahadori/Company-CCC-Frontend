@@ -21,14 +21,14 @@
 .overlay-shadow {
     width: 90%; 
     height: 11.2rem;
-    margin-top: -21.5%;
+    margin-top: -22%;
     margin-left: 3rem;
     margin-right: 3rem;
     position: absolute;
     -webkit-overflow-scrolling: touch;
     content: "";
-    background: -webkit-linear-gradient(to bottom right, transparent 80%, #0b0b0b 100%), -webkit-linear-gradient(to right, transparent 70%, #0f0f0f 90%); 
-    background:  linear-gradient(to bottom right, transparent 80%, #0b0b0b 100%), linear-gradient(to right, transparent 70%, #0f0f0f 90%);
+    background: -webkit-linear-gradient(to right, transparent 70%, black 99%); 
+    background:  linear-gradient(to right, transparent 70%, black 99%);
     pointer-events: none;
   }
 
