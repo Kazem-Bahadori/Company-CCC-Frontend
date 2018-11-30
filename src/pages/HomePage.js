@@ -48,7 +48,7 @@ class HomePage extends React.Component {
     }
     }
 
-   //Function to render the top 20 games. /Johandg
+   //Function to render the top 50 games. /Johandg
    renderGames = () => {
     listOfGames = [];
     for (var i=0; i < this.state.popularGameArray.length; i++) {

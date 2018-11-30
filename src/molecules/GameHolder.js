@@ -44,7 +44,7 @@ class GameHolder extends React.Component {
         <div className="game-name-holder">
           <p className="game-name"> {this.props.gameName}</p>
           {this.props.steamBool && 
-            <img className="popular-game-image-logo" src={steamlogo} />
+            <img className="popular-game-image-logo" src={steamlogo} alt="game-logo" />
           }
         </div>
       </div>

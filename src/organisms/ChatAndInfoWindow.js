@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import TwitchChat from '../molecules/TwitchChat.js';
 import GameInfo from '../molecules/GameInfo.js';
 import '../css/ChatAndInfoWindow.css'
-import steamlogo from '../images/steamlogo.png';
-import steamBuyLogo from '../images/steam-logo-buy-button.png'
+
 
 let tabSubs = [];
 let steamId;
@@ -92,8 +91,8 @@ class ChatAndInfoWindow extends Component {
                     <div className="content-window">
                         {this.renderContent(this.state.contentWindow)}
                     </div>
-                
             </div>
+            
         );
     }
 }

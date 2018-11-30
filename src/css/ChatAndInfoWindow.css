@@ -4,7 +4,6 @@
     justify-content: center;
     flex-direction: column;
     width: 45%;
-   
 }
 
 .content-window {
@@ -33,12 +32,13 @@
 }
 
 .button-highlight {
-    color: white;
+    color: #f1c40e;
+    font-size: 1.2rem;
     width: 30%;
     border: 0;
     outline: 0;
     cursor: pointer;
-    background-color: gray;
+    background-color: black;
 }
 
 .buy-on-steam-holder {

@@ -16,7 +16,6 @@ let thumbnailArray = [];
 let viewCountArray = [];
 let streamNameArray = [];
 let currentStreamName = '';
-let gameName = '';
 
 class GamePage extends Component {
   state = {
@@ -84,7 +83,6 @@ class GamePage extends Component {
     fetch(getStreamerName)
     .then(response => response.json())
     .then(response => {
-      console.log(response.data)
       this.setState({streamName: response.data[0].login})
     })
     viewercount = viewCountArray[index];
@@ -137,7 +135,8 @@ class GamePage extends Component {
                 var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
           
                 // Only print a thumbnail if not playing in mediawindow
-                if(this.state.streamName!==nameLowerCase){  
+                if (this.state.streamName!==nameLowerCase) {  
+
                   return(
                   <Thumbnail 
                   image={thumbnail+'800x800.jpg'}
@@ -148,7 +147,8 @@ class GamePage extends Component {
                   key={index}
                   currentStream={this.state.streamName===nameLowerCase}
                   />);
-                }else{
+                } else {
+
                   return(
                     <Thumbnail 
                     image={thumbnail+'800x800.jpg'}

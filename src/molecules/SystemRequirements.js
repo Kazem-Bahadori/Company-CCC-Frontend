@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Button from '../atoms/Button.js';
-
 
 class SystemRequirements extends Component {
 
