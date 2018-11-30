@@ -15,7 +15,7 @@
     background-color: #282828;
     border-right: solid 0.5rem  #998675;
     box-shadow: 15px 0px 30px black;
-    color: white;
+    color: #F9F4DC;
     overflow: hidden;
 }
 
@@ -63,9 +63,8 @@
 
 .side-bar-search{
     padding: 1rem;
+    background: #282828;
     text-align: center;
-    font-weight: normal;
-    font-size: x-large;
     border-top: solid #191816 3px;
     border-bottom: solid #191816 3px;
     box-shadow: 5px 0px 5px 0 rgba(0, 0, 0, 0.15), 5px 0px 5px 0 rgba(0, 0, 0, 0.15);
@@ -73,13 +72,23 @@
     cursor: pointer;
 }
 
-.side-bar-search:hover {
-    font-weight: bold;
-    cursor: pointer;
-}
+
+a img:last-child {
+    display: none;  
+  }
+a:hover img:last-child {
+    display: block; 
+  }
+a:hover img:first-child {
+    display: none;  
+  }
+
 .side-bar-search-image{
-    height: 1.2rem;
-    padding-right: 0.3rem;
+    height: 3rem;
+    width: auto;
+    margin: 1rem;
+    position: relative;
+    display: block;
 }
 
 .side-bar-button {
@@ -93,7 +102,7 @@
 .side-bar-button:hover {
     background-color:  #282828;
     opacity: 80%;
-    color: white; 
+    color: #F9F4DC; 
     font-weight: bold;
     border-left: #f1c40e solid 0.3rem;
 }
