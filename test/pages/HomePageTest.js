@@ -36,8 +36,6 @@ describe('FR002: Home button response part II (HomePage)', () => {
   });
 });
 
-<<<<<<< HEAD
-=======
 //FR007: Game picture pressed
 //Desc: The button for a specific game shall when pressed redirect the user to that specific game’s page.
 describe('FR007: Game picture pressed', () => {
@@ -62,7 +60,6 @@ describe('FR007: Game picture pressed', () => {
     });
   });
 
->>>>>>> dev
 //FR064: Filter
 //Desc: "The application shall, when the user presses a certain category, filter games on that
 //       specific category."
