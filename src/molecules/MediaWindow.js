@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
 import '../css/MediaWindow.css';
+import deadFish from '../images/fish-dead.png'
 
 class MediaWindow extends Component {
 
@@ -25,10 +26,11 @@ class MediaWindow extends Component {
   render() {
 
     console.log(ReactPlayer.canPlay('https://www.twitch.tv/' + this.props.streamName));
-
+    
     if (this.props.streamName.length === 0) {
       return(
       <div className="error-message">
+      <img className="dead-fish" src={deadFish} alt="Dead flatfish"/>
       <h1> Sorry there are no active streams for this game </h1>
       </div>
       );
