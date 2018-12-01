@@ -28,7 +28,7 @@
     transition: 0.5s ease-in-out;
 }
 
-.side-bar-arrow-image{
+.side-bar-arrow-image {
     width: 1rem;
     height: auto;
     position: fixed;
@@ -37,6 +37,10 @@
     left: -0.4rem;
     transform: translateX(14.6rem);
     transition: transform 1s ease-in-out;
+}
+
+.side-bar-arrow-image:hover {
+    cursor: pointer;
 }
 
 .side-bar-image{

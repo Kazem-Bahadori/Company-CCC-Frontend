@@ -75,11 +75,9 @@ class HomePage extends React.Component {
     }
   }
 
+  //If a game is clicked we will be directed to GamePage with that specific game following.
   popularGameOnClick = (gameId, gameName, steam) => {
-    let price;
-    if (steam.price) {
-      price = steam.price.final / 100
-    }
+  
     this.setState({currentPage: pages[1]})
     this.setState({
       gamePage:
@@ -87,12 +85,12 @@ class HomePage extends React.Component {
         backButtonOnClick={this.homeButtonOnClick}
         gameName={gameName}
         gameId={gameId}
-        price={price}
         steamBool={steam}
       />
     })
   }
 
+  //When the flatfish logo is clicked you are directed to HomePage showing top 50 games.
   homeButtonOnClick = () => {
     if(this.state.currentPage !== pages[0]) {
       this.setState({currentPage: pages[0]})
@@ -103,6 +101,7 @@ class HomePage extends React.Component {
     }
   }
 
+  //When clicking a specific category you will be directed to the HomePage displaying games in regard to what category you clicked.
   categoryButtonOnClick = (category) => {
     this.setState({currentCategory: category});
     document.title = 'FlatfishTV';

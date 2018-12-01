@@ -17,7 +17,7 @@ class SearchResult extends React.Component {
     }
     
     getGameList = () => { 
-        if(this.props.games.length < 1){
+        if(this.props.games.length < 1) {
             return  this.getFishPlaceholder("Loading...")
         }
         let listOfGames = [];
@@ -36,12 +36,12 @@ class SearchResult extends React.Component {
         return listOfGames.slice(0,4);
     }
 
-    getStreamerList = () =>{
-        if(this.props.streams.length < 1){
+    getStreamerList = () => {
+        if (this.props.streams.length < 1){
             return;
         }
         let listOfStreams = [];
-        this.props.streams.map(stream => {
+        this.props.streams.map((stream) => {
             listOfStreams.push(
                 <StreamerHolder 
                     streamName={stream.channel.display_name}
@@ -56,7 +56,7 @@ class SearchResult extends React.Component {
         return listOfStreams.slice(0, 6);
     }
 
-    getPromoGames(){
+    getPromoGames() {
         return (
             <div className="search-result">
             <GameHolder 
