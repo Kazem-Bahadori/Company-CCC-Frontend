@@ -134,10 +134,11 @@ class GamePage extends Component {
               {thumbnailArray.map((thumbnail, index) => {
                 
                 // Lowercase name to be able to compare streamName to streamerInfo name
-                if (streamDataArray[index].user_name !== undefined) {
-                var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
-                } else {
+                if (streamDataArray[index].user_name === undefined) {
                   var nameLowerCase = ''
+                
+                } else {
+                  var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
                 }
           
                 // Only print a thumbnail if not playing in mediawindow
