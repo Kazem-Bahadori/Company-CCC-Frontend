@@ -14,12 +14,13 @@ function importTest(name, path) {
 
 describe("mochacfg", function () {
     importTest('SidebarTest','./test/organisms/SidebarTest');
-    importTest("GamePageTest", './test/pages/GamePageTest'); //works but throws an error. bug report written
     importTest("MediaWindowTest", './test/molecules/MediaWindowTest');
     importTest('HomePageTest', './test/pages/HomePageTest'); //works but throws an error. bug report written
     importTest('SearchPageTest', './test/pages/SearchPageTest');
     importTest('ChatAndInfoWindowTest', './test/organisms/ChatAndInfoWindowTest');
     importTest('GameInfoTest', './test/molecules/GameInfoTest');
+    importTest("GamePageTest", './test/pages/GamePageTest'); //works but throws an error. bug report written
+    importTest('ThumbnailTest', './test/atoms/ThumbnailTest');
     after(function () {
         console.log("\n Tests completed \n Summary:");
     });

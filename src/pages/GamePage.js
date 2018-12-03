@@ -42,7 +42,7 @@ class GamePage extends Component {
       streamDataArray = response.data;
       //Getting name of the currently active stream
           currentStreamName=streamDataArray[0].title;
-      
+
       // Viewer count (later sent to infowindow though chatandinfowindow)
       viewercount=streamDataArray[0].viewer_count;
 
@@ -70,7 +70,7 @@ class GamePage extends Component {
     }).catch(function(error) {
       console.log(error);
   });
-  
+
   }
 
    handleErrors = (response) => {
@@ -101,7 +101,7 @@ class GamePage extends Component {
         </div>
           <div className="media-and-chat-holder">
             <MediaWindow streamName={this.state.streamName}/>
-            <ChatAndInfoWindow 
+            <ChatAndInfoWindow
             gameName={this.props.gameName}
             streamName={this.state.streamName} 
             viewers={viewercount} 
@@ -119,13 +119,15 @@ class GamePage extends Component {
           <div>
           <p className="game-name-gamepage">{this.props.gameName}</p>
           <p className="stream-title-name">{currentStreamName}</p>
-          <div className="streamer-and-viewers-holder"> 
-                
+
+
+          <div className="streamer-and-viewers-holder">
+
             <p className="streamer-text"><img className="player-icon" src={player_icon} alt="player icon"/>{this.state.streamName}</p>
             <p className="streamer-text"><img className="player-icon" src={views_icon} alt="views icon"/> {viewercount} </p>
-          </div> 
+          </div>
           </div>}
-          
+
           {this.state.streamName.length !== 0 &&
           <div className="Thumbnail-and-shadow-holder">
             <div className="Thumbnail-window-holder">
@@ -150,7 +152,7 @@ class GamePage extends Component {
                   views={viewCountArray[index]}
                   streamName={streamDataArray[index].title}
                   streamerName={streamDataArray[index].user_name}
-                  onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                  // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                   key={index}
                   currentStream={this.state.streamName===nameLowerCase}
                   />);
@@ -175,12 +177,13 @@ class GamePage extends Component {
               <div className="overlay-shadow"></div>
             </div>
           }
+          <div className="overlay-shadow"></div>
             {this.state.streamName.length !== 0 &&
             <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
             }
-          
+
         </div>
-          
+
     )
   }
 }
