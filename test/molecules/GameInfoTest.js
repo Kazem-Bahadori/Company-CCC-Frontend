@@ -34,21 +34,20 @@ describe('FR029: Purchase button, response part II (GameInfo) ', () => {
        var buttonSpy = sinon.spy();
        const mockTabSubs = ["Chat", "Game Info"];
        //Implement spy on chat button/tab
-       const wrapper = mount(<ChatAndInfoWindow steamId={1} gameName={"mockGame"} viewers={100} steamUrl={"www.mock.com"} handleContentWindow={buttonSpy("Game Info")} streamName={"mockStreamer"} tabSubs={mockTabSubs}/>);
+       const wrapper = mount(<ChatAndInfoWindow steamBool={true} steamId={1} gameName={"mockGame"} viewers={100} steamUrl={"www.mock.com"} handleContentWindow={buttonSpy("Game Info")} streamName={"mockStreamer"} tabSubs={mockTabSubs}/>);
        //Expecting "chat" to be displayed first
+       wrapper.setState({ contentWindow: "Chat" });
        expect(wrapper.state().contentWindow).to.equal("Chat");
        expect(wrapper.find(TwitchChat)).to.have.length(1);
-       expect(wrapper.find('.button-highlight')).to.have.length(1); //should return one button
-       wrapper.setState({contentWindow: "Game Info"});
-    //   expect(wrapper.find('.button-highlight').text()).to.equal("Game Info");
-       expect(wrapper.find(GameInfo)).to.have.length(1);
-      //expect(wrapper.find('.button-highlight').text()).to.equal("  Game Info ");
-      //Press "chat"
-    //  wrapper.find('.button-style').simulate('click');
-      //Expect button to have been pressed once
-      // expect(buttonSpy.calledOnce).to.equal(true);
-      // //Contentwindow is changed to chat
-      // expect(wrapper.state().contentWindow).to.equal("Chat");
-      // expect(wrapper.find(TwitchChat)).to.have.length(1);
+       //Finds button for Chat
+       expect(wrapper.find('.button-highlight')).to.have.length(1);
+       //Finds button for Game Info
+        expect(wrapper.find('.button-style')).to.have.length(1);
+        expect(wrapper.find('.button-style').text()).to.equal("  Game Info ");
+       //Press button for game info
+        wrapper.find('.button-style').simulate('click');
+        //Renderns GameInfo
+        expect(wrapper.state().contentWindow).to.equal("Game Info");
+        expect(wrapper.find(GameInfo)).to.have.length(1);
     });
   });

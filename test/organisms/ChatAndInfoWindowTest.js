@@ -37,9 +37,12 @@ describe('FR062: Display chat', () =>{
      //Expecting "chat" to be displayed first
      expect(wrapper.state().contentWindow).to.equal("Chat");
      expect(wrapper.find('.button-highlight')).to.have.length(1); //should return one button
+     expect(wrapper.find(TwitchChat)).to.have.length(1);
+     expect(wrapper.find(GameInfo)).to.have.length(0);
     //Change contentWindow to "Game Info"
     wrapper.setState({ contentWindow: "Game Info" });
     expect(wrapper.find(TwitchChat)).to.have.length(0);
+    expect(wrapper.find(GameInfo)).to.have.length(1);
     expect(wrapper.state().contentWindow).to.equal("Game Info");
     //Expect tabbutton to display "chat"
     expect(wrapper.find('.button-style').text()).to.equal("  Chat ");
