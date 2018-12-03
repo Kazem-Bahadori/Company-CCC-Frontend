@@ -4,7 +4,6 @@
     justify-content: center;
     flex-direction: column;
     width: 45%;
-   
 }
 
 .content-window {
@@ -33,12 +32,13 @@
 }
 
 .button-highlight {
-    color: white;
+    color: blanchedalmond;
+    font-size: 1.2rem;
     width: 30%;
     border: 0;
     outline: 0;
     cursor: pointer;
-    background-color: gray;
+    background-color: black;
 }
 
 .buy-on-steam-holder {
@@ -47,11 +47,6 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-}
-
-.buy-on-steam-btn:hover {
-    background-color: white;
-
 }
 
 .price-currency {
@@ -70,6 +65,10 @@
     color: black;
     font-weight: bold;
     transition: background-color 0.5s ease;
+}
+
+.buy-on-steam-btn:hover {
+    background-color: white;
 }
 
 .steam-buy-logo {

@@ -22,8 +22,14 @@
     display: block;
     text-align: center;
     width: 100%;
-    height: 100%;  
+    height: 100%;
+    opacity:0;;
+    transition:opacity 11s;
 }
+
+  .error-message:hover {
+    opacity:1;
+  }
 
 .media-window-chat {
     display: flex;

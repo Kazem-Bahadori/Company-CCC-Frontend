@@ -8,9 +8,9 @@ import steamBuyLogo from '../images/steam-logo-buy-button.png'
 class GameInfo extends Component {
 
     renderButtonText = () => {
-        let text = 'Buy Game on';
-        if (this.props.price == "FREE TO PLAY"){
-            text = 'Free Download on';
+        let text = 'Buy Game';
+        if (this.props.price === "FREE TO PLAY"){
+            text = 'Free Download';
         }
         return text;
     }
@@ -24,7 +24,7 @@ class GameInfo extends Component {
                         <div style={{ margin: '0.5rem' }}>
                             {this.renderButtonText()}
                         </div>
-                        <img className="steam-buy-logo" src={steamBuyLogo} />
+                        <img className="steam-buy-logo" src={steamBuyLogo} alt="steam-buy-logo" />
                     </a>
                 </div>
             );

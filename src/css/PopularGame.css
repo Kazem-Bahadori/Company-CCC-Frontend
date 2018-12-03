@@ -1,8 +1,8 @@
 .popular-game-holder {
     display: flex;
     flex-direction: column;
-    width: 14rem;
-    height: 21rem;
+    width: 12.6rem;
+    height: 18.9rem;
     margin: 1%;
     justify-content: center;    
 }
@@ -10,8 +10,8 @@
 .highlighted-game {
     display: flex;
     flex-direction: column;
-    width: 26rem;
-    height: 21rem;
+    width: 23.4rem;
+    height: 18.9rem;
     margin: 1%;
     justify-content: center;
 }

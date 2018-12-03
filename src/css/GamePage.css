@@ -12,21 +12,10 @@
 
 }
 .thumbnail-right-arrow-container {
-    /* display:flex;
-    position:absolute; */
-    /* height:-50%; */
     bottom:0;
-
 }
 
-/* 
-.Thumbnail-window-holder {
-    overflow: auto; 
-    overflow-y: visible;
-    white-space: nowrap;
-    height: 80%;
-    
-} */
+
 
 ::-webkit-scrollbar {
     /* Remove scrollbar for thumbnails */
@@ -41,7 +30,6 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    /*saknas något från FR025??*/
     position: absolute;
 }
 
@@ -108,14 +96,12 @@
     display: flex;
     font-size: 1rem;
     color: #F9F4DC;
-    font-family: RenogareSoft, Tahoma, sans-serif;
     line-height: 1rem;
     
 }
 .stream-title-name{
     font-size: 1rem;
     color: #F9F4DC;
-    font-family: RenogareSoft, Tahoma, sans-serif;
     padding-left: 4rem;
 }
 

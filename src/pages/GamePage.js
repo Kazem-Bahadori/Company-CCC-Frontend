@@ -28,7 +28,8 @@ class GamePage extends Component {
     //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
     let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
-    fetch(currentStream)
+    fetch(currentStream) 
+      //Calls handleErrors function to handle errors, eg if we don't get any response from fetch.
       .then(this.handleErrors)
       //Convert response into json. /Johandg
       .then(response => response.json())
@@ -48,14 +49,16 @@ class GamePage extends Component {
       streamNameArray[0]=streamDataArray[0].title;
       //viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
-      if(streamDataArray.length>=4){
-        for(let i=0; i<streamDataArray.length; i++){
+      if (streamDataArray.length>=4) {
+
+        for (let i=0; i<streamDataArray.length; i++){
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
           streamNameArray[i]=(streamDataArray[i].title);
         }
-      }else{
-        for(let i=1; i<streamDataArray.length+1; i++){
+      } else {
+
+        for (let i=1; i<streamDataArray.length+1; i++) {
           thumbnailArray[i]=(streamDataArray[i].thumbnail_url).substring(0, (streamDataArray[i].thumbnail_url).length - 20);
           viewCountArray[i]=(streamDataArray[i].viewer_count);
           streamNameArray[i]=(streamDataArray[i].title);
@@ -83,7 +86,6 @@ class GamePage extends Component {
     fetch(getStreamerName)
     .then(response => response.json())
     .then(response => {
-      console.log(response.data)
       this.setState({streamName: response.data[0].login})
     })
     viewercount = viewCountArray[index];
@@ -101,9 +103,8 @@ class GamePage extends Component {
             <MediaWindow streamName={this.state.streamName}/>
             <ChatAndInfoWindow
             gameName={this.props.gameName}
-            streamName={this.state.streamName}
-            viewers={viewercount}
-            price={this.props.price}
+            streamName={this.state.streamName} 
+            viewers={viewercount} 
             steamBool={this.props.steamBool}
             />
           </div>
@@ -128,28 +129,25 @@ class GamePage extends Component {
           </div>}
 
           {this.state.streamName.length !== 0 &&
-          <div className="Thumbnail-window-holder">
-            {/* For each element in thumbnailarray a thumbnail is placed  */}
-            {thumbnailArray.map((thumbnail, index) => {
+          <div className="Thumbnail-and-shadow-holder">
+            <div className="Thumbnail-window-holder">
+            
+              {/* For each element in thumbnailarray a thumbnail is placed  */}
+              {thumbnailArray.map((thumbnail, index) => {
+                
+                // Lowercase name to be able to compare streamName to streamerInfo name
+                if (streamDataArray[index].user_name === undefined) {
+                  var nameLowerCase = ''
+                
+                } else {
+                  var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
+                }
+          
+                // Only print a thumbnail if not playing in mediawindow
+                if (this.state.streamName!==nameLowerCase) {  
 
-              // Lowercase name to be able to compare streamName to streamerInfo name
-              var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
-
-              // Only print a thumbnail if not playing in mediawindow
-              if(this.state.streamName!==nameLowerCase){
-                return(
-                <Thumbnail
-                image={thumbnail+'800x800.jpg'}
-                views={viewCountArray[index]}
-                streamName={streamDataArray[index].title}
-                streamerName={streamDataArray[index].user_name}
-                onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
-                key={index}
-                currentStream={this.state.streamName===nameLowerCase}
-                />);
-              }else{
-                return(
-                  <Thumbnail
+                  return(
+                  <Thumbnail 
                   image={thumbnail+'800x800.jpg'}
                   views={viewCountArray[index]}
                   streamName={streamDataArray[index].title}
@@ -158,9 +156,25 @@ class GamePage extends Component {
                   key={index}
                   currentStream={this.state.streamName===nameLowerCase}
                   />);
+                } else {
+
+                  return(
+                    <Thumbnail 
+                    image={thumbnail+'800x800.jpg'}
+                    views={viewCountArray[index]}
+                    streamName={streamDataArray[index].title}
+                    streamerName={streamDataArray[index].user_name}
+                    // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                    key={index}
+                    currentStream={this.state.streamName===nameLowerCase}
+                    />);
+
+                }
+                return;
               }
-              return;}
-            )}
+              )}
+              </div>
+              <div className="overlay-shadow"></div>
             </div>
           }
           <div className="overlay-shadow"></div>

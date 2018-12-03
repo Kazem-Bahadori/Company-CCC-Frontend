@@ -17,7 +17,7 @@ class SearchResult extends React.Component {
     }
     
     getGameList = () => { 
-        if(this.props.games.length < 1){
+        if(this.props.games.length < 1) {
             return  this.getFishPlaceholder("Loading...")
         }
         let listOfGames = [];
@@ -36,12 +36,12 @@ class SearchResult extends React.Component {
         return listOfGames.slice(0,4);
     }
 
-    getStreamerList = () =>{
-        if(this.props.streams.length < 1){
+    getStreamerList = () => {
+        if (this.props.streams.length < 1){
             return;
         }
         let listOfStreams = [];
-        this.props.streams.map(stream => {
+        this.props.streams.map((stream) => {
             listOfStreams.push(
                 <StreamerHolder 
                     streamName={stream.channel.display_name}
@@ -56,21 +56,48 @@ class SearchResult extends React.Component {
         return listOfStreams.slice(0, 6);
     }
 
+    getPromoGames() {
+        return (
+            <div className="search-result">
+            <GameHolder 
+                gameName={"Dead by Daylight"}
+                key={491487}
+                gameId={'491487'} 
+                image={null}
+                onClick={this.props.onClick}
+                steamBool={true}    
+            />      
+            <GameHolder 
+                    gameName={"Dota 2"}
+                    key={29595}
+                    gameId={'29595'} 
+                    image={null}
+                    onClick={this.props.onClick}
+                    steamBool={true}    
+            />
+            </div>
+        )
+    }
+
     render() {
         return(
             <div>
-                {this.props.value &&
-                <div>
-                    <p className="search-titles">Games</p>
-                    <div className="search-result">
-                        {this.getGameList()}
-                    </div> 
-                    <p className="search-titles">Streamers</p>
-                    <div className="search-result">
-                        {this.getStreamerList()}
+                {this.props.value ? (
+                    <div>                    
+                        <p className="search-titles">Games</p>
+                        <div className="search-result">
+                            {this.getGameList()}
+                        </div> 
+                        <p className="search-titles">Streamers</p>
+                        <div className="search-result">
+                            {this.getStreamerList()}
+                        </div>
                     </div>
-                </div>                                     
-                }
+                ):(
+                    <div>
+                        {this.getPromoGames()}
+                    </div>
+                )}
                
                
             </div>

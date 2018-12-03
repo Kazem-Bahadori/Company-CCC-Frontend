@@ -30,9 +30,25 @@
     height: 10rem;
 }
 
-.homepage-placeholder{
+.homepage-placeholder {
     font-size: xx-large;
     text-align: center;
+    -webkit-animation: pulsate 2s ease-out;
+    -webkit-animation-iteration-count: infinite; 
+    opacity: 0.5;
+    
+}
+
+@-webkit-keyframes pulsate {
+    0% { 
+        opacity: 0.5;
+    }
+    50% { 
+        opacity: 0.9;
+    }
+    100% { 
+        opacity: 0.5;
+    }
 }
 
 .homepage-header{
@@ -47,10 +63,10 @@
     font-weight: bold;
 }
 
-.home-page-loading{
+.home-page-loading {
     display: block;
     width: 20rem;
     height: auto;
     color:blanchedalmond;
-
 }
+

@@ -24,11 +24,10 @@ class MediaWindow extends Component {
   }
 
   render() {
-
-    console.log(ReactPlayer.canPlay('https://www.twitch.tv/' + this.props.streamName));
-    
+ 
     if (this.props.streamName.length === 0) {
-      return(
+      
+      return (
       <div className="error-message">
       <img className="dead-fish" src={deadFish} alt="Dead flatfish"/>
       <h1> Sorry there are no active streams for this game </h1>

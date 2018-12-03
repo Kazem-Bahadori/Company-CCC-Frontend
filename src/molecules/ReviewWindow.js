@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import '../css/InfoWindow.css';
-import Button from '../atoms/Button.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from '@fortawesome/free-regular-svg-icons'
 
 library.add(faThumbsUp)
 
-let price_format = '';
-
 class ReviewWindow extends Component {
-
-
 
   state = {
     total_reviews: '',
