@@ -10,7 +10,8 @@
 .highlighted-game {
     display: flex;
     flex-direction: column;
-    width: 23.4rem;
+    /*width: 23.4rem;*/
+    width: 27rem;
     height: 18.9rem;
     margin: 1%;
     justify-content: center;
