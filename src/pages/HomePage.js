@@ -40,8 +40,8 @@ class HomePage extends React.Component {
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
-        // console.log(response),
-        response.map((index) =>
+        console.log(response),
+        response.data.map((index) =>
         this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )
       })
