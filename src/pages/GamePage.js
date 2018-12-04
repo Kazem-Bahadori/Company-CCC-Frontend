@@ -152,7 +152,7 @@ class GamePage extends Component {
                   views={viewCountArray[index]}
                   streamName={streamDataArray[index].title}
                   streamerName={streamDataArray[index].user_name}
-                  // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                  onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                   key={index}
                   currentStream={this.state.streamName===nameLowerCase}
                   />);
@@ -164,7 +164,7 @@ class GamePage extends Component {
                     views={viewCountArray[index]}
                     streamName={streamDataArray[index].title}
                     streamerName={streamDataArray[index].user_name}
-                    // onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
+                    onClick={this.accessStreamerName.bind(this, streamDataArray, index)}
                     key={index}
                     currentStream={this.state.streamName===nameLowerCase}
                     />);
