@@ -1,5 +1,7 @@
 .Thumbnail-and-shadow-holder{
     height: 40%;
+    display: flex;
+    flex-direction: column;
 }
 
 .Thumbnail-window-holder {
@@ -21,9 +23,7 @@
 .overlay-shadow {
     width: 90%; 
     height: 11.2rem;
-    margin-top: -22%;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 3.2rem;
     position: absolute;
     -webkit-overflow-scrolling: touch;
     content: "";
