@@ -177,7 +177,6 @@ class GamePage extends Component {
               <div className="overlay-shadow"></div>
             </div>
           }
-          <div className="overlay-shadow"></div>
             {this.state.streamName.length !== 0 &&
             <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
             }
