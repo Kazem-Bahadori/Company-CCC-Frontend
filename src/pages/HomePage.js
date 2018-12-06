@@ -6,8 +6,7 @@ import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
 import SearchPage from '../pages/SearchPage.js';
 
-
-let categories = ["Top Games", "Steam Games", "Games on Sale" ];
+let categories = ["Top Games", "Steam Games"];
 let pages = ["HomePage", "GamePage", "SearchPage"];
 let listOfGames
 let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50"
@@ -93,7 +92,8 @@ class HomePage extends React.Component {
 
   //When the flatfish logo is clicked you are directed to HomePage showing top 50 games.
   homeButtonOnClick = () => {
-    if(this.state.currentPage !== pages[0]) {
+    console.log('is called');
+    if(this.state.currentPage !== pages[0] || this.state.currentCategory !== "Top Games") {
       this.setState({currentPage: pages[0]})
       document.title = 'FlatfishTV';
     this.setState({currentCategory: "Top Games"});
