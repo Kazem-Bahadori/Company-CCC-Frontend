@@ -92,7 +92,7 @@ class HomePage extends React.Component {
 
   //When the flatfish logo is clicked you are directed to HomePage showing top 50 games.
   homeButtonOnClick = () => {
-    console.log('is called');
+
     if(this.state.currentPage !== pages[0] || this.state.currentCategory !== "Top Games") {
       this.setState({currentPage: pages[0]})
       document.title = 'FlatfishTV';
