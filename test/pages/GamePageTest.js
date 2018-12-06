@@ -58,7 +58,7 @@ describe('FR029: Purchase button, response part I (GamePage) ', () => {
 //         const gameSpy = sinon.spy();
 //     //    let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
 //         const mockViewCountArray = [100, 20, 30];
-//         const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mock.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.foo.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.bar.com" }];
+//         const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mockGamemockGamemockGamemockGame.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.fooGamefooGamefooGamefooGame.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.barGamebarGamebarGamebarGame.com" }];
 //         const mockThumbnailArray =[];
 //         const mockCurrentStream = true;
 //         for(let i=0; i<mockStreamDataArray.length; i++){
@@ -77,6 +77,7 @@ describe('FR029: Purchase button, response part I (GamePage) ', () => {
 //           console.log(mockStreamDataArray[index].user_name)
 //         });
 //         expect(wrapper.find('.Thumbnail-window-holder')).to.have.length(1);
+//         //expect(wrapper.find(Thumbnail).first()).to.have.length(1);
 //     //    expect(wrapper.find('.Thumbnail-window-holder').contains([ <div className="overlay-shadow"></div> ])).to.equal(true);
 //         // console.log(wrapper.props().streamDataArray[0].user_name);
 //       //    expect(wrapper.find('.Thumbnail-winodw-holder')).to.have.length(1);
