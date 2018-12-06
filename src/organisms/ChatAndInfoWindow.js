@@ -39,6 +39,8 @@ class ChatAndInfoWindow extends Component {
 
     // Function to access the price of a steam game. If the price of the game is 0 we instead display "FREE TO PLAY". /Johan dG
     accessGamePrice = (steamId) => {
+
+        // Function to access the price of a steam game. If the price of the game is 0 we instead display "FREE TO PLAY". /Johan dG
         let getPrice = 'http://backend.c3.netplus.se/api/steam/filters?filterType=app_id&assetType=price&filterValue=' + steamId
         fetch(getPrice)
         .then(response => response.json())

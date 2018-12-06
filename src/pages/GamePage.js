@@ -106,6 +106,7 @@ class GamePage extends Component {
             viewers={viewercount} 
             steamBool={this.props.steamBool}
             />
+            
           </div>
 
          
