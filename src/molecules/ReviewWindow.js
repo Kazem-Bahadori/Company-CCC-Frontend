@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import '../css/InfoWindow.css';
-import Button from '../atoms/Button.js';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from '@fortawesome/free-regular-svg-icons'
 
 library.add(faThumbsUp)
 
-let price_format = '';
-
 class ReviewWindow extends Component {
-
-
 
   state = {
     total_reviews: '',
@@ -20,7 +15,7 @@ class ReviewWindow extends Component {
   }
 
   componentDidMount() {
-
+   //If we have a valid steamId we fetch review data from our API.
     if (this.props.steamId !== undefined) {
       let fetchReviews = "http://backend.c3.netplus.se/api/steam/filters?assetType=reviews&filterType=app_id&filterValue=" + this.props.steamId
       fetch(fetchReviews)
@@ -40,6 +35,7 @@ class ReviewWindow extends Component {
     }
   }
 
+  //Function to render the reviews.
   renderReviews = () => {
     if (this.props.steamId !== undefined){
     return (

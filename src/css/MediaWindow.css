@@ -15,21 +15,32 @@
     display: flex;
     margin-right: 0%;
     width: 100%;
-    height: 100%;    
+    height: 100%;   
 }
 
 .error-message {
-    display: flex;
-    margin-left: 3%;
+    display: block;
+    text-align: center;
     width: 100%;
-    height: 100%;  
+    height: 100%;
+    opacity:0;;
+    transition:opacity 11s;
 }
+
+  .error-message:hover {
+    opacity:1;
+  }
 
 .media-window-chat {
     display: flex;
     width: 100%;
     height: 100%;
-    
-    
+}
+
+.dead-fish {
+    display: flex;
+    margin: 10% auto 5% auto;
+    height: 50%;
+    width: auto;
 }
 

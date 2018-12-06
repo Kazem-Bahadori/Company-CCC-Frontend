@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../css/Button.css';
-
+//This component is not being used.
 class Button extends Component {
 
     render() {

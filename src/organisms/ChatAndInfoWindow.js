@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import TwitchChat from '../molecules/TwitchChat.js';
 import GameInfo from '../molecules/GameInfo.js';
 import '../css/ChatAndInfoWindow.css'
-import steamlogo from '../images/steamlogo.png';
-import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
 let tabSubs = [];
 let steamId;
@@ -27,18 +25,19 @@ class ChatAndInfoWindow extends Component {
             steamId = response.appId
             //Sets the URL to correct Steam page, used when clicking on "Buy now" /Johan dG
             steamUrl = "https://store.steampowered.com/app/" + steamId + this.props.gameName
-            this.accessGamePrice(steamId)   
+            this.accessGamePrice(steamId)
         })
-            tabSubs = ["Chat", "Game Info", "Trailer"];
+            tabSubs = ["Chat", "Game Info"];
         
     } else {
-        tabSubs = ["Chat", "Trailer"]
+        tabSubs = ["Chat"]
         this.setState({contentWindow: "Chat"})
         steamId = undefined
      }
 
     }
 
+    // Function to access the price of a steam game. If the price of the game is 0 we instead display "FREE TO PLAY". /Johan dG
     accessGamePrice = (steamId) => {
 
         // Function to access the price of a steam game. If the price of the game is 0 we instead display "FREE TO PLAY". /Johan dG
@@ -61,13 +60,9 @@ class ChatAndInfoWindow extends Component {
         switch(state){
             case "Chat":
             return <TwitchChat streamName={this.props.streamName} />;
-            
+
             case "Game Info":
             return <GameInfo steamUrl={steamUrl} gameName={this.props.gameName} steamId={steamId} streamName={this.props.streamName} viewers={this.props.viewers} price={this.state.price} currency={this.state.currency}/>;
-            
-            case "Trailer":
-            alert("Not implemented");
-            break;
         }
     }
 
@@ -78,18 +73,26 @@ class ChatAndInfoWindow extends Component {
     }
 
     render() {
-        return(
+
+        // If we don't have a game pressed we never want to render the ChatAndInfoWindow
+        if (this.props.streamName.length === 0) {
+            return (
+                null
+            )
+          }
+      
+          return (
             <div className="container-window">
                 <div className="header">
                 {tabSubs.map((subject) =>
-                <button className="button-style" key={subject} onClick={() => this.handleContentWindow(subject)}>  {subject} </button>
+                <button className={subject===this.state.contentWindow ? "button-highlight": "button-style"} key={subject} onClick={() => this.handleContentWindow(subject)}>  {subject} </button>
                     )}
                 </div>
                     <div className="content-window">
                         {this.renderContent(this.state.contentWindow)}
                     </div>
-                
             </div>
+            
         );
     }
 }

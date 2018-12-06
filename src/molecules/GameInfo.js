@@ -6,17 +6,18 @@ import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
 
 class GameInfo extends Component {
-    
+
+    //Changes the text wether the game is free or not.
     renderButtonText = () => {
-        let text = 'Buy Game on';
-        if (this.props.price == "FREE TO PLAY"){
-            text = 'Free Download on';
+        let text = 'Buy Game';
+        if (this.props.price === "FREE TO PLAY"){
+            text = 'Free Download';
         }
         return text;
     }
 
+    // Function that renders the "Buy on Steam Button" depending on wether the game is steam game or not. /Johan dG
     renderBuySteam = () => {
-        // Function that renders the "Buy on Steam Button" depending on wether the game is steam game or not. /Johan dG
         if (this.props.steamId) {
             return (
                 <div className="buy-on-steam-holder">
@@ -24,9 +25,8 @@ class GameInfo extends Component {
                         <div style={{ margin: '0.5rem' }}>
                             {this.renderButtonText()}
                         </div>
-                        <img className="steam-buy-logo" src={steamBuyLogo} />
+                        <img className="steam-buy-logo" src={steamBuyLogo} alt="steam-buy-logo" />
                     </a>
-
                 </div>
             );
         }
@@ -48,5 +48,3 @@ class GameInfo extends Component {
 }
 
 export default GameInfo;
-
-

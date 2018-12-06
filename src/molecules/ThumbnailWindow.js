@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
 import '../css/ThumbnailWindow.css';
 import Thumbnail from '../atoms/Thumbnail.js';
-
 var StreamName = 'riotgames';
+
+//This component is not being used.
 class InfoWindow extends Component {
 
   

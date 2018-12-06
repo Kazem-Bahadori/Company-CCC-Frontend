@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/MediaWindow.css';
 
 class TwitchChat extends Component {
+    //Renders an embedded Twitch Chat using a streamName to show the correct chat.
     render() {
         return(
             <div className="media-window-chat">

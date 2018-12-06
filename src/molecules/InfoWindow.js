@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/InfoWindow.css';
 import Button from '../atoms/Button.js';
 
-
+//This component is not being used.
 class InfoWindow extends Component {
   render() {
     

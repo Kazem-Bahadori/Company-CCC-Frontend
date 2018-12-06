@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/SearchResult.css';
 
 class Searchbar extends React.Component{
-
+//Component used inside SearchPage
   render(){
     return(
       <div className="searchbar-container">

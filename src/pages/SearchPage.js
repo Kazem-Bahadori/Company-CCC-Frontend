@@ -13,6 +13,7 @@ class SearchPage extends React.Component {
         value:''
     };    
 
+    //Fetch response from API and fills game that match with the search to an array.
     fetchGamesFromBackend = (value) => { 
         this.setState({ gameArray: [] });
         fetch(starterStringGames.concat(value), {})
@@ -25,6 +26,7 @@ class SearchPage extends React.Component {
         })
     }
 
+    //Fetch response from API and fills streams hat match with the search to an array.
     fetchStreamersFromBackend = (value) => {
         this.setState({ streamerArray: [] });
         fetch(starterStringStreamers.concat(value), {})
@@ -36,6 +38,8 @@ class SearchPage extends React.Component {
             )                        
         })
     }
+
+    //Handles false characters such as åäö
     handleInputChars = (inputValue) => {
         return (
             inputValue = inputValue
@@ -48,6 +52,7 @@ class SearchPage extends React.Component {
         );
     }
 
+    //Function to handle the input of the searchfield so that the API calls get a parameter to search on. A game name.
     handleChange = (e) => {
         let inputValue = this.handleInputChars(e.target.value.trim());
         this.setState({value: inputValue});

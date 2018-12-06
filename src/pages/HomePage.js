@@ -6,9 +6,7 @@ import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
 import SearchPage from '../pages/SearchPage.js';
 
-// const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
-// const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
-let categories = ["Top Games", "Steam Games", "Games on Sale" ];
+let categories = ["Top Games", "Steam Games"];
 let pages = ["HomePage", "GamePage", "SearchPage"];
 let listOfGames
 let currentFetch = "http://backend.c3.netplus.se/api/aggregation/filters?filterType=top&assetType=games&filterValue=50"
@@ -28,10 +26,11 @@ class HomePage extends React.Component {
     }
 
     componentWillUnmount() {
-      //Cancel the setState of popularGameArray inside fetchFromBackend().
+      //Cancel the setState of popularGameArray inside fetchFromBackend(). This is done when you leave the HomePage.
       this.mounted = false;
     }
 
+    //Function to fetch api data to homepage.
     fetchFromBackend = () => {
       if (this.mounted) {
       this.setState({ popularGameArray: [] });
@@ -40,15 +39,14 @@ class HomePage extends React.Component {
       .then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
-        // console.log(response),
-        response.map((index) =>
+        response.data.map((index) =>
         this.setState({ popularGameArray: [...this.state.popularGameArray, index] })
         )
       })
     }
     }
 
-   //Function to render the top 20 games. /Johandg
+   //Function to render the top 50 games. /Johandg
    renderGames = () => {
     listOfGames = [];
     for (var i=0; i < this.state.popularGameArray.length; i++) {
@@ -63,6 +61,8 @@ class HomePage extends React.Component {
         />
       )
     }
+
+    //Determines if the page has something to show or not. If its "loading" or not.
     if (listOfGames < 1) {
        return (
        <p className="homepage-placeholder">
@@ -75,28 +75,34 @@ class HomePage extends React.Component {
     }
   }
 
+  //If a game is clicked we will be directed to GamePage with that specific game following.
   popularGameOnClick = (gameId, gameName, steam) => {
-    let price;
-    if (steam.price) {
-      price = steam.price.final / 100
-    }
+  
     this.setState({currentPage: pages[1]})
     this.setState({
       gamePage:
       <GamePage
+        backButtonOnClick={this.homeButtonOnClick}
         gameName={gameName}
         gameId={gameId}
-        price={price}
         steamBool={steam}
       />
     })
   }
 
+  //When the flatfish logo is clicked you are directed to HomePage showing top 50 games.
   homeButtonOnClick = () => {
-    this.setState({currentPage: pages[0]})
-    document.title = 'FlatfishTV';
+
+    if(this.state.currentPage !== pages[0] || this.state.currentCategory !== "Top Games") {
+      this.setState({currentPage: pages[0]})
+      document.title = 'FlatfishTV';
+    this.setState({currentCategory: "Top Games"});
+    currentFetch = "http://backend.c3.netplus.se/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
+      this.fetchFromBackend();
+    }
   }
 
+  //When clicking a specific category you will be directed to the HomePage displaying games in regard to what category you clicked.
   categoryButtonOnClick = (category) => {
     this.setState({currentCategory: category});
     document.title = 'FlatfishTV';
@@ -111,6 +117,7 @@ class HomePage extends React.Component {
     this.fetchFromBackend();
   }
 
+  //By clicking the search button you are directed to the SearchPage.
   searchButtonOnClick = () => {
     document.title = 'FlatfishTV';
     this.setState({currentCategory: categories[0]})

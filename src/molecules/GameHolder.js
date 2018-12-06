@@ -6,6 +6,7 @@ import dota2promo from '../images/dota2promo.png';
 
 
 class GameHolder extends React.Component {
+  //Renders a game "poster" that can be visible on the HomePage.
   render() {
     let gameName = this.props.gameName;
     let gameId = this.props.gameId;
@@ -44,7 +45,7 @@ class GameHolder extends React.Component {
         <div className="game-name-holder">
           <p className="game-name"> {this.props.gameName}</p>
           {this.props.steamBool && 
-            <img className="popular-game-image-logo" src={steamlogo} />
+            <img className="popular-game-image-logo" src={steamlogo} alt="game-logo" />
           }
         </div>
       </div>

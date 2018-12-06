@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Button from '../atoms/Button.js';
-
 
 class SystemRequirements extends Component {
 
@@ -11,33 +9,31 @@ class SystemRequirements extends Component {
 
   componentDidMount() {
     
-    console.log("system req steamId: " + this.props.steamId)
+    //When the component mounts we fetch the system requirements from our API using a steamId.
     if (this.props.steamId !== undefined) {
     let fetchSystemReq = "http://backend.c3.netplus.se/api/steam/filters?assetType=system_requirements&filterType=app_id&filterValue=" + this.props.steamId
     fetch(fetchSystemReq)
     .then(response => response.json())
     .then(response => {
-      console.log("system req response: " + response.pc_requirements.minimum + response.pc_requirements.recommended)
-
+      
+      //Convert the JSON to string and remove all special characters.
       var mini = JSON.stringify(response.pc_requirements.minimum)
       mini = mini.replace(/"([^"]+(?="))"/g, '$1')
-      console.log(mini)
       this.setState({ miniReq: mini })
 
       if (response.pc_requirements.recommended !== undefined) {
+        //Convert the JSON to string and remove all special characters.
         var reco = JSON.stringify(response.pc_requirements.recommended)
         reco = reco.replace(/"([^"]+(?="))"/g, '$1')
-        console.log(reco)
         this.setState({ recommended: reco })
       }
-      
-      
+          
     })
   } else {
     this.setState({ miniReq: "Sorry, game information is not available for this game!" })
   }
 
-  
+
   }
   render() {
     return (
