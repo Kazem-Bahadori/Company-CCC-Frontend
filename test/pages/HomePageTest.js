@@ -67,16 +67,31 @@ describe('FR064: Filter', () => {
   it('The application shall, when the user presses a certain category, filter games on that specific category', () => {
     const categorySpy = sinon.spy();
     //Categories needed to shallow render sidebar correctly
-    var mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-    const wrapper = mount(<HomePage categoryOnClick={categorySpy} categories={mockCategories} />);
-    //Assure Sidebar is rendered correctly, should be 3 categories: Top Games, Steam Games and Games on sale.
-    expect(wrapper.find('.side-bar-button')).to.have.length(3);
+    var mockCategories = ["Top Games", "Steam Games"];
+    const wrapper = mount(<HomePage categoryOnClick={categorySpy(0)} categories={mockCategories} />);
+    //Testing if Sidebar is rendered correctly
+    expect(wrapper.find(Sidebar)).to.have.length(1);
+    expect(wrapper.find(Sidebar).state().collapsed).to.equal(true);
+    //Changing state of Sidebar to be able to click the category buttons
+    wrapper.find(Sidebar).instance().handleClick();
+    expect(wrapper.find(Sidebar).state().collapsed).to.equal(false);
+    wrapper.update();
+    //Assure Sidebar is rendered correctly, should be 2 categories: Top Games and Steam Games
+    expect(wrapper.find('.side-bar-button')).to.have.length(2);
     expect(wrapper.state().currentCategory).to.equal("Top Games");
-    //Click button "Steam Games", should change currentCategory to "Steam Games"
+    //Click "Steam Games", should change currentCategory to "Steam Games"
     wrapper.find('.side-bar-button').at(1).simulate('click');
     expect(wrapper.state().currentCategory).to.equal("Steam Games");
-    //Click button "Games on Sale", should change currentCategory to "Games on Sale"
-    wrapper.find('.side-bar-button').at(2).simulate('click');
-    expect(wrapper.state().currentCategory).to.equal("Games on Sale");
+    //Assure spy was called
+    expect(categorySpy.calledOnce).to.equal(true);
+    //Sidebar is collapsed again, changing state of Sidebar to be able to click the category buttons
+    wrapper.find(Sidebar).instance().handleClick();
+    expect(wrapper.find(Sidebar).state().collapsed).to.equal(false);
+    wrapper.update();
+    //Click "Top Games", should change currentCategory to "Top Games"
+    wrapper.find('.side-bar-button').at(0).simulate('click');
+    expect(wrapper.state().currentCategory).to.equal("Top Games");
+    //Assure spy was called
+    expect(categorySpy.calledOnce).to.equal(true);
   });
 });
