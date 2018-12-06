@@ -53,30 +53,41 @@ describe('FR029: Purchase button, response part I (GamePage) ', () => {
 
 //FR056: Switch streams
 //desc: The application shall when the user selects an optional stream play that selected stream
-// describe('FR056: Switch streams', () => {
-//    it('The application shall when the user selects an optional stream play that selected stream', () => {
-//         const gameSpy = sinon.spy();
-//     //    let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-//         const mockViewCountArray = [100, 20, 30];
-//         const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mockGamemockGamemockGamemockGame.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.fooGamefooGamefooGamefooGame.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.barGamebarGamebarGamebarGame.com" }];
-//         const mockId = 100;
-//         const mockGame = "mockGame";
-//         const mockSteamBool = true;
-//         const mockCurrentStream = true;
-//         const mockThumbnailArray =[];
-//       //  const mockCurrentStream = true;
-//         for(let i=0; i<mockStreamDataArray.length; i++){
-//           mockThumbnailArray[i]=(mockStreamDataArray[i].thumbnail_url);
-//         };
-//         const wrapper = mount( <GamePage currentStream={mockCurrentStream} steamBool={mockSteamBool} gameName={mockGame} gameId={mockId} viewCountArray={mockViewCountArray} streamDataArray={mockStreamDataArray} thumbnailArray={mockThumbnailArray} />);
-//         console.log(wrapper.props().currentStream);
-//         expect(wrapper.find('.Thumbnail-window-holder')).to.have.length(1);
-//         expect(wrapper.find(Thumbnail)).to.have.length(1);
-//     //    expect(wrapper.find('.Thumbnail-window-holder').contains([ <div className="overlay-shadow"></div> ])).to.equal(true);
-//         // console.log(wrapper.props().streamDataArray[0].user_name);
-//       //    expect(wrapper.find('.Thumbnail-winodw-holder')).to.have.length(1);
-//       });
-//     });
+describe('FR056: Switch streams', () => {
+   it('The application shall when the user selects an optional stream play that selected stream', () => {
+        //Create mock variables needed for rendering HomePage
+        const mockViewCountArray = [100, 20, 30];
+        const mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
+        const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mockGamemockGamemockGamemockGame.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.fooGamefooGamefooGamefooGame.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.barGamebarGamebarGamebarGame.com" }];
+        const mockId = 100;
+        const mockStreamName ="mockStreamer";
+        const mockGame = "mockGame";
+        const mockSteamBool = true;
+        const mockCurrentStream = true;
+        const mockCurrentPage = "GamePage";
+        const mockThumbnailArray =[];
+        const mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
+        for(let i=0; i<mockStreamDataArray.length; i++){
+          mockThumbnailArray[i]=(mockStreamDataArray[i].thumbnail_url);
+        };
+        const wrapper = mount( <HomePage />);
+        //Set state and props needed to render GamePage correctly
+        wrapper.setProps({ currentStream: mockCurrentStream, steamBool: mockSteamBool, gameName: mockGame, gameId: mockId, viewCountArray: mockViewCountArray, streamDataArray: mockStreamDataArray, thumbnailArray: mockThumbnailArray });
+        wrapper.setState({ popularGameArray: mockGameArray, categories: mockCategories });
+        expect(wrapper.state().currentPage).to.equal("HomePage");
+        wrapper.find(GameHolder).first().simulate('click');
+        expect(wrapper.state().currentPage).to.equal("GamePage");
+        wrapper.find(GamePage).instance().setState({ streamName: "mockStreamName" });
+        wrapper.setProps({ currentStream: mockCurrentStream, steamBool: mockSteamBool, gameName: mockGame, gameId: mockId, viewCountArray: mockViewCountArray, streamDataArray: mockStreamDataArray, thumbnailArray: mockThumbnailArray });
+        wrapper.update();
+        //Ensure that the container for Thumbnails are rendered
+        expect(wrapper.find(".Thumbnail-and-shadow-holder")).to.have.length(1);
+        expect(wrapper.find(".Thumbnail-window-holder")).to.have.length(1);
+        //Expecting that GamePage contains Thumbnail component
+        expect(wrapper.find(GamePage)).to.contain(Thumbnail);
+        wrapper.unmount();
+      });
+    });
 
 //FR056: Switch streams
 //desc: The application shall when the user selects an optional stream play that selected stream

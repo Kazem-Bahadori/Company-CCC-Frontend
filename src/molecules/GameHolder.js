@@ -6,6 +6,7 @@ import dota2promo from '../images/dota2promo.png';
 
 
 class GameHolder extends React.Component {
+  //Renders a game "poster" that can be visible on the HomePage.
   render() {
     let gameName = this.props.gameName;
     let gameId = this.props.gameId;

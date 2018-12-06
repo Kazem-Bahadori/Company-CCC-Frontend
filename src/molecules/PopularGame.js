@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/PopularGame.css';
 import steamlogo from '../images/steamlogo.png';
 
+//Component is not being used. GameHolder is used instead.
 class PopularGame extends Component {
 
   render() {

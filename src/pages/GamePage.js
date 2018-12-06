@@ -24,8 +24,6 @@ class GamePage extends Component {
 
   componentDidMount() {
     document.title = 'FlatfishTV | ' + this.props.gameName;
-    //Each time the GamePage component mounts the streamerInfo is emptied. /Johandg
-    //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
     let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
     fetch(currentStream)
@@ -47,7 +45,7 @@ class GamePage extends Component {
       viewercount=streamDataArray[0].viewer_count;
       streamNameArray[0]=streamDataArray[0].title;
       //viewCountArray[0]=streamDataArray[0].viewer_count;
-      // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
+
       if (streamDataArray.length>=4) {
 
         for (let i=0; i<streamDataArray.length; i++){
@@ -72,6 +70,7 @@ class GamePage extends Component {
 
   }
 
+  //Function handle error if we don't get any response from api call.
    handleErrors = (response) => {
     if (!response.ok) {
         throw Error(response.statusText + " This game has no active streams");
@@ -176,7 +175,6 @@ class GamePage extends Component {
               <div className="overlay-shadow"></div>
             </div>
           }
-          <div className="overlay-shadow"></div>
             {this.state.streamName.length !== 0 &&
             <img className="thumbnail-right-arrow-image" src= {arrowRight} alt="Arrow"/>
             }
