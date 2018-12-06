@@ -9,7 +9,11 @@ import SearchPage from '../pages/SearchPage.js';
 let categories = ["Top Games", "Steam Games"];
 let pages = ["HomePage", "GamePage", "SearchPage"];
 let listOfGames
-let currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50"
+let currentFetch = {
+  filterType: "top",
+  assetType: "games",
+  limit: 50
+}
 let mounted;
 
 class HomePage extends React.Component {
@@ -20,9 +24,30 @@ class HomePage extends React.Component {
     currentCategory: categories[0]
   }
 
+  postData(url = ``, data = {}) {
+    // Default options are marked with *
+      return fetch(url, {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          mode: "cors", // no-cors, cors, *same-origin
+          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: "same-origin", // include, *same-origin, omit
+          headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              // "Content-Type": "application/x-www-form-urlencoded",
+          },
+          redirect: "follow", // manual, *follow, error
+          referrer: "no-referrer", // no-referrer, *client
+          body: JSON.stringify(data), // body data type must match "Content-Type" header
+      })
+      .then(response => {
+        console.log(response);
+        response.json();
+      }); // parses response to JSON
+  }
     componentDidMount() {
        this.mounted = true;
        this.fetchFromBackend()
+      //.catch(error => console.error(error));
     }
 
     componentWillUnmount() {
@@ -34,9 +59,10 @@ class HomePage extends React.Component {
     fetchFromBackend = () => {
       if (this.mounted) {
       this.setState({ popularGameArray: [] });
-      fetch(currentFetch) 
+      //fetch() 
+      this.postData("http://localhost:8080/api/twitchandsteam/content", currentFetch)
       //Convert response into json. /Johandg
-      .then(response => response.json())
+      //.then(response => response.json())
       //Loop through the JSON-array to grab each individual element and place inside the popularGameArray state. /Johandg
       .then(response => {
         response.data.map((index) =>
@@ -49,7 +75,10 @@ class HomePage extends React.Component {
    //Function to render the top 50 games. /Johandg
    renderGames = () => {
     listOfGames = [];
+
+    
     for (var i=0; i < this.state.popularGameArray.length; i++) {
+      
       listOfGames.push(
         <GameHolder
           gameName={this.state.popularGameArray[i].name}
@@ -107,7 +136,11 @@ class HomePage extends React.Component {
     this.setState({currentCategory: category});
     document.title = 'FlatfishTV';
     if (category === "Steam Games") {
-      currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=category&assetType=games&filterValue=steamGame";
+      currentFetch = {
+        filterType: "steamGame",
+        assetType: "games",
+        limit: 20
+     }
     } else if (category === "Games on Sale") {
       currentFetch = "http://localhost:8080/api/aggregation/filters?filterType=top&assetType=games&filterValue=50";
     } else if(category === "Top Games"){
