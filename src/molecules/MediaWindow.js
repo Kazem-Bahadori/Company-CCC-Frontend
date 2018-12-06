@@ -6,6 +6,7 @@ import deadFish from '../images/fish-dead.png'
 
 class MediaWindow extends Component {
 
+  //Renders the actual stream embedding the Twitch player. With a streamName we can access a specific stream.
   renderMediaWindow = () => {
     if (this.props.streamName !== null) {
       return(
@@ -27,6 +28,7 @@ class MediaWindow extends Component {
  
     if (this.props.streamName.length === 0) {
       
+      // If we have no active stream a message will be displayed.
       return (
       <div className="error-message">
       <img className="dead-fish" src={deadFish} alt="Dead flatfish"/>

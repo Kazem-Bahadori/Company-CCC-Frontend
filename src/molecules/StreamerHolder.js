@@ -3,6 +3,7 @@ import '../css/StreamerHolder.css'
 
 class StreamerHolder extends React.Component {
 
+    //Renders a streamer "poster" that can be visible on the SearchResult page.
     render() {
         return(
             <div className="streamer-holder">

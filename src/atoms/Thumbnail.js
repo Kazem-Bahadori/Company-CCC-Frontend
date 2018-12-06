@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import '../css/Thumbnail.css';
 
+//Component is used inside GamePage.
 class Thumbnail extends Component {
+  //Renders thumbnails with onClick that changes the current stream to what is clicked.
   render() {
    
     return (
