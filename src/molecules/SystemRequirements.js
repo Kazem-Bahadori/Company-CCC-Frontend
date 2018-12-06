@@ -11,7 +11,7 @@ class SystemRequirements extends Component {
     
     //When the component mounts we fetch the system requirements from our API using a steamId.
     if (this.props.steamId !== undefined) {
-    let fetchSystemReq = "http://localhost:8080/api/steam/filters?assetType=system_requirements&filterType=app_id&filterValue=" + this.props.steamId
+    let fetchSystemReq = "http://backend.c3.netplus.se/api/steam/filters?assetType=system_requirements&filterType=app_id&filterValue=" + this.props.steamId
     fetch(fetchSystemReq)
     .then(response => response.json())
     .then(response => {
