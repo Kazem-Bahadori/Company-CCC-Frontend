@@ -59,27 +59,57 @@ describe('FR029: Purchase button, response part I (GamePage) ', () => {
 //     //    let mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
 //         const mockViewCountArray = [100, 20, 30];
 //         const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mockGamemockGamemockGamemockGame.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.fooGamefooGamefooGamefooGame.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.barGamebarGamebarGamebarGame.com" }];
-//         const mockThumbnailArray =[];
+//         const mockId = 100;
+//         const mockGame = "mockGame";
+//         const mockSteamBool = true;
 //         const mockCurrentStream = true;
+//         const mockThumbnailArray =[];
+//       //  const mockCurrentStream = true;
 //         for(let i=0; i<mockStreamDataArray.length; i++){
 //           mockThumbnailArray[i]=(mockStreamDataArray[i].thumbnail_url);
 //         };
-//         const wrapper = shallow( <GamePage currentStream={mockCurrentStream} viewCountArray={mockViewCountArray} streamDataArray={mockStreamDataArray} thumbnailArray={mockThumbnailArray} />);
-//         console.log("hello world");
-//         wrapper.setState({ streamName: 'mockstreamer' });
-//         console.log(wrapper.state().streamName);
-//   //     console.log(wrapper.props().currentStream); //undefined
-//         var nameLowerCase=(mockStreamDataArray[1].user_name).toLowerCase();
-//         console.log(wrapper.props().streamName===nameLowerCase); //funkar, ej problem med currentStream...
-//         mockThumbnailArray.map((thumbnail, index) => {
-//           console.log(mockViewCountArray[index])
-//           console.log(mockStreamDataArray[index].title)
-//           console.log(mockStreamDataArray[index].user_name)
-//         });
+//         const wrapper = mount( <GamePage currentStream={mockCurrentStream} steamBool={mockSteamBool} gameName={mockGame} gameId={mockId} viewCountArray={mockViewCountArray} streamDataArray={mockStreamDataArray} thumbnailArray={mockThumbnailArray} />);
+//         console.log(wrapper.props().currentStream);
 //         expect(wrapper.find('.Thumbnail-window-holder')).to.have.length(1);
-//         //expect(wrapper.find(Thumbnail).first()).to.have.length(1);
+//         expect(wrapper.find(Thumbnail)).to.have.length(1);
 //     //    expect(wrapper.find('.Thumbnail-window-holder').contains([ <div className="overlay-shadow"></div> ])).to.equal(true);
 //         // console.log(wrapper.props().streamDataArray[0].user_name);
 //       //    expect(wrapper.find('.Thumbnail-winodw-holder')).to.have.length(1);
 //       });
 //     });
+
+//FR056: Switch streams
+//desc: The application shall when the user selects an optional stream play that selected stream
+//note: it does not work bc of: streamDataArray[index].user_name === undefined or this.state.streamName!==nameLowerCase
+describe('FR056: Switch streams', () => {
+   it('The application shall when the user selects an optional stream play that selected stream', () => {
+        const gameSpy = sinon.spy();
+        const mockViewCountArray = [100, 20, 30];
+        const mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
+        const mockStreamDataArray = [{ title: "mockGame", user_name: "mockstreamer", thumbnail_url: "www.mockGamemockGamemockGamemockGame.com"}, { title: "fooGame", user_name: "fooUser", thumbnail_url: "www.fooGamefooGamefooGamefooGame.com" }, { title: "barGame", user_name: "barUser", thumbnail_url: "www.barGamebarGamebarGamebarGame.com" }];
+        const mockId = 100;
+        const mockStreamName ="mockStreamer";
+        const mockGame = "mockGame";
+        const mockSteamBool = true;
+        const mockCurrentStream = true;
+        const mockCurrentPage = "GamePage";
+        const mockThumbnailArray =[];
+        const mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
+      //  const mockCurrentStream = true;
+        for(let i=0; i<mockStreamDataArray.length; i++){
+          mockThumbnailArray[i]=(mockStreamDataArray[i].thumbnail_url);
+        };
+        const wrapper = mount( <HomePage />); //variables moved to setprops
+        wrapper.setProps({ currentStream: mockCurrentStream, steamBool: mockSteamBool, gameName: mockGame, gameId: mockId, viewCountArray: mockViewCountArray, streamDataArray: mockStreamDataArray, thumbnailArray: mockThumbnailArray });
+        wrapper.setState({ popularGameArray: mockGameArray, categories: mockCategories });
+        expect(wrapper.state().currentPage).to.equal("HomePage");
+        wrapper.find(GameHolder).first().simulate('click');
+        expect(wrapper.state().currentPage).to.equal("GamePage");
+        wrapper.find(GamePage).instance().setState({ streamName: "mockStreamName" });
+        wrapper.update();
+        expect(wrapper.find(".Thumbnail-and-shadow-holder")).to.have.length(1);
+        expect(wrapper.find(".Thumbnail-window-holder")).to.have.length(1);
+        expect(wrapper.contains([ Thumbnail ])).to.equal(true);
+        wrapper.unmount();
+      });
+    });

@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts babel",
-    "test_frontend": "nyc --reporter mocha-junit-reporter --reporter=cobertura mocha ./mochacfg.js --compilers js:babel-core/register ",
+    "test_frontend": "nyc --reporter=cobertura mocha ./mochacfg.js --compilers js:babel-core/register ",
     "create_result": "mocha ./mochacfg.js --compilers js:babel-core/register --reporter mocha-junit-reporter",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

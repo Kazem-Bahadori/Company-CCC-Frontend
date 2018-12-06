@@ -28,7 +28,7 @@ class GamePage extends Component {
     //streamerInfo = []
     //The gameId is send as a prop from our homepage to access the most popular streams of that specific gameId. /Johandg
     let currentStream = "http://localhost:8080/api/twitch/filters?assetType=streams&filterType=game&filterValue=" + this.props.gameId
-    fetch(currentStream) 
+    fetch(currentStream)
       //Calls handleErrors function to handle errors, eg if we don't get any response from fetch.
       .then(this.handleErrors)
       //Convert response into json. /Johandg
@@ -45,7 +45,6 @@ class GamePage extends Component {
 
       // Viewer count (later sent to infowindow though chatandinfowindow)
       viewercount=streamDataArray[0].viewer_count;
-
       streamNameArray[0]=streamDataArray[0].title;
       //viewCountArray[0]=streamDataArray[0].viewer_count;
       // Need to trim the thumbnailurl to replace the {width}x{height} /JoakimS
@@ -103,13 +102,13 @@ class GamePage extends Component {
             <MediaWindow streamName={this.state.streamName}/>
             <ChatAndInfoWindow
             gameName={this.props.gameName}
-            streamName={this.state.streamName} 
-            viewers={viewercount} 
+            streamName={this.state.streamName}
+            viewers={viewercount}
             steamBool={this.props.steamBool}
             />
           </div>
 
-         
+
           {this.state.streamName.length !== 0 &&
            //Adding left arrow to the thumbnail array
             <img className="thumbnail-left-arrow-image" src= {arrowLeft} alt="Arrow"/>
@@ -131,23 +130,23 @@ class GamePage extends Component {
           {this.state.streamName.length !== 0 &&
           <div className="Thumbnail-and-shadow-holder">
             <div className="Thumbnail-window-holder">
-            
+
               {/* For each element in thumbnailarray a thumbnail is placed  */}
               {thumbnailArray.map((thumbnail, index) => {
-                
+
                 // Lowercase name to be able to compare streamName to streamerInfo name
                 if (streamDataArray[index].user_name === undefined) {
                   var nameLowerCase = ''
-                
+
                 } else {
                   var nameLowerCase=(streamDataArray[index].user_name).toLowerCase();
                 }
-          
+
                 // Only print a thumbnail if not playing in mediawindow
-                if (this.state.streamName!==nameLowerCase) {  
+                if (this.state.streamName!==nameLowerCase) {
 
                   return(
-                  <Thumbnail 
+                  <Thumbnail
                   image={thumbnail+'800x800.jpg'}
                   views={viewCountArray[index]}
                   streamName={streamDataArray[index].title}
@@ -159,7 +158,7 @@ class GamePage extends Component {
                 } else {
 
                   return(
-                    <Thumbnail 
+                    <Thumbnail
                     image={thumbnail+'800x800.jpg'}
                     views={viewCountArray[index]}
                     streamName={streamDataArray[index].title}
