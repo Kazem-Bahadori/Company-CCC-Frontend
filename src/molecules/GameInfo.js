@@ -7,6 +7,7 @@ import steamBuyLogo from '../images/steam-logo-buy-button.png'
 
 class GameInfo extends Component {
 
+    //Changes the text wether the game is free or not.
     renderButtonText = () => {
         let text = 'Buy Game';
         if (this.props.price === "FREE TO PLAY"){
@@ -15,8 +16,8 @@ class GameInfo extends Component {
         return text;
     }
 
+    // Function that renders the "Buy on Steam Button" depending on wether the game is steam game or not. /Johan dG
     renderBuySteam = () => {
-        // Function that renders the "Buy on Steam Button" depending on wether the game is steam game or not. /Johan dG
         if (this.props.steamId) {
             return (
                 <div className="buy-on-steam-holder">

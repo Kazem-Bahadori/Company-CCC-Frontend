@@ -13,6 +13,7 @@ state = {
     currentCategory: "Top Games"
 }
 
+//onClick-function to either show or hide the sidebar.
 handleClick = () => {
     if(this.state.collapsed){
         document.addEventListener('click', this.handleClickOutside,false);
@@ -22,6 +23,7 @@ handleClick = () => {
     this.setState(prevState => ({collapsed: !prevState.collapsed})); 
     }
 
+//Functon to handle clicks outside the SideBar to close it.
 handleClickOutside = (e) => {
     if (this.panel.contains(e.target)) {
         return;
@@ -29,6 +31,7 @@ handleClickOutside = (e) => {
     this.handleClick(e);
 }
 
+//Render function to show the SideBar either collapsed or not.
 render(){
     if(!this.state.collapsed){
         return(
@@ -56,19 +59,11 @@ render(){
     return(
             <div className="side-bar-container-collapsed" onClick={this.handleClick}>
                 <div className="side-bar-content">
-                    <div className="side-bar-image-container">
-                        <img className="side-bar-image" onClick={this.props.homeButtonResponse} src= {fish} alt="FlatFishTV"/>
-                    </div>
-                    <div className="side-bar-search" onClick = {this.props.searchButtonResponse}>
-                        <img className="side-bar-search-image" src= {search} alt="Search"/>
-                    </div>
-                    {this.props.categories.map((category) => 
-                        <div key={category} className="side-bar-button" onClick={() => this.props.categoryOnClick(category)}>{category}</div>
-                    )}
-                    </div>
-                    <div className="side-bar-arrow">
-                    <img className="side-bar-arrow-image" src= {arrowRight} alt="Arrow"/>
                 </div>
+                
+                    <div className="side-bar-arrow">
+                        <img className="side-bar-arrow-image" src= {arrowRight} alt="Arrow"/>
+                    </div>
             </div>
     )
 }

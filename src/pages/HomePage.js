@@ -6,8 +6,7 @@ import fish from '../images/fishtv4_yes.png';
 import '../css/HomePage.css';
 import SearchPage from '../pages/SearchPage.js';
 
-// const fetchTopGames ="http://localhost:8080/api/twitch/filters?filterType=top&assetType=games&filterValue=50"
-// const fetchTopSteamGames ="http://localhost:8080/api/twitch/filters?filterType=category&assetType=games&filterValue=steamGame"
+
 let categories = ["Top Games", "Steam Games", "Games on Sale" ];
 let pages = ["HomePage", "GamePage", "SearchPage"];
 let listOfGames
@@ -28,10 +27,11 @@ class HomePage extends React.Component {
     }
 
     componentWillUnmount() {
-      //Cancel the setState of popularGameArray inside fetchFromBackend().
+      //Cancel the setState of popularGameArray inside fetchFromBackend(). This is done when you leave the HomePage.
       this.mounted = false;
     }
 
+    //Function to fetch api data to homepage.
     fetchFromBackend = () => {
       if (this.mounted) {
       this.setState({ popularGameArray: [] });
@@ -62,6 +62,8 @@ class HomePage extends React.Component {
         />
       )
     }
+
+    //Determines if the page has something to show or not. If its "loading" or not.
     if (listOfGames < 1) {
        return (
        <p className="homepage-placeholder">
@@ -115,6 +117,7 @@ class HomePage extends React.Component {
     this.fetchFromBackend();
   }
 
+  //By clicking the search button you are directed to the SearchPage.
   searchButtonOnClick = () => {
     document.title = 'FlatfishTV';
     this.setState({currentCategory: categories[0]})
