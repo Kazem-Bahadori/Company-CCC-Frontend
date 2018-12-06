@@ -61,8 +61,7 @@ describe('FR007: Game picture pressed', () => {
   });
 
 //FR064: Filter
-//Desc: "The application shall, when the user presses a certain category, filter games on that
-//       specific category."
+//Desc: "The application shall, when the user presses a certain category, filter games on that specific category."
 describe('FR064: Filter', () => {
   it('The application shall, when the user presses a certain category, filter games on that specific category', () => {
     const categorySpy = sinon.spy();
