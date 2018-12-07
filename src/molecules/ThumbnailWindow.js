@@ -8,19 +8,19 @@ var StreamName = 'riotgames';
 //This component is not being used.
 class InfoWindow extends Component {
 
-  
+
 
   render() {
-   
+
     return (
       <div className="Thumbnail-window-holder">
-        
-        
+
+
         <Thumbnail 
         image={'https://www-cdn.jtvnw.net/images/twitch_logo3.jpg'}/>
-        <Thumbnail 
+        <Thumbnail
         image={'https://www-cdn.jtvnw.net/images/twitch_logo3.jpg'}/>
-        <Thumbnail 
+        <Thumbnail
         image={'https://www-cdn.jtvnw.net/images/twitch_logo3.jpg'}/>
 
 
