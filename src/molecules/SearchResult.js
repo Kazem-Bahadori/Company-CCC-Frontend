@@ -18,9 +18,9 @@ class SearchResult extends React.Component {
     
     //Function to render list of search results. Each result is a clickable GameHolder.
     getGameList = () => { 
-        if(this.props.games.length < 1) {
+        /* if(this.props.games.length < 1) {
             return  this.getFishPlaceholder("Loading...")
-        }
+        } */
         let listOfGames = [];
         this.props.games.map((game,i) => {
             listOfGames.push(
