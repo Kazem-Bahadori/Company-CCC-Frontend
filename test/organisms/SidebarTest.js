@@ -12,11 +12,16 @@ describe('FR002, Home button response part I (SideBar component)' ,() => {
     const homebuttonSpy = sinon.spy();
     //Mock variable needed to render Sidebar when collapsed is set to false
     var mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-     const wrapper = shallow(<Sidebar homeButtonResponse={homebuttonSpy} categories={mockCategories}/>);
+    const wrapper = shallow(<Sidebar homeButtonResponse={homebuttonSpy} categories={mockCategories}/>);
+    //Expecting Sidebar to be collapsed by default
+    expect(wrapper.state().collapsed).to.equal(true);
+    //Change collapsed to true
+    wrapper.instance().handleClick();
     //Finding the class where the home button function is located. Should be only one.
     expect(wrapper.find('.side-bar-image')).to.have.length(1);
     //Clicking the home button
     wrapper.find('.side-bar-image').simulate('click');
+    //Checking that the homebutton was pressed
     expect(homebuttonSpy.calledOnce).to.equal(true);
     //Note: whether or not the home page is changed is determined in part II of this test
   });
