@@ -16,7 +16,7 @@ describe('FR062: Display chat', () =>{
     wrapper.setProps({ streamName: "mockStreamer" });
     //Check if state is set to "Chat" when launching ChatAndInfoWindow
     expect(wrapper.state().contentWindow).to.equal('Chat');
-    //Assure that ChatAndInfoWindow is rendered correctly
+    //Assure that ChatAndInfoWindow & TwitchChat is rendered when switch to chat tab
     expect(wrapper.find('.container-window')).to.have.length(1);
     expect(wrapper.find('.content-window')).to.have.length(1);
     expect(wrapper.find(TwitchChat)).to.have.length(1);

@@ -1,5 +1,6 @@
-import 'jsdom-global/register'; 
-const assert = require('chai').assert;
+import 'jsdom-global/register'; //to be able to mount React components
+
+const assert = require('chai').assert; //bringring in the chai library
 const expect = require('chai').expect;
 import { shallow, mount } from 'enzyme';
 import React, { Component } from 'react';

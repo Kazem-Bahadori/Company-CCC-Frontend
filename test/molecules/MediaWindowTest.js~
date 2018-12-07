@@ -1,4 +1,4 @@
-const assert = require('chai').assert;
+const assert = require('chai').assert; //bringring in the chai library
 const expect = require('chai').expect;
 import { shallow, mount, render } from 'enzyme';
 import React from 'react';

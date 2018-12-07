@@ -12,7 +12,7 @@ import Thumbnail from '../../src/atoms/Thumbnail';
 describe('FR056: Switch streams', () => {
    it('Thumbnail component is rendered correctly', () => {
         const wrapper = shallow(<Thumbnail onClick={streamSpy}/>);
-	//Setting mock props needed for rendering Thumbnail correctly
+	//Setting props needed for rendering Thumbnail correctly
         wrapper.setProps({ onClick: "mockOnClick", currentStream: "mockStream", views: 100, streamerName: "mockStreamer", streamName: "mockStreamName", image: "mockImage", gameName: "mockGameName" });
 	//Code commented below should work but unable to test since I no longer have the testing tools on the computer currently working on /Linnéa T
 	//wrapper.instance();      	
