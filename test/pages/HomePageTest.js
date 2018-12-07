@@ -43,7 +43,7 @@ describe('FR007: Game picture pressed', () => {
       const gameSpy = sinon.spy();
       //Setting up variables needed for correct rendering
       const mockCategories = ["Top Games", "Steam Games", "Games on Sale" ];
-      const wrapper = mount( <HomePage popularGameOnClick={gameSpy(0)} categories={mockCategories} />);
+      const wrapper = mount( <HomePage popularGameOnClick={gameSpy(0)} />);
       const mockGameArray = [{ name: "fooGame", id: 23, steam: true }, { name: "barGame", id: 12, steam: false }];
       //Set state to mock variables
       wrapper.setState({ popularGameArray: mockGameArray, categories: mockCategories });
@@ -61,8 +61,7 @@ describe('FR007: Game picture pressed', () => {
   });
 
 //FR064: Filter
-//Desc: "The application shall, when the user presses a certain category, filter games on that
-//       specific category."
+//Desc: "The application shall, when the user presses a certain category, filter games on that specific category."
 describe('FR064: Filter', () => {
   it('The application shall, when the user presses a certain category, filter games on that specific category', () => {
     const categorySpy = sinon.spy();

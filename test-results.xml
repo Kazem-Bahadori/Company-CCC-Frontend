@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.257" tests="15" failures="0">
+  <testsuite name="Root Suite" timestamp="2018-12-04T14:40:00" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="mochacfg" timestamp="2018-12-04T14:40:00" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="SidebarTest" timestamp="2018-12-04T14:40:00" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="FR002, Home button response part I (SideBar component)" timestamp="2018-12-04T14:40:00" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.061">
+    <testcase name="mochacfg SidebarTest FR002, Home button response part I (SideBar component) Sidebar component is rendered correctly" time="0.061" classname="Sidebar component is rendered correctly">
+    </testcase>
+  </testsuite>
+  <testsuite name="FR012: Search bar, response, part I (Sidebar component)" timestamp="2018-12-04T14:40:00" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.01">
+    <testcase name="mochacfg SidebarTest FR012: Search bar, response, part I (Sidebar component) Search button is clickable" time="0.01" classname="Search button is clickable">
+    </testcase>
+  </testsuite>
+  <testsuite name="MediaWindowTest" timestamp="2018-12-04T14:40:00" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="FR024: Active stream on game page, part II (MediaWindow component)" timestamp="2018-12-04T14:40:00" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.006">
+    <testcase name="mochacfg MediaWindowTest FR024: Active stream on game page, part II (MediaWindow component) The MediaWindow component is rendered correctly" time="0.006" classname="The MediaWindow component is rendered correctly">
+    </testcase>
+  </testsuite>
+  <testsuite name="HomePageTest" timestamp="2018-12-04T14:40:00" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="FR002: Home button response part II (HomePage)" timestamp="2018-12-04T14:40:00" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.012">
+    <testcase name="mochacfg HomePageTest FR002: Home button response part II (HomePage) Pressing home button redirects you to start page" time="0.012" classname="Pressing home button redirects you to start page">
+    </testcase>
+  </testsuite>
+  <testsuite name="FR007: Game picture pressed" timestamp="2018-12-04T14:40:00" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.054">
+    <testcase name="mochacfg HomePageTest FR007: Game picture pressed The button for a specific game shall when pressed redirect the user to that specific game’s page." time="0.054" classname="The button for a specific game shall when pressed redirect the user to that specific game’s page.">
+    </testcase>
+  </testsuite>
+  <testsuite name="FR064: Filter" timestamp="2018-12-04T14:40:01" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.014">
+    <testcase name="mochacfg HomePageTest FR064: Filter The application shall, when the user presses a certain category, filter games on that specific category" time="0.014" classname="The application shall, when the user presses a certain category, filter games on that specific category">
+    </testcase>
+  </testsuite>
+  <testsuite name="SearchPageTest" timestamp="2018-12-04T14:40:01" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="FR012: Search bar, response part II (HomePage component)" timestamp="2018-12-04T14:40:01" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.005">
+    <testcase name="mochacfg SearchPageTest FR012: Search bar, response part II (HomePage component) SearchPage is rendered when search bar is pressed" time="0.005" classname="SearchPage is rendered when search bar is pressed">
+    </testcase>
+  </testsuite>
+  <testsuite name="ChatAndInfoWindowTest" timestamp="2018-12-04T14:40:01" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="FR062: Display chat" timestamp="2018-12-04T14:40:01" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.008">
+    <testcase name="mochacfg ChatAndInfoWindowTest FR062: Display chat ChatAndInfoWindow is rendered correctly" time="0.008" classname="ChatAndInfoWindow is rendered correctly">
+    </testcase>
+  </testsuite>
+  <testsuite name="FR062: Display chat" timestamp="2018-12-04T14:40:01" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.019">
+    <testcase name="mochacfg ChatAndInfoWindowTest FR062: Display chat ChatAndInfoWindow should have a button for chat that displays the chat if pressed" time="0.019" classname="ChatAndInfoWindow should have a button for chat that displays the chat if pressed">
+    </testcase>
+  </testsuite>
+  <testsuite name="GameInfoTest" timestamp="2018-12-04T14:40:01" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="FR029: Purchase button, response part II (GameInfo) " timestamp="2018-12-04T14:40:01" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.042">
+    <testcase name="mochacfg GameInfoTest FR029: Purchase button, response part II (GameInfo)  Buy button in GameInfo redirects to Steam" time="0.042" classname="Buy button in GameInfo redirects to Steam">
+    </testcase>
+  </testsuite>
+  <testsuite name="FR065: Display game info" timestamp="2018-12-04T14:40:01" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.011">
+    <testcase name="mochacfg GameInfoTest FR065: Display game info The user shall be able to access game information, if it is a steam game, by clicking the game info button." time="0.011" classname="The user shall be able to access game information, if it is a steam game, by clicking the game info button.">
+    </testcase>
+  </testsuite>
+  <testsuite name="GamePageTest" timestamp="2018-12-04T14:40:01" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="FR024: Active stream on game page, part I (GamePage component)" timestamp="2018-12-04T14:40:01" tests="2" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.009">
+    <testcase name="mochacfg GamePageTest FR024: Active stream on game page, part I (GamePage component) The GamePage component is rendered correctly" time="0" classname="The GamePage component is rendered correctly">
+    </testcase>
+    <testcase name="mochacfg GamePageTest FR024: Active stream on game page, part I (GamePage component) The GamePage contains relevant components" time="0.009" classname="The GamePage contains relevant components">
+    </testcase>
+  </testsuite>
+  <testsuite name="FR029: Purchase button, response part I (GamePage) " timestamp="2018-12-04T14:40:01" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.005">
+    <testcase name="mochacfg GamePageTest FR029: Purchase button, response part I (GamePage)  ChatAndInfoWindow should display GameInfo if a steamId exist" time="0.005" classname="ChatAndInfoWindow should display GameInfo if a steamId exist">
+    </testcase>
+  </testsuite>
+  <testsuite name="ThumbnailTest" timestamp="2018-12-04T14:40:01" tests="0" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="FR056: Switch streams" timestamp="2018-12-04T14:40:01" tests="1" file="/Users/linneatullin/pum/Company-CCC/mochacfg.js" failures="0" time="0.001">
+    <testcase name="mochacfg ThumbnailTest FR056: Switch streams The application shall when the user selects an optional stream play that selected stream" time="0.001" classname="The application shall when the user selects an optional stream play that selected stream">
+    </testcase>
+  </testsuite>
+</testsuites>
