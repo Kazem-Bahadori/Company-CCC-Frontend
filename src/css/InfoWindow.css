@@ -1,0 +1,75 @@
+.Game-name {
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    color: #998675;
+    margin: 0.7rem;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.Info-window-holder {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    background-color: rgb(41, 41, 41);   
+    position: relative;
+}
+
+.Pricetag {
+    margin-left: 6rem;
+    color: white;
+    font-size: 1rem;
+}
+
+.Review-holder {
+    margin-left: 1rem;
+    height: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Name-holder {
+    height: 10px;
+    margin-left: 3%;
+    color: white;
+}
+
+.ProgressBar-holder {
+    width: 8rem;
+    height: 60%;
+    background-color: grey;
+    margin-right: 0.5rem;
+}
+
+.ProgressBar-progress {
+    display: block;
+    height: 100%;
+    width: 0;
+    background-color: green;
+    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s;
+}
+
+.Percentage-holder {
+    margin-right: 0.5rem;
+}
+
+.Name-text-info {
+    font-size: 1em;
+    color: black; 
+}
+
+.Reqs {
+    padding-top: 0.5rem;
+    font-size: 0.675em;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+
+}
+
+a {
+    color: #f1c40e;
+}

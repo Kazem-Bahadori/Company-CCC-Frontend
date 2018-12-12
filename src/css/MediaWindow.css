@@ -1,0 +1,46 @@
+.media-window-holder {
+    /*margin-top: 8rem;*/
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    background-color: black;
+    padding-left: 3%; 
+}
+
+.media-window-media {
+    display: flex;
+    margin-right: 0%;
+    width: 100%;
+    height: 100%;   
+}
+
+.error-message {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    opacity:0;;
+    transition:opacity 11s;
+}
+
+  .error-message:hover {
+    opacity:1;
+  }
+
+.media-window-chat {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.dead-fish {
+    display: flex;
+    margin: 10% auto 5% auto;
+    height: 50%;
+    width: auto;
+}
+
